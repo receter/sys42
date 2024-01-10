@@ -1,6 +1,6 @@
 ## System 42
 
-System 42 is a React-based experimental design system that offers components used similarly to typical HTML elements.
+System 42 is a React-based experimental design system that offers components used similarly to typical HTML elements. This means for example that if you have a normal HTML `<button …>` in your app, you can just change the tag name to `<Button …>`.
 
 ### Component Styling
 
@@ -35,6 +35,8 @@ Now, you can use the imported component in your application:
   Click me!
 </Button>
 ```
+
+When you 
 
 ### Advanced Example
 
