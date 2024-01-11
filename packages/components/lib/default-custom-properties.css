@@ -9,4 +9,8 @@
     --sys42-button-shadow--hover: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     --sys42-button-transition-in: none;
     --sys42-button-transition-out: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* InlineIcon */
+    --sys42-inline-icon-size: 1rem;
+    --sys42-inline-icon-width: var(--sys42-inline-icon-size);
+    --sys42-inline-icon-height: var(--sys42-inline-icon-size);
 }

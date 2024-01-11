@@ -1,0 +1,7 @@
+.inlineIcon {
+    height: var(--inline-icon-height);
+    width: var(--inline-icon-width);
+    vertical-align: middle;
+    position: relative;
+    top: -0.125em;
+}
