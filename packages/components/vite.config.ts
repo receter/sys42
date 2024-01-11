@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
+import svgr from "vite-plugin-svgr";
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
-import { extname, relative, resolve } from 'path'
+import { extname, relative } from 'path'
 import { fileURLToPath } from 'node:url'
 import { glob } from 'glob'
 
@@ -11,7 +12,8 @@ export default defineConfig({
   plugins: [
     react(),
     libInjectCss(),
-    dts({ include: ['lib'] })
+    dts({ include: ['lib'] }),
+    svgr()
   ],
   build: {
     copyPublicDir: false,
