@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import '../dist/default-custom-properties.css'
 //import '../dist/'
-import { Button } from '../'
+import { Button, InlineIcon } from '../'
+import SvgReact from './assets/react.svg?react';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,7 +23,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          <InlineIcon Svg={SvgReact} /> count is {count}
         </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
