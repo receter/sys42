@@ -2,7 +2,7 @@ name: Release components package
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   build:
