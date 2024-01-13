@@ -13,9 +13,11 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --p ./tsconfig-build.json && vite build && cp ./lib/default-custom-properties.css ./dist/default-custom-properties.css",
+    "build": "tsc --p ./tsconfig-build.json && vite --config ./vite-build.config.ts build && cp ./lib/default-custom-properties.css ./dist/default-custom-properties.css",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cosmos": "cosmos",
+    "cosmos-export": "cosmos-export"
   },
   "prepublishOnly": "pnpm run build",
   "dependencies": {
@@ -36,6 +38,8 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "glob": "^10.3.10",
     "react": "^18.2.0",
+    "react-cosmos": "6.0.0-beta.10",
+    "react-cosmos-plugin-vite": "6.0.0-beta.10",
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
