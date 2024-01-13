@@ -1,18 +1,13 @@
 import { concatClassNames as cn } from '@sys42/utils'
+import { Sys42PolymorphicComponent, Sys42UnstyledComponent } from '../../types';
 
-export type ButtonProps = {
-  as?: React.ElementType;
-  children: React.ReactNode;
-} & React.AllHTMLAttributes<HTMLElement>;
-// https://blog.logrocket.com/build-strongly-typed-polymorphic-components-react-typescript/
+export type ButtonProps = Sys42PolymorphicComponent;
 
-interface ButtonStyles {
-  styles: {
-    button: string,
-  };
-}
+type UnstyledButtonProps = Sys42UnstyledComponent<ButtonProps, {
+  button: string,
+}>;
 
-export function Button(props: ButtonProps & ButtonStyles) {
+export function Button(props: UnstyledButtonProps) {
 
   const {
     className,

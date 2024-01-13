@@ -10,9 +10,9 @@ import { glob } from 'glob'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    dts({ include: ['lib'] }),
     react(),
     libInjectCss(),
-    dts({ include: ['lib'] }),
     svgr()
   ],
   build: {
