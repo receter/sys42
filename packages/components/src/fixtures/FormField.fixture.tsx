@@ -3,7 +3,7 @@ import { FormField } from "../../dist/main"
 
 export default function FormFieldFixture() {
   const [label] = useValue('Label', { defaultValue: "This is a label" });
-  const [htmlFor] = useValue('For', { defaultValue: undefined, inputName: 'text' });
+  const [htmlFor] = useValue('For', { defaultValue: undefined });
   return <FormField label={label} htmlFor={htmlFor}>
     {({ htmlFor }) => <div>htmlFor from context: {htmlFor}</div>}
   </FormField>
