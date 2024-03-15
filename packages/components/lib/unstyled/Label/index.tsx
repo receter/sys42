@@ -1,9 +1,9 @@
 import { concatClassNames as cn } from '@sys42/utils'
-import { Sys42Component, Sys42UnstyledComponent } from '../../types';
+import { Sys42ComponentProps, Sys42UnstyledComponentProps } from '../../types';
 
-export type LabelProps = Sys42Component;
+export type LabelProps = Sys42ComponentProps;
 
-type UnstyledLabelProps = Sys42UnstyledComponent<LabelProps, {
+type UnstyledLabelProps = Sys42UnstyledComponentProps<LabelProps, {
   label: string,
 }>;
 

@@ -1,13 +1,13 @@
 import { concatClassNames as cn } from '@sys42/utils'
-import { Sys42Component, Sys42UnstyledComponent } from '../../types';
+import { Sys42ComponentProps, Sys42UnstyledComponentProps } from '../../types';
 import { knownSpacingAbbreviations } from '../../helpers';
 import { useMemo } from 'react';
 
-export type StackProps = Sys42Component & {
+export type StackProps = Sys42ComponentProps & {
   spacing: string,
 };
 
-type UnstyledStackProps = Sys42UnstyledComponent<StackProps, {
+type UnstyledStackProps = Sys42UnstyledComponentProps<StackProps, {
   stack: string,
 }>;
 
@@ -16,7 +16,7 @@ export function Stack(props: UnstyledStackProps) {
     className,
     styles,
     style,
-    spacing,
+    spacing = "md",
     ...restProps
   } = props;
 

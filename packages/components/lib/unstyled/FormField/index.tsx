@@ -1,6 +1,6 @@
 import { concatClassNames as cn } from '@sys42/utils'
 import { isArray, uniqueId } from 'lodash-es'
-import { Sys42Component, Sys42UnstyledComponent } from '../../types';
+import { Sys42ComponentProps, Sys42UnstyledComponentProps } from '../../types';
 import React, { createContext, useState } from 'react';
 import { LabelProps } from '../Label';
 
@@ -9,14 +9,14 @@ export type FormFieldContext = {
   isError: boolean;
 }
 
-export type FormFieldProps = Omit<Sys42Component, 'children'> & {
+export type FormFieldProps = Omit<Sys42ComponentProps, 'children'> & {
   errorMessage?: string | string[],
   label: React.ReactNode,
   htmlFor?: string,
   children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode),
 };
 
-type UnstyledFormFieldProps = Sys42UnstyledComponent<FormFieldProps, {
+type UnstyledFormFieldProps = Sys42UnstyledComponentProps<FormFieldProps, {
   formField: string,
   errorMessage: string,
   label: string,

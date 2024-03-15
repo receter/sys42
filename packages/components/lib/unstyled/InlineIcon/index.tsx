@@ -1,11 +1,11 @@
 import { concatClassNames as cn } from '@sys42/utils'
-import { Sys42Component, Sys42UnstyledComponent } from '../../types';
+import { Sys42ComponentProps, Sys42UnstyledComponentProps } from '../../types';
 
-export type InlineIconProps = Sys42Component<React.SVGProps<SVGSVGElement>> & {
+export type InlineIconProps = Sys42ComponentProps<React.SVGProps<SVGSVGElement>> & {
   Svg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 };
 
-type UnstyledInlineIconProps = Sys42UnstyledComponent<InlineIconProps, {
+type UnstyledInlineIconProps = Sys42UnstyledComponentProps<InlineIconProps, {
   inlineIcon: string,
 }>;
 

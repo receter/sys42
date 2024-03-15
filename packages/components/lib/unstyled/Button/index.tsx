@@ -1,13 +1,17 @@
 import { concatClassNames as cn } from '@sys42/utils'
-import { Sys42PolymorphicComponent, Sys42UnstyledComponent } from '../../types';
+import { Sys42PolymorphicComponentProps, Sys42UnstyledComponentProps } from '../../types';
+import { forwardRef } from 'react';
 
-export type ButtonProps = Sys42PolymorphicComponent;
+export type ButtonProps = Sys42PolymorphicComponentProps;
 
-type UnstyledButtonProps = Sys42UnstyledComponent<ButtonProps, {
+type UnstyledButtonProps = Sys42UnstyledComponentProps<ButtonProps, {
   button: string,
 }>;
 
-export function Button(props: UnstyledButtonProps) {
+export const Button = forwardRef((
+  props: UnstyledButtonProps,
+  ref: React.ForwardedRef<HTMLButtonElement>
+) => {
 
   const {
     className,
@@ -20,7 +24,8 @@ export function Button(props: UnstyledButtonProps) {
 
   const ComponentTag = asProp || 'button';
 
-  // use type="button" instead of type="submit" by default if tag is button
+  // Always specify the type attribute for the <button> element. Different 
+  // browsers may use different default types for the <button> element.
   const typeButton = ComponentTag === 'button' ? (type ?? 'button') : type;
 
   return <ComponentTag
@@ -30,7 +35,8 @@ export function Button(props: UnstyledButtonProps) {
     )}
     type={typeButton}
     {...restProps}
+    ref={ref}
   >
     {children}
   </ComponentTag>;
-}
+});
