@@ -1,63 +1,64 @@
 import { concatClassNames as cn } from '@sys42/utils'
 
-import React, { JSXElementConstructor, forwardRef } from 'react';
+import React, { ReactNode } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function as<T extends (keyof JSX.IntrinsicElements | JSXElementConstructor<any>)>(Element: React.ElementType<any>) {
 
-  return forwardRef((
-    props: React.ComponentProps<T> & {
-      styles: {
-        button: string,
-      }
-    },
-    ref: React.ForwardedRef<typeof Element>
-  ) => {
+type Mods = {
+  className: string;
+}
 
+interface ButtonProps {
+  hello: string;
+  className?: string;
+  styles: {
+    button: string;
+  }
+}
+
+function makeAs<T>(render: (props: T, mods: Mods) => ReactNode) {
+  return (props: T & ButtonProps) => {
     const {
-      className,
       styles,
-      type,
+      hello,
+      className,
       ...restProps
     } = props;
 
-    // Always specify the type attribute for the <button> element. Different 
-    // browsers may use different default types for the <button> element.
-    const typeButton = Element === 'button' ? (type ?? 'button') : type;
-
-    return <Element
-      className={cn(
+    const mods = {
+      className: cn(
         className,
-        styles.button,
-      )}
-      type={typeButton}
-      ref={ref}
-      {...restProps}
-    />
-  });
+        styles.button
+      )
+    }
 
+    console.log(hello);
+
+    return render(restProps, mods);
+    //return render(restProps as unknown as T, mods);
+  }
 }
 
-const Component = as<"button">("button");
+const Button_a = makeAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((props, mods) => <a {...props} {...mods} />);
+const Button = makeAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((props, mods) => <button {...props} {...mods} />);
 
-const Button: typeof Component & {
-  as?: typeof as;
-} = Component;
+// const Button: typeof Component & {
+//   makeAs?: typeof makeAs;
+// } = Component;
 
-Button.as = as;
+// export {
+//   Button
+// };
 
-export {
-  Button
-};
-
-const Button_a = Button.as<"a">("a");
 
 const test = <>
-  <Button styles={{ button: "asdf" }} href="asdf" onClick={() => { }}>
+  <Button hello="test" styles={{ button: "asdf" }} href="asdf" type="submit" onClick={() => { }}>
     Click me
   </Button>
 
-  <Button_a styles={{ button: "asdf" }} href={"https://google.com"}>
+  <a type="submit">asfd</a>
+
+  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" asdf="asf" href={"https://google.com"}>
     Click me
   </Button_a>
 </>
