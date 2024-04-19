@@ -14,10 +14,7 @@ interface ButtonProps {
   }
 }
 
-function useButton<T>(props: T & ButtonProps): {
-  props: Omit<T, keyof ButtonProps>;
-  mods: Mods;
-} {
+function useButton<T>(props: Omit<T, keyof ButtonProps> & ButtonProps) {
   const {
     styles,
     hello,
@@ -35,19 +32,21 @@ function useButton<T>(props: T & ButtonProps): {
     //type: true
   }
 
-  console.log(hello, type);
+  console.log(hello);
+  console.log(type);
 
   return { props: restProps, mods };
 }
 
-export const Button_a = (propsIn: React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps) => {
-  const { props, mods } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
-  return <a {...props} {...mods} />;
-}
 
-export const Button = (propsIn: React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) => {
+export const Button = (propsIn: Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> & ButtonProps) => {
   const { props, mods } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
   return <button {...props} {...mods} />;
+}
+
+export const Button_a = (propsIn: Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps> & ButtonProps) => {
+  const { props, mods } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
+  return <a {...props} {...mods} />;
 }
 
 const test = <>
