@@ -3,10 +3,10 @@ import { concatClassNames as cn } from '@sys42/utils'
 type Mods = {
   className: string;
   href: string;
-  //type: boolean;
 }
 
 interface ButtonProps {
+  type: boolean;
   hello: string;
   className?: string;
   styles: {
@@ -14,11 +14,15 @@ interface ButtonProps {
   }
 }
 
-function useButton<T>(props: T & ButtonProps) {
+function useButton<T>(props: T & ButtonProps): {
+  props: Omit<T, keyof ButtonProps>;
+  mods: Mods;
+} {
   const {
     styles,
     hello,
     className,
+    type,
     ...restProps
   } = props;
 
@@ -31,23 +35,23 @@ function useButton<T>(props: T & ButtonProps) {
     //type: true
   }
 
-  console.log(hello);
+  console.log(hello, type);
 
-  return { ...restProps, ...mods };
+  return { props: restProps, mods };
 }
 
 export const Button_a = (propsIn: React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps) => {
-  const props = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
-  return <a {...props} />;
+  const { props, mods } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
+  return <a {...props} {...mods} />;
 }
 
 export const Button = (propsIn: React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) => {
-  const props = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
-  return <button {...props} />;
+  const { props, mods } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
+  return <button {...props} {...mods} />;
 }
 
 const test = <>
-  <Button hello="test" styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
+  <Button styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
     Click me
   </Button>
 
