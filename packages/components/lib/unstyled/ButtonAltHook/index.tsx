@@ -33,17 +33,17 @@ function useButton<T>(props: T & ButtonProps) {
 
   console.log(hello);
 
-  return { props: restProps, mods };
+  return { ...restProps, ...mods };
 }
 
 export const Button_a = (propsIn: React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps) => {
-  const { props, mods } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
-  return <a {...props} {...mods} />;
+  const props = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
+  return <a {...props} />;
 }
 
-export const Button = (propsIn: React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps) => {
-  const { props, mods } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
-  return <button {...props} {...mods} />;
+export const Button = (propsIn: React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) => {
+  const props = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
+  return <button {...props} />;
 }
 
 const test = <>
@@ -51,7 +51,7 @@ const test = <>
     Click me
   </Button>
 
-  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" href={"https://google.com"}>
+  <Button_a hello="test" styles={{ button: "asdf" }} href={"https://google.com"}>
     Click me
   </Button_a>
 </>
