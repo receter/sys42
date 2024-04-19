@@ -1,11 +1,11 @@
 import { concatClassNames as cn } from '@sys42/utils'
 
-import React, { ReactNode } from 'react';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+import { ReactNode } from 'react';
 
 type Mods = {
   className: string;
+  href: string;
+  //type: boolean;
 }
 
 interface ButtonProps {
@@ -16,8 +16,9 @@ interface ButtonProps {
   }
 }
 
-function makeAs<T>(render: (props: T, mods: Mods) => ReactNode) {
+export function makeAs<T>(render: (props: Omit<T, keyof ButtonProps>, mods: Mods) => ReactNode) {
   return (props: T & ButtonProps) => {
+
     const {
       styles,
       hello,
@@ -25,11 +26,15 @@ function makeAs<T>(render: (props: T, mods: Mods) => ReactNode) {
       ...restProps
     } = props;
 
-    const mods = {
+    console.log(test);
+
+    const mods: Mods = {
       className: cn(
         className,
         styles.button
-      )
+      ),
+      href: "https://google.com",
+      //type: true
     }
 
     console.log(hello);
@@ -39,26 +44,15 @@ function makeAs<T>(render: (props: T, mods: Mods) => ReactNode) {
   }
 }
 
-const Button_a = makeAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((props, mods) => <a {...props} {...mods} />);
-const Button = makeAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((props, mods) => <button {...props} {...mods} />);
-
-// const Button: typeof Component & {
-//   makeAs?: typeof makeAs;
-// } = Component;
-
-// export {
-//   Button
-// };
-
+export const Button_a = makeAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((props, mods) => <a {...props} {...mods} />);
+export const Button = makeAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((props, mods) => <button {...props} {...mods} />);
 
 const test = <>
-  <Button hello="test" styles={{ button: "asdf" }} href="asdf" type="submit" onClick={() => { }}>
+  <Button hello="test" styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
     Click me
   </Button>
 
-  <a type="submit">asfd</a>
-
-  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" asdf="asf" href={"https://google.com"}>
+  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" href={"https://google.com"}>
     Click me
   </Button_a>
 </>
