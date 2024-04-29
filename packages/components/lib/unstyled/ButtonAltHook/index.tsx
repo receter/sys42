@@ -1,12 +1,9 @@
 import { concatClassNames as cn } from '@sys42/utils'
 
-type Mods = {
-  className: string;
-  href: string;
-}
+import React, { ReactNode, useEffect } from 'react';
 
+// This are our props that we want to expose as an interface to the Button component
 interface ButtonProps {
-  type: boolean;
   hello: string;
   className?: string;
   styles: {
@@ -14,48 +11,56 @@ interface ButtonProps {
   }
 }
 
+// This are the props that we want to spread on to the rendered HTML element
+type Sys42ButtonElementProps = {
+  className: string;
+  href: string;
+  type?: "button" | "submit" | "reset";
+};
+
 function useButton<T>(props: Omit<T, keyof ButtonProps> & ButtonProps) {
+
+  // When we split our props (ButtonProps) all props that remain will be props
+  // That are defined in T but not in ButtonProps
   const {
     styles,
     hello,
     className,
-    type,
-    ...restProps
+    ...passedOnProps
   } = props;
 
-  const mods: Mods = {
+  useEffect(() => {
+    console.log(hello);
+  }, [hello])
+
+  const elementProps: Sys42ButtonElementProps = {
     className: cn(
       className,
       styles.button
     ),
     href: "https://google.com",
-    //type: true
   }
 
-  console.log(hello);
-  console.log(type);
-
-  return { props: restProps, mods };
+  return { passedOnProps, elementProps, props };
 }
 
 
 export const Button = (propsIn: Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> & ButtonProps) => {
-  const { props, mods } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
-  return <button {...props} {...mods} />;
+  const { passedOnProps, elementProps } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
+  return <button {...passedOnProps} {...elementProps} />;
 }
 
 export const Button_a = (propsIn: Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps> & ButtonProps) => {
-  const { props, mods } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
-  return <a {...props} {...mods} />;
+  const { passedOnProps, elementProps } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
+  return <a {...passedOnProps} {...elementProps} />;
 }
 
 const test = <>
-  <Button styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
+  <Button hello="test" styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
     Click me
   </Button>
 
-  <Button_a hello="test" styles={{ button: "asdf" }} href={"https://google.com"}>
+  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" href={"https://google.com"}>
     Click me
   </Button_a>
 </>
-
