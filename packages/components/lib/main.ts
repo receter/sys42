@@ -15,6 +15,7 @@ export { Label as UnstyledLabel } from './unstyled/Label'
 export { Stack as UnstyledStack } from './unstyled/Stack'
 
 /* Experiments */
-export { Button as UnstyledButtonAlt } from './unstyled/ButtonAlt'
 export { Button as UnstyledButtonAltHook } from './unstyled/ButtonAltHook'
 export { ButtonA as UnstyledButtonAAltHook } from './unstyled/ButtonAltHook'
+export { Button as UnstyledButton2Alt } from './unstyled/ButtonAlt'
+export { ButtonA as UnstyledButton2AAlt } from './unstyled/ButtonAlt'
