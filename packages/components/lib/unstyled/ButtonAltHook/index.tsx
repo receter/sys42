@@ -1,6 +1,8 @@
+import { useButton as useReactAriaButton } from '@react-aria/button';
 import { concatClassNames as cn } from '@sys42/utils'
 
-import React, { ReactNode, useEffect } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
+import { mergeRefs } from 'react-merge-refs';
 
 // This are our props that we want to expose as an interface to the Button component
 interface ButtonProps {
@@ -18,7 +20,11 @@ type Sys42ButtonElementProps = {
   type?: "button" | "submit" | "reset";
 };
 
-function useButton<T>(props: Omit<T, keyof ButtonProps> & ButtonProps) {
+function useButton<T, E extends HTMLElement>(
+  props: Omit<T, keyof ButtonProps> & ButtonProps,
+  forwardedRef: React.ForwardedRef<E>,
+  assumedHtmlElement: keyof JSX.IntrinsicElements
+) {
 
   // When we split our props (ButtonProps) all props that remain will be props
   // That are defined in T but not in ButtonProps
@@ -28,6 +34,10 @@ function useButton<T>(props: Omit<T, keyof ButtonProps> & ButtonProps) {
     className,
     ...passedOnProps
   } = props;
+
+  const ref = useRef<E>(null);
+
+  const { buttonProps: reactAriaButtonProps } = useReactAriaButton({ ...passedOnProps, elementType: assumedHtmlElement }, ref);
 
   useEffect(() => {
     console.log(hello);
@@ -39,28 +49,26 @@ function useButton<T>(props: Omit<T, keyof ButtonProps> & ButtonProps) {
       styles.button
     ),
     href: "https://google.com",
+    ...reactAriaButtonProps
   }
 
-  return { passedOnProps, elementProps, props };
+  // If the element is a button and no type is provided, default to "button"
+  if (
+    assumedHtmlElement === "button" &&
+    typeof (passedOnProps as unknown as ({ type?: string })).type === "undefined"
+  ) {
+    elementProps.type = "button";
+  }
+
+  return { passedOnProps, elementProps, props, ref: mergeRefs([forwardedRef, ref]) };
 }
 
+export const Button = forwardRef<HTMLButtonElement, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> & ButtonProps>((propsIn, forwardedRef) => {
+  const { passedOnProps, elementProps, ref } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>(propsIn, forwardedRef, "button");
+  return <button {...passedOnProps} {...elementProps} ref={ref} />;
+});
 
-export const Button = (propsIn: Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> & ButtonProps) => {
-  const { passedOnProps, elementProps } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>>(propsIn);
-  return <button {...passedOnProps} {...elementProps} />;
-}
-
-export const Button_a = (propsIn: Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps> & ButtonProps) => {
-  const { passedOnProps, elementProps } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>>(propsIn);
-  return <a {...passedOnProps} {...elementProps} />;
-}
-
-const test = <>
-  <Button hello="test" styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
-    Click me
-  </Button>
-
-  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" href={"https://google.com"}>
-    Click me
-  </Button_a>
-</>
+export const ButtonA = forwardRef<HTMLAnchorElement, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps> & ButtonProps>((propsIn, forwardedRef) => {
+  const { passedOnProps, elementProps, ref } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>(propsIn, forwardedRef, "a");
+  return <a {...passedOnProps} {...elementProps} ref={ref} />;
+});

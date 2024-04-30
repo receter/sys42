@@ -13,3 +13,8 @@ export { InlineIcon as UnstyledInlineIcon } from './unstyled/InlineIcon'
 export { Input as UnstyledInput } from './unstyled/Input'
 export { Label as UnstyledLabel } from './unstyled/Label'
 export { Stack as UnstyledStack } from './unstyled/Stack'
+
+/* Experiments */
+export { Button as UnstyledButtonAlt } from './unstyled/ButtonAlt'
+export { Button as UnstyledButtonAltHook } from './unstyled/ButtonAltHook'
+export { ButtonA as UnstyledButtonAAltHook } from './unstyled/ButtonAltHook'

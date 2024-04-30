@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import '../dist/default-custom-properties.css'
 //import '../dist/'
-import { Button, InlineIcon } from '../'
+import { Button, InlineIcon, UnstyledButtonAAltHook, UnstyledButtonAltHook } from '../'
 import SvgReact from './assets/react.svg?react';
 
 function App() {
@@ -29,6 +29,13 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      <UnstyledButtonAltHook
+        styles={{ button: "asdf" }}
+        hello="ButtonAltHook">Hello world</UnstyledButtonAltHook>
+      <UnstyledButtonAAltHook
+        styles={{ button: "asdf" }}
+        href="https://google.com"
+        hello="ButtonAlt">Hello world</UnstyledButtonAAltHook>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

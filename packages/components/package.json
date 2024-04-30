@@ -21,7 +21,9 @@
   },
   "prepublishOnly": "pnpm run build",
   "dependencies": {
-    "@sys42/utils": "^0.0.1"
+    "@react-aria/button": "^3.9.3",
+    "@sys42/utils": "^0.0.1",
+    "react-merge-refs": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^18.2.0",

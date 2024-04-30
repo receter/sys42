@@ -24,7 +24,7 @@ export function ButtonAs<T>(
     elementProps: Sys42ButtonElementProps,
     props: T & ButtonProps
   ) => ReactNode,
-  assumedHtmlElement?: keyof JSX.IntrinsicElements
+  assumedHtmlElement: keyof JSX.IntrinsicElements = "button"
 ) {
   function Button(props: T & ButtonProps) {
 
@@ -62,15 +62,5 @@ export function ButtonAs<T>(
   return Button;
 }
 
-export const Button_a = ButtonAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((elementProps, props42) => <a {...elementProps} {...props42} />);
-export const Button = ButtonAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((elementProps, props42) => <button {...elementProps} {...props42} />);
-
-const test = <>
-  <Button hello="test" styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
-    Click me
-  </Button>
-
-  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" href={"https://google.com"}>
-    Click me
-  </Button_a>
-</>
+export const Button = ButtonAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((elementProps, props42) => <button {...elementProps} {...props42} />, "button");
+export const ButtonA = ButtonAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((elementProps, props42) => <a {...elementProps} {...props42} />, "a");
