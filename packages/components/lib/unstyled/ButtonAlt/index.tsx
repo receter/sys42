@@ -1,6 +1,8 @@
+import { useButton as useReactAriaButton } from '@react-aria/button';
 import { concatClassNames as cn } from '@sys42/utils'
 
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, forwardRef, useEffect, useRef } from 'react';
+import { mergeRefs } from 'react-merge-refs';
 
 // This are our props that we want to expose as an interface to the Button component
 interface ButtonProps {
@@ -18,15 +20,20 @@ type Sys42ButtonElementProps = {
   type?: "button" | "submit" | "reset";
 };
 
-export function ButtonAs<T>(
+export function ButtonAs<T, E extends HTMLElement>(
   render: (
-    passedOnProps: Omit<T, keyof ButtonProps>,
-    elementProps: Sys42ButtonElementProps,
-    props: T & ButtonProps
+    args: {
+      // XXX why does "Omit<Omit<T, keyof ButtonProps>, keyof ButtonProps>," work and "Omit<T, keyof ButtonProps>," does not?
+      passedOnProps: Omit<Omit<T, keyof ButtonProps>, keyof ButtonProps>,
+      elementProps: Sys42ButtonElementProps,
+      ref: (instance: E | null) => void,
+      props: Omit<T, keyof ButtonProps> & ButtonProps
+    }
   ) => ReactNode,
-  assumedHtmlElement: keyof JSX.IntrinsicElements = "button"
+  assumedHtmlElement: keyof JSX.IntrinsicElements
 ) {
-  function Button(props: T & ButtonProps) {
+
+  const Component = forwardRef((props: Omit<T, keyof ButtonProps> & ButtonProps, forwardedRef: React.ForwardedRef<E>) => {
 
     // When we split our props (ButtonProps) all props that remain will be props
     // That are defined in T but not in ButtonProps
@@ -36,6 +43,10 @@ export function ButtonAs<T>(
       styles,
       ...passedOnProps
     } = props;
+
+    const ref = useRef<E>(null);
+
+    const { buttonProps: reactAriaButtonProps } = useReactAriaButton({ ...passedOnProps, elementType: assumedHtmlElement }, ref);
 
     useEffect(() => {
       console.log(hello);
@@ -47,6 +58,7 @@ export function ButtonAs<T>(
         styles.button
       ),
       href: "https://google.com",
+      ...reactAriaButtonProps
     }
 
     // If the element is a button and no type is provided, default to "button"
@@ -57,10 +69,22 @@ export function ButtonAs<T>(
       elementProps.type = "button";
     }
 
-    return render(passedOnProps, elementProps, props);
-  }
-  return Button;
+    return render({
+      passedOnProps,
+      elementProps,
+      props,
+      ref: mergeRefs([forwardedRef, ref])
+    });
+  });
+
+  return Component;
 }
 
-export const Button = ButtonAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((elementProps, props42) => <button {...elementProps} {...props42} />, "button");
-export const ButtonA = ButtonAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((elementProps, props42) => <a {...elementProps} {...props42} />, "a");
+export const Button = ButtonAs<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>(
+  ({ passedOnProps, elementProps, ref }) => <button {...passedOnProps} {...elementProps} ref={ref} />,
+  "button"
+);
+export const ButtonA = ButtonAs<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>(
+  ({ passedOnProps, elementProps, ref }) => <a {...passedOnProps} {...elementProps} ref={ref} />,
+  "a"
+);
