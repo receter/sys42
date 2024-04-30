@@ -60,15 +60,15 @@ function useButton<T, E extends HTMLElement>(
     elementProps.type = "button";
   }
 
-  return { passedOnProps, elementProps, props, ref: mergeRefs([forwardedRef, ref]) };
+  return { passedOnProps, elementProps, ref: mergeRefs([forwardedRef, ref]) };
 }
 
-export const Button = forwardRef<HTMLButtonElement, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> & ButtonProps>((propsIn, forwardedRef) => {
-  const { passedOnProps, elementProps, ref } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>(propsIn, forwardedRef, "button");
+export const Button = forwardRef<HTMLButtonElement, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> & ButtonProps>((props, forwardedRef) => {
+  const { passedOnProps, elementProps, ref } = useButton<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>(props, forwardedRef, "button");
   return <button {...passedOnProps} {...elementProps} ref={ref} />;
 });
 
-export const ButtonA = forwardRef<HTMLAnchorElement, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps> & ButtonProps>((propsIn, forwardedRef) => {
-  const { passedOnProps, elementProps, ref } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>(propsIn, forwardedRef, "a");
+export const ButtonA = forwardRef<HTMLAnchorElement, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps> & ButtonProps>((props, forwardedRef) => {
+  const { passedOnProps, elementProps, ref } = useButton<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>(props, forwardedRef, "a");
   return <a {...passedOnProps} {...elementProps} ref={ref} />;
 });
