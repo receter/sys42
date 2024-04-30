@@ -1,13 +1,8 @@
 import { concatClassNames as cn } from '@sys42/utils'
 
-import { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 
-type Mods = {
-  className: string;
-  href: string;
-  //type: boolean;
-}
-
+// This are our props that we want to expose as an interface to the Button component
 interface ButtonProps {
   hello: string;
   className?: string;
@@ -16,43 +11,56 @@ interface ButtonProps {
   }
 }
 
-export function makeAs<T>(render: (props: Omit<T, keyof ButtonProps>, mods: Mods) => ReactNode) {
-  return (props: T & ButtonProps) => {
+// This are the props that we want to spread on to the rendered HTML element
+type Sys42ButtonElementProps = {
+  className: string;
+  href: string;
+  type?: "button" | "submit" | "reset";
+};
 
+export function ButtonAs<T>(
+  render: (
+    passedOnProps: Omit<T, keyof ButtonProps>,
+    elementProps: Sys42ButtonElementProps,
+    props: T & ButtonProps
+  ) => ReactNode,
+  assumedHtmlElement: keyof JSX.IntrinsicElements = "button"
+) {
+  function Button(props: T & ButtonProps) {
+
+    // When we split our props (ButtonProps) all props that remain will be props
+    // That are defined in T but not in ButtonProps
     const {
-      styles,
       hello,
       className,
-      ...restProps
+      styles,
+      ...passedOnProps
     } = props;
 
-    console.log(test);
+    useEffect(() => {
+      console.log(hello);
+    }, [hello])
 
-    const mods: Mods = {
+    const elementProps: Sys42ButtonElementProps = {
       className: cn(
         className,
         styles.button
       ),
       href: "https://google.com",
-      //type: true
     }
 
-    console.log(hello);
+    // If the element is a button and no type is provided, default to "button"
+    if (
+      assumedHtmlElement === "button" &&
+      typeof (passedOnProps as unknown as ({ type?: string })).type === "undefined"
+    ) {
+      elementProps.type = "button";
+    }
 
-    return render(restProps, mods);
-    //return render(restProps as unknown as T, mods);
+    return render(passedOnProps, elementProps, props);
   }
+  return Button;
 }
 
-export const Button_a = makeAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((props, mods) => <a {...props} {...mods} />);
-export const Button = makeAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((props, mods) => <button {...props} {...mods} />);
-
-const test = <>
-  <Button hello="test" styles={{ button: "asdf" }} type="submit" onClick={() => { }}>
-    Click me
-  </Button>
-
-  <Button_a hello="test" styles={{ button: "asdf" }} type="submit" href={"https://google.com"}>
-    Click me
-  </Button_a>
-</>
+export const Button = ButtonAs<React.ButtonHTMLAttributes<HTMLButtonElement>>((elementProps, props42) => <button {...elementProps} {...props42} />, "button");
+export const ButtonA = ButtonAs<React.AnchorHTMLAttributes<HTMLAnchorElement>>((elementProps, props42) => <a {...elementProps} {...props42} />, "a");
