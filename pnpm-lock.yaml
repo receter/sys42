@@ -13,7 +13,7 @@ importers:
         version: 3.9.3(react@18.3.1)
       '@sys42/utils':
         specifier: ^0.0.1
-        version: 0.0.1
+        version: link:../utils
       react-merge-refs:
         specifier: ^2.1.1
         version: 2.1.1
@@ -829,9 +829,6 @@ packages:
 
   '@swc/helpers@0.5.11':
     resolution: {integrity: sha512-YNlnKRWF2sVojTpIyzwou9XoTNbzbzONwRhOoniEioF1AtaitTvVZblaQRrAzChWQ1bLYyYSWzM18y4WwgzJ+A==}
-
-  '@sys42/utils@0.0.1':
-    resolution: {integrity: sha512-oEuH+UGxoVYCSVYX9HQydlspzSA3vBX7uwk1BQlgTpnbh0EZQ1FzHagZik6r3zZgp60yNvO6NO3Dxb+9/OzThw==}
 
   '@ts-morph/common@0.19.0':
     resolution: {integrity: sha512-Unz/WHmd4pGax91rdIKWi51wnVUW11QttMEPpBiBgIewnc9UQIX7UDLxr5vRlqeByXCwhkF6VabSsI0raWcyAQ==}
@@ -3070,8 +3067,6 @@ snapshots:
   '@swc/helpers@0.5.11':
     dependencies:
       tslib: 2.6.2
-
-  '@sys42/utils@0.0.1': {}
 
   '@ts-morph/common@0.19.0':
     dependencies:
