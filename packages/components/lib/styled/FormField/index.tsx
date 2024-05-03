@@ -1,18 +1,25 @@
-import { FormField as UnstyledFormField, FormFieldProps } from '../../unstyled/FormField'
-import { Label } from '../Label';
+import { forwardRef } from "react";
+import { Sys42FormFieldProps } from "../../unstyled/FormField/useUnstyledFormField";
+import { Label } from "../Label";
 
-import styles from './styles.module.css'
+import { useFormField } from "./useFormField";
+import { FormFieldContext } from "../../unstyled/FormField";
 
-const formFieldStyles = {
-  formField: styles.formField,
-  errorMessage: styles.errorMessage,
-  label: styles.label,
-}
+type HTMLAttributes = React.HTMLAttributes<HTMLDivElement>;
 
-export function FormField(props: FormFieldProps) {
-  return <UnstyledFormField
-    {...props}
-    styles={formFieldStyles}
-    components={{ Label }}
-  />;
-}
+export const FormField = forwardRef<HTMLDivElement, Sys42FormFieldProps<HTMLAttributes>>((props, forwardedRef) => {
+  const {
+    wrapperProps,
+    wrapperRef,
+    labelProps,
+    errorMessagesProps,
+    ctx
+  } = useFormField<HTMLAttributes, HTMLDivElement>(props, "div", forwardedRef);
+  return <FormFieldContext.Provider value={ctx}>
+    <div {...wrapperProps} ref={wrapperRef}>
+      <Label {...labelProps} />
+      {wrapperProps.children}
+      {errorMessagesProps.map((props) => <li {...props} />)}
+    </div>
+  </FormFieldContext.Provider>
+});
