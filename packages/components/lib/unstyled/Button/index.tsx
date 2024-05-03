@@ -1,42 +1,18 @@
-import { concatClassNames as cn } from '@sys42/utils'
-import { Sys42PolymorphicComponentProps, Sys42UnstyledComponentProps } from '../../types';
-import { forwardRef } from 'react';
+import { forwardRef } from "react";
+import { useUnstyledButton } from "./useUnstyledButton";
 
-export type ButtonProps = Sys42PolymorphicComponentProps;
+type HTMLAttributes1 = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps1 = Parameters<typeof useUnstyledButton<HTMLAttributes1, HTMLButtonElement>>[0];
 
-type UnstyledButtonProps = Sys42UnstyledComponentProps<ButtonProps, {
-  button: string,
-}>;
+export const Button = forwardRef<HTMLButtonElement, ButtonProps1>((props, forwardedRef) => {
+  const { buttonProps, ref } = useUnstyledButton<HTMLAttributes1, HTMLButtonElement>(props, "button", forwardedRef);
+  return <button {...buttonProps} ref={ref} />;
+});
 
-export const Button = forwardRef((
-  props: UnstyledButtonProps,
-  ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+type HTMLAttributes2 = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type ButtonProps2 = Parameters<typeof useUnstyledButton<HTMLAttributes2, HTMLAnchorElement>>[0];
 
-  const {
-    className,
-    as: asProp,
-    type,
-    styles,
-    children,
-    ...restProps
-  } = props;
-
-  const ComponentTag = asProp || 'button';
-
-  // Always specify the type attribute for the <button> element. Different 
-  // browsers may use different default types for the <button> element.
-  const typeButton = ComponentTag === 'button' ? (type ?? 'button') : type;
-
-  return <ComponentTag
-    className={cn(
-      className,
-      styles.button,
-    )}
-    type={typeButton}
-    {...restProps}
-    ref={ref}
-  >
-    {children}
-  </ComponentTag>;
+export const ButtonA = forwardRef<HTMLAnchorElement, ButtonProps2>((props, forwardedRef) => {
+  const { buttonProps, ref } = useUnstyledButton<HTMLAttributes2, HTMLAnchorElement>(props, "a", forwardedRef);
+  return <a {...buttonProps} ref={ref} />;
 });

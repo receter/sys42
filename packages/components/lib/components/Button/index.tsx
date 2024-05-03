@@ -1,31 +1,18 @@
 import { forwardRef } from 'react';
-import { ButtonProps, Button as UnstyledButton } from '../../unstyled/Button'
+import { UseButtonParameters, useButton } from './useButton';
 
-import styles from './styles.module.css'
+type HTMLAttributes1 = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps1 = UseButtonParameters<HTMLAttributes1, HTMLButtonElement>[0];
 
-const buttonStyles = {
-  button: styles.button,
-}
-
-export const Button = forwardRef((
-  props: ButtonProps,
-  ref: React.ForwardedRef<HTMLButtonElement>
-) => {
-  return <UnstyledButton
-    {...props}
-    styles={buttonStyles}
-    ref={ref}
-  />;
+export const Button = forwardRef<HTMLButtonElement, ButtonProps1>((props, forwardedRef) => {
+  const { buttonProps, ref } = useButton<HTMLAttributes1, HTMLButtonElement>(props, "button", forwardedRef);
+  return <button {...buttonProps} ref={ref} />;
 });
 
-/* export const Button = applyCSSModuleClasses(UnstyledButton, buttonStyles);
+type HTMLAttributes2 = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type ButtonProps2 = UseButtonParameters<HTMLAttributes2, HTMLAnchorElement>[0];
 
-function applyCSSModuleClasses<C, S>(Component: C, styles: S) {
-  return forwardRef((props: Sys42UnstyledComponentProps, ref) => {
-    return <Component
-      {...props}
-      styles={styles}
-      ref={ref}
-    />;
-  });
-} */
+export const ButtonA = forwardRef<HTMLAnchorElement, ButtonProps2>((props, forwardedRef) => {
+  const { buttonProps, ref } = useButton<HTMLAttributes2, HTMLAnchorElement>(props, "a", forwardedRef);
+  return <a {...buttonProps} ref={ref} />;
+});

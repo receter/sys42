@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import '../dist/default-custom-properties.css'
 //import '../dist/'
-import { Button, InlineIcon, ButtonReactAria, ButtonAReactAria } from '../'
+import { Button, InlineIcon, ButtonA } from '../'
 import SvgReact from './assets/react.svg?react';
 
 function App() {
@@ -30,14 +30,14 @@ function App() {
         </p>
       </div>
       <div>
-        <ButtonReactAria
+        <Button
           styles={{ button: "asdf" }}
-        >ButtonReactAria</ButtonReactAria>
+        >Button</Button>
 
-        <ButtonAReactAria
+        <ButtonA
           styles={{ button: "asdf" }}
           href="https://google.com"
-        >ButtonAReactAria</ButtonAReactAria>
+        >ButtonA</ButtonA>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
