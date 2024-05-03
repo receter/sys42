@@ -1,15 +1,14 @@
 /* Styled Components */
-export { Button } from './components/Button'
-export { ButtonA } from './components/Button'
-export { FormField } from './components/FormField'
-export { InlineIcon } from './components/InlineIcon'
-export { Input } from './components/Input'
-export { Label } from './components/Label'
-export { Stack } from './components/Stack'
+export { Button } from './styled/Button'
+export { ButtonA } from './styled/Button'
+export { FormField } from './styled/FormField'
+export { InlineIcon } from './styled/InlineIcon'
+export { Input } from './styled/Input'
+export { Label } from './styled/Label'
+export { Stack } from './styled/Stack'
 
 /* Unstyled Components */
 export { Button as UnstyledButton } from './unstyled/Button'
-export { ButtonA as UnstyledButtonA } from './unstyled/Button'
 export { FormField as UnstyledFormField } from './unstyled/FormField'
 export { InlineIcon as UnstyledInlineIcon } from './unstyled/InlineIcon'
 export { Input as UnstyledInput } from './unstyled/Input'
