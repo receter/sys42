@@ -31,11 +31,9 @@ function App() {
       </div>
       <div>
         <Button
-          styles={{ button: "asdf" }}
         >Button</Button>
 
         <ButtonA
-          styles={{ button: "asdf" }}
           href="https://google.com"
         >ButtonA</ButtonA>
       </div>
