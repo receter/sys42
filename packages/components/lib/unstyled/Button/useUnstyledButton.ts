@@ -1,25 +1,22 @@
 import React, { useRef } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 import { useButton as useReactAriaButton } from '@react-aria/button';
+import { Sys42Props } from '../../types';
 
 // This are our props that we want to expose as an interface to the Button component
-type OurButtonProps = {
+export type ButtonProps = {
   onPress?: () => void;
 }
 
-export type Sys42ButtonProps<T> = Omit<T, keyof OurButtonProps> & OurButtonProps
+export type UseButtonOptions<ElemAttr, Elem extends HTMLElement> = {
+  props: Sys42Props<ElemAttr, ButtonProps>,
+  elementType: keyof JSX.IntrinsicElements,
+  forwardedRef: React.ForwardedRef<Elem>,
+}
 
-export type UseButtonArgs<T, E extends HTMLElement> = [
-  Sys42ButtonProps<T>,
-  keyof JSX.IntrinsicElements,
-  React.ForwardedRef<E>,
-]
-
-export function useUnstyledButton<T, E extends HTMLElement>(
-  ...args: UseButtonArgs<T, E>
+export function useUnstyledButton<ElemAttr, Elem extends HTMLElement>(
+  { props, elementType, forwardedRef }: UseButtonOptions<ElemAttr, Elem>
 ) {
-
-  const [props, assumedHtmlElement, forwardedRef] = args;
 
   // When we split our props (Sys42ButtonProps) all props that remain will be props
   // that are defined in T but not in Sys42ButtonProps
@@ -28,11 +25,11 @@ export function useUnstyledButton<T, E extends HTMLElement>(
     ...passedOnProps
   } = props;
 
-  const ref = useRef<E>(null);
+  const ref = useRef<Elem>(null);
 
   const reactAriaProps = {
     onPress,
-    elementType: assumedHtmlElement,
+    elementType,
     ...passedOnProps
   };
 
@@ -43,5 +40,5 @@ export function useUnstyledButton<T, E extends HTMLElement>(
     ...reactAriaButtonProps,
   }
 
-  return { buttonProps, ref: mergeRefs([forwardedRef, ref]) };
+  return { buttonProps, buttonRef: mergeRefs([forwardedRef, ref]) };
 }

@@ -15,3 +15,7 @@ export type Sys42UnstyledComponentProps<ComponentProps, ClassMap, InternalCompon
     styles: ClassMap;
     components: InternalComponents;
   }
+
+// 
+
+export type Sys42Props<ElementAttributes, Props> = Omit<ElementAttributes, keyof Props> & Props;
