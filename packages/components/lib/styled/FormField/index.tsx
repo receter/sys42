@@ -20,7 +20,7 @@ export const FormField = forwardRef<HTMLDivElement, Sys42Props<HTMLAttributes, F
     <div {...wrapperProps} ref={wrapperRef}>
       <Label {...labelProps} />
       {wrapperProps.children}
-      {errorMessagesProps.map((props) => <li {...props} />)}
+      {errorMessagesProps.map((props) => <div {...props} />)}
     </div>
   </FormFieldContext.Provider>
 });
