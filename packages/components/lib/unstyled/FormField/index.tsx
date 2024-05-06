@@ -1,5 +1,6 @@
 import { createContext, forwardRef } from "react";
-import { Sys42FormFieldProps, useUnstyledFormField } from "./useUnstyledFormField";
+import { FormFieldProps, useUnstyledFormField } from "./useUnstyledFormField";
+import { Sys42Props } from "../../types";
 
 export type FormFieldContext = {
   htmlFor: string;
@@ -10,14 +11,14 @@ export const FormFieldContext = createContext<FormFieldContext>({ htmlFor: '', i
 
 type HTMLAttributes = React.HTMLAttributes<HTMLDivElement>;
 
-export const FormField = forwardRef<HTMLDivElement, Sys42FormFieldProps<HTMLAttributes>>((props, forwardedRef) => {
+export const FormField = forwardRef<HTMLDivElement, Sys42Props<HTMLAttributes, FormFieldProps>>((props, forwardedRef) => {
   const {
     wrapperProps,
     wrapperRef,
     labelProps,
     errorMessagesProps,
     ctx
-  } = useUnstyledFormField<HTMLAttributes, HTMLDivElement>(props, "div", forwardedRef);
+  } = useUnstyledFormField({ props, elementType: "div", forwardedRef });
   return <FormFieldContext.Provider value={ctx}>
     <div {...wrapperProps} ref={wrapperRef}>
       <label {...labelProps} />

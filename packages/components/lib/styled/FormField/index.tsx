@@ -1,20 +1,21 @@
 import { forwardRef } from "react";
-import { Sys42FormFieldProps } from "../../unstyled/FormField/useUnstyledFormField";
+import { FormFieldProps } from "../../unstyled/FormField/useUnstyledFormField";
 import { Label } from "../Label";
 
 import { useFormField } from "./useFormField";
 import { FormFieldContext } from "../../unstyled/FormField";
+import { Sys42Props } from "../../types";
 
 type HTMLAttributes = React.HTMLAttributes<HTMLDivElement>;
 
-export const FormField = forwardRef<HTMLDivElement, Sys42FormFieldProps<HTMLAttributes>>((props, forwardedRef) => {
+export const FormField = forwardRef<HTMLDivElement, Sys42Props<HTMLAttributes, FormFieldProps>>((props, forwardedRef) => {
   const {
     wrapperProps,
     wrapperRef,
     labelProps,
     errorMessagesProps,
     ctx
-  } = useFormField<HTMLAttributes, HTMLDivElement>(props, "div", forwardedRef);
+  } = useFormField({ props, elementType: "div", forwardedRef });
   return <FormFieldContext.Provider value={ctx}>
     <div {...wrapperProps} ref={wrapperRef}>
       <Label {...labelProps} />

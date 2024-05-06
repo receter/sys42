@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import { isArray, uniqueId } from 'lodash-es'
 import { FormFieldContext } from '.';
+import { Sys42Props } from '../../types';
 
 // This are our props that we want to expose as an interface to the Button component
-type OurFormFieldProps = {
+export type FormFieldProps = {
   errorMessage?: string | string[],
   label: React.ReactNode,
   htmlFor?: string,
   children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode),
 }
 
-export type Sys42FormFieldProps<T> = Omit<T, keyof OurFormFieldProps> & OurFormFieldProps
+export type UseFormFieldOptions<ElemAttr, Elem extends HTMLElement> = {
+  props: Sys42Props<ElemAttr, FormFieldProps>,
+  elementType: keyof JSX.IntrinsicElements,
+  forwardedRef: React.ForwardedRef<Elem>,
+}
 
-export type UseFormFieldArgs<T, WrapperElement extends HTMLElement> = [
-  Sys42FormFieldProps<T>,
-  keyof JSX.IntrinsicElements,
-  React.ForwardedRef<WrapperElement>,
-]
-
-export function useUnstyledFormField<T, WrapperElement extends HTMLElement>(
-  ...args: UseFormFieldArgs<T, WrapperElement>
+export function useUnstyledFormField<ElemAttr, Elem extends HTMLElement>(
+  {
+    props,
+    forwardedRef,
+  }: UseFormFieldOptions<ElemAttr, Elem>
 ) {
-
-  const [props, , forwardedRef] = args;
 
   const [uniqueFormFieldId] = useState(() => uniqueId('sys42-form-field-'));
 

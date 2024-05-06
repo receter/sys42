@@ -4,7 +4,7 @@ import { UseButtonOptions, useUnstyledButton } from '../../unstyled/Button/useUn
 import styles from './styles.module.css'
 
 export function useButton<ElemAttr, Elem extends HTMLElement>(options: UseButtonOptions<ElemAttr, Elem>) {
-  const button = useUnstyledButton<ElemAttr, Elem>(options);
+  const button = useUnstyledButton(options);
   return {
     ...button,
     buttonProps: {
