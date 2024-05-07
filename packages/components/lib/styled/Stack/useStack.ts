@@ -3,7 +3,8 @@ import { UseStackOptions, useUnstyledStack } from '../../unstyled/Stack/useUnsty
 
 import styles from './styles.module.css'
 
-export function useStack<ElemAttr, Elem extends HTMLElement>(options: UseStackOptions<ElemAttr, Elem>) {
+export function useStack<ElemAttr, Elem extends HTMLElement>(options: UseStackOptions<ElemAttr, Elem>)
+  : ReturnType<typeof useUnstyledStack<ElemAttr, Elem>> {
   const stack = useUnstyledStack(options);
   return {
     ...stack,

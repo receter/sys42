@@ -3,7 +3,8 @@ import { UseLabelOptions, useUnstyledLabel } from '../../unstyled/Label/useUnsty
 
 import styles from './styles.module.css'
 
-export function useLabel(options: UseLabelOptions) {
+export function useLabel(options: UseLabelOptions):
+  ReturnType<typeof useUnstyledLabel> {
   const label = useUnstyledLabel(options);
   return {
     ...label,

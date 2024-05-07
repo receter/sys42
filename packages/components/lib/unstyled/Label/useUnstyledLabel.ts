@@ -9,10 +9,10 @@ export type LabelProps = {
   children?: React.ReactNode;
 }
 
-type LabelbHTMLAttributes = React.LabelHTMLAttributes<HTMLLabelElement>;
+type LabelHTMLAttributes = React.LabelHTMLAttributes<HTMLLabelElement>;
 
 export type UseLabelOptions = {
-  props: Sys42Props<LabelbHTMLAttributes, LabelProps>,
+  props: Sys42Props<LabelHTMLAttributes, LabelProps>,
   forwardedRef: React.ForwardedRef<HTMLLabelElement>,
 }
 
@@ -26,7 +26,7 @@ export function useUnstyledLabel(
 
   const ref = useRef<HTMLLabelElement>(null);
 
-  const labelProps: LabelbHTMLAttributes = {
+  const labelProps: LabelHTMLAttributes = {
     ...passedOnProps,
   }
 

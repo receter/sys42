@@ -3,7 +3,8 @@ import { concatClassNames as cn } from '@sys42/utils';
 
 import styles from './styles.module.css'
 
-export function useFormField<ElemAttr, Elem extends HTMLElement>(options: UseFormFieldOptions<ElemAttr, Elem>) {
+export function useFormField<ElemAttr, Elem extends HTMLElement>(options: UseFormFieldOptions<ElemAttr, Elem>):
+  ReturnType<typeof useUnstyledFormField<ElemAttr, Elem>> {
   const formField = useUnstyledFormField(options);
   return {
     ...formField,
