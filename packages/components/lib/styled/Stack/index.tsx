@@ -1,14 +1,11 @@
-import { Stack as UnstyledStack, StackProps } from '../../unstyled/Stack'
+import { forwardRef } from 'react';
+import { useStack } from './useStack';
+import { StackProps } from '../../unstyled/Stack/useUnstyledStack';
+import { Sys42Props } from '../../types';
 
-import styles from './styles.module.css'
+type HTMLAttributesStack = React.HTMLAttributes<HTMLDivElement>;
 
-const stackStyles = {
-  stack: styles.stack,
-}
-
-export function Stack(props: StackProps) {
-  return <UnstyledStack
-    {...props}
-    styles={stackStyles}
-  />;
-}
+export const Stack = forwardRef<HTMLDivElement, Sys42Props<HTMLAttributesStack, StackProps>>((props, forwardedRef) => {
+  const { stackProps, stackRef } = useStack({ props, elementType: "div", forwardedRef });
+  return <div {...stackProps} ref={stackRef} />;
+});
