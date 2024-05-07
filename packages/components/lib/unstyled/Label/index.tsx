@@ -1,20 +1,10 @@
-import { concatClassNames as cn } from '@sys42/utils'
-import { Sys42ComponentProps, Sys42UnstyledComponentProps } from '../../types';
+import { forwardRef } from "react";
+import { LabelProps, useUnstyledLabel } from "./useUnstyledLabel";
+import { Sys42Props } from "../../types";
 
-export type LabelProps = Sys42ComponentProps;
+type HTMLAttributes = React.LabelHTMLAttributes<HTMLLabelElement>;
 
-type UnstyledLabelProps = Sys42UnstyledComponentProps<LabelProps, {
-  label: string,
-}>;
-
-export function Label(props: UnstyledLabelProps) {
-  const {
-    className,
-    styles,
-    ...restProps
-  } = props;
-
-  return (
-    <label {...restProps} className={cn(styles.label, className)} />
-  );
-}
+export const Label = forwardRef<HTMLLabelElement, Sys42Props<HTMLAttributes, LabelProps>>((props, forwardedRef) => {
+  const { labelProps, labelRef } = useUnstyledLabel({ props, forwardedRef });
+  return <label {...labelProps} ref={labelRef} />;
+});

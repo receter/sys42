@@ -1,14 +1,11 @@
-import { Label as UnstyledLabel, LabelProps } from '../../unstyled/Label'
+import { forwardRef } from 'react';
+import { useLabel } from './useLabel';
+import { LabelProps } from '../../unstyled/Label/useUnstyledLabel';
+import { Sys42Props } from '../../types';
 
-import styles from './styles.module.css'
+type HTMLAttributesLabel = React.LabelHTMLAttributes<HTMLLabelElement>;
 
-const labelStyles = {
-  label: styles.label,
-}
-
-export function Label(props: LabelProps) {
-  return <UnstyledLabel
-    {...props}
-    styles={labelStyles}
-  />;
-}
+export const Label = forwardRef<HTMLLabelElement, Sys42Props<HTMLAttributesLabel, LabelProps>>((props, forwardedRef) => {
+  const { labelProps, labelRef } = useLabel({ props, forwardedRef });
+  return <label {...labelProps} ref={labelRef} />;
+});
