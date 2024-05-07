@@ -1,29 +1,30 @@
 :root {
-    /* General: Spacing */
-    --sys42-spacing-xxs: 0.125rem;
-    --sys42-spacing-xs: 0.25rem;
-    --sys42-spacing-sm: 0.5rem;
-    --sys42-spacing-md: 1rem;
-    --sys42-spacing-lg: 2rem;
-    --sys42-spacing-xl: 4rem;
-    --sys42-spacing-xxl: 8rem;
+  /* General: Spacing */
+  --sys42-spacing-xxs: 0.125rem;
+  --sys42-spacing-xs: 0.25rem;
+  --sys42-spacing-sm: 0.5rem;
+  --sys42-spacing-md: 1rem;
+  --sys42-spacing-lg: 2rem;
+  --sys42-spacing-xl: 4rem;
+  --sys42-spacing-xxl: 8rem;
 
-    /* Component: Button */
-    --sys42-button-background: #eee;
-    --sys42-button-background--hover: #efefef;
-    --sys42-button-padding-horiz: 0.5rem;
-    --sys42-button-padding-vert: 1rem;
-    --sys42-button-radius: 0.25rem;
-    --sys42-button-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    --sys42-button-shadow--hover: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    --sys42-button-transition-in: none;
-    --sys42-button-transition-out: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* Component: Button */
+  --sys42-button-background: #eee;
+  --sys42-button-background--hover: #efefef;
+  --sys42-button-padding-horiz: 0.5rem;
+  --sys42-button-padding-vert: 1rem;
+  --sys42-button-radius: 0.25rem;
+  --sys42-button-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --sys42-button-shadow--hover: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --sys42-button-transition-in: none;
+  --sys42-button-transition-out: background 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 
-    /* Component: InlineIcon */
-    --sys42-inline-icon-size: 1rem;
-    --sys42-inline-icon-width: var(--sys42-inline-icon-size);
-    --sys42-inline-icon-height: var(--sys42-inline-icon-size);
+  /* Component: InlineIcon */
+  --sys42-inline-icon-size: 1rem;
+  --sys42-inline-icon-width: var(--sys42-inline-icon-size);
+  --sys42-inline-icon-height: var(--sys42-inline-icon-size);
 
-    /* Component: Stack */
-    --sys42-stack-spacing: var(--sys42-spacing-md);
+  /* Component: Stack */
+  --sys42-stack-spacing: var(--sys42-spacing-md);
 }

@@ -1,19 +1,20 @@
-import { concatClassNames as cn } from '@sys42/utils';
-import { UseTextInputOptions, useUnstyledTextInput } from '../../unstyled/TextInput/useUnstyledTextInput'
+import { concatClassNames as cn } from "@sys42/utils";
+import {
+  UseTextInputOptions,
+  useUnstyledTextInput,
+} from "../../unstyled/TextInput/useUnstyledTextInput";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
-export function useTextInput(options: UseTextInputOptions):
-  ReturnType<typeof useUnstyledTextInput> {
+export function useTextInput(
+  options: UseTextInputOptions,
+): ReturnType<typeof useUnstyledTextInput> {
   const textInput = useUnstyledTextInput(options);
   return {
     ...textInput,
     textInputProps: {
       ...textInput.textInputProps,
-      className: cn(
-        styles.textInput,
-        textInput.textInputProps.className
-      )
-    }
-  }
+      className: cn(styles.textInput, textInput.textInputProps.className),
+    },
+  };
 }
