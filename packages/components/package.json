@@ -42,6 +42,7 @@
     "glob": "^10.3.10",
     "lodash-es": "^4.17.21",
     "postcss-assign-layer": "^0.3.0",
+    "prettier": "3.2.5",
     "react": "^18.2.0",
     "react-cosmos": "6.0.0-beta.10",
     "react-cosmos-plugin-vite": "6.0.0-beta.10",
