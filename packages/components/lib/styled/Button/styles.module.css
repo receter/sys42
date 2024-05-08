@@ -1,4 +1,7 @@
 .button {
+  line-height: 1.5;
+  /* DOC: The size of inline icons matches line height so the button does not grow if a icon is added */
+  --sys42-inline-icon-size: 1.5em;
   background: var(--sys42-button-background);
   padding: var(--sys42-button-padding-horiz) var(--sys42-button-padding-vert);
   border-radius: var(--sys42-button-radius);

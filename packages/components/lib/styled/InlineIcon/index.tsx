@@ -1,14 +1,18 @@
+import { forwardRef } from "react";
+import { useInlineIcon } from "./useInlineIcon";
 import {
-  InlineIcon as UnstyledInlineIcon,
+  InlineIconIconAttributes,
   InlineIconProps,
-} from "../../unstyled/InlineIcon";
+} from "../../unstyled/InlineIcon/useUnstyledInlineIcon";
+import { Sys42Props } from "../../types";
 
-import styles from "./styles.module.css";
-
-const inlineIconStyles = {
-  inlineIcon: styles.inlineIcon,
-};
-
-export function InlineIcon(props: InlineIconProps) {
-  return <UnstyledInlineIcon {...props} styles={inlineIconStyles} />;
-}
+export const InlineIcon = forwardRef<
+  HTMLElement | SVGElement,
+  Sys42Props<InlineIconIconAttributes, InlineIconProps>
+>((props, forwardedRef) => {
+  const { inlineIconProps, inlineIconRef, IconComponent } = useInlineIcon({
+    props,
+    forwardedRef,
+  });
+  return <IconComponent {...inlineIconProps} ref={inlineIconRef} />;
+});
