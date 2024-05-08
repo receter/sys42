@@ -23,7 +23,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Button onPress={() => setCount((count) => count + 1)}>
-          <InlineIcon Svg={SvgReact} /> count is {count}
+          <InlineIcon Icon={SvgReact} /> count is {count}
         </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
