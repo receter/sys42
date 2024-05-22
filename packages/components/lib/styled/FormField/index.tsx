@@ -6,11 +6,9 @@ import { useFormField } from "./useFormField";
 import { FormFieldContext } from "../../unstyled/FormField";
 import { Sys42Props } from "../../types";
 
-type HTMLAttributes = React.HTMLAttributes<HTMLDivElement>;
-
 export const FormField = forwardRef<
   HTMLDivElement,
-  Sys42Props<HTMLAttributes, FormFieldProps>
+  Sys42Props<FormFieldProps, React.ComponentProps<"div">>
 >((props, forwardedRef) => {
   const { wrapperProps, wrapperRef, labelProps, errorMessagesProps, ctx } =
     useFormField({ props, elementType: "div", forwardedRef });

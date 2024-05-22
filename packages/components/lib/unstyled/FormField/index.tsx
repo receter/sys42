@@ -12,11 +12,9 @@ export const FormFieldContext = createContext<FormFieldContext>({
   isError: false,
 });
 
-type HTMLAttributes = React.HTMLAttributes<HTMLDivElement>;
-
 export const FormField = forwardRef<
   HTMLDivElement,
-  Sys42Props<HTMLAttributes, FormFieldProps>
+  Sys42Props<FormFieldProps, React.ComponentProps<"div">>
 >((props, forwardedRef) => {
   const { wrapperProps, wrapperRef, labelProps, errorMessagesProps, ctx } =
     useUnstyledFormField({ props, elementType: "div", forwardedRef });

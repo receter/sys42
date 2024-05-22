@@ -25,8 +25,6 @@ export type Sys42UnstyledComponentProps<
 
 //
 
-export type Sys42Props<ElementAttributes, Props> = Omit<
-  ElementAttributes,
-  keyof Props
-> &
-  Props;
+export type Sys42Props<Props, ElemProps = void> = ElemProps extends void
+  ? Props
+  : Omit<ElemProps, keyof Props> & Props;

@@ -11,7 +11,7 @@ export type StackProps = {
 };
 
 export type UseStackOptions<ElemAttr, Elem extends HTMLElement> = {
-  props: Sys42Props<ElemAttr, StackProps>;
+  props: Sys42Props<StackProps, ElemAttr>;
   elementType: keyof JSX.IntrinsicElements;
   forwardedRef: React.ForwardedRef<Elem>;
 };

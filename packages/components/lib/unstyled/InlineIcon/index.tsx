@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import {
-  InlineIconIconAttributes,
+  InlineIconIconProps,
   InlineIconProps,
   useUnstyledInlineIcon,
 } from "./useUnstyledInlineIcon";
@@ -8,7 +8,7 @@ import { Sys42Props } from "../../types";
 
 export const InlineIcon = forwardRef<
   HTMLElement | SVGElement,
-  Sys42Props<InlineIconIconAttributes, InlineIconProps>
+  Sys42Props<InlineIconProps, InlineIconIconProps>
 >((props, forwardedRef) => {
   const { inlineIconProps, inlineIconRef, IconComponent } =
     useUnstyledInlineIcon({

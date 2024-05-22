@@ -7,10 +7,8 @@ export type TextInputProps = {
   type?: "text" | "password" | "email" | "tel" | "url";
 };
 
-type InputHTMLAttributes = React.InputHTMLAttributes<HTMLInputElement>;
-
 export type UseTextInputOptions = {
-  props: Sys42Props<InputHTMLAttributes, TextInputProps>;
+  props: Sys42Props<TextInputProps, React.ComponentProps<"input">>;
   forwardedRef: React.ForwardedRef<HTMLInputElement>;
 };
 
@@ -22,7 +20,7 @@ export function useUnstyledTextInput({
 
   const ref = useRef<HTMLInputElement>(null);
 
-  const textInputProps: InputHTMLAttributes = {
+  const textInputProps: React.ComponentProps<"input"> = {
     type,
     ...passedOnProps,
   };

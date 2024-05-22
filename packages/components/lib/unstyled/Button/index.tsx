@@ -1,12 +1,9 @@
 import { forwardRef } from "react";
-import { ButtonProps, useUnstyledButton } from "./useUnstyledButton";
-import { Sys42Props } from "../../types";
-
-type HTMLAttributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
+import { UnstyledButtonProps, useUnstyledButton } from "./useUnstyledButton";
 
 export const Button = forwardRef<
   HTMLButtonElement,
-  Sys42Props<HTMLAttributes, ButtonProps>
+  UnstyledButtonProps<React.ComponentProps<"button">>
 >((props, forwardedRef) => {
   const { buttonProps, buttonRef } = useUnstyledButton({
     props,

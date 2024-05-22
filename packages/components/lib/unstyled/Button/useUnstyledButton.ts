@@ -4,21 +4,23 @@ import { useButton as useReactAriaButton } from "@react-aria/button";
 import { Sys42Props } from "../../types";
 
 // This are our props that we want to expose as an interface to the Button component
-export type ButtonProps = {
-  onPress?: () => void;
-};
+export type UnstyledButtonProps<ElemProps = void> = Sys42Props<
+  {
+    onPress?: () => void;
+  },
+  ElemProps
+>;
 
-export type UseButtonOptions<ElemAttr, Elem extends HTMLElement> = {
-  props: Sys42Props<ElemAttr, ButtonProps>;
+export type UseButtonOptions<Props, Elem extends HTMLElement> = {
+  props: Props;
   elementType: keyof JSX.IntrinsicElements;
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
-export function useUnstyledButton<ElemAttr, Elem extends HTMLElement>({
-  props,
-  elementType,
-  forwardedRef,
-}: UseButtonOptions<ElemAttr, Elem>) {
+export function useUnstyledButton<
+  Props extends UnstyledButtonProps,
+  Elem extends HTMLElement,
+>({ props, elementType, forwardedRef }: UseButtonOptions<Props, Elem>) {
   // When we split our props (Sys42ButtonProps) all props that remain will be props
   // that are defined in T but not in Sys42ButtonProps
   const { onPress, ...passedOnProps } = props;
@@ -36,7 +38,7 @@ export function useUnstyledButton<ElemAttr, Elem extends HTMLElement>({
     ref,
   );
 
-  const buttonProps: React.HTMLAttributes<HTMLElement> = {
+  const buttonProps = {
     ...passedOnProps,
     ...reactAriaButtonProps,
   };

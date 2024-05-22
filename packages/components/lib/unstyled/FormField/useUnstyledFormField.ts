@@ -12,7 +12,7 @@ export type FormFieldProps = {
 };
 
 export type UseFormFieldOptions<ElemAttr, Elem extends HTMLElement> = {
-  props: Sys42Props<ElemAttr, FormFieldProps>;
+  props: Sys42Props<FormFieldProps, ElemAttr>;
   elementType: keyof JSX.IntrinsicElements;
   forwardedRef: React.ForwardedRef<Elem>;
 };

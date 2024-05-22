@@ -61,11 +61,11 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0
       react-cosmos:
-        specifier: 6.0.0-beta.10
-        version: 6.0.0-beta.10
+        specifier: 6.1.1
+        version: 6.1.1
       react-cosmos-plugin-vite:
-        specifier: 6.0.0-beta.10
-        version: 6.0.0-beta.10(vite@5.2.11(@types/node@18.16.1))
+        specifier: 6.1.1
+        version: 6.1.1(vite@5.2.11(@types/node@18.16.1))
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
@@ -1375,10 +1375,6 @@ packages:
     resolution: {integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==}
     engines: {node: '>=10'}
 
-  find-up@6.3.0:
-    resolution: {integrity: sha512-v2ZsoEuVHYy8ZIlYqwPe/39Cy+cFDzp4dXPaxNvkEuouymu+2Jbz0PxpKarJHYJTmv2HWT3O382qY8l4jMWthw==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-
   flat-cache@3.2.0:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -1611,8 +1607,8 @@ packages:
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
 
-  js-base64@3.7.5:
-    resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==}
+  js-base64@3.7.7:
+    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -1665,10 +1661,6 @@ packages:
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
-
-  locate-path@7.2.0:
-    resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
@@ -1831,17 +1823,9 @@ packages:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
     engines: {node: '>=10'}
 
-  p-limit@4.0.0:
-    resolution: {integrity: sha512-5b0R4txpzjPWVw/cXXUResoD4hb6U/x9BH08L7nw+GN1sezDzPdxeRvpc9c433fZhBan/wusjbCsqwqm4EIBIQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-
   p-locate@5.0.0:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
-
-  p-locate@6.0.0:
-    resolution: {integrity: sha512-wPrq66Llhl7/4AGC6I+cqxT07LhXvWL08LNXz1fENOw0Ap4sRZZ/gZpTTJ5jpurzzzfS2W/Ge9BY3LgLjCShcw==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -1861,10 +1845,6 @@ packages:
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
-
-  path-exists@5.0.0:
-    resolution: {integrity: sha512-RjhtfwJOxzcFmNOi6ltcbcu4Iu+FL3zEj83dk4kAS+fVpTxXLO1b38RvJgT/0QwvV/L3aY9TAnyv0EOqW4GoMQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
@@ -1898,10 +1878,6 @@ packages:
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-
-  pkg-up@4.0.0:
-    resolution: {integrity: sha512-N4zdA4sfOe6yCv+ulPCmpnIBQ5I60xfhDr1otdBBhKte9QtEf3bhfrfkW7dTb+IQ0iEx4ZDzas0kc1o5rdWpYg==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   postcss-assign-layer@0.3.0:
     resolution: {integrity: sha512-WSZHQ2OuFGGjkIs82EHFTm9sAV/ZDtJwuUSMbKdK+GH5xOc6rLQPW3ySPfRAVOLt8p6LlDNF8ZVYQ/CUO0K7Tg==}
@@ -1949,25 +1925,25 @@ packages:
     resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
     engines: {node: '>= 0.8'}
 
-  react-cosmos-core@6.0.0-beta.10:
-    resolution: {integrity: sha512-afxx2vz91e1W3FvmeX+JB5DQlOquOUMvAICyT2l9nHCf4e2q/5tAfYP7Mt0EXLnWbSzJBWaJPlNiBK4mY1sy/w==}
+  react-cosmos-core@6.1.1:
+    resolution: {integrity: sha512-LdnltfcjBqJamAR1zruW0pIpiTfdbdH12NSi6IkIDbZ51mY6Tqkz3v0uT5cjmUiqVclJ90OV+pYkVlXvBd+wRg==}
 
-  react-cosmos-dom@6.0.0-beta.10:
-    resolution: {integrity: sha512-RFAkb+pod1rlggfopA+O2nV9ffiuZ8G+pFJbswoFnmc8MbG7TMU+AO5fIxrBGQDxyhvdJHE+5As/i3LCZPhP7A==}
+  react-cosmos-dom@6.1.1:
+    resolution: {integrity: sha512-x4lb7eJUDreh6x8b4A2nVC8HjSIxlNWHX3Pl4fPwOuu6BnLgtY6Ycqw1TEE2/T1YX9LFsjM38kB2tSjyRxhEwA==}
 
-  react-cosmos-plugin-vite@6.0.0-beta.10:
-    resolution: {integrity: sha512-oxx40Z771sgSK6jyMFzvMNJdACOwyx6oPHJNSQpPRM+0NwWyRTDcy4DsLd+WGeRKUBKCo479pjxctix0OuFojQ==}
+  react-cosmos-plugin-vite@6.1.1:
+    resolution: {integrity: sha512-/aTb/CV8qgyfAW736ROSD9e1GQUhaXXTPyzplWpnPJo3VdP1dloDOfA7gsdCoq9mzM498RpZ2LsJk2v5MT1mfg==}
     peerDependencies:
       vite: '*'
 
-  react-cosmos-renderer@6.0.0-beta.10:
-    resolution: {integrity: sha512-HUA7/K5b1V4AV4OeVL9H2dqgXgkfouwW7hY+xZkR/g88ZX2l3I8XpUY1rEZ/povwIm1W/3lWt+t2xDn1wgrX3w==}
+  react-cosmos-renderer@6.1.1:
+    resolution: {integrity: sha512-1+DPSxYQrISEkSNDVl3WeLmSHcZfUuAhxEJvBA4HiHvuJEl9W1TsYlbu41YlZ88AX617KYYZ6Swcnq5+EFjEnw==}
 
-  react-cosmos-ui@6.0.0-beta.10:
-    resolution: {integrity: sha512-CeEuFWRkXHZ1KCoCKhb+G8PjdbYTcRo2Vyy+j7s20I+QmZRxKXkny6xXaomizIqoEKpbxVM0HXBm/NJUaEjQfA==}
+  react-cosmos-ui@6.1.1:
+    resolution: {integrity: sha512-G0+Tanx3dHFSoEFRtvf53nUWe+8lv+MA/TLWfiXnK7WeLtmEzZUvBTdtA2hGOu/8IbIgq+toyPAzOXCb/g0pdQ==}
 
-  react-cosmos@6.0.0-beta.10:
-    resolution: {integrity: sha512-ooWcNAOHBXoN9CAz2kN9DxPLi4z5Co6LBSwOLvHBBGWtvkNMgFl5Vr7NE3N3M29t6W+KwCNuhUT3WmoZZ4EbiQ==}
+  react-cosmos@6.1.1:
+    resolution: {integrity: sha512-C40I3npZOLMJMOV73BVcp1L9/eG/h1zB4+7ihMQE62img3qFy3CDEwBUwwp/YmIMRF1LXrIvhGU0TA7kig/YSw==}
     hasBin: true
 
   react-dom@18.2.0:
@@ -2349,8 +2325,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@8.14.2:
-    resolution: {integrity: sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==}
+  ws@8.16.0:
+    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -2382,10 +2358,6 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-
-  yocto-queue@1.0.0:
-    resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
-    engines: {node: '>=12.20'}
 
   z-schema@5.0.5:
     resolution: {integrity: sha512-D7eujBWkLa3p2sIpJA0d1pr7es+a7m0vFAnZLlCEKq/Ij2k0MLi9Br2UPxoxdYystm5K1yeBGzub0FlYUEWj2Q==}
@@ -3758,11 +3730,6 @@ snapshots:
       locate-path: 6.0.0
       path-exists: 4.0.0
 
-  find-up@6.3.0:
-    dependencies:
-      locate-path: 7.2.0
-      path-exists: 5.0.0
-
   flat-cache@3.2.0:
     dependencies:
       flatted: 3.2.9
@@ -3976,7 +3943,7 @@ snapshots:
 
   jju@1.4.0: {}
 
-  js-base64@3.7.5: {}
+  js-base64@3.7.7: {}
 
   js-tokens@4.0.0: {}
 
@@ -4022,10 +3989,6 @@ snapshots:
   locate-path@6.0.0:
     dependencies:
       p-locate: 5.0.0
-
-  locate-path@7.2.0:
-    dependencies:
-      p-locate: 6.0.0
 
   lodash-es@4.17.21: {}
 
@@ -4162,17 +4125,9 @@ snapshots:
     dependencies:
       yocto-queue: 0.1.0
 
-  p-limit@4.0.0:
-    dependencies:
-      yocto-queue: 1.0.0
-
   p-locate@5.0.0:
     dependencies:
       p-limit: 3.1.0
-
-  p-locate@6.0.0:
-    dependencies:
-      p-limit: 4.0.0
 
   parent-module@1.0.1:
     dependencies:
@@ -4190,8 +4145,6 @@ snapshots:
   path-browserify@1.0.1: {}
 
   path-exists@4.0.0: {}
-
-  path-exists@5.0.0: {}
 
   path-is-absolute@1.0.1: {}
 
@@ -4218,10 +4171,6 @@ snapshots:
   picocolors@1.0.0: {}
 
   picomatch@2.3.1: {}
-
-  pkg-up@4.0.0:
-    dependencies:
-      find-up: 6.3.0
 
   postcss-assign-layer@0.3.0(postcss@8.4.38):
     dependencies:
@@ -4266,36 +4215,36 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-cosmos-core@6.0.0-beta.10:
+  react-cosmos-core@6.1.1:
     dependencies:
-      js-base64: 3.7.5
+      js-base64: 3.7.7
       lodash-es: 4.17.21
       react-is: 18.2.0
 
-  react-cosmos-dom@6.0.0-beta.10:
+  react-cosmos-dom@6.1.1:
     dependencies:
       lodash-es: 4.17.21
-      react-cosmos-core: 6.0.0-beta.10
-      react-cosmos-renderer: 6.0.0-beta.10
+      react-cosmos-core: 6.1.1
+      react-cosmos-renderer: 6.1.1
 
-  react-cosmos-plugin-vite@6.0.0-beta.10(vite@5.2.11(@types/node@18.16.1)):
+  react-cosmos-plugin-vite@6.1.1(vite@5.2.11(@types/node@18.16.1)):
     dependencies:
-      react-cosmos-core: 6.0.0-beta.10
-      react-cosmos-dom: 6.0.0-beta.10
+      react-cosmos-core: 6.1.1
+      react-cosmos-dom: 6.1.1
       vite: 5.2.11(@types/node@18.16.1)
 
-  react-cosmos-renderer@6.0.0-beta.10:
+  react-cosmos-renderer@6.1.1:
     dependencies:
       lodash-es: 4.17.21
-      react-cosmos-core: 6.0.0-beta.10
+      react-cosmos-core: 6.1.1
       react-is: 18.2.0
 
-  react-cosmos-ui@6.0.0-beta.10:
+  react-cosmos-ui@6.1.1:
     dependencies:
       lodash-es: 4.17.21
-      react-cosmos-core: 6.0.0-beta.10
+      react-cosmos-core: 6.1.1
 
-  react-cosmos@6.0.0-beta.10:
+  react-cosmos@6.1.1:
     dependencies:
       '@skidding/launch-editor': 2.2.3
       chokidar: 3.5.3
@@ -4306,11 +4255,10 @@ snapshots:
       micromatch: 4.0.5
       open: 8.4.2
       pem: 1.14.8
-      pkg-up: 4.0.0
-      react-cosmos-core: 6.0.0-beta.10
-      react-cosmos-renderer: 6.0.0-beta.10
-      react-cosmos-ui: 6.0.0-beta.10
-      ws: 8.14.2
+      react-cosmos-core: 6.1.1
+      react-cosmos-renderer: 6.1.1
+      react-cosmos-ui: 6.1.1
+      ws: 8.16.0
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/express'
@@ -4676,7 +4624,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.14.2: {}
+  ws@8.16.0: {}
 
   y18n@5.0.8: {}
 
@@ -4697,8 +4645,6 @@ snapshots:
       yargs-parser: 21.1.1
 
   yocto-queue@0.1.0: {}
-
-  yocto-queue@1.0.0: {}
 
   z-schema@5.0.5:
     dependencies:
