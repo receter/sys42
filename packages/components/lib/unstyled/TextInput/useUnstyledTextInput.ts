@@ -3,19 +3,22 @@ import { mergeRefs } from "react-merge-refs";
 import { Sys42Props } from "../../types";
 
 // This are our props that we want to expose as an interface to the TextInput component
-export type TextInputProps = {
-  type?: "text" | "password" | "email" | "tel" | "url";
-};
+export type UnstyledTextInputProps = Sys42Props<
+  {
+    type?: "text" | "password" | "email" | "tel" | "url";
+  },
+  React.ComponentProps<"input">
+>;
 
-export type UseTextInputOptions = {
-  props: Sys42Props<TextInputProps, React.ComponentProps<"input">>;
+export type UseTextInputOptions<Props> = {
+  props: Props;
   forwardedRef: React.ForwardedRef<HTMLInputElement>;
 };
 
-export function useUnstyledTextInput({
+export function useUnstyledTextInput<Props extends UnstyledTextInputProps>({
   props,
   forwardedRef,
-}: UseTextInputOptions) {
+}: UseTextInputOptions<Props>) {
   const { type = "text", ...passedOnProps } = props;
 
   const ref = useRef<HTMLInputElement>(null);

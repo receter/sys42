@@ -1,15 +1,12 @@
 import { forwardRef } from "react";
-import { useTextInput } from "./useTextInput";
-import { Sys42Props } from "../../types";
-import { TextInputProps } from "../../unstyled/TextInput/useUnstyledTextInput";
+import { useTextInput, TextInputProps } from "./useTextInput";
 
-export const TextInput = forwardRef<
-  HTMLInputElement,
-  Sys42Props<TextInputProps, React.ComponentProps<"input">>
->((props, forwardedRef) => {
-  const { textInputProps, textInputRef } = useTextInput({
-    props,
-    forwardedRef,
-  });
-  return <input {...textInputProps} ref={textInputRef} />;
-});
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  (props, forwardedRef) => {
+    const { textInputProps, textInputRef } = useTextInput({
+      props,
+      forwardedRef,
+    });
+    return <input {...textInputProps} ref={textInputRef} />;
+  },
+);
