@@ -1,12 +1,9 @@
 import { forwardRef } from "react";
-import { useLabel } from "./useLabel";
-import { LabelProps } from "../../unstyled/Label/useUnstyledLabel";
-import { Sys42Props } from "../../types";
+import { LabelProps, useLabel } from "./useLabel";
 
-export const Label = forwardRef<
-  HTMLLabelElement,
-  Sys42Props<LabelProps, React.ComponentProps<"label">>
->((props, forwardedRef) => {
-  const { labelProps, labelRef } = useLabel({ props, forwardedRef });
-  return <label {...labelProps} ref={labelRef} />;
-});
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+  (props, forwardedRef) => {
+    const { labelProps, labelRef } = useLabel({ props, forwardedRef });
+    return <label {...labelProps} ref={labelRef} />;
+  },
+);

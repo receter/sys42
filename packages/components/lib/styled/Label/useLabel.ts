@@ -1,20 +1,20 @@
 import { concatClassNames as cn } from "@sys42/utils";
 import {
   UseLabelOptions,
+  UnstyledLabelProps,
   useUnstyledLabel,
 } from "../../unstyled/Label/useUnstyledLabel";
 
 import styles from "./styles.module.css";
 
-export function useLabel(
-  options: UseLabelOptions,
-): ReturnType<typeof useUnstyledLabel> {
+export type LabelProps = UnstyledLabelProps;
+
+export function useLabel<Props extends LabelProps>(
+  options: UseLabelOptions<Props>,
+) {
   const label = useUnstyledLabel(options);
-  return {
-    ...label,
-    labelProps: {
-      ...label.labelProps,
-      className: cn(styles.label, label.labelProps.className),
-    },
-  };
+
+  label.labelProps.className = cn(styles.label, label.labelProps.className);
+
+  return label;
 }
