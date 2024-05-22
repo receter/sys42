@@ -1,6 +1,8 @@
 import { createContext, forwardRef } from "react";
-import { FormFieldProps, useUnstyledFormField } from "./useUnstyledFormField";
-import { Sys42Props } from "../../types";
+import {
+  UnstyledFormFieldProps,
+  useUnstyledFormField,
+} from "./useUnstyledFormField";
 
 export type FormFieldContext = {
   htmlFor: string;
@@ -14,15 +16,15 @@ export const FormFieldContext = createContext<FormFieldContext>({
 
 export const FormField = forwardRef<
   HTMLDivElement,
-  Sys42Props<FormFieldProps, React.ComponentProps<"div">>
+  UnstyledFormFieldProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
-  const { wrapperProps, wrapperRef, labelProps, errorMessagesProps, ctx } =
+  const { formFieldProps, formFieldRef, labelProps, errorMessagesProps, ctx } =
     useUnstyledFormField({ props, elementType: "div", forwardedRef });
   return (
     <FormFieldContext.Provider value={ctx}>
-      <div {...wrapperProps} ref={wrapperRef}>
+      <div {...formFieldProps} ref={formFieldRef}>
         <label {...labelProps} />
-        {wrapperProps.children}
+        {formFieldProps.children}
         {errorMessagesProps.map((props) => (
           <div {...props} />
         ))}

@@ -1,28 +1,35 @@
+import { concatClassNames as cn } from "@sys42/utils";
+
 import {
   UseFormFieldOptions,
   useUnstyledFormField,
+  UnstyledFormFieldProps,
 } from "../../unstyled/FormField/useUnstyledFormField";
-import { concatClassNames as cn } from "@sys42/utils";
 
 import styles from "./styles.module.css";
 
-export function useFormField<ElemAttr, Elem extends HTMLElement>(
-  options: UseFormFieldOptions<ElemAttr, Elem>,
-): ReturnType<typeof useUnstyledFormField<ElemAttr, Elem>> {
+export type FormFieldProps<ElemProps = void> =
+  UnstyledFormFieldProps<ElemProps>;
+
+export function useFormField<
+  Props extends FormFieldProps,
+  Elem extends HTMLElement,
+>(options: UseFormFieldOptions<Props, Elem>) {
   const formField = useUnstyledFormField(options);
-  return {
-    ...formField,
-    wrapperProps: {
-      ...formField.wrapperProps,
-      className: cn(formField.wrapperProps.className, styles.formField),
-    },
-    errorMessagesProps: formField.errorMessagesProps.map((props) => ({
-      ...props,
-      className: cn(props.className, styles.errorMessage),
-    })),
-    labelProps: {
-      ...formField.labelProps,
-      className: cn(formField.labelProps.className, styles.label),
-    },
-  };
+
+  formField.formFieldProps.className = cn(
+    formField.formFieldProps.className,
+    styles.formField,
+  );
+
+  formField.errorMessagesProps.forEach((props) => {
+    props.className = cn(props.className, styles.errorMessage);
+  });
+
+  formField.labelProps.className = cn(
+    formField.labelProps.className,
+    styles.label,
+  );
+
+  return formField;
 }

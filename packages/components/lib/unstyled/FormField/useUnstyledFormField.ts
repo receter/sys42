@@ -3,24 +3,26 @@ import { isArray, uniqueId } from "lodash-es";
 import { FormFieldContext } from ".";
 import { Sys42Props } from "../../types";
 
-// This are our props that we want to expose as an interface to the Button component
-export type FormFieldProps = {
-  errorMessage?: string | string[];
-  label: React.ReactNode;
-  htmlFor?: string;
-  children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode);
-};
+export type UnstyledFormFieldProps<ElemProps = void> = Sys42Props<
+  {
+    errorMessage?: string | string[];
+    label: React.ReactNode;
+    htmlFor?: string;
+    children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode);
+  },
+  ElemProps
+>;
 
-export type UseFormFieldOptions<ElemAttr, Elem extends HTMLElement> = {
-  props: Sys42Props<FormFieldProps, ElemAttr>;
+export type UseFormFieldOptions<Props, Elem extends HTMLElement> = {
+  props: Props;
   elementType: keyof JSX.IntrinsicElements;
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
-export function useUnstyledFormField<ElemAttr, Elem extends HTMLElement>({
-  props,
-  forwardedRef,
-}: UseFormFieldOptions<ElemAttr, Elem>) {
+export function useUnstyledFormField<
+  Props extends UnstyledFormFieldProps,
+  Elem extends HTMLElement,
+>({ props, forwardedRef }: UseFormFieldOptions<Props, Elem>) {
   const [uniqueFormFieldId] = useState(() => uniqueId("sys42-form-field-"));
 
   const { errorMessage, label, htmlFor, children, ...passedOnProps } = props;
@@ -37,7 +39,7 @@ export function useUnstyledFormField<ElemAttr, Elem extends HTMLElement>({
     isError: errorMessageArray.length > 0,
   };
 
-  const wrapperProps: React.HTMLAttributes<HTMLElement> = {
+  const formFieldProps: React.HTMLAttributes<HTMLElement> = {
     ...passedOnProps,
     children: typeof children === "function" ? children(ctx) : children,
   };
@@ -54,8 +56,8 @@ export function useUnstyledFormField<ElemAttr, Elem extends HTMLElement>({
   };
 
   return {
-    wrapperProps,
-    wrapperRef: forwardedRef,
+    formFieldProps,
+    formFieldRef: forwardedRef,
     labelProps,
     errorMessagesProps,
     ctx,
