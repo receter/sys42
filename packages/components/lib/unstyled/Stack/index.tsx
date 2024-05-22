@@ -1,10 +1,9 @@
 import { forwardRef } from "react";
-import { StackProps, useUnstyledStack } from "./useUnstyledStack";
-import { Sys42Props } from "../../types";
+import { UnstyledStackProps, useUnstyledStack } from "./useUnstyledStack";
 
 export const Stack = forwardRef<
   HTMLDivElement,
-  Sys42Props<StackProps, React.ComponentProps<"div">>
+  UnstyledStackProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
   const { stackProps, stackRef } = useUnstyledStack({
     props,
