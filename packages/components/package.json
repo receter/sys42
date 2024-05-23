@@ -17,9 +17,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "cosmos": "cosmos",
-    "cosmos-export": "cosmos-export"
+    "cosmos-export": "cosmos-export",
+    "prepublishOnly": "pnpm run build"
   },
-  "prepublishOnly": "pnpm run build",
   "dependencies": {
     "@react-aria/button": "^3.9.3",
     "@sys42/utils": "^0.0.1",
