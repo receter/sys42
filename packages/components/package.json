@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --p ./tsconfig-build.json && vite --config ./vite-build.config.ts build && cp ./lib/default-custom-properties.css ./dist/default-custom-properties.css",
+    "build": "tsc --p ./tsconfig-build.json && vite --config ./vite-build.config.ts build && vite --config ./vite-build-css.config.ts build --emptyOutDir false",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "cosmos": "cosmos",

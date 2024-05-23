@@ -4,8 +4,8 @@ export default {
   plugins: [
     pluginAssignLayer([
       {
-        include: "**/*.module.css",
-        layerName: "system42",
+        include: "**/*.css",
+        layerName: "sys42",
       },
     ]),
   ],
