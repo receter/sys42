@@ -1,18 +1,9 @@
-import { createContext, forwardRef } from "react";
+import { forwardRef } from "react";
 import {
   UnstyledFormFieldProps,
   useUnstyledFormField,
 } from "./useUnstyledFormField";
-
-export type FormFieldContext = {
-  htmlFor: string;
-  isError: boolean;
-};
-
-export const FormFieldContext = createContext<FormFieldContext>({
-  htmlFor: "",
-  isError: false,
-});
+import { FormFieldContext } from "./context";
 
 export const FormField = forwardRef<
   HTMLDivElement,

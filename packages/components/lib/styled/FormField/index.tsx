@@ -9,18 +9,13 @@ export const FormField = forwardRef<
   HTMLDivElement,
   FormFieldProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
-  const {
-    formFieldProps: wrapperProps,
-    formFieldRef: wrapperRef,
-    labelProps,
-    errorMessagesProps,
-    ctx,
-  } = useFormField({ props, elementType: "div", forwardedRef });
+  const { formFieldProps, formFieldRef, labelProps, errorMessagesProps, ctx } =
+    useFormField({ props, elementType: "div", forwardedRef });
   return (
     <FormFieldContext.Provider value={ctx}>
-      <div {...wrapperProps} ref={wrapperRef}>
+      <div {...formFieldProps} ref={formFieldRef}>
         <Label {...labelProps} />
-        {wrapperProps.children}
+        {formFieldProps.children}
         {errorMessagesProps.map((props) => (
           <div {...props} />
         ))}
