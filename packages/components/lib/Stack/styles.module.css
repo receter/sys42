@@ -1,0 +1,3 @@
+.stack > * + * {
+  margin-top: var(--sys42-stack-spacing);
+}

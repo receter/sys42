@@ -1,7 +1,0 @@
-.inlineIcon {
-    height: var(--sys42-inline-icon-height);
-    width: var(--sys42-inline-icon-width);
-    vertical-align: middle;
-    position: relative;
-    top: -0.125em;
-}
