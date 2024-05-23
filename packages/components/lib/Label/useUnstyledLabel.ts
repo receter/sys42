@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
-import { Sys42Props } from "../../types";
+import { Sys42Props } from "../types";
 
 // DOCS: The label must be rendered as a label element.
 

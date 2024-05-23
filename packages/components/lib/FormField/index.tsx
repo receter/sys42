@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 
 import { Label } from "../Label";
-import { FormFieldContext } from "../../unstyled/FormField";
+import { FormFieldContext } from "./context";
 
 import { useFormField, FormFieldProps } from "./useFormField";
 

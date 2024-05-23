@@ -3,7 +3,7 @@ import {
   UseTextInputOptions,
   UnstyledTextInputProps,
   useUnstyledTextInput,
-} from "../../unstyled/TextInput/useUnstyledTextInput";
+} from "./useUnstyledTextInput";
 
 import styles from "./styles.module.css";
 

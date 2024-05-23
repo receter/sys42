@@ -3,7 +3,7 @@ import {
   UseButtonOptions,
   UnstyledButtonProps,
   useUnstyledButton,
-} from "../../unstyled/Button/useUnstyledButton";
+} from "./useUnstyledButton";
 
 import styles from "./styles.module.css";
 

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
 import { useButton as useReactAriaButton } from "@react-aria/button";
-import { Sys42Props } from "../../types";
+import { Sys42Props } from "../types";
 
 // This are our props that we want to expose as an interface to the Button component
 export type UnstyledButtonProps<ElemProps = void> = Sys42Props<
@@ -38,7 +38,7 @@ export function useUnstyledButton<
     ref,
   );
 
-  const buttonProps = {
+  const buttonProps: React.HTMLAttributes<HTMLElement> = {
     ...passedOnProps,
     ...reactAriaButtonProps,
   };

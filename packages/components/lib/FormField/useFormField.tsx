@@ -4,7 +4,7 @@ import {
   UseFormFieldOptions,
   useUnstyledFormField,
   UnstyledFormFieldProps,
-} from "../../unstyled/FormField/useUnstyledFormField";
+} from "./useUnstyledFormField";
 
 import styles from "./styles.module.css";
 

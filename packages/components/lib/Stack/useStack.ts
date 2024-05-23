@@ -3,7 +3,7 @@ import {
   UseStackOptions,
   UnstyledStackProps,
   useUnstyledStack,
-} from "../../unstyled/Stack/useUnstyledStack";
+} from "./useUnstyledStack";
 
 import styles from "./styles.module.css";
 

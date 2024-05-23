@@ -3,7 +3,7 @@ import {
   UnstyledInlineIconProps,
   UseInlineIconOptions,
   useUnstyledInlineIcon,
-} from "../../unstyled/InlineIcon/useUnstyledInlineIcon";
+} from "./useUnstyledInlineIcon";
 
 import styles from "./styles.module.css";
 

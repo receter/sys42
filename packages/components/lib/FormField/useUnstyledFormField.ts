@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { isArray, uniqueId } from "lodash-es";
 import { FormFieldContext } from "./context";
-import { Sys42Props } from "../../types";
+import { Sys42Props } from "../types";
 
 export type UnstyledFormFieldProps<ElemProps = void> = Sys42Props<
   {

@@ -3,7 +3,7 @@ import {
   UseLabelOptions,
   UnstyledLabelProps,
   useUnstyledLabel,
-} from "../../unstyled/Label/useUnstyledLabel";
+} from "./useUnstyledLabel";
 
 import styles from "./styles.module.css";
 
