@@ -5,7 +5,7 @@ import { knownSpacingAbbreviations } from "../helpers";
 
 // This are our props that we want to expose as an interface to the Stack component
 // Further we also define attributes that the component "consumes" here
-export type UnstyledStackProps<ElemProps = void> = Sys42Props<
+export type BaseStackProps<ElemProps = void> = Sys42Props<
   {
     spacing: string;
     style?: React.CSSProperties;
@@ -19,8 +19,8 @@ export type UseStackOptions<Props, Elem extends HTMLElement> = {
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
-export function useUnstyledStack<
-  Props extends UnstyledStackProps,
+export function useBaseStack<
+  Props extends BaseStackProps,
   Elem extends HTMLElement,
 >({ props, forwardedRef }: UseStackOptions<Props, Elem>) {
   // When we split our props (StackProps) all props that remain will be props

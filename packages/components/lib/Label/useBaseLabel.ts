@@ -4,7 +4,7 @@ import { Sys42Props } from "../types";
 
 // DOCS: The label must be rendered as a label element.
 
-export type UnstyledLabelProps = Sys42Props<
+export type BaseLabelProps = Sys42Props<
   {
     // This is here because using {} would mean "any non-nullish value"
     children?: React.ReactNode;
@@ -17,7 +17,7 @@ export type UseLabelOptions<Props> = {
   forwardedRef: React.ForwardedRef<HTMLLabelElement>;
 };
 
-export function useUnstyledLabel<Props extends UnstyledLabelProps>({
+export function useBaseLabel<Props extends BaseLabelProps>({
   props,
   forwardedRef,
 }: UseLabelOptions<Props>) {

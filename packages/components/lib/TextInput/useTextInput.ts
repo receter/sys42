@@ -1,16 +1,16 @@
 import { concatClassNames as cn } from "@sys42/utils";
 import {
   UseTextInputOptions,
-  UnstyledTextInputProps,
-  useUnstyledTextInput,
-} from "./useUnstyledTextInput";
+  BaseTextInputProps,
+  useBaseTextInput,
+} from "./useBaseTextInput";
 
 import styles from "./styles.module.css";
 
-export type TextInputProps = UnstyledTextInputProps;
+export type TextInputProps = BaseTextInputProps;
 
 export function useTextInput(options: UseTextInputOptions<TextInputProps>) {
-  const textInput = useUnstyledTextInput(options);
+  const textInput = useBaseTextInput(options);
 
   textInput.textInputProps.className = cn(
     styles.textInput,

@@ -1,18 +1,18 @@
 import { concatClassNames as cn } from "@sys42/utils";
 import {
-  UnstyledInlineIconProps,
+  BaseInlineIconProps,
   UseInlineIconOptions,
-  useUnstyledInlineIcon,
-} from "./useUnstyledInlineIcon";
+  useBaseInlineIcon,
+} from "./useBaseInlineIcon";
 
 import styles from "./styles.module.css";
 
-export type InlineIconProps = UnstyledInlineIconProps;
+export type InlineIconProps = BaseInlineIconProps;
 
 export function useInlineIcon(
   options: UseInlineIconOptions<InlineIconProps>,
-): ReturnType<typeof useUnstyledInlineIcon> {
-  const inlineIcon = useUnstyledInlineIcon(options);
+): ReturnType<typeof useBaseInlineIcon> {
+  const inlineIcon = useBaseInlineIcon(options);
 
   inlineIcon.inlineIconProps.className = cn(
     styles.inlineIcon,

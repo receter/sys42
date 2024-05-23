@@ -3,7 +3,7 @@ import { isArray, uniqueId } from "lodash-es";
 import { FormFieldContext } from "./context";
 import { Sys42Props } from "../types";
 
-export type UnstyledFormFieldProps<ElemProps = void> = Sys42Props<
+export type BaseFormFieldProps<ElemProps = void> = Sys42Props<
   {
     errorMessage?: string | string[];
     label: React.ReactNode;
@@ -19,8 +19,8 @@ export type UseFormFieldOptions<Props, Elem extends HTMLElement> = {
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
-export function useUnstyledFormField<
-  Props extends UnstyledFormFieldProps,
+export function useBaseFormField<
+  Props extends BaseFormFieldProps,
   Elem extends HTMLElement,
 >({ props, forwardedRef }: UseFormFieldOptions<Props, Elem>) {
   const [uniqueFormFieldId] = useState(() => uniqueId("sys42-form-field-"));

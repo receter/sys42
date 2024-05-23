@@ -5,7 +5,7 @@ import { Sys42Props } from "../types";
 type InlineIconIconProps = React.HTMLAttributes<HTMLElement> &
   React.SVGProps<SVGSVGElement>;
 
-export type UnstyledInlineIconProps = Sys42Props<
+export type BaseInlineIconProps = Sys42Props<
   {
     Icon:
       | React.FunctionComponent<
@@ -26,7 +26,7 @@ export type UseInlineIconOptions<Props> = {
   forwardedRef: React.ForwardedRef<HTMLElement | SVGElement>;
 };
 
-export function useUnstyledInlineIcon<Props extends UnstyledInlineIconProps>({
+export function useBaseInlineIcon<Props extends BaseInlineIconProps>({
   props,
   forwardedRef,
 }: UseInlineIconOptions<Props>) {

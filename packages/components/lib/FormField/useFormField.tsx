@@ -2,20 +2,19 @@ import { concatClassNames as cn } from "@sys42/utils";
 
 import {
   UseFormFieldOptions,
-  useUnstyledFormField,
-  UnstyledFormFieldProps,
-} from "./useUnstyledFormField";
+  useBaseFormField,
+  BaseFormFieldProps,
+} from "./useBaseFormField";
 
 import styles from "./styles.module.css";
 
-export type FormFieldProps<ElemProps = void> =
-  UnstyledFormFieldProps<ElemProps>;
+export type FormFieldProps<ElemProps = void> = BaseFormFieldProps<ElemProps>;
 
 export function useFormField<
   Props extends FormFieldProps,
   Elem extends HTMLElement,
 >(options: UseFormFieldOptions<Props, Elem>) {
-  const formField = useUnstyledFormField(options);
+  const formField = useBaseFormField(options);
 
   formField.formFieldProps.className = cn(
     formField.formFieldProps.className,
