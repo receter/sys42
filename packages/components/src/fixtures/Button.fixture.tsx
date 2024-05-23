@@ -1,6 +1,8 @@
-import { useFixtureSelect, useValue } from "react-cosmos/client";
-import { Button, InlineIcon } from "../..";
 import { useRef } from "react";
+import { useFixtureSelect, useValue } from "react-cosmos/client";
+
+import { Button, InlineIcon } from "../..";
+
 import SvgIconFocusLog from "./resources/icon-focus-log.svg?react";
 
 export default function ButtonFixture() {

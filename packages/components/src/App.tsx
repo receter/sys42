@@ -1,11 +1,15 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "../dist/default-custom-properties.css";
+
+import { useState } from "react";
+
 //import '../dist/'
-import { Button, InlineIcon, ButtonA } from "../";
+import { Button, ButtonA,InlineIcon } from "../";
+
 import SvgReact from "./assets/react.svg?react";
+
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 
 function App() {
   const [count, setCount] = useState(0);

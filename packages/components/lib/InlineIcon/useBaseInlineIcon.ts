@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
+
 import { Sys42Props } from "../types";
 
 type InlineIconIconProps = React.HTMLAttributes<HTMLElement> &

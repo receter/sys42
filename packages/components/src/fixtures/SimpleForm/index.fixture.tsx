@@ -1,5 +1,7 @@
 import { useValue } from "react-cosmos/client";
-import { Button, FormField, TextInput, Stack } from "../../..";
+
+import { Button, FormField, Stack, TextInput } from "../../..";
+
 export default function ButtonFixture() {
   const [label] = useValue("Label", { defaultValue: "Blick me!" });
   return (

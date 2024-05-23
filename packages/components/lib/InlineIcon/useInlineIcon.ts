@@ -1,8 +1,9 @@
 import { concatClassNames as cn } from "@sys42/utils";
+
 import {
   BaseInlineIconProps,
-  UseInlineIconOptions,
   useBaseInlineIcon,
+  UseInlineIconOptions,
 } from "./useBaseInlineIcon";
 
 import styles from "./styles.module.css";

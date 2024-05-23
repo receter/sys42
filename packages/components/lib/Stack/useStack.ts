@@ -1,5 +1,6 @@
 import { concatClassNames as cn } from "@sys42/utils";
-import { UseStackOptions, BaseStackProps, useBaseStack } from "./useBaseStack";
+
+import { BaseStackProps, useBaseStack,UseStackOptions } from "./useBaseStack";
 
 import styles from "./styles.module.css";
 

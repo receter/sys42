@@ -30,5 +30,8 @@
     "[ ]",
     "[x]",
     "DOC"
-  ]
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
 }

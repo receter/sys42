@@ -1,8 +1,9 @@
 import { concatClassNames as cn } from "@sys42/utils";
+
 import {
-  UseButtonOptions,
   BaseButtonProps,
   useBaseButton,
+  UseButtonOptions,
 } from "./useBaseButton";
 
 import styles from "./styles.module.css";

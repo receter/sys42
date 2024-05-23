@@ -1,8 +1,9 @@
 import { concatClassNames as cn } from "@sys42/utils";
+
 import {
-  UseTextInputOptions,
   BaseTextInputProps,
   useBaseTextInput,
+  UseTextInputOptions,
 } from "./useBaseTextInput";
 
 import styles from "./styles.module.css";

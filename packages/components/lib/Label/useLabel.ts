@@ -1,5 +1,6 @@
 import { concatClassNames as cn } from "@sys42/utils";
-import { UseLabelOptions, BaseLabelProps, useBaseLabel } from "./useBaseLabel";
+
+import { BaseLabelProps, useBaseLabel,UseLabelOptions } from "./useBaseLabel";
 
 import styles from "./styles.module.css";
 

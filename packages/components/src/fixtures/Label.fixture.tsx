@@ -1,4 +1,5 @@
 import { useValue } from "react-cosmos/client";
+
 import { Label } from "../../dist/main";
 
 export default function LabelFixture() {

@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+
 import { LabelProps, useLabel } from "./useLabel";
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
