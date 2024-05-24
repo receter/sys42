@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useFixtureSelect, useValue } from "react-cosmos/client";
 
-import { Button, InlineIcon } from "../..";
+import { Button, ButtonA, InlineIcon } from "../..";
 
 import SvgIconFocusLog from "./resources/icon-focus-log.svg?react";
 
@@ -15,14 +15,28 @@ export default function ButtonFixture() {
   const variant = variantString === "default" ? undefined : variantString;
   const refButton = useRef(null);
   return (
-    <Button
-      ref={refButton}
-      onClick={() => window.alert("Hi!")}
-      variant={variant}
-    >
-      {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
-      {withIcon && <>&nbsp;</>}
-      {label}
-    </Button>
+    <>
+      <div>
+        <h1>Button</h1>
+        <div>{"<Button>"}</div>
+        <Button
+          ref={refButton}
+          onClick={() => {
+            console.log("Hi!");
+          }}
+          variant={variant}
+        >
+          {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
+          {withIcon && <>&nbsp;</>}
+          {label}
+        </Button>
+        <div>{"<ButtonA>"}</div>
+        <ButtonA href="https://github.com/receter/sys42" variant={variant}>
+          {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
+          {withIcon && <>&nbsp;</>}
+          {label}
+        </ButtonA>
+      </div>
+    </>
   );
 }

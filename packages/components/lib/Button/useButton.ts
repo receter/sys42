@@ -25,7 +25,7 @@ export function useButton<Props extends ButtonProps, Elem extends HTMLElement>(
 
   // DOC: The classname is never set by base hooks, so we can just override it here.
   button.buttonProps.className = cn(
-    variant && styles[`button_${variant}`],
+    variant === "primary" && styles.button_primary,
     styles.button,
   );
 

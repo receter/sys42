@@ -1,21 +1,37 @@
 .button {
-  line-height: 1.5;
-  /* DOC: The size of inline icons matches line height so the button does not grow if a icon is added */
-  --sys42-inline-icon-size: 1.5em;
+  /* DOC: The inline icon size matches line height so the button does not grow if a icon is added */
+  --sys42-inline-icon-height: 100%;
+  /* calc(var(--sys42-button-line-height) * 1em); */
+  border: var(--sys42-button-border);
+  font-size: var(--sys42-button-font-size);
+  line-height: var(--sys42-button-line-height);
   background: var(--sys42-button-background);
+  color: var(--sys42-button-color);
   padding: var(--sys42-button-padding-horiz) var(--sys42-button-padding-vert);
   border-radius: var(--sys42-button-radius);
   box-shadow: var(--sys42-button-shadow);
-  transition: var(--sys42-button-transition-in);
-}
-
-.button_primary {
-  background-color: black;
-  color: white;
+  transition: var(--sys42-button-transition);
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .button:hover {
   background: var(--sys42-button-background--hover);
   box-shadow: var(--sys42-button-shadow--hover);
-  transition: var(--sys42-button-transition-out);
+  transition: var(--sys42-button-transition--hover);
+  border-color: var(--sys42-button-border-color--hover);
+}
+
+.button_primary {
+  background: var(--sys42-button_primary-background);
+  color: var(--sys42-button_primary-color);
+  border-color: var(--sys42-button_primary-border-color);
+}
+
+.button_primary:hover {
+  background: var(--sys42-button_primary-background--hover);
+  color: var(--sys42-button_primary-color--hover);
+  border-color: var(--sys42-button_primary-border-color--hover);
 }

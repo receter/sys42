@@ -11,15 +11,16 @@ npm install @sys42/components
 ## Usage
 
 **Styled React Components**
-The easiest and most straigt forward way to use System 42 is by directly importing the React components. The components come with basic styles that are based on a set of CSS custom properties (CSS variables). All of these properties are defined in `default-custom-properties.css` and prefixed with `--sys42-`. It is highly recommended to import this file in your application. You can customize the styling of the components by overriding the custom properties in your application.
+The easiest and most straight forward way to use System 42 is by directly importing the React components. The components come with basic styles that are based on a set of CSS custom properties (CSS variables). All of these properties are defined in `default-custom-properties.css` and prefixed with `--sys42-`. It is highly recommended to import this file in your application. You can customize the styling of the components by overriding the custom properties in your application.
 
 1. Import the CSS file with the default values for the custom properties in your application:
 
 ```js
 import "@sys42/components/dist/default-custom-properties.css";
-// Your overrides need to be imported after the default custom properties
-import "./sys42-custom-properties.css";
 ```
+
+All component styles and also the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
+named `sys42`.
 
 2. Import the components in your application:
 
