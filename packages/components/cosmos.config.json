@@ -1,4 +1,4 @@
 {
-  "globalImports": ["./dist/default-custom-properties.css", "./src/index.css"],
+  "globalImports": ["./src/index.css", "./lib/default-custom-properties.css"],
   "plugins": ["react-cosmos-plugin-vite"]
 }

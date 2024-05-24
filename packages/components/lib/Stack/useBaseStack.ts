@@ -8,7 +8,7 @@ import { Sys42Props } from "../types";
 // Further we also define attributes that the component "consumes" here
 export type BaseStackProps<ElemProps = void> = Sys42Props<
   {
-    spacing: string;
+    spacing?: string;
     style?: React.CSSProperties;
   },
   ElemProps

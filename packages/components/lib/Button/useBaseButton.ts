@@ -8,6 +8,7 @@ import { Sys42Props } from "../types";
 export type BaseButtonProps<ElemProps = void> = Sys42Props<
   {
     onPress?: () => void;
+    disabled?: boolean;
   },
   ElemProps
 >;
@@ -24,25 +25,28 @@ export function useBaseButton<
 >({ props, elementType, forwardedRef }: UseButtonOptions<Props, Elem>) {
   // When we split our props (Sys42ButtonProps) all props that remain will be props
   // that are defined in T but not in Sys42ButtonProps
-  const { onPress, ...passedOnProps } = props;
+  const { onPress, disabled, ...passedOnProps } = props;
 
   const ref = useRef<Elem>(null);
 
   const reactAriaProps = {
     onPress,
+    isDisabled: disabled,
     elementType,
     ...passedOnProps,
   };
 
-  const { buttonProps: reactAriaButtonProps } = useReactAriaButton(
-    reactAriaProps,
-    ref,
-  );
+  const { buttonProps: reactAriaButtonProps, isPressed: buttonIsPressed } =
+    useReactAriaButton(reactAriaProps, ref);
 
   const buttonProps: React.HTMLAttributes<HTMLElement> = {
     ...passedOnProps,
     ...reactAriaButtonProps,
   };
 
-  return { buttonProps, buttonRef: mergeRefs([forwardedRef, ref]) };
+  return {
+    buttonProps,
+    buttonIsPressed,
+    buttonRef: mergeRefs([forwardedRef, ref]),
+  };
 }

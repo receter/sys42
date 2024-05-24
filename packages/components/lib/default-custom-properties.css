@@ -9,33 +9,51 @@
   --sys42-spacing-xxl: 8rem;
 
   /* Button */
-  --sys42-button-background--hover: #efefef;
   --sys42-button-background: #eee;
-  --sys42-button-border: 2px solid red;
+  --sys42-button-border: 1px solid #ddd;
   --sys42-button-color: #333;
+  --sys42-button-font-weight: normal;
   --sys42-button-font-size: 1rem;
   --sys42-button-line-height: 1.5;
   --sys42-button-padding-horiz: 0.5rem;
   --sys42-button-padding-vert: 1rem;
-  --sys42-button-radius: 0.25rem;
+  --sys42-button-radius: 0.5rem;
   --sys42-button-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --sys42-button-transition: none;
 
   /* :hover */
-  --sys42-button-border-color--hover: #333;
+  --sys42-button-background--hover: #eee;
+  --sys42-button-border-color--hover: #aaa;
   --sys42-button-color--hover: #333;
   --sys42-button-shadow--hover: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --sys42-button-transition--hover: background-color 0.15s ease-in-out,
-    background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* :active */
+  --sys42-button-background--active: #ddd;
+  --sys42-button-border-color--active: #aaa;
+  --sys42-button-color--active: #333;
+  /* :disabled */
+  --sys42-button-background--disabled: #eee;
+  --sys42-button-border-color--disabled: #ddd;
+  --sys42-button-color--disabled: #999;
 
   /* Button (primary) */
-  --sys42-button_primary-background: #eee;
+  --sys42-button_primary-background: #333;
   --sys42-button_primary-border-color: #333;
-  --sys42-button_primary-color: #333;
+  --sys42-button_primary-color: #fff;
+  --sys42-button_primary-font-weight: normal;
   /* :hover */
-  --sys42-button_primary-background--hover: #efefef;
-  --sys42-button_primary-border-color--hover: #333;
-  --sys42-button_primary-color--hover: #333;
+  --sys42-button_primary-background--hover: #444;
+  --sys42-button_primary-border-color--hover: #444;
+  --sys42-button_primary-color--hover: #fff;
+  /* :active */
+  --sys42-button_primary-background--active: #333;
+  --sys42-button_primary-border-color--active: #333;
+  --sys42-button_primary-color--active: #fff;
+  /* :disabled */
+  --sys42-button_primary-background--disabled: #aaa;
+  --sys42-button_primary-border-color--disabled: #aaa;
+  --sys42-button_primary-color--disabled: #eee;
 
   /* InlineIcon */
   --sys42-inline-icon-height: 1em;
