@@ -12,7 +12,7 @@ export default function ButtonFixture() {
     options: ["default", "primary"],
     defaultValue: undefined,
   });
-  const [disabled] = useValue("Disabled", { defaultValue: false });
+  const [isDisabled] = useValue("Disabled", { defaultValue: false });
   const variant = variantString === "default" ? undefined : variantString;
   const refButton = useRef(null);
   return (
@@ -26,7 +26,7 @@ export default function ButtonFixture() {
             console.log("Hi!");
           }}
           variant={variant}
-          disabled={disabled}
+          isDisabled={isDisabled}
         >
           {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
           {withIcon && <>&nbsp;</>}
@@ -36,7 +36,8 @@ export default function ButtonFixture() {
         <ButtonA
           href="https://github.com/receter/sys42"
           variant={variant}
-          disabled={disabled}
+          isDisabled={isDisabled}
+          title="Go to GitHub"
         >
           {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
           {withIcon && <>&nbsp;</>}

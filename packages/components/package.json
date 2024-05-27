@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@react-aria/button": "^3.9.3",
+    "@react-types/shared": "^3.23.1",
     "@sys42/utils": "^0.0.1",
     "react-merge-refs": "^2.1.1"
   },
