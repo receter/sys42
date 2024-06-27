@@ -19,7 +19,7 @@ The easiest and most straight forward way to use System 42 is by directly import
 import "@sys42/components/dist/default-custom-properties.css";
 ```
 
-All component styles and also the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
+All component styles as well as the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
 named `sys42`.
 
 2. Import the components in your application:

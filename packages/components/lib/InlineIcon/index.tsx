@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import { InlineIconProps,useInlineIcon } from "./useInlineIcon";
+import { InlineIconProps, useInlineIcon } from "./useInlineIcon";
 
 export const InlineIcon = forwardRef<HTMLElement | SVGElement, InlineIconProps>(
   (props, forwardedRef) => {
