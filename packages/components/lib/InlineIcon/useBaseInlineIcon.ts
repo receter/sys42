@@ -3,23 +3,11 @@ import { mergeRefs } from "react-merge-refs";
 
 import { Sys42Props } from "../types";
 
-type InlineIconIconProps = React.HTMLAttributes<HTMLElement> &
-  React.SVGProps<SVGSVGElement>;
-
 export type BaseInlineIconProps = Sys42Props<
   {
-    Icon:
-      | React.FunctionComponent<
-          React.PropsWithoutRef<InlineIconIconProps> &
-            React.RefAttributes<HTMLElement | SVGElement>
-        >
-      | React.FunctionComponent<
-          React.SVGProps<SVGSVGElement> & {
-            title?: string | undefined;
-          }
-        >;
+    Icon: React.ElementType;
   },
-  InlineIconIconProps
+  React.AllHTMLAttributes<HTMLElement> & React.SVGAttributes<SVGElement>
 >;
 
 export type UseInlineIconOptions<Props> = {
@@ -33,9 +21,9 @@ export function useBaseInlineIcon<Props extends BaseInlineIconProps>({
 }: UseInlineIconOptions<Props>) {
   const { Icon, ...passedOnProps } = props;
 
-  const ref = useRef<HTMLElement | SVGElement>(null);
+  const ref = useRef(null);
 
-  const inlineIconProps: InlineIconIconProps = {
+  const inlineIconProps: React.AllHTMLAttributes<HTMLElement> = {
     ...passedOnProps,
   };
 

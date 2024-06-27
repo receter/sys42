@@ -1,10 +1,9 @@
 import "./App.css";
 import "../dist/default-custom-properties.css";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-//import '../dist/'
-import { Button, ButtonA,InlineIcon } from "../";
+import { Button, ButtonA, InlineIcon } from "../lib/main";
 
 import SvgReact from "./assets/react.svg?react";
 
@@ -13,6 +12,9 @@ import viteLogo from "/vite.svg";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const refIconSvg = useRef<React.ElementRef<"svg">>(null);
+  const refIconImg = useRef<React.ElementRef<"img">>(null);
 
   return (
     <>
@@ -27,7 +29,21 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Button onPress={() => setCount((count) => count + 1)}>
-          <InlineIcon Icon={SvgReact} /> count is {count}
+          <InlineIcon
+            ref={refIconSvg}
+            Icon={SvgReact}
+            preserveAspectRatio="sdf"
+          />{" "}
+          count is {count}
+        </Button>
+        <Button onPress={() => setCount((count) => count + 1)}>
+          <InlineIcon
+            ref={refIconImg}
+            Icon={"img"}
+            src={"./vite.svg"}
+            alt="React logo"
+          />{" "}
+          count is {count}
         </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
