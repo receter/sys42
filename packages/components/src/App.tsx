@@ -45,6 +45,8 @@ function App() {
         <ButtonA draggable={false} href="https://google.com">
           ButtonA
         </ButtonA>
+
+        <button className={"button"}>Hello</button>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more

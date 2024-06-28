@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import { useFixtureSelect, useValue } from "react-cosmos/client";
 
-import { Button, ButtonA, InlineIcon, Stack } from "../../lib/main";
-
-import SvgIconFocusLog from "./resources/icon-focus-log.svg?react";
+import SvgIconFocusLog from "../fixtures/resources/icon-focus-log.svg?react";
+import { Button, ButtonA, InlineIcon, Stack } from "../main";
 
 export default function ButtonFixture() {
   const [label] = useValue("Label", { defaultValue: "Blick me!" });

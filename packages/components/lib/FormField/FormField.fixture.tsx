@@ -1,6 +1,6 @@
 import { useValue } from "react-cosmos/client";
 
-import { FormField } from "../../lib/main";
+import { FormField } from "../main";
 
 export default function FormFieldFixture() {
   const [label] = useValue("Label", { defaultValue: "This is a label" });
