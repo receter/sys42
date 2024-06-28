@@ -1,7 +1,7 @@
 import "./App.css";
-import "../dist/default-custom-properties.css";
+import "../lib/default-custom-properties.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { Button, ButtonA, InlineIcon } from "../lib/main";
 
