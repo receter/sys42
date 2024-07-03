@@ -3,7 +3,7 @@ import "../lib/default-custom-properties.css";
 
 import { useState } from "react";
 
-import { Button, ButtonA, InlineIcon } from "../lib/main";
+import { Button, ButtonA, classInlineIcon } from "../lib/main";
 
 import SvgReact from "./assets/react.svg?react";
 
@@ -26,14 +26,13 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Button onPress={() => setCount((count) => count + 1)}>
-          <InlineIcon Icon={SvgReact} preserveAspectRatio="sdf" /> count is{" "}
-          {count}
+          <SvgReact className={classInlineIcon} /> count is{" "}
         </Button>
         <Button onPress={() => setCount((count) => count + 1)}>
-          <InlineIcon Icon={"img"} src={"./vite.svg"} alt="React logo" /> count
-          is {count}
+          <img className={classInlineIcon} src={"./vite.svg"} alt="Vite logo" />{" "}
+          count is {count}
         </Button>
-        <p>
+        <p className="test">
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
@@ -45,8 +44,6 @@ function App() {
         <ButtonA draggable={false} href="https://google.com">
           ButtonA
         </ButtonA>
-
-        <button className={"button"}>Hello</button>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
