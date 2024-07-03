@@ -1,6 +1,4 @@
 .button {
-  /* DOC: The inline icon size matches line height so the button does not grow if a icon is added */
-  --sys42-inline-icon-height: var(--sys42-button-line-height);
   font: inherit;
   border: var(--sys42-button-border);
   font-size: var(--sys42-button-font-size);

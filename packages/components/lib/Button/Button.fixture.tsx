@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useFixtureSelect, useValue } from "react-cosmos/client";
 
 import SvgIconFocusLog from "../fixtures/resources/icon-focus-log.svg?react";
-import { Button, ButtonA, InlineIcon, Stack } from "../main";
+import { Button, ButtonA, classInlineIcon, Stack } from "../main";
 
 export default function ButtonFixture() {
   const [label] = useValue("Label", { defaultValue: "Blick me!" });
@@ -27,7 +27,7 @@ export default function ButtonFixture() {
           variant={variant}
           isDisabled={isDisabled}
         >
-          {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
+          {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
           {withIcon && <>&nbsp;</>}
           {label}
         </Button>
@@ -38,7 +38,7 @@ export default function ButtonFixture() {
           isDisabled={isDisabled}
           title="Go to GitHub"
         >
-          {withIcon && <InlineIcon Icon={SvgIconFocusLog} />}
+          {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
           {withIcon && <>&nbsp;</>}
           {label}
         </ButtonA>

@@ -26,11 +26,11 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Button onPress={() => setCount((count) => count + 1)}>
-          <SvgReact className={classInlineIcon} /> count is{" "}
+          <SvgReact className={classInlineIcon} /> Count is count is {count}
         </Button>
         <Button onPress={() => setCount((count) => count + 1)}>
           <img className={classInlineIcon} src={"./vite.svg"} alt="Vite logo" />{" "}
-          count is {count}
+          Count is {count}
         </Button>
         <p className="test">
           Edit <code>src/App.tsx</code> and save to test HMR

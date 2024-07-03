@@ -55,10 +55,6 @@
   --sys42-button_primary-border-color--disabled: #aaa;
   --sys42-button_primary-color--disabled: #eee;
 
-  /* InlineIcon */
-  --sys42-inline-icon-height: 1em;
-  --sys42-inline-icon-offset: -0.125em;
-
   /* Stack */
   --sys42-stack-spacing: var(--sys42-spacing-md);
 }
