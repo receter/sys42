@@ -1,5 +1,4 @@
 .formField {
-  background: gray;
 }
 
 .errorMessage {
@@ -10,4 +9,8 @@
 
 .label {
   display: block;
+}
+
+.label + * {
+  margin-top: var(--sys42-spacing-xs);
 }

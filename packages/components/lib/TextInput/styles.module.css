@@ -1,4 +1,8 @@
 .textInput {
   font-size: 1em;
-  padding: 0.5em;
+  background: var(--sys42-input-text-background);
+  border: var(--sys42-input-text-border);
+  border-radius: var(--sys42-input-text-border-radius);
+  padding: var(--sys42-input-text-padding-vert)
+    var(--sys42-input-text-padding-horiz);
 }

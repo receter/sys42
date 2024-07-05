@@ -7,7 +7,7 @@
   background: var(--sys42-button-background);
   color: var(--sys42-button-color);
   padding: var(--sys42-button-padding-horiz) var(--sys42-button-padding-vert);
-  border-radius: var(--sys42-button-radius);
+  border-radius: var(--sys42-button-border-radius);
   box-shadow: var(--sys42-button-shadow);
   transition: var(--sys42-button-transition);
   display: inline-block;

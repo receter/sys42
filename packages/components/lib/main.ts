@@ -16,7 +16,12 @@ export { useBaseLabel } from "./Label/useBaseLabel";
 export { useBaseStack } from "./Stack/useBaseStack";
 export { useBaseTextInput } from "./TextInput/useBaseTextInput";
 
+import buttonGroup from "./helperClasses/buttonGroup.module.css";
+import card from "./helperClasses/card.module.css";
 import inlineIcon from "./helperClasses/inlineIcon.module.css";
 import test from "./helperClasses/test.module.css";
 export const classInlineIcon = inlineIcon.inlineIcon;
 export const classTest = test.test;
+export const classButtonGroup = buttonGroup.buttonGroup;
+export const classButtonGroupReverse = buttonGroup.buttonGroupReverse;
+export const classCard = card.card;

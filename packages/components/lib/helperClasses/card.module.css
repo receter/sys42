@@ -1,0 +1,7 @@
+.card {
+  background: var(--sys42-card-background);
+  border-radius: var(--sys42-card-border-radius);
+  border: var(--sys42-card-border);
+  box-shadow: var(--sys42-card-shadow);
+  padding: var(--sys42-card-padding-vert) var(--sys42-card-padding-horiz);
+}
