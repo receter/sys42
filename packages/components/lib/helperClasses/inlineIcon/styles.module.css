@@ -1,0 +1,9 @@
+.inlineIcon {
+  display: inline;
+  max-height: 1lh;
+  width: auto;
+  vertical-align: top;
+  position: relative;
+  top: calc(1lh / 2);
+  transform: translateY(-50%);
+}

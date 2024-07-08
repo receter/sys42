@@ -1,6 +1,4 @@
 .button {
-  /* DOC: The inline icon size matches line height so the button does not grow if a icon is added */
-  --sys42-inline-icon-height: var(--sys42-button-line-height);
   font: inherit;
   border: var(--sys42-button-border);
   font-size: var(--sys42-button-font-size);
@@ -9,7 +7,7 @@
   background: var(--sys42-button-background);
   color: var(--sys42-button-color);
   padding: var(--sys42-button-padding-horiz) var(--sys42-button-padding-vert);
-  border-radius: var(--sys42-button-radius);
+  border-radius: var(--sys42-button-border-radius);
   box-shadow: var(--sys42-button-shadow);
   transition: var(--sys42-button-transition);
   display: inline-block;

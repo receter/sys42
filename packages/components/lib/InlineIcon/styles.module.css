@@ -1,8 +1,0 @@
-.inlineIcon {
-  height: var(--sys42-inline-icon-height);
-  width: auto;
-  vertical-align: middle;
-  position: relative;
-  /* TODO: This should probably be something like: --sys42-font-cap-offset */
-  top: var(--sys42-inline-icon-offset);
-}

@@ -1,14 +1,9 @@
-import "./App.css";
-import "../lib/default-custom-properties.css";
-
+import "@sys42/components/default-custom-properties.css";
 import { useState } from "react";
-
-import { Button, ButtonA, classInlineIcon } from "../lib/main";
-
-import SvgReact from "./assets/react.svg?react";
-
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import "./App.css";
+import { Button, classCard, classInlineIcon } from "@sys42/components";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,26 +19,14 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <div className={classCard}>Hello I am a card!</div>
       <div className="card">
         <Button onPress={() => setCount((count) => count + 1)}>
-          <SvgReact className={classInlineIcon} /> Count is count is {count}
+          <img src={viteLogo} className={classInlineIcon} /> count is {count}
         </Button>
-        <Button onPress={() => setCount((count) => count + 1)}>
-          <img className={classInlineIcon} src={"./vite.svg"} alt="Vite logo" />{" "}
-          Count is {count}
-        </Button>
-        <p className="test">
+        <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
-      </div>
-      <div>
-        <Button data-hello="asdf" onPressEnd={() => {}}>
-          Button asddf
-        </Button>
-
-        <ButtonA draggable={false} href="https://google.com">
-          ButtonA
-        </ButtonA>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
