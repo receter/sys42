@@ -16,12 +16,13 @@ export { useBaseLabel } from "./Label/useBaseLabel";
 export { useBaseStack } from "./Stack/useBaseStack";
 export { useBaseTextInput } from "./TextInput/useBaseTextInput";
 
-import buttonGroup from "./helperClasses/buttonGroup.module.css";
-import card from "./helperClasses/card.module.css";
-import inlineIcon from "./helperClasses/inlineIcon.module.css";
-import test from "./helperClasses/test.module.css";
-export const classInlineIcon = inlineIcon.inlineIcon;
-export const classTest = test.test;
-export const classButtonGroup = buttonGroup.buttonGroup;
-export const classButtonGroupReverse = buttonGroup.buttonGroupReverse;
-export const classCard = card.card;
+// Helper Classes
+// Note: `.module.css` files should not be imported in the main entry file
+// because the content would end up in the main bundle even if the export is not used
+export {
+  classButtonGroup,
+  classButtonGroupReverse,
+} from "./helperClasses/buttonGroup";
+export { classCard } from "./helperClasses/card";
+export { classInlineIcon } from "./helperClasses/inlineIcon";
+export { classTest } from "./helperClasses/test";

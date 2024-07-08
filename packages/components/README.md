@@ -62,6 +62,14 @@ export const ButtonLink = forwardRef<
 });
 ```
 
+## Overriding Styles
+
+As all styles are in a CSS Layer named `sys42`, you can easily override the styles by adding your own styles without a layer or in a layer with a higher priority.
+
+If you want to overide styles globally, the easiest way is to do this by overriding custom properties. You can find a list of all available customer properties in the defaults file [`default-custom-properties.css`](./lib/default-custom-properties.css).
+
+If you want to override styles for a specific occurence of a component, you can do this by adding a class to the component and then adding styles to this class.
+
 ## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
