@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: ["lib/default-custom-properties.css"],
+      entry: ["lib/default-custom-properties.css", "lib/base.css"],
       formats: ["es"],
     },
     cssCodeSplit: true,

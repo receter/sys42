@@ -1,3 +1,4 @@
+import "@sys42/components/base.css";
 import "@sys42/components/default-custom-properties.css";
 import { useState } from "react";
 import viteLogo from "/vite.svg";

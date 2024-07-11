@@ -1,5 +1,4 @@
 import "./App.css";
-import "../lib/default-custom-properties.css";
 
 import { useState } from "react";
 

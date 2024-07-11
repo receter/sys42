@@ -1,4 +1,5 @@
-import "./index.css";
+import "../lib/base.css";
+import "../lib/default-custom-properties.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
