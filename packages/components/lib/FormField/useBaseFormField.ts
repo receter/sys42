@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { HTMLAttributes, useState } from "react";
 import { isArray, uniqueId } from "lodash-es";
 
 import { Sys42Props } from "../types";
 
 import { FormFieldContext } from "./context";
 
-export type BaseFormFieldProps<ElemProps = void> = Sys42Props<
+export type BaseFormFieldProps<ElemProps> = Sys42Props<
   {
     errorMessage?: string | string[];
     label: React.ReactNode;
@@ -15,16 +15,16 @@ export type BaseFormFieldProps<ElemProps = void> = Sys42Props<
   ElemProps
 >;
 
-export type UseFormFieldOptions<Props, Elem extends HTMLElement> = {
+export type UseBaseFormFieldOptions<Props, Elem extends HTMLElement> = {
   props: Props;
   elementType: keyof JSX.IntrinsicElements;
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
 export function useBaseFormField<
-  Props extends BaseFormFieldProps,
+  Props extends BaseFormFieldProps<HTMLAttributes<HTMLElement>>,
   Elem extends HTMLElement,
->({ props, forwardedRef }: UseFormFieldOptions<Props, Elem>) {
+>({ props, forwardedRef }: UseBaseFormFieldOptions<Props, Elem>) {
   const [uniqueFormFieldId] = useState(() => uniqueId("sys42-form-field-"));
 
   const { errorMessage, label, htmlFor, children, ...passedOnProps } = props;

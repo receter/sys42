@@ -25,7 +25,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <Button onPress={() => setCount((count) => count + 1)}>
+        <Button
+          className="hello"
+          onPress={() => setCount((count) => count + 1)}
+        >
+          I have hello
           <SvgReact className={classInlineIcon} /> Count is count is {count}
         </Button>
         <Button onPress={() => setCount((count) => count + 1)}>

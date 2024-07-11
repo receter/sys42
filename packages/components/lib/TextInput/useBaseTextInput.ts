@@ -11,7 +11,7 @@ export type BaseTextInputProps = Sys42Props<
   React.ComponentProps<"input">
 >;
 
-export type UseTextInputOptions<Props> = {
+export type UseBaseTextInputOptions<Props> = {
   props: Props;
   forwardedRef: React.ForwardedRef<HTMLInputElement>;
 };
@@ -19,7 +19,7 @@ export type UseTextInputOptions<Props> = {
 export function useBaseTextInput<Props extends BaseTextInputProps>({
   props,
   forwardedRef,
-}: UseTextInputOptions<Props>) {
+}: UseBaseTextInputOptions<Props>) {
   const { type = "text", ...passedOnProps } = props;
 
   const ref = useRef<HTMLInputElement>(null);

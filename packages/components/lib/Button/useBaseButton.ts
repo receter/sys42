@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from "react";
+import React, { HTMLAttributes, ReactNode, useRef } from "react";
 import { useButton as useReactAriaButton } from "@react-aria/button";
 import { FocusableProps, PressEvents } from "@react-types/shared";
 import { mergeRefs } from "react-merge-refs";
@@ -13,21 +13,18 @@ interface ButtonProps extends PressEvents, FocusableProps {
   children?: ReactNode;
 }
 
-export type BaseButtonProps<ElemProps = void> = Sys42Props<
-  ButtonProps,
-  ElemProps
->;
+export type BaseButtonProps<ElemProps> = Sys42Props<ButtonProps, ElemProps>;
 
-export type UseButtonOptions<Props, Elem extends HTMLElement> = {
+export type UseBaseButtonOptions<Props, Elem extends HTMLElement> = {
   props: Props;
   elementType: keyof JSX.IntrinsicElements;
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
 export function useBaseButton<
-  Props extends BaseButtonProps,
+  Props extends BaseButtonProps<HTMLAttributes<HTMLElement>>,
   Elem extends HTMLElement,
->({ props, elementType, forwardedRef }: UseButtonOptions<Props, Elem>) {
+>({ props, elementType, forwardedRef }: UseBaseButtonOptions<Props, Elem>) {
   const ref = useRef<Elem>(null);
 
   const { buttonProps, isPressed: buttonIsPressed } = useReactAriaButton(
@@ -39,7 +36,11 @@ export function useBaseButton<
   );
 
   return {
-    buttonProps: { ...buttonProps, children: props.children },
+    buttonProps: {
+      ...buttonProps,
+      children: props.children,
+      className: props.className, // Class name is not handled by useReactAriaButton
+    },
     buttonIsPressed,
     buttonRef: mergeRefs([forwardedRef, ref]),
   };

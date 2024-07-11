@@ -13,7 +13,7 @@ export type BaseLabelProps = Sys42Props<
   React.ComponentProps<"label">
 >;
 
-export type UseLabelOptions<Props> = {
+export type UseBaseLabelOptions<Props> = {
   props: Sys42Props<Props, React.ComponentProps<"label">>;
   forwardedRef: React.ForwardedRef<HTMLLabelElement>;
 };
@@ -21,7 +21,7 @@ export type UseLabelOptions<Props> = {
 export function useBaseLabel<Props extends BaseLabelProps>({
   props,
   forwardedRef,
-}: UseLabelOptions<Props>) {
+}: UseBaseLabelOptions<Props>) {
   const { ...passedOnProps } = props;
 
   const ref = useRef<HTMLLabelElement>(null);

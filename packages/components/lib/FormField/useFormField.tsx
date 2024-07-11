@@ -1,19 +1,20 @@
+import { HTMLAttributes } from "react";
 import { concatClassNames as cn } from "@sys42/utils";
 
 import {
   BaseFormFieldProps,
   useBaseFormField,
-  UseFormFieldOptions,
+  UseBaseFormFieldOptions,
 } from "./useBaseFormField";
 
 import styles from "./styles.module.css";
 
-export type FormFieldProps<ElemProps = void> = BaseFormFieldProps<ElemProps>;
+export type FormFieldProps<ElemProps> = BaseFormFieldProps<ElemProps>;
 
 export function useFormField<
-  Props extends FormFieldProps,
+  Props extends FormFieldProps<HTMLAttributes<HTMLElement>>,
   Elem extends HTMLElement,
->(options: UseFormFieldOptions<Props, Elem>) {
+>(options: UseBaseFormFieldOptions<Props, Elem>) {
   const formField = useBaseFormField(options);
 
   formField.formFieldProps.className = cn(

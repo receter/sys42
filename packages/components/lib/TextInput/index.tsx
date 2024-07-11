@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import { TextInputProps,useTextInput } from "./useTextInput";
+import { TextInputProps, useTextInput } from "./useTextInput";
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (props, forwardedRef) => {
