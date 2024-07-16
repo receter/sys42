@@ -15,8 +15,8 @@ importers:
         specifier: ^3.23.1
         version: 3.23.1(react@18.2.0)
       '@sys42/utils':
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: workspace:^
+        version: link:../utils
       modern-normalize:
         specifier: ^2.0.0
         version: 2.0.0
@@ -138,6 +138,10 @@ importers:
         version: 5.3.3(@types/node@18.16.1)
 
   packages/utils:
+    dependencies:
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
     devDependencies:
       '@types/node':
         specifier: ^18.16.1
@@ -1166,9 +1170,6 @@ packages:
 
   '@swc/helpers@0.5.11':
     resolution: {integrity: sha512-YNlnKRWF2sVojTpIyzwou9XoTNbzbzONwRhOoniEioF1AtaitTvVZblaQRrAzChWQ1bLYyYSWzM18y4WwgzJ+A==}
-
-  '@sys42/utils@0.0.1':
-    resolution: {integrity: sha512-oEuH+UGxoVYCSVYX9HQydlspzSA3vBX7uwk1BQlgTpnbh0EZQ1FzHagZik6r3zZgp60yNvO6NO3Dxb+9/OzThw==}
 
   '@ts-morph/common@0.19.0':
     resolution: {integrity: sha512-Unz/WHmd4pGax91rdIKWi51wnVUW11QttMEPpBiBgIewnc9UQIX7UDLxr5vRlqeByXCwhkF6VabSsI0raWcyAQ==}
@@ -3815,8 +3816,6 @@ snapshots:
   '@swc/helpers@0.5.11':
     dependencies:
       tslib: 2.6.2
-
-  '@sys42/utils@0.0.1': {}
 
   '@ts-morph/common@0.19.0':
     dependencies:
