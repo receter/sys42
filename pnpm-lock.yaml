@@ -6,7 +6,7 @@ settings:
 
 importers:
 
-  packages/components:
+  packages/ui:
     dependencies:
       '@react-aria/button':
         specifier: ^3.9.3
