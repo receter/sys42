@@ -28,7 +28,7 @@
     "preview": "vite preview",
     "cosmos": "cosmos",
     "cosmos-export": "cosmos-export",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm -r --filter ui... build"
   },
   "dependencies": {
     "@react-aria/button": "^3.9.3",

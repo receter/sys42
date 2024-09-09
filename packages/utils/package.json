@@ -19,7 +19,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm -r --filter utils... build"
   },
   "devDependencies": {
     "@types/node": "^18.16.1",
