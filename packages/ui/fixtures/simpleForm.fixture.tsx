@@ -8,7 +8,7 @@ import {
   FormField,
   Stack,
   TextInput,
-} from "../main";
+} from "../lib/main";
 
 export default function Fixture() {
   const [label] = useValue("Label", { defaultValue: "Save" });
