@@ -1,4 +1,8 @@
 :root {
+  /* Typography */
+  --sys42-font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --sys42-line-height: 1.5;
+
   /* Spacing */
   --sys42-spacing-xxs: 0.125rem;
   --sys42-spacing-xs: 0.25rem;

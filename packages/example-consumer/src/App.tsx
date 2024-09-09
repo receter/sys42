@@ -1,9 +1,9 @@
-import "@sys42/components/base.css";
-import "@sys42/components/default-custom-properties.css";
+import "@sys42/ui/base.css";
+import "@sys42/ui/default-custom-properties.css";
 import { useState } from "react";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Button, classCard, classInlineIcon } from "@sys42/components";
+import { Button, classCard, classInlineIcon } from "@sys42/ui";
 
 function App() {
   const [count, setCount] = useState(0);

@@ -26,7 +26,7 @@ named `sys42`.
 2. Import the components in your application:
 
 ```jsx
-import { Button, TextInput, Stack } from "@sys42/components";
+import { Button, TextInput, Stack } from "@sys42/ui";
 
 function App() {
   return (

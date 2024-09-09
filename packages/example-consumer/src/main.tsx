@@ -1,5 +1,5 @@
-import "@sys42/components/base.css";
-import "@sys42/components/default-custom-properties.css";
+import "@sys42/ui/base.css";
+import "@sys42/ui/default-custom-properties.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
