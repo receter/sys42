@@ -1,11 +1,11 @@
-# System 42 Components
+# System 42 UI
 
 System 42 is a design system for building consistent and accessible web applications. This package contains components and styles that can easily be used in React applications.
 
 ## Installation
 
 ```bash
-npm install @sys42/components
+npm install @sys42/ui
 ```
 
 ## Usage
@@ -16,11 +16,11 @@ The easiest and most straight forward way to use System 42 is by directly import
 1. Import the base CSS file followed by the default custom properties CSS in your application:
 
 ```js
-import "@sys42/components/base.css";
-import "@sys42/components/default-custom-properties.css";
+import "@sys42/ui/base.css";
+import "@sys42/ui/default-custom-properties.css";
 ```
 
-All component styles as well as the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
+All styles as well as the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
 named `sys42`.
 
 2. Import the components in your application:
@@ -39,7 +39,7 @@ function App() {
 ```
 
 **Using the React Hooks**
-In addition to the React components, React hooks exist for all components and can be used in case you want more control and/or opt out of the default styling. There are two hooks available for every component: one that contains basic behaviour and another one that is base on the first but also contains styling related things. The hooks are named the same as the components but with a `useBase`/`use` prefix. The hooks return everything you need to render the component.
+In addition to the React components, React hooks exist for all components and can be used in case you want more control and/or opt out of the default styling. There are two hooks available for every component: one that contains basic behaviour and another one that is based on the first but also contains styling related things. The hooks are named the same as the components but with a `useBase`/`use` prefix. The hooks return everything you need to render the component.
 
 One use case for a hook is if you want to render a component as a different element. One typyical example would be a button as a react-router Link.
 
@@ -47,7 +47,7 @@ You can use the `useButton` hook to get the button props and then spread them on
 
 ```jsx
 import { Link } from "react-router-dom";
-import { useButton } from "@sys42/components";
+import { useButton } from "@sys42/ui";
 
 export const ButtonLink = forwardRef<
   HTMLAnchorElement,
@@ -70,6 +70,18 @@ As all styles are in a CSS Layer named `sys42`, you can easily override the styl
 If you want to overide styles globally, the easiest way is to do this by overriding custom properties. You can find a list of all available customer properties in the defaults file [`default-custom-properties.css`](./lib/default-custom-properties.css).
 
 If you want to override styles for a specific occurence of a component, you can do this by adding a class to the component and then adding styles to this class.
+
+## Styling opinions
+
+System 42 is designed to be a flexible design system that can be customized to fit your needs.
+
+There are some opinionated decisions that are made in the design system:
+
+**Margin Top**
+
+Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin-top` for some elements.
+
+For more information see this [article](https://dev.to/receter/why-i-fell-in-love-with-margin-top-3flg).
 
 ## React + TypeScript + Vite
 
