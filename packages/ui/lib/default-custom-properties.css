@@ -1,6 +1,6 @@
 :root {
   /* Typography */
-  --sys42-font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --sys42-font-family: sans-serif;
   --sys42-line-height: 1.5;
 
   /* Spacing */
@@ -23,7 +23,7 @@
   --sys42-button-color: #333;
   --sys42-button-font-weight: normal;
   --sys42-button-font-size: 1rem;
-  --sys42-button-line-height: 1.5;
+  --sys42-button-line-height: inherit;
   --sys42-button-padding-horiz: 0.5rem;
   --sys42-button-padding-vert: 1rem;
   --sys42-button-border-radius: var(--sys42-border-radius-md);
