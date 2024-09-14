@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/receter/sys42/compare/ui-v1.0.0...ui-v1.0.1) (2024-09-14)
+
+
+### Bug Fixes
+
+* no specific font-family and button inherits line-height ([0b134e9](https://github.com/receter/sys42/commit/0b134e9a39a27cb12bc35df9aed96128594622dc))
+
 ## 1.0.0 (2024-09-09)
 
 
