@@ -13,7 +13,7 @@ import {
 export default function Fixture() {
   const [label] = useValue("Label", { defaultValue: "Save" });
   return (
-    <div>
+    <div style={{ padding: "2rem" }}>
       <Stack spacing="md">
         <FormField label="What is your name?">
           {({ htmlFor }) => <TextInput id={htmlFor} />}
