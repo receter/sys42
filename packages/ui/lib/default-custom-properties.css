@@ -45,6 +45,9 @@
   --sys42-button-background--disabled: #eee;
   --sys42-button-border-color--disabled: #ddd;
   --sys42-button-color--disabled: #999;
+  /* :focus-visible */
+  --sys42-button-outline--focus-visible: 0.125rem solid #333;
+  --sys42-button-outline-offset--focus-visible: 0.125rem;
 
   /* Button (primary) */
   --sys42-button_primary-background: #333;

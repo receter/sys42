@@ -32,7 +32,6 @@ export function useButton<
     variant === "primary" && styles.button_primary,
     size === "lg" && styles.button_lg,
     isFullWidth && styles.button_fullWidth,
-    button.buttonIsPressed && styles.button_pressed,
     styles.button,
   );
 

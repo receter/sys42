@@ -26,8 +26,8 @@ export default function ButtonFixture() {
         <div>{"<Button>"}</div>
         <Button
           ref={refButton}
-          onPress={() => {
-            console.log("Hi!");
+          onClick={() => {
+            alert("Button clicked");
           }}
           size={size === "default" ? undefined : size}
           variant={variant === "default" ? undefined : variant}
