@@ -64,6 +64,14 @@
   --sys42-button_primary-border-color--disabled: #aaa;
   --sys42-button_primary-color--disabled: #eee;
 
+  /* Button (size: lg) */
+  --sys42-button_lg-font-size: var(--sys42-button-font-size);
+  --sys42-button_lg-border-radius: var(--sys42-button-border-radius);
+  --sys42-button_lg-padding-horiz: calc(
+    var(--sys42-button-padding-horiz) * 1.5
+  );
+  --sys42-button_lg-padding-vert: calc(var(--sys42-button-padding-vert) * 1.5);
+
   /* Input Text */
   --sys42-input-text-background: #fff;
   --sys42-input-text-border-radius: var(--sys42-border-radius-sm);

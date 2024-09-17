@@ -70,3 +70,14 @@
   color: var(--sys42-button_primary-color--disabled);
   border-color: var(--sys42-button_primary-border-color--disabled);
 }
+
+.button_lg {
+  font-size: var(--sys42-button_lg-font-size);
+  border-radius: var(--sys42-button_lg-border-radius);
+  padding: var(--sys42-button_lg-padding-horiz)
+    var(--sys42-button_lg-padding-vert);
+}
+
+.button_fullWidth {
+  width: 100%;
+}

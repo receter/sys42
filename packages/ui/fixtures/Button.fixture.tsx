@@ -8,12 +8,16 @@ import SvgIconFocusLog from "./resources/icon-focus-log.svg?react";
 export default function ButtonFixture() {
   const [label] = useValue("Label", { defaultValue: "Blick me!" });
   const [withIcon] = useValue("With icon", { defaultValue: false });
-  const [variantString] = useFixtureSelect("Variant", {
+  const [variant] = useFixtureSelect("Variant", {
     options: ["default", "primary"],
-    defaultValue: undefined,
+    defaultValue: "default",
+  });
+  const [size] = useFixtureSelect("Size", {
+    options: ["default", "lg"],
+    defaultValue: "default",
   });
   const [isDisabled] = useValue("Disabled", { defaultValue: false });
-  const variant = variantString === "default" ? undefined : variantString;
+  const [isFullWidth] = useValue("isFullWidth", { defaultValue: false });
   const refButton = useRef(null);
   return (
     <>
@@ -25,7 +29,9 @@ export default function ButtonFixture() {
           onPress={() => {
             console.log("Hi!");
           }}
-          variant={variant}
+          size={size === "default" ? undefined : size}
+          variant={variant === "default" ? undefined : variant}
+          isFullWidth={isFullWidth}
           isDisabled={isDisabled}
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
@@ -35,7 +41,9 @@ export default function ButtonFixture() {
         <div>{"<ButtonA>"}</div>
         <ButtonA
           href="https://github.com/receter/sys42"
-          variant={variant}
+          size={size === "default" ? undefined : size}
+          variant={variant === "default" ? undefined : variant}
+          isFullWidth={isFullWidth}
           isDisabled={isDisabled}
           title="Go to GitHub"
         >
