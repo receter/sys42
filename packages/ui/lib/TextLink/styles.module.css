@@ -17,6 +17,6 @@ as a "<a>" already styled globally.
   color: var(--sys42-textLink-color);
 }
 
-.textLink:active {
+.textLinkNotAnchor:active {
   color: var(--sys42-textLink-color--active);
 }
