@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useRef } from "react";
+import React, { HTMLAttributes, useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
 
 import { Sys42Props } from "../types";
@@ -26,6 +26,7 @@ export function useBaseButton<
   return {
     buttonProps: {
       type: elementType === "button" ? "button" : undefined,
+      role: elementType !== "button" ? "button" : undefined,
       ...props,
     },
     buttonRef: mergeRefs([forwardedRef, ref]),
