@@ -51,12 +51,6 @@ importers:
 
   packages/ui:
     dependencies:
-      '@react-aria/button':
-        specifier: ^3.9.3
-        version: 3.9.4(react@18.3.1)
-      '@react-types/shared':
-        specifier: ^3.23.1
-        version: 3.23.1(react@18.3.1)
       '@sys42/utils':
         specifier: workspace:^
         version: link:../utils
@@ -621,57 +615,6 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@react-aria/button@3.9.4':
-    resolution: {integrity: sha512-YOt4XWtC+0m7LwLQnU1Gl0ENETLEhtM8SyDbwsFR/fIQYX0T0H9D6jMlnKxXDjKgRvHzom9NZ8caTfsEPbgW/g==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-aria/focus@3.17.0':
-    resolution: {integrity: sha512-aRzBw1WTUkcIV3xFrqPA6aB8ZVt3XyGpTaSHAypU0Pgoy2wRq9YeJYpbunsKj9CJmskuffvTqXwAjTcaQish1Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-aria/interactions@3.21.2':
-    resolution: {integrity: sha512-Ju706DtoEmI/2vsfu9DCEIjDqsRBVLm/wmt2fr0xKbBca7PtmK8daajxFWz+eTq+EJakvYfLr7gWgLau9HyWXg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-aria/ssr@3.9.3':
-    resolution: {integrity: sha512-5bUZ93dmvHFcmfUcEN7qzYe8yQQ8JY+nHN6m9/iSDCQ/QmCiE0kWXYwhurjw5ch6I8WokQzx66xKIMHBAa4NNA==}
-    engines: {node: '>= 12'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-aria/utils@3.24.0':
-    resolution: {integrity: sha512-JAxkPhK5fCvFVNY2YG3TW3m1nTzwRcbz7iyTSkUzLFat4N4LZ7Kzh7NMHsgeE/oMOxd8zLY+XsUxMu/E/2GujA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-stately/toggle@3.7.3':
-    resolution: {integrity: sha512-4jW6wxTu7Gkq6/2mZWqtJoQ6ff27Cl6lnVMEXXM+M8HwK/3zHoMZhVz8EApwgOsRByxDQ76PNSGm3xKZAcqZNw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-stately/utils@3.10.0':
-    resolution: {integrity: sha512-nji2i9fTYg65ZWx/3r11zR1F2tGya+mBubRCbMTwHyRnsSLFZaeq/W6lmrOyIy1uMJKBNKLJpqfmpT4x7rw6pg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-types/button@3.9.3':
-    resolution: {integrity: sha512-YHlSeH85FhasJXOmkY4x+6If74ZpUh88C2fMlw0HUA/Bq/KGckUoriV8cnMqSnB1OwPqi8dpBZGfFVj6f6lh9A==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-types/checkbox@3.8.0':
-    resolution: {integrity: sha512-IBJ2bAsb3xoXaL+f0pwfRLDvRkhxfcX/q4NRJ2oT9jeHLU+j6svgK1Dqk8IGmY+vw1ltKbbMlIVeVonKQ3fgHw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
-  '@react-types/shared@3.23.1':
-    resolution: {integrity: sha512-5d+3HbFDxGZjhbMBeFHRQhexMFt4pUce3okyRtUVKbbedQFUrtXSBg9VszgF2RTeQDKDkMCIQDtz5ccP/Lk1gw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-
   '@rollup/pluginutils@4.2.1':
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -857,9 +800,6 @@ packages:
     engines: {node: '>=14'}
     peerDependencies:
       '@svgr/core': '*'
-
-  '@swc/helpers@0.5.11':
-    resolution: {integrity: sha512-YNlnKRWF2sVojTpIyzwou9XoTNbzbzONwRhOoniEioF1AtaitTvVZblaQRrAzChWQ1bLYyYSWzM18y4WwgzJ+A==}
 
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -1173,10 +1113,6 @@ packages:
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
-
-  clsx@2.1.1:
-    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
-    engines: {node: '>=6'}
 
   color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -2775,74 +2711,6 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@react-aria/button@3.9.4(react@18.3.1)':
-    dependencies:
-      '@react-aria/focus': 3.17.0(react@18.3.1)
-      '@react-aria/interactions': 3.21.2(react@18.3.1)
-      '@react-aria/utils': 3.24.0(react@18.3.1)
-      '@react-stately/toggle': 3.7.3(react@18.3.1)
-      '@react-types/button': 3.9.3(react@18.3.1)
-      '@react-types/shared': 3.23.1(react@18.3.1)
-      '@swc/helpers': 0.5.11
-      react: 18.3.1
-
-  '@react-aria/focus@3.17.0(react@18.3.1)':
-    dependencies:
-      '@react-aria/interactions': 3.21.2(react@18.3.1)
-      '@react-aria/utils': 3.24.0(react@18.3.1)
-      '@react-types/shared': 3.23.1(react@18.3.1)
-      '@swc/helpers': 0.5.11
-      clsx: 2.1.1
-      react: 18.3.1
-
-  '@react-aria/interactions@3.21.2(react@18.3.1)':
-    dependencies:
-      '@react-aria/ssr': 3.9.3(react@18.3.1)
-      '@react-aria/utils': 3.24.0(react@18.3.1)
-      '@react-types/shared': 3.23.1(react@18.3.1)
-      '@swc/helpers': 0.5.11
-      react: 18.3.1
-
-  '@react-aria/ssr@3.9.3(react@18.3.1)':
-    dependencies:
-      '@swc/helpers': 0.5.11
-      react: 18.3.1
-
-  '@react-aria/utils@3.24.0(react@18.3.1)':
-    dependencies:
-      '@react-aria/ssr': 3.9.3(react@18.3.1)
-      '@react-stately/utils': 3.10.0(react@18.3.1)
-      '@react-types/shared': 3.23.1(react@18.3.1)
-      '@swc/helpers': 0.5.11
-      clsx: 2.1.1
-      react: 18.3.1
-
-  '@react-stately/toggle@3.7.3(react@18.3.1)':
-    dependencies:
-      '@react-stately/utils': 3.10.0(react@18.3.1)
-      '@react-types/checkbox': 3.8.0(react@18.3.1)
-      '@swc/helpers': 0.5.11
-      react: 18.3.1
-
-  '@react-stately/utils@3.10.0(react@18.3.1)':
-    dependencies:
-      '@swc/helpers': 0.5.11
-      react: 18.3.1
-
-  '@react-types/button@3.9.3(react@18.3.1)':
-    dependencies:
-      '@react-types/shared': 3.23.1(react@18.3.1)
-      react: 18.3.1
-
-  '@react-types/checkbox@3.8.0(react@18.3.1)':
-    dependencies:
-      '@react-types/shared': 3.23.1(react@18.3.1)
-      react: 18.3.1
-
-  '@react-types/shared@3.23.1(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-
   '@rollup/pluginutils@4.2.1':
     dependencies:
       estree-walker: 2.0.2
@@ -3010,10 +2878,6 @@ snapshots:
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
-
-  '@swc/helpers@0.5.11':
-    dependencies:
-      tslib: 2.6.2
 
   '@types/argparse@1.0.38': {}
 
@@ -3420,8 +3284,6 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
-
-  clsx@2.1.1: {}
 
   color-convert@1.9.3:
     dependencies:

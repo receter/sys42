@@ -8,12 +8,16 @@ import SvgIconFocusLog from "./resources/icon-focus-log.svg?react";
 export default function ButtonFixture() {
   const [label] = useValue("Label", { defaultValue: "Blick me!" });
   const [withIcon] = useValue("With icon", { defaultValue: false });
-  const [variantString] = useFixtureSelect("Variant", {
+  const [variant] = useFixtureSelect("Variant", {
     options: ["default", "primary"],
-    defaultValue: undefined,
+    defaultValue: "default",
+  });
+  const [size] = useFixtureSelect("Size", {
+    options: ["default", "lg"],
+    defaultValue: "default",
   });
   const [isDisabled] = useValue("Disabled", { defaultValue: false });
-  const variant = variantString === "default" ? undefined : variantString;
+  const [isFullWidth] = useValue("isFullWidth", { defaultValue: false });
   const refButton = useRef(null);
   return (
     <>
@@ -22,11 +26,13 @@ export default function ButtonFixture() {
         <div>{"<Button>"}</div>
         <Button
           ref={refButton}
-          onPress={() => {
-            console.log("Hi!");
+          onClick={() => {
+            alert("Button clicked");
           }}
-          variant={variant}
-          isDisabled={isDisabled}
+          size={size === "default" ? undefined : size}
+          variant={variant === "default" ? undefined : variant}
+          isFullWidth={isFullWidth}
+          disabled={isDisabled}
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
           {withIcon && <>&nbsp;</>}
@@ -35,14 +41,18 @@ export default function ButtonFixture() {
         <div>{"<ButtonA>"}</div>
         <ButtonA
           href="https://github.com/receter/sys42"
-          variant={variant}
-          isDisabled={isDisabled}
+          size={size === "default" ? undefined : size}
+          variant={variant === "default" ? undefined : variant}
+          isFullWidth={isFullWidth}
           title="Go to GitHub"
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
           {withIcon && <>&nbsp;</>}
           {label}
         </ButtonA>
+        <div>
+          <a href="https://google.com">This is a link</a>
+        </div>
       </Stack>
     </>
   );

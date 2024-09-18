@@ -45,6 +45,9 @@
   --sys42-button-background--disabled: #eee;
   --sys42-button-border-color--disabled: #ddd;
   --sys42-button-color--disabled: #999;
+  /* :focus-visible */
+  --sys42-button-outline--focus-visible: 0.125rem solid #333;
+  --sys42-button-outline-offset--focus-visible: 0.125rem;
 
   /* Button (primary) */
   --sys42-button_primary-background: #333;
@@ -63,6 +66,14 @@
   --sys42-button_primary-background--disabled: #aaa;
   --sys42-button_primary-border-color--disabled: #aaa;
   --sys42-button_primary-color--disabled: #eee;
+
+  /* Button (size: lg) */
+  --sys42-button_lg-font-size: var(--sys42-button-font-size);
+  --sys42-button_lg-border-radius: var(--sys42-button-border-radius);
+  --sys42-button_lg-padding-horiz: calc(
+    var(--sys42-button-padding-horiz) * 1.5
+  );
+  --sys42-button_lg-padding-vert: calc(var(--sys42-button-padding-vert) * 1.5);
 
   /* Input Text */
   --sys42-input-text-background: #fff;
