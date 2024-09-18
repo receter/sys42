@@ -16,7 +16,7 @@ function App() {
       <Button
         aria-busy="true"
         className="example-button"
-        onPress={() => setCount((count) => count + 1)}
+        onClick={() => setCount((count) => count + 1)}
       >
         <img src={viteLogo} className={classInlineIcon} /> count is {count}
       </Button>

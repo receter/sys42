@@ -22,10 +22,10 @@ export default function Fixture() {
           {({ htmlFor }) => <TextInput id={htmlFor} type="tel" />}
         </FormField>
         <div className={classButtonGroup}>
-          <Button variant="primary" onPress={() => window.alert("Hi!")}>
+          <Button variant="primary" onClick={() => window.alert("Hi!")}>
             {label}
           </Button>
-          <Button onPress={() => window.alert("Hi!")}>Cancel</Button>
+          <Button onClick={() => window.alert("Hi!")}>Cancel</Button>
         </div>
         <div className={classCard}>
           <Stack spacing="md">
@@ -36,10 +36,10 @@ export default function Fixture() {
               {({ htmlFor }) => <TextInput id={htmlFor} type="tel" />}
             </FormField>
             <div className={classButtonGroupReverse}>
-              <Button variant="primary" onPress={() => window.alert("Hi!")}>
+              <Button variant="primary" onClick={() => window.alert("Hi!")}>
                 {label}
               </Button>
-              <Button onPress={() => window.alert("Hi!")}>Cancel</Button>
+              <Button onClick={() => window.alert("Hi!")}>Cancel</Button>
             </div>
           </Stack>
         </div>

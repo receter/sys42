@@ -26,12 +26,12 @@ function App() {
       <div className="card">
         <Button
           className="hello"
-          onPress={() => setCount((count) => count + 1)}
+          onClick={() => setCount((count) => count + 1)}
         >
           I have hello
           <SvgReact className={classInlineIcon} /> Count is count is {count}
         </Button>
-        <Button onPress={() => setCount((count) => count + 1)}>
+        <Button onClick={() => setCount((count) => count + 1)}>
           <img className={classInlineIcon} src={"./vite.svg"} alt="Vite logo" />{" "}
           Count is {count}
         </Button>
@@ -40,9 +40,7 @@ function App() {
         </p>
       </div>
       <div>
-        <Button data-hello="asdf" onPressEnd={() => {}}>
-          Button asddf
-        </Button>
+        <Button data-hello="asdf">Button asddf</Button>
 
         <ButtonA draggable={false} href="https://google.com">
           ButtonA

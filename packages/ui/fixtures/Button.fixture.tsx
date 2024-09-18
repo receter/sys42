@@ -32,7 +32,7 @@ export default function ButtonFixture() {
           size={size === "default" ? undefined : size}
           variant={variant === "default" ? undefined : variant}
           isFullWidth={isFullWidth}
-          isDisabled={isDisabled}
+          disabled={isDisabled}
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
           {withIcon && <>&nbsp;</>}
@@ -44,13 +44,15 @@ export default function ButtonFixture() {
           size={size === "default" ? undefined : size}
           variant={variant === "default" ? undefined : variant}
           isFullWidth={isFullWidth}
-          isDisabled={isDisabled}
           title="Go to GitHub"
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
           {withIcon && <>&nbsp;</>}
           {label}
         </ButtonA>
+        <div>
+          <a href="https://google.com">This is a link</a>
+        </div>
       </Stack>
     </>
   );
