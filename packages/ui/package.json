@@ -31,8 +31,6 @@
     "prepublishOnly": "pnpm -r --filter ui... build"
   },
   "dependencies": {
-    "@react-aria/button": "^3.9.3",
-    "@react-types/shared": "^3.23.1",
     "@sys42/utils": "workspace:^",
     "normalize.css": "^8.0.1",
     "react-merge-refs": "^2.1.1"
