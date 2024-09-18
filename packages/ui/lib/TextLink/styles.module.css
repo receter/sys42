@@ -1,0 +1,22 @@
+/*
+DOCS: In this special case the textLink class is not used per default
+as a "<a>" already styled globally.  
+*/
+
+/*
+.textLink {
+}
+*/
+
+/* .textLinkNotAnchor is applied to the element if it is not an anchor tag */
+/* in this case it needs to be styled to look like a link */
+.textLinkNotAnchor {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--sys42-textLink-color);
+}
+
+.textLink:active {
+  color: var(--sys42-textLink-color--active);
+}

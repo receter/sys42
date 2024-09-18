@@ -85,6 +85,12 @@
   /* Stack */
   --sys42-stack-spacing: var(--sys42-spacing-md);
 
+  /* Text Link */
+  /* Note: This color does also control the global color of <a> */
+  --sys42-textLink-color: #0000ee;
+  --sys42-textLink-color--visited: #551a8b;
+  --sys42-textLink-color--active: #ff0000;
+
   /* classCard */
   --sys42-card-background: #fff;
   --sys42-card-border-radius: var(--sys42-border-radius-md);
