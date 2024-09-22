@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/receter/sys42/compare/ui-v1.0.1...ui-v1.1.0) (2024-09-22)
+
+
+### Features
+
+* add size and isFullWidth to Button component ([5b95cda](https://github.com/receter/sys42/commit/5b95cda0c6ba814c5469291b64ee674b1ca0b259))
+* assign role="button" when element type of a &lt;Button&gt; is not a button ([749265a](https://github.com/receter/sys42/commit/749265a58fea4a914071c03487adf7889d6438a5))
+* remove react aria ([3637fda](https://github.com/receter/sys42/commit/3637fdae917c725fabf1cbb719a07d0802b9b0f0))
+
+
+### Bug Fixes
+
+* define border for button primary ([1295c01](https://github.com/receter/sys42/commit/1295c013ae581ace23a02360244c1b9bc800f9ee))
+* onClick and disabled instead of onPress and isDisabled in examples and fixture ([97dc6fe](https://github.com/receter/sys42/commit/97dc6fe6f2421e0e9126ec546f0121439d65c4c6))
+
 ## [1.0.1](https://github.com/receter/sys42/compare/ui-v1.0.0...ui-v1.0.1) (2024-09-14)
 
 
