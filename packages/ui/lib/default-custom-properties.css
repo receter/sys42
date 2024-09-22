@@ -51,7 +51,7 @@
 
   /* Button (primary) */
   --sys42-button_primary-background: #333;
-  --sys42-button_primary-border-color: #333;
+  --sys42-button_primary-border: 0;
   --sys42-button_primary-color: #fff;
   --sys42-button_primary-font-weight: normal;
   /* :hover */
