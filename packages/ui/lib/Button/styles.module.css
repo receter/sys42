@@ -1,12 +1,16 @@
 .button {
   font: inherit;
-  border: var(--sys42-button-border);
+  border: var(--sys42-button-border-width) solid
+    var(--sys42-button-border-color);
   font-size: var(--sys42-button-font-size);
   font-weight: var(--sys42-button-font-weight);
   line-height: var(--sys42-button-line-height);
   background: var(--sys42-button-background);
   color: var(--sys42-button-color);
-  padding: var(--sys42-button-padding-horiz) var(--sys42-button-padding-vert);
+  padding: calc(
+      var(--sys42-button-padding-horiz) - var(--sys42-button-border-width)
+    )
+    calc(var(--sys42-button-padding-vert) - var(--sys42-button-border-width));
   border-radius: var(--sys42-button-border-radius);
   box-shadow: var(--sys42-button-shadow);
   transition: var(--sys42-button-transition);
@@ -49,8 +53,9 @@
 
 .button_primary {
   background: var(--sys42-button_primary-background);
+  border: var(--sys42-button_primary-border-width) solid
+    var(--sys42-button_primary-border-color);
   color: var(--sys42-button_primary-color);
-  border-color: var(--sys42-button_primary-border-color);
   font-weight: var(
     --sys42-button_primary-font-weight,
     var(--sys42-button-font-weight)
