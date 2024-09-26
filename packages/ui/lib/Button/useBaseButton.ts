@@ -4,10 +4,7 @@ import { mergeRefs } from "react-merge-refs";
 import { Sys42Props } from "../types";
 
 // This are our props that we want to expose as an interface to the Button component
-interface ButtonProps {
-  /** Whether the button is disabled. */
-  isDisabled?: boolean;
-}
+interface ButtonProps {}
 
 export type BaseButtonProps<ElemProps> = Sys42Props<ButtonProps, ElemProps>;
 
