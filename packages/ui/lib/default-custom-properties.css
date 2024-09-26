@@ -19,7 +19,8 @@
 
   /* Button */
   --sys42-button-background: #eee;
-  --sys42-button-border: 1px solid #ddd;
+  --sys42-button-border-width: 1px;
+  --sys42-button-border-color: #ddd;
   --sys42-button-color: #333;
   --sys42-button-font-weight: normal;
   --sys42-button-font-size: 1rem;
@@ -33,6 +34,7 @@
   /* :hover */
   --sys42-button-background--hover: #eee;
   --sys42-button-border-color--hover: #aaa;
+  --sys42-button-border-width--hover: var(--sys42-button-border-width);
   --sys42-button-color--hover: #333;
   --sys42-button-shadow--hover: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --sys42-button-transition--hover: background-color 0.15s ease-in-out,
@@ -40,10 +42,12 @@
   /* :active */
   --sys42-button-background--active: #ddd;
   --sys42-button-border-color--active: #aaa;
+  --sys42-button-border-width--active: var(--sys42-button-border-width);
   --sys42-button-color--active: #333;
   /* :disabled */
   --sys42-button-background--disabled: #eee;
   --sys42-button-border-color--disabled: #ddd;
+  --sys42-button-border-width--disabled: var(--sys42-button-border-width);
   --sys42-button-color--disabled: #999;
   /* :focus-visible */
   --sys42-button-outline--focus-visible: 0.125rem solid #333;
@@ -51,20 +55,30 @@
 
   /* Button (primary) */
   --sys42-button_primary-background: #333;
-  --sys42-button_primary-border: 0;
+  --sys42-button_primary-border-color: #333;
+  --sys42-button_primary-border-width: 0;
   --sys42-button_primary-color: #fff;
   --sys42-button_primary-font-weight: normal;
   /* :hover */
   --sys42-button_primary-background--hover: #444;
   --sys42-button_primary-border-color--hover: #444;
+  --sys42-button_primary-border-width--hover: var(
+    --sys42-button_primary-border-width
+  );
   --sys42-button_primary-color--hover: #fff;
   /* :active */
   --sys42-button_primary-background--active: #333;
   --sys42-button_primary-border-color--active: #333;
+  --sys42-button_primary-border-width--active: var(
+    --sys42-button_primary-border-width
+  );
   --sys42-button_primary-color--active: #fff;
   /* :disabled */
   --sys42-button_primary-background--disabled: #aaa;
   --sys42-button_primary-border-color--disabled: #aaa;
+  --sys42-button_primary-border-width--disabled: var(
+    --sys42-button_primary-border-width
+  );
   --sys42-button_primary-color--disabled: #eee;
 
   /* Button (size: lg) */
@@ -78,7 +92,8 @@
   /* Input Text */
   --sys42-input-text-background: #fff;
   --sys42-input-text-border-radius: var(--sys42-border-radius-sm);
-  --sys42-input-text-border: 1px solid #ddd;
+  --sys42-input-text-border-width: 1px;
+  --sys42-input-text-border-color: #ddd;
   --sys42-input-text-padding-horiz: 0.5rem;
   --sys42-input-text-padding-vert: 0.5rem;
 
@@ -94,7 +109,8 @@
   /* classCard */
   --sys42-card-background: #fff;
   --sys42-card-border-radius: var(--sys42-border-radius-md);
-  --sys42-card-border: 1px solid #ddd;
+  --sys42-card-border-width: 1px;
+  --sys42-card-border-color: #ddd;
   --sys42-card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --sys42-card-padding-vert: var(--sys42-spacing-md);
   --sys42-card-padding-horiz: var(--sys42-spacing-md);
