@@ -26,7 +26,6 @@ export function useBaseButton<
   return {
     buttonProps: {
       type: elementType === "button" ? "button" : undefined,
-      role: elementType !== "button" ? "button" : undefined,
       ...props,
     },
     buttonRef: mergeRefs([forwardedRef, ref]),
