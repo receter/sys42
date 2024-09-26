@@ -1,6 +1,16 @@
 /* import normalize.css install with npm*/
 @import url(../node_modules/normalize.css/normalize.css);
 
+:root {
+  font-family: var(--sys42-font-family);
+  line-height: var(--sys42-line-height);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 h1,
 h2,
 h3,
@@ -11,12 +21,15 @@ p {
   margin-bottom: 0;
 }
 
-:root {
-  font-family: var(--sys42-font-family);
-  line-height: var(--sys42-line-height);
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+a {
+  color: var(--sys42-textLink-color);
+}
+
+a:visited {
+  color: var(--sys42-textLink-color--visited);
+}
+
+a:active,
+a:visited:active {
+  color: var(--sys42-textLink-color--active);
 }
