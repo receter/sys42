@@ -18,68 +18,77 @@
   --sys42-border-radius-lg: 1rem;
 
   /* Button */
-  --sys42-button-background: #eee;
+  /* There is a bug with border-width in Firefox when values differ between normal and :hover */
+  --sys42-button-background: #dfe1f9;
+  --sys42-button-border-color: transparent;
   --sys42-button-border-width: 1px;
-  --sys42-button-border-color: #ddd;
-  --sys42-button-color: #333;
+  --sys42-button-color: #171b2c;
   --sys42-button-font-weight: normal;
   --sys42-button-font-size: 1rem;
   --sys42-button-line-height: inherit;
   --sys42-button-padding-horiz: 0.5rem;
   --sys42-button-padding-vert: 1rem;
   --sys42-button-border-radius: var(--sys42-border-radius-md);
-  --sys42-button-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --sys42-button-box-shadow: none;
   --sys42-button-transition: none;
 
-  /* :hover */
-  --sys42-button-background--hover: #eee;
-  --sys42-button-border-color--hover: #aaa;
-  --sys42-button-border-width--hover: var(--sys42-button-border-width);
-  --sys42-button-color--hover: #333;
-  --sys42-button-shadow--hover: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --sys42-button-transition--hover: background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  /* :active */
-  --sys42-button-background--active: #ddd;
-  --sys42-button-border-color--active: #aaa;
-  --sys42-button-border-width--active: var(--sys42-button-border-width);
-  --sys42-button-color--active: #333;
-  /* :disabled */
-  --sys42-button-background--disabled: #eee;
-  --sys42-button-border-color--disabled: #ddd;
-  --sys42-button-border-width--disabled: var(--sys42-button-border-width);
-  --sys42-button-color--disabled: #999;
   /* :focus-visible */
-  --sys42-button-outline--focus-visible: 0.125rem solid #333;
+  --sys42-button-outline--focus-visible: 0.125rem solid #505b92;
   --sys42-button-outline-offset--focus-visible: 0.125rem;
 
+  /* :hover */
+  --sys42-button-background--hover: #d3d4ec;
+  --sys42-button-border-color--hover: var(--sys42-button-border-color);
+  --sys42-button-box-shadow--hover: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --sys42-button-color--hover: var(--sys42-button-color);
+  --sys42-button-transition--hover: background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  /* :active */
+  --sys42-button-background--active: var(--sys42-button-background--hover);
+  --sys42-button-border-color--active: var(--sys42-button-border-color--hover);
+  --sys42-button-box-shadow--active: none;
+  --sys42-button-color--active: var(--sys42-button-color--hover);
+  --sys42-button-transition--active: none;
+
+  /* :disabled */
+  --sys42-button-background--disabled: rgba(29, 27, 32, 0.12);
+  --sys42-button-border-color--disabled: transparent;
+  --sys42-button-color--disabled: rgba(
+    from var(--sys42-button-color) r g b / 38%
+  );
+
   /* Button (primary) */
-  --sys42-button_primary-background: #333;
-  --sys42-button_primary-border-color: #333;
-  --sys42-button_primary-border-width: 0;
+  --sys42-button_primary-background: #505b92;
+  --sys42-button_primary-border-color: transparent;
   --sys42-button_primary-color: #fff;
   --sys42-button_primary-font-weight: normal;
+
   /* :hover */
-  --sys42-button_primary-background--hover: #444;
-  --sys42-button_primary-border-color--hover: #444;
-  --sys42-button_primary-border-width--hover: var(
-    --sys42-button_primary-border-width
-  );
-  --sys42-button_primary-color--hover: #fff;
+  --sys42-button_primary-background--hover: #5e689b;
+  --sys42-button_primary-border-color--hover: transparent;
+  --sys42-button_primary-color--hover: var(--sys42-button_primary-color);
+
   /* :active */
-  --sys42-button_primary-background--active: #333;
-  --sys42-button_primary-border-color--active: #333;
-  --sys42-button_primary-border-width--active: var(
-    --sys42-button_primary-border-width
+  --sys42-button_primary-background--active: var(
+    --sys42-button_primary-background--hover
   );
-  --sys42-button_primary-color--active: #fff;
+  --sys42-button_primary-border-color--active: var(
+    --sys42-button_primary-border-color--hover
+  );
+  --sys42-button_primary-color--active: var(
+    --sys42-button_primary-color--hover
+  );
+
   /* :disabled */
-  --sys42-button_primary-background--disabled: #aaa;
-  --sys42-button_primary-border-color--disabled: #aaa;
-  --sys42-button_primary-border-width--disabled: var(
-    --sys42-button_primary-border-width
+  --sys42-button_primary-background--disabled: var(
+    --sys42-button-background--disabled
   );
-  --sys42-button_primary-color--disabled: #eee;
+  --sys42-button_primary-border-color--disabled: var(
+    --sys42-button-border-color--disabled
+  );
+  --sys42-button_primary-color--disabled: var(--sys42-button-color--disabled);
 
   /* Button (size: lg) */
   --sys42-button_lg-font-size: var(--sys42-button-font-size);
@@ -108,7 +117,7 @@
 
   /* classCard */
   --sys42-card-background: #fff;
-  --sys42-card-border-radius: var(--sys42-border-radius-md);
+  --sys42-card-border-radius: var(--sys42-button-border-radius);
   --sys42-card-border-width: 1px;
   --sys42-card-border-color: #ddd;
   --sys42-card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);

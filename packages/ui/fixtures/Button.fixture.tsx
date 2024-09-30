@@ -1,7 +1,13 @@
 import { useRef } from "react";
 import { useFixtureSelect, useValue } from "react-cosmos/client";
 
-import { Button, ButtonA, classInlineIcon, Stack } from "../lib/main";
+import {
+  Button,
+  ButtonA,
+  classButtonGroup,
+  classInlineIcon,
+  Stack,
+} from "../lib/main";
 
 import SvgIconFocusLog from "./resources/icon-focus-log.svg?react";
 
@@ -22,8 +28,7 @@ export default function ButtonFixture() {
   return (
     <>
       <Stack>
-        <h1>Button</h1>
-        <div>{"<Button>"}</div>
+        <h2>Button</h2>
         <Button
           ref={refButton}
           onClick={() => {
@@ -38,7 +43,7 @@ export default function ButtonFixture() {
           {withIcon && <>&nbsp;</>}
           {label}
         </Button>
-        <div>{"<ButtonA>"}</div>
+        <h2>ButtonA</h2>
         <ButtonA
           href="https://github.com/receter/sys42"
           size={size === "default" ? undefined : size}
@@ -50,8 +55,26 @@ export default function ButtonFixture() {
           {withIcon && <>&nbsp;</>}
           {label}
         </ButtonA>
-        <div>
-          <a href="https://google.com">This is a link</a>
+        <h2>Button mania</h2>
+        <div className={classButtonGroup}>
+          <Button size="lg">Default</Button>
+          <Button size="lg" disabled>
+            Default
+          </Button>
+          <Button>Default</Button>
+          <Button disabled>Default</Button>
+        </div>
+        <div className={classButtonGroup}>
+          <Button variant="primary" size="lg">
+            Primary
+          </Button>
+          <Button variant="primary" size="lg" disabled>
+            Primary
+          </Button>
+          <Button variant="primary">Primary</Button>
+          <Button variant="primary" disabled>
+            Primary
+          </Button>
         </div>
       </Stack>
     </>

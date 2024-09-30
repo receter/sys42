@@ -6,7 +6,6 @@
   font-weight: var(--sys42-button-font-weight);
   line-height: var(--sys42-button-line-height);
   background: var(--sys42-button-background);
-  color: var(--sys42-button-color);
   padding: calc(
       var(--sys42-button-padding-horiz) - var(--sys42-button-border-width)
     )
@@ -16,8 +15,13 @@
   transition: var(--sys42-button-transition);
   display: inline-block;
   text-align: center;
-  text-decoration: none;
   cursor: pointer;
+}
+
+.button,
+a.button {
+  color: var(--sys42-button-color);
+  text-decoration: none;
 }
 
 .button:focus {
@@ -31,61 +35,64 @@
 
 .button:hover {
   background: var(--sys42-button-background--hover);
-  box-shadow: var(--sys42-button-shadow--hover);
-  transition: var(--sys42-button-transition--hover);
   border-color: var(--sys42-button-border-color--hover);
+  box-shadow: var(--sys42-button-box-shadow--hover);
+  color: var(--sys42-button-color--hover);
+  transition: var(--sys42-button-transition--hover);
 }
 
 .button:active {
   background: var(--sys42-button-background--active);
-  transition: var(--sys42-button-transition--active);
   border-color: var(--sys42-button-border-color--active);
+  box-shadow: var(--sys42-button-box-shadow--active);
+  color: var(--sys42-button-color--active);
+  transition: var(--sys42-button-transition--active);
 }
 
 .button:disabled,
 .button[aria-disabled="true"] {
   background: var(--sys42-button-background--disabled);
-  color: var(--sys42-button-color--disabled);
   border-color: var(--sys42-button-border-color--disabled);
-  box-shadow: var(--sys42-button-shadow);
+  box-shadow: var(
+    --sys42-button-box-shadow
+  ); /* When disabled use the default button shadow */
+  color: var(--sys42-button-color--disabled);
   cursor: default;
 }
 
 .button_primary {
   background: var(--sys42-button_primary-background);
-  border: var(--sys42-button_primary-border-width) solid
-    var(--sys42-button_primary-border-color);
+  border-color: var(--sys42-button_primary-border-color);
   color: var(--sys42-button_primary-color);
-  font-weight: var(
-    --sys42-button_primary-font-weight,
-    var(--sys42-button-font-weight)
-  );
+  font-weight: var(--sys42-button_primary-font-weight);
 }
 
 .button_primary:hover {
   background: var(--sys42-button_primary-background--hover);
-  color: var(--sys42-button_primary-color--hover);
   border-color: var(--sys42-button_primary-border-color--hover);
+  color: var(--sys42-button_primary-color--hover);
 }
 
 .button_primary:active {
   background: var(--sys42-button_primary-background--active);
-  transition: var(--sys42-button_primary-transition--active);
   border-color: var(--sys42-button_primary-border-color--active);
+  color: var(--sys42-button_primary-color--active);
 }
 
 .button_primary:disabled,
 .button_primary[aria-disabled="true"] {
   background: var(--sys42-button_primary-background--disabled);
-  color: var(--sys42-button_primary-color--disabled);
   border-color: var(--sys42-button_primary-border-color--disabled);
+  color: var(--sys42-button_primary-color--disabled);
 }
 
 .button_lg {
   font-size: var(--sys42-button_lg-font-size);
   border-radius: var(--sys42-button_lg-border-radius);
-  padding: var(--sys42-button_lg-padding-horiz)
-    var(--sys42-button_lg-padding-vert);
+  padding: calc(
+      var(--sys42-button_lg-padding-horiz) - var(--sys42-button-border-width)
+    )
+    calc(var(--sys42-button_lg-padding-vert) - var(--sys42-button-border-width));
 }
 
 .button_fullWidth {
