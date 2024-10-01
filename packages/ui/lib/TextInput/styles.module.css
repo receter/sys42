@@ -1,4 +1,5 @@
 .textInput {
+  box-sizing: border-box;
   font-size: 1em;
   background: var(--sys42-input-text-background);
   border: var(--sys42-input-text-border-width) solid

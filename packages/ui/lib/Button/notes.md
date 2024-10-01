@@ -1,0 +1,1 @@
+- buttons have box-sizing: border-box; by default
