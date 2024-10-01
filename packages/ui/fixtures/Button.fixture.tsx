@@ -23,7 +23,6 @@ export default function ButtonFixture() {
     defaultValue: "default",
   });
   const [isDisabled] = useValue("Disabled", { defaultValue: false });
-  const [isFullWidth] = useValue("isFullWidth", { defaultValue: false });
   const refButton = useRef(null);
   return (
     <>
@@ -36,7 +35,6 @@ export default function ButtonFixture() {
           }}
           size={size === "default" ? undefined : size}
           variant={variant === "default" ? undefined : variant}
-          isFullWidth={isFullWidth}
           disabled={isDisabled}
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}
@@ -48,7 +46,6 @@ export default function ButtonFixture() {
           href="https://github.com/receter/sys42"
           size={size === "default" ? undefined : size}
           variant={variant === "default" ? undefined : variant}
-          isFullWidth={isFullWidth}
           title="Go to GitHub"
         >
           {withIcon && <SvgIconFocusLog className={classInlineIcon} />}

@@ -94,7 +94,3 @@ a.button {
     )
     calc(var(--sys42-button_lg-padding-vert) - var(--sys42-button-border-width));
 }
-
-.button_fullWidth {
-  width: 100%;
-}

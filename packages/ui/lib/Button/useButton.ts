@@ -13,14 +13,13 @@ import styles from "./styles.module.css";
 export type ButtonProps<ElemProps> = BaseButtonProps<ElemProps> & {
   variant?: "primary";
   size?: "lg";
-  isFullWidth?: boolean;
 };
 
 export function useButton<
   Props extends ButtonProps<HTMLAttributes<HTMLElement>>,
   Elem extends HTMLElement,
 >(options: UseBaseButtonOptions<Props, Elem>) {
-  const { variant, size, isFullWidth, ...restProps } = options.props;
+  const { variant, size, ...restProps } = options.props;
 
   const button = useBaseButton({
     ...options,
@@ -31,7 +30,6 @@ export function useButton<
     button.buttonProps.className,
     variant === "primary" && styles.button_primary,
     size === "lg" && styles.button_lg,
-    isFullWidth && styles.button_fullWidth,
     styles.button,
   );
 
