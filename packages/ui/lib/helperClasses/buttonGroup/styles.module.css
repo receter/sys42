@@ -1,11 +1,12 @@
 .buttonGroup {
-  display: flex;
   align-items: baseline;
+  display: flex;
   gap: 1rem;
 }
 
 .buttonGroupReverse {
+  align-items: baseline;
   display: flex;
-  gap: 1rem;
   flex-direction: row-reverse;
+  gap: 1rem;
 }
