@@ -17,6 +17,11 @@
   --sys42-border-radius-md: 0.5rem;
   --sys42-border-radius-lg: 1rem;
 
+  /* Focus style */
+  /* This is used for :focus-visible (buttons) and :focus (inputs) */
+  --sys42-focus-outline: 0.125rem solid #505b92;
+  --sys42-focus-outline-offset: 0.125rem;
+
   /* Button */
   /* There is a bug with border-width in Firefox when values differ between normal and :hover */
   --sys42-button-background: #dfe1f9;
@@ -31,10 +36,6 @@
   --sys42-button-border-radius: var(--sys42-border-radius-md);
   --sys42-button-box-shadow: none;
   --sys42-button-transition: none;
-
-  /* :focus-visible */
-  --sys42-button-outline--focus-visible: 0.125rem solid #505b92;
-  --sys42-button-outline-offset--focus-visible: 0.125rem;
 
   /* :hover */
   --sys42-button-background--hover: #d3d4ec;

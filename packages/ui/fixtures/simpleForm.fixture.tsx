@@ -18,7 +18,7 @@ export default function Fixture() {
         <FormField label="What is your name?">
           {({ htmlFor }) => <TextInput id={htmlFor} />}
         </FormField>
-        <FormField label="What is your number?" htmlFor="my-custom-id">
+        <FormField label="What is your number?">
           {({ htmlFor }) => <TextInput id={htmlFor} type="tel" />}
         </FormField>
         <div className={classButtonGroup}>

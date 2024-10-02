@@ -29,8 +29,8 @@ a.button {
 }
 
 .button:focus-visible {
-  outline: var(--sys42-button-outline--focus-visible);
-  outline-offset: var(--sys42-button-outline-offset--focus-visible);
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
 }
 
 .button:hover {
