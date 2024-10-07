@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0](https://github.com/receter/sys42/compare/ui-v1.1.0...ui-v1.2.0) (2024-10-07)
+
+
+### Features
+
+* improved css variables for button ([9ee341f](https://github.com/receter/sys42/commit/9ee341f438ae2afad9ba3697a6b7f53db99e2f9d))
+* set content elements margin to 0 and add a content class for formating content nicely ([e8dc94a](https://github.com/receter/sys42/commit/e8dc94a9f2a9224ce9336698b38f3b9a16565501))
+* Switch to border width and color vars instead of border shorthand ([1c2f411](https://github.com/receter/sys42/commit/1c2f411c87fc0242e0d70ca826e78521a3ff7cd5))
+
+
+### Bug Fixes
+
+* better CSS custom property name for focus styles ([9045ec3](https://github.com/receter/sys42/commit/9045ec35262fd6c73281ea576710d570b11f7079))
+* box-sizing border-box for textInput ([6449858](https://github.com/receter/sys42/commit/6449858f19b840a9b98dc80fd60c64f07e0e8ed3))
+* buttonGroupReverse align baseline ([32d9efd](https://github.com/receter/sys42/commit/32d9efde611a0d5853025d2f8009aa4bce435803))
+* do not always add role button ([2a24e63](https://github.com/receter/sys42/commit/2a24e63f608a2d5b133958ff381d4cb6f128f5bd))
+* remove isFullWidth from button ([a7287af](https://github.com/receter/sys42/commit/a7287af3679a63f95550b396bab3cd24151c152a))
+* remove unused isDisabled prop from Button interface ([3c42114](https://github.com/receter/sys42/commit/3c42114cbd3589e9d0d140bb0dc5617f0672d1f2))
+
 ## [1.1.0](https://github.com/receter/sys42/compare/ui-v1.0.1...ui-v1.1.0) (2024-09-22)
 
 
