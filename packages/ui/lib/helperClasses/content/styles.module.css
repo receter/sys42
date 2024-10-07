@@ -1,0 +1,25 @@
+.classContent h1,
+.classContent h2,
+.classContent h3,
+.classContent h4,
+.classContent h5,
+.classContent h6,
+.classContent p,
+.classContent ul,
+.classContent ol,
+.classContent dl,
+.classContent blockquote,
+.classContent pre,
+.classContent table,
+.classContent figure,
+.classContent hr {
+  margin: revert;
+}
+
+.classContent > *:last-child {
+  margin-bottom: 0;
+}
+
+.classContent > *:first-child {
+  margin-top: 0;
+}

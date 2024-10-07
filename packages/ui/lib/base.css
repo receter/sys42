@@ -17,8 +17,16 @@ h3,
 h4,
 h5,
 h6,
-p {
-  margin-bottom: 0;
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+table,
+figure,
+hr {
+  margin: 0;
 }
 
 a {

@@ -27,5 +27,6 @@ export {
   classButtonGroupReverse,
 } from "./helperClasses/buttonGroup";
 export { classCard } from "./helperClasses/card";
+export { classContent } from "./helperClasses/content";
 export { classInlineIcon } from "./helperClasses/inlineIcon";
 export { classTest } from "./helperClasses/test";
