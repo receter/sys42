@@ -22,11 +22,11 @@ export function filterKeyEsc(handler: (e: React.KeyboardEvent) => void) {
 
 export function accessibleOnClick(
   handler: (e: React.KeyboardEvent) => void,
-  tabIndex: number
+  tabIndex?: number
 ) {
   return {
     role: "button",
-    tabIndex: tabIndex || 0,
+    tabIndex: tabIndex ?? 0,
     onKeyDown: filterKeyEnter(handler),
     onClick: handler,
   };
