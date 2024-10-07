@@ -21,7 +21,7 @@ export function filterKeyEsc(handler: (e: React.KeyboardEvent) => void) {
 }
 
 export function accessibleOnClick(
-  handler: (e: React.KeyboardEvent) => void,
+  handler: (e: React.KeyboardEvent | React.MouseEvent) => void,
   tabIndex?: number
 ) {
   return {
