@@ -12,6 +12,16 @@ export function filterKeyEnter(handler: (e: React.KeyboardEvent) => void) {
   };
 }
 
+export function filterKeyTriggerButton(
+  handler: (e: React.KeyboardEvent) => void
+) {
+  return (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handler(e);
+    }
+  };
+}
+
 export function filterKeyEsc(handler: (e: React.KeyboardEvent) => void) {
   return (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
@@ -27,7 +37,7 @@ export function accessibleOnClick(
   return {
     role: "button",
     tabIndex: tabIndex ?? 0,
-    onKeyDown: filterKeyEnter(handler),
+    onKeyDown: filterKeyTriggerButton(handler),
     onClick: handler,
   };
 }
