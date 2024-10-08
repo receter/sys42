@@ -104,6 +104,7 @@
   --sys42-input-text-border-radius: var(--sys42-border-radius-sm);
   --sys42-input-text-border-width: 1px;
   --sys42-input-text-border-color: #ddd;
+  --sys42-input-text-line-height: inherit;
   --sys42-input-text-padding-horiz: 0.5rem;
   --sys42-input-text-padding-vert: 0.5rem;
 
