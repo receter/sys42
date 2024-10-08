@@ -7,9 +7,9 @@
   line-height: var(--sys42-button-line-height);
   background: var(--sys42-button-background);
   padding: calc(
-      var(--sys42-button-padding-horiz) - var(--sys42-button-border-width)
+      var(--sys42-button-padding-vert) - var(--sys42-button-border-width)
     )
-    calc(var(--sys42-button-padding-vert) - var(--sys42-button-border-width));
+    calc(var(--sys42-button-padding-horiz) - var(--sys42-button-border-width));
   border-radius: var(--sys42-button-border-radius);
   box-shadow: var(--sys42-button-shadow);
   transition: var(--sys42-button-transition);
@@ -90,7 +90,9 @@ a.button {
   font-size: var(--sys42-button_lg-font-size);
   border-radius: var(--sys42-button_lg-border-radius);
   padding: calc(
-      var(--sys42-button_lg-padding-horiz) - var(--sys42-button-border-width)
+      var(--sys42-button_lg-padding-vert) - var(--sys42-button-border-width)
     )
-    calc(var(--sys42-button_lg-padding-vert) - var(--sys42-button-border-width));
+    calc(
+      var(--sys42-button_lg-padding-horiz) - var(--sys42-button-border-width)
+    );
 }

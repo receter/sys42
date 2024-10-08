@@ -31,8 +31,8 @@
   --sys42-button-font-weight: normal;
   --sys42-button-font-size: 1rem;
   --sys42-button-line-height: inherit;
-  --sys42-button-padding-horiz: 0.5rem;
-  --sys42-button-padding-vert: 1rem;
+  --sys42-button-padding-horiz: 1rem;
+  --sys42-button-padding-vert: 0.5rem;
   --sys42-button-border-radius: var(--sys42-border-radius-md);
   --sys42-button-box-shadow: none;
   --sys42-button-transition: none;
