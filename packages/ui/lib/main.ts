@@ -1,5 +1,5 @@
 export { Button, ButtonA } from "./Button";
-export { FormField } from "./FormField";
+export { FormField, FormFieldContext } from "./FormField";
 export { Label } from "./Label";
 export { Stack } from "./Stack";
 export { TextLink, TextLinkButton } from "./TextLink";

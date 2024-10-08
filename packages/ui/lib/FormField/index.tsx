@@ -5,7 +5,7 @@ import { Label } from "../Label";
 import { FormFieldContext } from "./context";
 import { FormFieldProps, useFormField } from "./useFormField";
 
-export const FormField = forwardRef<
+const FormField = forwardRef<
   HTMLDivElement,
   FormFieldProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
@@ -23,3 +23,5 @@ export const FormField = forwardRef<
     </FormFieldContext.Provider>
   );
 });
+
+export { FormField, FormFieldContext };
