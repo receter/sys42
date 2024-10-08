@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/receter/sys42/compare/ui-v1.2.1...ui-v1.3.0) (2024-10-08)
+
+
+### Features
+
+* add line-height variable for input-text ([7ae2bff](https://github.com/receter/sys42/commit/7ae2bff4a6d12fef1fbbb9629d9a5815c5a99815))
+
 ## [1.2.1](https://github.com/receter/sys42/compare/ui-v1.2.0...ui-v1.2.1) (2024-10-08)
 
 
