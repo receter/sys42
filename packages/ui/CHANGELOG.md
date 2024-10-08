@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/receter/sys42/compare/ui-v1.2.0...ui-v1.2.1) (2024-10-08)
+
+
+### Bug Fixes
+
+* button padding vert/horiz swapped ([5790b82](https://github.com/receter/sys42/commit/5790b822d0bcf2ce6872f646a5626f70ac551e62))
+* export FormFieldContext ([c1c1a85](https://github.com/receter/sys42/commit/c1c1a85c19249f381d154df743cf9957cbe51799))
+
 ## [1.2.0](https://github.com/receter/sys42/compare/ui-v1.1.0...ui-v1.2.0) (2024-10-07)
 
 

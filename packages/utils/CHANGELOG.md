@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/receter/sys42/compare/utils-v1.0.1...utils-v1.1.0) (2024-10-08)
+
+
+### Features
+
+* add filterKeyTriggerButton and accessibleOnClick also triggers with Spacebar ([f92eed5](https://github.com/receter/sys42/commit/f92eed571ae2029d840fb54859eefec871bee8c2))
+
 ## [1.0.1](https://github.com/receter/sys42/compare/utils-v1.0.0...utils-v1.0.1) (2024-10-07)
 
 
