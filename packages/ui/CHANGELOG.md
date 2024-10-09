@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/receter/sys42/compare/ui-v1.3.0...ui-v1.3.1) (2024-10-09)
+
+
+### Bug Fixes
+
+* remove font-family and line-height vars in favor of setting it directly ([62aac7e](https://github.com/receter/sys42/commit/62aac7e8d978185f12bca38cf619af5cd3c57f2c))
+
 ## [1.3.0](https://github.com/receter/sys42/compare/ui-v1.2.1...ui-v1.3.0) (2024-10-08)
 
 
