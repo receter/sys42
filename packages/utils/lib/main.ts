@@ -4,6 +4,8 @@ export function concatClassNames(
   return args.filter((item) => !!item).join(" ");
 }
 
+export const cn = concatClassNames;
+
 export function filterKeyEnter(handler: (e: React.KeyboardEvent) => void) {
   return (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
