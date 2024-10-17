@@ -1,12 +1,12 @@
 :root {
   /* Spacing */
-  --sys42-spacing-xxs: 0.125rem;
+  --sys42-spacing-2xs: 0.125rem;
   --sys42-spacing-xs: 0.25rem;
   --sys42-spacing-sm: 0.5rem;
   --sys42-spacing-md: 1rem;
   --sys42-spacing-lg: 2rem;
   --sys42-spacing-xl: 4rem;
-  --sys42-spacing-xxl: 8rem;
+  --sys42-spacing-2xl: 8rem;
 
   /* Border radius */
   --sys42-border-radius-sm: 0.25rem;
