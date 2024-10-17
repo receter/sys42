@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/receter/sys42/compare/utils-v1.1.0...utils-v1.2.0) (2024-10-17)
+
+
+### Features
+
+* add alias "cn" for concatClassNames function ([1ed1ab2](https://github.com/receter/sys42/commit/1ed1ab27e770535617b4af5ae8ed861e48e27ee3))
+
 ## [1.1.0](https://github.com/receter/sys42/compare/utils-v1.0.1...utils-v1.1.0) (2024-10-08)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/receter/sys42/compare/ui-v1.3.1...ui-v1.4.0) (2024-10-17)
+
+
+### Features
+
+* improved naming for css spacing variables ([f9f7259](https://github.com/receter/sys42/commit/f9f72596edf8505a0980499c56d5288a90130b45))
+
 ## [1.3.1](https://github.com/receter/sys42/compare/ui-v1.3.0...ui-v1.3.1) (2024-10-09)
 
 
