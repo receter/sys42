@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { concatClassNames as cn } from "@sys42/utils";
+import { cn } from "@sys42/utils";
 
 import {
   BaseFormFieldProps,
