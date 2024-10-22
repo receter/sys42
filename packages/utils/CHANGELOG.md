@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/receter/sys42/compare/utils-v1.2.0...utils-v1.3.0) (2024-10-22)
+
+
+### Features
+
+* hooks usePersistentState and usePrevious ([5174fd4](https://github.com/receter/sys42/commit/5174fd43c2ba8e11b265c207b27581e7319764de))
+
 ## [1.2.0](https://github.com/receter/sys42/compare/utils-v1.1.0...utils-v1.2.0) (2024-10-17)
 
 
