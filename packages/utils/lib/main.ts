@@ -78,3 +78,6 @@ export function accessibleOnClick(
     onClick: handler,
   };
 }
+
+export { usePersistentState } from "./hooks/usePersistentState";
+export { usePrevious } from "./hooks/usePrevious";
