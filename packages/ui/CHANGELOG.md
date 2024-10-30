@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/receter/sys42/compare/ui-v1.4.0...ui-v1.5.0) (2024-10-30)
+
+
+### Features
+
+* add OverflowMenu component ([17cd47d](https://github.com/receter/sys42/commit/17cd47d75a616f897423432d1fe1d54d4846e891))
+
 ## [1.4.0](https://github.com/receter/sys42/compare/ui-v1.3.1...ui-v1.4.0) (2024-10-17)
 
 
