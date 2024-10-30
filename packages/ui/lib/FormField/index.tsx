@@ -24,4 +24,4 @@ const FormField = forwardRef<
   );
 });
 
-export { FormField, FormFieldContext };
+export { FormField };

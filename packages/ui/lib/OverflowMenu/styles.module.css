@@ -1,0 +1,78 @@
+:root {
+  /* 
+    TODO: This variable is not available if OverflowMenu is not in use and I need a decision if I want this
+   */
+  --sys42-overflow-menu-background: #fff;
+}
+
+.overflowMenu {
+  position: relative;
+  width: fit-content;
+}
+
+.overflowMenuItem {
+  background: none;
+  border: 0;
+  color: inherit;
+  display: block;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border-radius: var(--sys42-button-border-radius);
+}
+
+.overflowMenuItem:hover {
+  background: color-mix(
+    in srgb,
+    currentColor 8%,
+    var(--sys42-overflow-menu-background)
+  );
+}
+
+.overflowMenu > button {
+  border: 0;
+  cursor: pointer;
+  background: var(--sys42-button-background);
+  color: var(--sys42-button-color);
+  padding: var(--sys42-button-padding-vert);
+  line-height: var(--sys42-button-line-height);
+  box-sizing: content-box;
+  min-width: 1lh;
+  border-radius: 50%;
+}
+
+.overflowMenu > button:focus {
+  outline: 0;
+}
+
+.overflowMenu > button:hover {
+  background: var(--sys42-button-background--hover);
+}
+
+.overflowMenu > button:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+
+.overflowMenu > button + div {
+  background: var(--sys42-overflow-menu-background);
+  box-shadow: var(--sys42-card-shadow);
+  padding: var(--sys42-spacing-sm);
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--sys42-spacing-sm));
+  right: 0;
+  min-width: 10rem;
+  border-radius: var(--sys42-border-radius-md);
+}
+
+.overflowMenu_isOpen > button + div {
+  display: block;
+  z-index: 999;
+}
+
+.svgTriggerIcon {
+  width: 1em;
+  vertical-align: middle;
+}
