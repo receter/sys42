@@ -8,6 +8,7 @@
 .overflowMenu {
   position: relative;
   width: fit-content;
+  height: fit-content;
 }
 
 .overflowMenuItem {
@@ -58,12 +59,13 @@
 .overflowMenu > button + div {
   background: var(--sys42-overflow-menu-background);
   box-shadow: var(--sys42-card-shadow);
+  box-sizing: border-box;
   padding: var(--sys42-spacing-sm);
   display: none;
   position: absolute;
   top: calc(100% + var(--sys42-spacing-sm));
   right: 0;
-  min-width: 10rem;
+  width: max-content;
   border-radius: var(--sys42-border-radius-md);
 }
 

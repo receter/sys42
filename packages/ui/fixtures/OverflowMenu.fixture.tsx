@@ -28,6 +28,20 @@ export default function OverflowMenuFixture() {
           <h2>Look right →</h2>
           <OverflowMenu ref={refMenu}>
             <OverflowMenu.Item onClick={handleClickItem1}>
+              This item is a little longer, in fact it is extremely long.
+            </OverflowMenu.Item>
+            <OverflowMenu.Item onClick={handleClickItem2}>
+              Item 2
+            </OverflowMenu.Item>
+            <OverflowMenu.Item onClick={handleClickItem3}>
+              Item 3
+            </OverflowMenu.Item>
+          </OverflowMenu>
+        </div>
+        <div className={styles.header}>
+          <h2>Small items →</h2>
+          <OverflowMenu ref={refMenu}>
+            <OverflowMenu.Item onClick={handleClickItem1}>
               Item 1
             </OverflowMenu.Item>
             <OverflowMenu.Item onClick={handleClickItem2}>
@@ -36,6 +50,27 @@ export default function OverflowMenuFixture() {
             <OverflowMenu.Item onClick={handleClickItem3}>
               Item 3
             </OverflowMenu.Item>
+          </OverflowMenu>
+        </div>
+
+        <div className={styles.header}>
+          <h2>Max-width →</h2>
+          <OverflowMenu ref={refMenu}>
+            <div
+              style={{
+                maxWidth: "20rem",
+              }}
+            >
+              <OverflowMenu.Item onClick={handleClickItem1}>
+                This item is a little longer, in fact it is extremely long.
+              </OverflowMenu.Item>
+              <OverflowMenu.Item onClick={handleClickItem2}>
+                Item 2
+              </OverflowMenu.Item>
+              <OverflowMenu.Item onClick={handleClickItem3}>
+                Item 3
+              </OverflowMenu.Item>
+            </div>
           </OverflowMenu>
         </div>
       </Stack>
