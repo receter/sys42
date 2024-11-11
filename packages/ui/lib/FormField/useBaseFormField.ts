@@ -1,8 +1,6 @@
 import React, { HTMLAttributes, useState } from "react";
 import { isArray, uniqueId } from "lodash-es";
 
-import { Sys42Props } from "../types";
-
 import { FormFieldContext } from "./context";
 
 export type BaseFormFieldProps<ElemProps> = Sys42Props<

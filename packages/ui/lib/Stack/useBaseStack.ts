@@ -2,7 +2,6 @@ import React, { HTMLAttributes, useMemo, useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
 
 import { knownSpacingAbbreviations } from "../helpers";
-import { Sys42Props } from "../types";
 
 // This are our props that we want to expose as an interface to the Stack component
 // Further we also define attributes that the component "consumes" here

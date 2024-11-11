@@ -1,8 +1,6 @@
 import React, { HTMLAttributes, useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
 
-import { Sys42Props } from "../types";
-
 interface TextLinkProps {}
 
 export type BaseTextLinkProps<ElemProps> = Sys42Props<TextLinkProps, ElemProps>;

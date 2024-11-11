@@ -38,9 +38,43 @@
       "  return (",
       "    <${3:div} {...restProps} className={cn(styles.$2, className)} />",
       "  );",
-      "}"
+      "}",
     ],
-    "description": "Create new component"
+    "description": "Create new component",
+  },
+  "sys42: create new useBase hook": {
+    "scope": "typescriptreact,typescript",
+    "prefix": "sys42:useBaseHook",
+    "body": [
+      "import React, { HTMLAttributes, useRef } from 'react';",
+      "import { mergeRefs } from 'react-merge-refs';",
+      "",
+      "// Define specific props for the component",
+      "interface ${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}}Props {}",
+      "",
+      "export type Base${1}Props<ElemProps> = Sys42Props<${1}Props, ElemProps>;",
+      "",
+      "export type UseBase${1}Options<Props, Elem extends HTMLElement> = {",
+      "  props: Props;",
+      "  elementType: keyof JSX.IntrinsicElements;",
+      "  forwardedRef: React.ForwardedRef<Elem>;",
+      "};",
+      "",
+      "export function useBase${1}<",
+      "  Props extends Base${1}Props<HTMLAttributes<HTMLElement>>,",
+      "  Elem extends HTMLElement",
+      ">({ props, elementType, forwardedRef }: UseBase${1}Options<Props, Elem>) {",
+      "  const ref = useRef<Elem>(null);",
+      "",
+      "  return {",
+      "    ${2:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/camelcase}/}}Props: {",
+      "      ...props,",
+      "    },",
+      "    ${2}Ref: mergeRefs([forwardedRef, ref]),",
+      "  };",
+      "}",
+    ],
+    "description": "Create new useBase… hook",
   },
   "sys42: create new styled component": {
     "scope": "typescriptreact,typescript",
@@ -59,8 +93,8 @@
       "    {...props}",
       "    styles={$2Styles}",
       "  />;",
-      "}"
+      "}",
     ],
-    "description": "Create new component"
-  }
+    "description": "Create new component",
+  },
 }

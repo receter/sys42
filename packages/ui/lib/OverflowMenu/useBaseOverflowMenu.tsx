@@ -2,8 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { uniqueId } from "lodash-es";
 import { mergeRefs } from "react-merge-refs";
 
-import { Sys42Props } from "../types";
-
 import { OverflowMenuContext } from "./context";
 
 // This are our props that we want to expose as an interface to the Button component
