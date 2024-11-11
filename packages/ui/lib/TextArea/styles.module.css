@@ -1,0 +1,23 @@
+.textArea {
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: var(--sys42-input-text-line-height);
+  background: var(--sys42-input-text-background);
+  border: var(--sys42-input-text-border-width) solid
+    var(--sys42-input-text-border-color);
+  border-radius: var(--sys42-input-text-border-radius);
+  padding: calc(
+      var(--sys42-input-text-padding-vert) -
+        var(--sys42-input-text-border-width)
+    )
+    calc(
+      var(--sys42-input-text-padding-horiz) -
+        var(--sys42-input-text-border-width)
+    );
+}
+
+.textArea:focus,
+.textArea:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
