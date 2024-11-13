@@ -6,6 +6,7 @@ export { Stack } from "./Stack";
 export { TextArea } from "./TextArea";
 export { TextLink, TextLinkButton } from "./TextLink";
 export { TextInput } from "./TextInput";
+export { RadioGroup } from "./RadioGroup";
 
 export { useButton } from "./Button/useButton";
 export { useFormField } from "./FormField/useFormField";

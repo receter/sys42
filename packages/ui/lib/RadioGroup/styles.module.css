@@ -1,4 +1,13 @@
-.radio {
+.group {
+  border: 3px solid indigo;
+  width: fit-content;
+}
+
+.item + .item {
+  margin-top: 2rem;
+}
+
+.item {
   display: flex;
   flex-direction: row;
   align-items: baseline;
