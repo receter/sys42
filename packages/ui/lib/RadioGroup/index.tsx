@@ -1,133 +1,49 @@
-import { createContext, CSSProperties, ReactNode, useContext } from "react";
-import { cn } from "@sys42/utils";
-import { omit } from "lodash-es";
+import { forwardRef, HTMLAttributes } from "react";
 
-import styles from "./styles.module.css";
+import { RadioGroupContext } from "./context";
+import {
+  RadioGroupItemRefProps,
+  RadioGroupProps,
+  useRadioGroup,
+} from "./useRadioGroup";
+import { RadioGroupItemProps, useRadioGroupItem } from "./useRadioGroupItem";
 
-// ------------------------------------------------------------------------------
-// 👉 CONTEXT
-// ------------------------------------------------------------------------------
-
-type BaseRadioGroupContextProps = {
-  activeValue: string;
-  onChange: (value: string) => void;
-};
-
-const BaseRadioGroupContext = createContext({} as BaseRadioGroupContextProps);
-
-// ------------------------------------------------------------------------------
-// 👉 GROUP
-// ------------------------------------------------------------------------------
-
-type UseBaseRadioGroupProps = {
-  value: string;
-  onChange: (value: string) => void;
-  children: ReactNode;
-};
-
-function useBaseRadioGroup({
-  value,
-  onChange,
-  children,
-}: UseBaseRadioGroupProps) {
+const Group = forwardRef<
+  HTMLDivElement,
+  RadioGroupProps<HTMLAttributes<HTMLDivElement>>
+>((props, forwardedRef) => {
+  const { ctx, radioGroupProps, radioGroupRef } = useRadioGroup({
+    props,
+    forwardedRef,
+  });
   return (
-    <BaseRadioGroupContext.Provider value={{ activeValue: value, onChange }}>
-      {children}
-    </BaseRadioGroupContext.Provider>
+    <RadioGroupContext.Provider value={ctx}>
+      <div {...radioGroupProps} ref={radioGroupRef} />
+    </RadioGroupContext.Provider>
   );
-}
+});
 
-export const Group = ({
-  id,
-  className,
-  style,
-  ariaLabeledBy,
-  ...rest
-}: UseBaseRadioGroupProps & {
-  id?: string;
-  className?: string;
-  style?: CSSProperties;
-  ariaLabeledBy?: string;
-}) => {
-  const groupElem = useBaseRadioGroup(rest);
-
-  return (
-    <div
-      aria-labelledby={ariaLabeledBy}
-      className={cn(className, styles.group)}
-      id={id}
-      role="radiogroup"
-      style={style}
-    >
-      {groupElem}
-    </div>
-  );
-};
-
-// ------------------------------------------------------------------------------
-// 👉 ITEM
-// ------------------------------------------------------------------------------
-
-type UseBaseRadioGroupItemProps = {
-  id?: string;
-  className?: string;
-  style?: CSSProperties;
-  label: string;
-  name?: string;
-  title?: string;
-  value: string;
-  ariaLabelledBy?: string;
-  ariaDescribedBy?: string;
-};
-
-function useBaseItem(props: UseBaseRadioGroupItemProps) {
-  const { activeValue, onChange } = useContext(BaseRadioGroupContext);
-
-  function handleChange() {
-    onChange(props.value);
-  }
-
-  return {
-    handleChange,
-    checked: props.value === activeValue,
-    ...omit(props, "value"),
-  };
-}
-
-function Item(props: UseBaseRadioGroupItemProps) {
-  const {
-    label,
-    checked,
-    handleChange,
-    className,
-    name,
-    title,
-    style,
-    id,
-    ariaDescribedBy,
-    ariaLabelledBy,
-  } = useBaseItem(props);
-
-  return (
-    <label
-      id={id}
-      className={cn(className, styles.item)}
-      style={style}
-      title={title}
-    >
-      <input
-        type="radio"
-        onChange={handleChange}
-        checked={checked}
-        aria-checked={checked}
-        name={name}
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
-      />
-      {label}
-    </label>
-  );
-}
+const Item = forwardRef<RadioGroupItemRefProps, RadioGroupItemProps>(
+  (props, forwardedRef) => {
+    const { label, labelProps, labelRef, inputProps, inputRef, isChecked } =
+      useRadioGroupItem({
+        props,
+        forwardedRef,
+      });
+    return (
+      <label ref={labelRef} {...labelProps}>
+        <input
+          type="radio"
+          ref={inputRef}
+          checked={isChecked}
+          {...inputProps}
+        />
+        {/* QUESTION: Not entirely sure how we should return this. Alternative would be to return input as a child + label from the baseHook? */}
+        {label}
+      </label>
+    );
+  },
+);
 
 export const RadioGroup = Object.assign(Group, {
   Item,

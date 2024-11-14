@@ -1,57 +1,20 @@
-.group {
-  border: 3px solid indigo;
+.radioGroup {
   width: fit-content;
+  border: 5px solid black;
 }
 
-.item + .item {
-  margin-top: 2rem;
+.radioGroupItemLabel {
+  display: block;
+  border: 1px solid yellow;
+  background: grey;
+  color: black;
 }
 
-.item {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  gap: 0.5rem;
+.radioGroupItemLabel + .radioGroupItemLabel {
+  margin-top: 0.5rem;
+}
 
-  input[type="radio"] {
-    /* Add if not using autoprefixer */
-    -webkit-appearance: none;
-    /* Remove most all native input styles */
-    -moz-appearance: none;
-    appearance: none;
-    /* For iOS < 15 */
-    background-color: blue;
-    /* Not removed via appearance */
-    margin: 0;
-    font: inherit;
-    color: currentColor;
-    width: 1.15em;
-    height: 1.15em;
-    border: 0.15em solid red;
-    border-radius: 50%;
-    transform: translateY(-0.075em);
-    display: grid;
-    place-content: center;
-  }
-
-  input[type="radio"]::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em yellow;
-    /* Windows High Contrast Mode */
-    background-color: CanvasText;
-  }
-
-  input[type="radio"]:checked::before {
-    transform: scale(1);
-  }
-
-  input[type="radio"]:focus {
-    outline: max(2px, 0.15em) solid green;
-    outline-offset: max(2px, 0.15em);
-  }
+.radioGroupItemInput {
+  box-shadow: 0 0 0 3px blue;
+  margin-right: 0.5rem;
 }

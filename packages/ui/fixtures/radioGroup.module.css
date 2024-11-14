@@ -1,0 +1,18 @@
+.radioGroup_horizontal {
+  margin-top: 5rem;
+  border-color: red;
+  background: green;
+
+  label {
+    display: inline-block;
+    margin: 0;
+  }
+
+  label + label {
+    margin-left: 1rem;
+  }
+}
+
+.radioGroupItem_special {
+  transform: scaleX(1.2);
+}
