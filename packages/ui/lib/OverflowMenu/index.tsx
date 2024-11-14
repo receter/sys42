@@ -14,16 +14,16 @@ const OverflowMenuRoot = forwardRef<
   BaseOverflowMenuProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
   const { triggerLabel = svgTriggerIcon } = props;
-  const { wrapperProps, wrapperRef, isOpen } = useBaseOverflowMenu({
+  const { overflowMenuProps, overflowMenuRef, isOpen } = useBaseOverflowMenu({
     props: { ...props, triggerLabel },
     elementType: "div",
     forwardedRef,
   });
   return (
     <div
-      {...wrapperProps}
+      {...overflowMenuProps}
       className={cn(styles.overflowMenu, isOpen && styles.overflowMenu_isOpen)}
-      ref={wrapperRef}
+      ref={overflowMenuRef}
     />
   );
 });

@@ -37,7 +37,7 @@ export function useBaseOverflowMenu<
   const [isOpen, setIsOpen] = useState(false);
   const [menuId] = useState(() => uniqueId("sys42-overflow-menu-"));
 
-  const wrapperRef = useRef<Elem>(null);
+  const overflowMenuRef = useRef<Elem>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -111,11 +111,11 @@ export function useBaseOverflowMenu<
   );
 
   return {
-    wrapperProps: {
+    overflowMenuProps: {
       children: content,
       ...restProps,
     },
-    wrapperRef: mergeRefs([forwardedRef, wrapperRef]),
+    overflowMenuRef: mergeRefs([forwardedRef, overflowMenuRef]),
     isOpen: isOpen,
   };
 }
