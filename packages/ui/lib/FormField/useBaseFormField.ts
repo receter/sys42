@@ -39,9 +39,9 @@ export function useBaseFormField<
     isError: errorMessageArray.length > 0,
   };
 
-  const formFieldProps: React.HTMLAttributes<HTMLElement> = {
-    ...passedOnProps,
-    children: typeof children === "function" ? children(ctx) : children,
+  const labelProps: React.LabelHTMLAttributes<HTMLLabelElement> = {
+    htmlFor: ctx.htmlFor,
+    children: label,
   };
 
   const errorMessagesProps: React.HTMLAttributes<HTMLElement>[] =
@@ -50,16 +50,18 @@ export function useBaseFormField<
       children: errorMessage,
     }));
 
-  const labelProps: React.LabelHTMLAttributes<HTMLLabelElement> = {
-    htmlFor: ctx.htmlFor,
-    children: label,
+  const formFieldProps: React.HTMLAttributes<HTMLElement> = {
+    ...passedOnProps,
   };
 
   return {
     formFieldProps,
     formFieldRef: forwardedRef,
-    labelProps,
-    errorMessagesProps,
-    ctx,
+    markupProps: {
+      labelProps,
+      errorMessagesProps,
+      ctx,
+      children,
+    },
   };
 }
