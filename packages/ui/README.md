@@ -10,20 +10,29 @@ npm install @sys42/ui
 
 ## Usage
 
-**Styled React Components**
-The easiest and most straight forward way to use System 42 is by directly importing the React components. The components come with basic styles that are based on a set of CSS custom properties (CSS variables). All of these properties are defined in `default-custom-properties.css` and prefixed with `--sys42-`. It is highly recommended to import this file in your application. You can customize the styling of the components by overriding the custom properties in your application.
+### Styled React Components
 
-1. Import the base CSS file followed by the default custom properties CSS in your application:
+Using the styled React components is the easiest way to work with System 42.
 
-```js
+Every component imports an individual `.css` file with default styles based on a set of CSS custom properties. You can make use of the exposed CSS custom properties to customize the look of the components.
+
+You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)
+
+> [!NOTE]
+> If you need to customize the styles beyond the exposed custom properties, you should make use of the Base Hooks and style the components yourself. You can read more about using the Base Hooks in the [Using the Base Hooks](#using-the-base-hooks) section.
+
+The component styles depend on `base.css` for CSS normalization and basic styles, and on `default-custom-properties.css` for custom property defaults. To ensure these dependencies are met, import both `base.css` and `default-custom-properties.css` in your application.
+
+All styles as well as the custom properties are inside a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
+named `sys42`.
+
+#### Example
+
+```jsx
+// Add these imports to your main file
 import "@sys42/ui/base.css";
 import "@sys42/ui/default-custom-properties.css";
 ```
-
-All styles as well as the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
-named `sys42`.
-
-2. Import the components in your application:
 
 ```jsx
 import { Button, TextInput, Stack } from "@sys42/ui";
@@ -38,12 +47,11 @@ function App() {
 }
 ```
 
-**Using the React Hooks**
-In addition to the React components, React hooks exist for all components and can be used in case you want more control and/or opt out of the default styling. There are two hooks available for every component: one that contains basic behaviour and another one that is based on the first but also contains styling related things. The hooks are named the same as the components but with a `useBase`/`use` prefix. The hooks return everything you need to render the component.
+### Using the Component Hooks
 
-One use case for a hook is if you want to render a component as a different element. One typyical example would be a button as a react-router Link.
+For all components, there are hooks available that can be used to change how the component is rendered. The hooks are named the same as the components but with a `use` prefix. The main use case for the hooks is to change the element type of the component.
 
-You can use the `useButton` hook to get the button props and then spread them on a `Link` component.
+For example you can use the `useButton` hook and spread the returned `buttonProps` on a `Link` component.
 
 ```jsx
 import { Link } from "react-router-dom";
@@ -62,6 +70,87 @@ export const ButtonLink = forwardRef<
   return <Link {...buttonProps} ref={buttonRef} />;
 });
 ```
+
+### Using the Base Hooks
+
+In addition to the React components and [Component Hooks](#using-the-component-hooks), there are Base Hooks that can be used in case you want to opt out of the default styling.
+
+Base Hooks do not import any CSS and have no style-related props, such as the `variant` prop for styled buttons.
+
+The hooks are named the same as the components but with a `useBase…` prefix. The hooks return everything you need to render the component. You can refer to implementation of the Component Hooks like `useButton` to for examples on how to use the Base Hooks.
+
+#### Simple Usage
+
+This is the most basic way to use a Base Hook. It will render the default internal markup and only change the element type and/or modify the attributes of the wrapper element.
+
+```jsx
+import { useBaseFoobar } from "@sys42/ui";
+
+export const MyFoobar = forwardRef<
+  HTMLDivElement,
+  ButtonProps<React.ComponentProps<"div">>
+>((props, forwardedRef) => {
+  const { foobarProps, foobarRef } = useBaseFoobar({
+    props,
+    elementType: "div",
+    forwardedRef,
+  });
+
+  // If you want to attach a CSS class to the component
+  // you can do this by simply mutating the className
+  foobarProps.className = "btn btn-blue";
+
+  return <div {...foobarProps} ref={foobarRef} />;
+};
+```
+
+#### Advanced Usage
+
+Some components that render more complex markup might give you advanced control over the rendered markup by returning additional props that allow you to customize the rendered markup. In this cases you can choose to either use the returned props or ignore them in favor of the default children.
+
+```jsx
+import { useBaseFoobar } from "@sys42/ui";
+
+export const MyComplexThing = forwardRef<
+  HTMLDivElement,
+  ButtonProps<React.ComponentProps<"div">>
+>((props, forwardedRef) => {
+  const {
+    complexThingProps,
+    complexThingRef,
+    internalThingProps,
+    internalThingRef,
+    readTheDocs
+  } = useBaseComplexThing({
+    props,
+    elementType: "div",
+    forwardedRef,
+  });
+
+  // To render the default markup you can simply spread the props
+  // which will contain children with the default markup
+
+  // return <div {...complexThingProps} ref={complexThingRef} />;
+
+  // If you want to render custom markup you can do this by
+  // recreating the component with the help of the returned variables.
+  // It might be a good idea to read the documentation of the component
+  // to understand the requirements of the custom markup.
+
+  return (
+    <div {...complexThingProps} ref={complexThingRef}>
+      <nav {...internalThingProps} ref={internalThingRef} />
+      {readTheDocs}
+    </div>
+  );
+};
+```
+
+## Custom Properties
+
+You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)
+
+All custom properties are prefixed with `--sys42-`.
 
 ## Overriding Styles
 
@@ -82,34 +171,3 @@ There are some opinionated decisions that are made in the design system:
 Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin-top` for some elements.
 
 For more information see this [article](https://dev.to/receter/why-i-fell-in-love-with-margin-top-3flg).
-
-## React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-### Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
