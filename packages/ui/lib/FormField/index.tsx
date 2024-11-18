@@ -1,20 +1,24 @@
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
-import { FormFieldMarkup } from "./markup";
+import { renderFormField } from "./render";
 import { FormFieldProps, useFormField } from "./useFormField";
 
 const FormField = forwardRef<
   HTMLDivElement,
   FormFieldProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
-  const { formFieldProps, formFieldRef, markupProps } = useFormField({
+  const {
+    elementProps,
+    elementRef,
+    renderProps: renderProps,
+  } = useFormField({
     props,
     elementType: "div",
     forwardedRef,
   });
   return (
-    <div {...formFieldProps} ref={formFieldRef}>
-      <FormFieldMarkup {...markupProps} />
+    <div {...elementProps} ref={elementRef}>
+      {renderFormField(renderProps)}
     </div>
   );
 });

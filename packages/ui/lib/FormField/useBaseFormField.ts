@@ -50,14 +50,14 @@ export function useBaseFormField<
       children: errorMessage,
     }));
 
-  const formFieldProps: React.HTMLAttributes<HTMLElement> = {
+  const elementProps: React.HTMLAttributes<HTMLElement> = {
     ...passedOnProps,
   };
 
   return {
-    formFieldProps,
-    formFieldRef: forwardedRef,
-    markupProps: {
+    elementProps,
+    elementRef: forwardedRef,
+    renderProps: {
       labelProps,
       errorMessagesProps,
       ctx,

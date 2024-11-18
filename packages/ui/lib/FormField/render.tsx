@@ -2,19 +2,14 @@ import { Label } from "../Label";
 
 import { FormFieldContext } from "./context";
 
-type FormFieldMarkupProps = {
-  ctx: FormFieldContext;
+export function renderFormField(args: {
   labelProps: React.LabelHTMLAttributes<HTMLLabelElement>;
-  errorMessagesProps: React.HTMLAttributes<HTMLDivElement>[];
+  errorMessagesProps: React.HTMLAttributes<HTMLElement>[];
   children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode);
-};
+  ctx: FormFieldContext;
+}) {
+  const { labelProps, errorMessagesProps, children, ctx } = args;
 
-export function FormFieldMarkup({
-  ctx,
-  labelProps,
-  errorMessagesProps,
-  children,
-}: FormFieldMarkupProps) {
   return (
     <FormFieldContext.Provider value={ctx}>
       <Label {...labelProps} />

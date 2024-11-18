@@ -17,17 +17,17 @@ export function useFormField<
 >(options: UseBaseFormFieldOptions<Props, Elem>) {
   const formField = useBaseFormField(options);
 
-  formField.formFieldProps.className = cn(
-    formField.formFieldProps.className,
+  formField.elementProps.className = cn(
+    formField.elementProps.className,
     styles.formField,
   );
 
-  formField.markupProps.errorMessagesProps.forEach((props) => {
+  formField.renderProps.errorMessagesProps.forEach((props) => {
     props.className = cn(props.className, styles.errorMessage);
   });
 
-  formField.markupProps.labelProps.className = cn(
-    formField.markupProps.labelProps.className,
+  formField.renderProps.labelProps.className = cn(
+    formField.renderProps.labelProps.className,
     styles.label,
   );
 
