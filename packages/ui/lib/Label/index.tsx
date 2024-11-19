@@ -4,7 +4,10 @@ import { LabelProps, useLabel } from "./useLabel";
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   (props, forwardedRef) => {
-    const { labelProps, labelRef } = useLabel({ props, forwardedRef });
-    return <label {...labelProps} ref={labelRef} />;
+    const { elementProps, elementRef } = useLabel({
+      props,
+      forwardedRef,
+    });
+    return <label {...elementProps} ref={elementRef} />;
   },
 );

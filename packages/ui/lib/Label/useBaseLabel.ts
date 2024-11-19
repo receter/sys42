@@ -1,13 +1,9 @@
-import React, { useRef } from "react";
-import { mergeRefs } from "react-merge-refs";
-
 // DOCS: The label must be rendered as a label element.
 
+interface LabelProps {}
+
 export type BaseLabelProps = Sys42Props<
-  {
-    // This is here because using {} would mean "any non-nullish value"
-    children?: React.ReactNode;
-  },
+  LabelProps,
   React.ComponentProps<"label">
 >;
 
@@ -20,13 +16,8 @@ export function useBaseLabel<Props extends BaseLabelProps>({
   props,
   forwardedRef,
 }: UseBaseLabelOptions<Props>) {
-  const { ...passedOnProps } = props;
-
-  const ref = useRef<HTMLLabelElement>(null);
-
-  const labelProps: React.ComponentProps<"label"> = {
-    ...passedOnProps,
+  return {
+    elementProps: props,
+    elementRef: forwardedRef,
   };
-
-  return { labelProps, labelRef: mergeRefs([forwardedRef, ref]) };
 }

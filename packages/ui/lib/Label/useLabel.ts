@@ -1,5 +1,3 @@
-import { cn } from "@sys42/utils";
-
 import {
   BaseLabelProps,
   useBaseLabel,
@@ -15,7 +13,7 @@ export function useLabel<Props extends LabelProps>(
 ) {
   const label = useBaseLabel(options);
 
-  label.labelProps.className = cn(label.labelProps.className, styles.label);
+  label.elementProps.className = styles.label;
 
   return label;
 }
