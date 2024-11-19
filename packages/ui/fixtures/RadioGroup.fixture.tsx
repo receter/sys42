@@ -10,19 +10,18 @@ export default function Fixture() {
   const [valueB, setValueB] = useValue("ValueB", { defaultValue: "foo" });
 
   const groupRef = useRef<HTMLInputElement>(null);
-  const itemRef = useRef<{ label: HTMLLabelElement; input: HTMLInputElement }>(
-    null,
-  );
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (groupRef.current) {
-      groupRef.current.style.background = "lightblue";
+      groupRef.current.style.background = "purple";
     }
-    if (itemRef.current?.input) {
-      itemRef.current.input.style.transform = "scale(2)";
+    if (inputRef.current) {
+      inputRef.current.style.transform = "scale(2)";
     }
-    if (itemRef.current?.label) {
-      itemRef.current.label.style.color = "red";
+    if (labelRef.current) {
+      labelRef.current.style.color = "white";
     }
   }, []);
 
@@ -30,7 +29,8 @@ export default function Fixture() {
     <div style={{ padding: "2rem" }}>
       <RadioGroup ref={groupRef} value={valueA} onChange={setValueA}>
         <RadioGroup.Item
-          ref={itemRef}
+          ref={labelRef}
+          inputRef={inputRef}
           title="Foo title"
           value="foo"
           label="Foo"

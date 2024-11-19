@@ -6,12 +6,10 @@ import {
   useBaseRadioGroup,
   UseBaseRadioGroupProps,
 } from "./useBaseRadioGroup";
-import { BaseRadioGroupItemRefProps } from "./useBaseRadioGroupItem";
 
 import styles from "./styles.module.css";
 
 export type RadioGroupProps<ElemProps> = BaseRadioGroupProps<ElemProps>;
-export type RadioGroupItemRefProps = BaseRadioGroupItemRefProps;
 
 export function useRadioGroup<
   Props extends RadioGroupProps<HTMLAttributes<HTMLElement>>,

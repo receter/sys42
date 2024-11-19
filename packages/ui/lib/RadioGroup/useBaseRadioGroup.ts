@@ -27,9 +27,9 @@ export function useBaseRadioGroup<
       value: value,
       onChange,
     } as RadioGroupContext,
-    radioGroupRef: forwardedRef,
     radioGroupProps: {
       ...passedOnProps,
+      ref: forwardedRef,
       children,
     },
   };
