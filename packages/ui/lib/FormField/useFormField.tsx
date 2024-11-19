@@ -22,12 +22,12 @@ export function useFormField<
     styles.formField,
   );
 
-  formField.renderProps.errorMessagesProps.forEach((props) => {
+  formField.renderArgs.errorMessagesProps.forEach((props) => {
     props.className = cn(props.className, styles.errorMessage);
   });
 
-  formField.renderProps.labelProps.className = cn(
-    formField.renderProps.labelProps.className,
+  formField.renderArgs.labelProps.className = cn(
+    formField.renderArgs.labelProps.className,
     styles.label,
   );
 

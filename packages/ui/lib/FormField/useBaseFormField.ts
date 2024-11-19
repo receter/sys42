@@ -57,7 +57,7 @@ export function useBaseFormField<
   return {
     elementProps,
     elementRef: forwardedRef,
-    renderProps: {
+    renderArgs: {
       labelProps,
       errorMessagesProps,
       ctx,

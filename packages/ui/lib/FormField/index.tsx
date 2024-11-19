@@ -7,18 +7,14 @@ const FormField = forwardRef<
   HTMLDivElement,
   FormFieldProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
-  const {
-    elementProps,
-    elementRef,
-    renderProps: renderProps,
-  } = useFormField({
+  const { elementProps, elementRef, renderArgs } = useFormField({
     props,
     elementType: "div",
     forwardedRef,
   });
   return (
     <div {...elementProps} ref={elementRef}>
-      {renderFormField(renderProps)}
+      {renderFormField(renderArgs)}
     </div>
   );
 });
