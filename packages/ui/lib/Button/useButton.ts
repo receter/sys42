@@ -26,8 +26,8 @@ export function useButton<
     props: restProps,
   });
 
-  button.buttonProps.className = cn(
-    button.buttonProps.className,
+  button.elementProps.className = cn(
+    button.elementProps.className,
     variant === "primary" && styles.button_primary,
     size === "lg" && styles.button_lg,
     styles.button,

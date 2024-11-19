@@ -19,10 +19,10 @@ export function useBaseButton<
   const ref = useRef<Elem>(null);
 
   return {
-    buttonProps: {
+    elementProps: {
       type: elementType === "button" ? "button" : undefined,
       ...props,
     },
-    buttonRef: mergeRefs([forwardedRef, ref]),
+    elementRef: mergeRefs([forwardedRef, ref]),
   };
 }
