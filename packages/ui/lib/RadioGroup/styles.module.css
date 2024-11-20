@@ -1,0 +1,21 @@
+.radioGroup {
+  width: fit-content;
+  border: 1rem solid black;
+  font-family: monospace;
+}
+
+.radioGroupItemLabel {
+  display: block;
+  border: 3px solid yellow;
+  background: black;
+  color: white;
+}
+
+.radioGroupItemLabel + .radioGroupItemLabel {
+  margin-top: 0.5rem;
+}
+
+.radioGroupItemInput {
+  box-shadow: 0 0 0 5px rgb(0, 136, 255);
+  margin-right: 1rem;
+}
