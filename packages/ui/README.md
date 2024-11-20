@@ -114,6 +114,7 @@ Here’s a simple example of using a Base Hook to create a custom styled compone
 
 ```jsx
 import { useBaseFormField, renderFormField } from "@sys42/ui";
+import { cn } from "@sys42/utils";
 
 export type MyFormFieldProps<ElemProps> = BaseFormFieldProps<ElemProps> & {
   myProp: boolean;
@@ -135,16 +136,20 @@ export function useMyFormField<
   const formField = useBaseFormField(options);
 
   // If you want to attach a CSS class to the component
-  // you can do this by simply mutating the className
-  formField.elementProps.className = "my-form-field";
+  // you can do this by simply extending the className
+  formField.elementProps.className = cn(
+    formField.elementProps.className,
+    "my-form-field",
+  );
 
   if (myProp) {
     formField.elementProps.className += " my-form-field--my-prop";
-  } else {
-    formField.elementProps.className += " my-form-field--no-my-prop";
   }
 
-  formField.renderArgs.labelProps.className = "my-form-field-label";
+  formField.renderArgs.labelProps.className = cn(
+    formField.renderArgs.labelProps.className,
+    "my-form-field-label",
+  );
 
   return formField;
 }

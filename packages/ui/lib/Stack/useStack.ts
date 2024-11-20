@@ -17,7 +17,7 @@ export function useStack<
 >(options: UseBaseStackOptions<Props, Elem>) {
   const stack = useBaseStack(options);
 
-  stack.stackProps.className = cn(styles.stack, stack.stackProps.className);
+  stack.stackProps.className = cn(stack.stackProps.className, styles.stack);
 
   return stack;
 }

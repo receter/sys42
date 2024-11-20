@@ -13,9 +13,9 @@ export type TextAreaProps = BaseTextAreaProps;
 export function useTextArea(options: UseBaseTextAreaOptions<TextAreaProps>) {
   const textArea = useBaseTextArea(options);
 
-  textArea.textAreaProps.className = cn(
+  textArea.elementProps.className = cn(
     styles.textArea,
-    textArea.textAreaProps.className,
+    textArea.elementProps.className,
   );
 
   return textArea;

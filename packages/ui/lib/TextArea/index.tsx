@@ -4,11 +4,11 @@ import { TextAreaProps, useTextArea } from "./useTextArea";
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref) => {
-    const { textAreaProps, textAreaRef } = useTextArea({
+    const { elementProps, elementRef } = useTextArea({
       props,
       forwardedRef: ref,
     });
 
-    return <textarea ref={textAreaRef} {...textAreaProps} />;
+    return <textarea ref={elementRef} {...elementProps} />;
   },
 );

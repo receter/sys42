@@ -17,7 +17,7 @@ export function useBaseLabel<Props extends BaseLabelProps>({
   forwardedRef,
 }: UseBaseLabelOptions<Props>) {
   return {
-    elementProps: props,
+    elementProps: { ...props },
     elementRef: forwardedRef,
   };
 }

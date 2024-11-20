@@ -22,10 +22,13 @@ export function useBaseTextInput<Props extends BaseTextInputProps>({
 
   const ref = useRef<HTMLInputElement>(null);
 
-  const textInputProps: React.ComponentProps<"input"> = {
+  const elementProps: React.ComponentProps<"input"> = {
     type,
     ...passedOnProps,
   };
 
-  return { textInputProps, textInputRef: mergeRefs([forwardedRef, ref]) };
+  return {
+    elementProps,
+    elementRef: mergeRefs([forwardedRef, ref]),
+  };
 }

@@ -1,5 +1,4 @@
-import React, { HTMLAttributes, useRef } from "react";
-import { mergeRefs } from "react-merge-refs";
+import React, { HTMLAttributes } from "react";
 
 interface TextLinkProps {}
 
@@ -15,12 +14,10 @@ export function useBaseTextLink<
   Props extends BaseTextLinkProps<HTMLAttributes<HTMLElement>>,
   Elem extends HTMLElement,
 >({ props, forwardedRef }: UseBaseTextLinkOptions<Props, Elem>) {
-  const ref = useRef<Elem>(null);
-
   return {
-    textLinkProps: {
+    elementProps: {
       ...props,
     },
-    textLinkRef: mergeRefs([forwardedRef, ref]),
+    elementRef: forwardedRef,
   };
 }

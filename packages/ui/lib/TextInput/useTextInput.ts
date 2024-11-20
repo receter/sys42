@@ -13,9 +13,9 @@ export type TextInputProps = BaseTextInputProps;
 export function useTextInput(options: UseBaseTextInputOptions<TextInputProps>) {
   const textInput = useBaseTextInput(options);
 
-  textInput.textInputProps.className = cn(
+  textInput.elementProps.className = cn(
+    textInput.elementProps.className,
     styles.textInput,
-    textInput.textInputProps.className,
   );
 
   return textInput;

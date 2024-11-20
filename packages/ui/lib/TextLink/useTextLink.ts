@@ -22,8 +22,8 @@ export function useTextLink<
     props: restProps,
   });
 
-  textLink.textLinkProps.className = cn(
-    textLink.textLinkProps.className,
+  textLink.elementProps.className = cn(
+    textLink.elementProps.className,
     options.elementType !== "a" && styles.textLinkNotAnchor,
     // styles.textLink,
   );

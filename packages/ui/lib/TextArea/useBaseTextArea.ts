@@ -17,12 +17,12 @@ export function useBaseTextArea<Props extends BaseTextAreaProps>({
   props,
   forwardedRef,
 }: UseBaseTextAreaOptions<Props>) {
-  const textAreaProps: React.ComponentProps<"textarea"> = {
+  const elementProps: React.ComponentProps<"textarea"> = {
     ...props,
   };
 
   return {
-    textAreaProps,
-    textAreaRef: forwardedRef,
+    elementProps,
+    elementRef: forwardedRef,
   };
 }
