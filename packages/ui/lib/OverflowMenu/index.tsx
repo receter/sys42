@@ -64,8 +64,6 @@ const svgTriggerIcon = (
   </svg>
 );
 
-export const OverflowMenu: typeof OverflowMenuRoot & {
-  Item: typeof OverflowMenuItem;
-} = Object.assign(OverflowMenuRoot, {
+export const OverflowMenu = Object.assign(OverflowMenuRoot, {
   Item: OverflowMenuItem,
 });
