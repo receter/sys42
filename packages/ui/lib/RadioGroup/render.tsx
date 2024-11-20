@@ -1,4 +1,6 @@
-export function renderRadio({
+import { RadioGroupContext, RadioGroupContextValue } from "./context";
+
+export function renderRadioItem({
   labelProps,
   inputProps,
   children,
@@ -12,5 +14,21 @@ export function renderRadio({
       <input {...inputProps} />
       {children}
     </label>
+  );
+}
+
+export function renderRadioGroup({
+  ctx,
+  elementProps,
+  elementRef,
+}: {
+  ctx: RadioGroupContextValue;
+  elementProps: React.HTMLAttributes<HTMLDivElement>;
+  elementRef: React.Ref<HTMLDivElement>;
+}) {
+  return (
+    <RadioGroupContext.Provider value={ctx}>
+      <div {...elementProps} ref={elementRef} />
+    </RadioGroupContext.Provider>
   );
 }

@@ -17,8 +17,8 @@ export function useRadioGroup<
 >(options: UseBaseRadioGroupProps<Props, Elem>) {
   const radioGroup = useBaseRadioGroup(options);
 
-  radioGroup.radioGroupProps.className = cn(
-    radioGroup.radioGroupProps.className,
+  radioGroup.elementProps.className = cn(
+    radioGroup.elementProps.className,
     styles.radioGroup,
   );
 

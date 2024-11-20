@@ -15,13 +15,13 @@ export default function Fixture() {
 
   useEffect(() => {
     if (groupRef.current) {
-      groupRef.current.style.background = "purple";
+      groupRef.current.style.background = "magenta";
     }
     if (inputRef.current) {
-      inputRef.current.style.transform = "scale(2)";
+      inputRef.current.style.transform = "rotate(45deg)";
     }
     if (labelRef.current) {
-      labelRef.current.style.color = "white";
+      labelRef.current.style.color = "lime";
     }
   }, []);
 
@@ -31,9 +31,9 @@ export default function Fixture() {
         <RadioGroup.Item
           ref={labelRef}
           inputRef={inputRef}
-          title="Foo title"
+          title="Foo"
           value="foo"
-          label="Foo"
+          label="Hover me to see my title"
         />
         <RadioGroup.Item value="bar" label="Bar" />
         <RadioGroup.Item value="baz" label="Baz" />
@@ -51,7 +51,7 @@ export default function Fixture() {
             color: "white",
           }}
         >
-          The rain in spain falls mainly on the plain.
+          The rain in Spain falls mainly on the plain.
         </div>
         <RadioGroup.Item value="corge" label="Corge" />
       </RadioGroup>

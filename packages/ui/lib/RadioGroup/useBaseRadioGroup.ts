@@ -1,10 +1,12 @@
 import { HTMLAttributes } from "react";
 
-import { RadioGroupContext } from "./context";
+import { RadioGroupContextValue } from "./context";
 
 export type BaseRadioGroupProps<ElemProps> = Sys42Props<
   {
     value: string;
+    // TODO: Change to native onChange type.
+    // Confirm also if we will add onChangeValue.
     onChange: (value: string) => void;
     children: React.ReactNode;
   },
@@ -20,17 +22,14 @@ export function useBaseRadioGroup<
   Props extends BaseRadioGroupProps<HTMLAttributes<HTMLElement>>,
   Elem extends HTMLElement,
 >({ props, forwardedRef }: UseBaseRadioGroupProps<Props, Elem>) {
-  const { value, onChange, children, ...passedOnProps } = props;
+  const { value, onChange, ...elementProps } = props;
 
   return {
     ctx: {
       value: value,
       onChange,
-    } as RadioGroupContext,
-    radioGroupProps: {
-      ...passedOnProps,
-      ref: forwardedRef,
-      children,
-    },
+    } as RadioGroupContextValue,
+    elementProps,
+    elementRef: forwardedRef,
   };
 }

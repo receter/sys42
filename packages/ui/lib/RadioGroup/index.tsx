@@ -1,41 +1,62 @@
 import { forwardRef, HTMLAttributes } from "react";
 
-import { RadioGroupContext } from "./context";
-import { renderRadio } from "./render";
+import { renderRadioGroup, renderRadioItem } from "./render";
 import { RadioGroupProps, useRadioGroup } from "./useRadioGroup";
 import { RadioGroupItemProps, useRadioGroupItem } from "./useRadioGroupItem";
 
-// QUESTION: Not exactly sure how to deal with the renderArgs & elementArgs here.
-// How I understand it is that renderArgs == the main component & elemenArgs == the wrapper/container.
-// In this case, we require two hooks, so there isn't a split between the two.
+/*
+
+  A: BASE HOOK
+
+    - Functionality: Implement bespoke functionality by extending vanilla Elements.
+    - Interface: Define an interface which is as element-agnostic as possible.
+      Consists of a ref, and `Props`, which is an extension or custom implementation
+      of vanilla Element(s).
+
+  B: HOOK
+
+    - Extends the [HOOK::BASE] by injecting styles.
+
+  C: RENDER_FUNCTION
+
+    - Connects a HOOK to Element(s).
+    - Elements can be of type:
+      1. `Context`: ReactContext Provider.
+      2. `Element`: Wrapper element nested within the context provider.
+      3. `<Custom>`: `Main` element(s) that are the primary focus of the component.
+    - Props reflect this pattern, for example:
+
+      const renderArgs = {
+        ctx: {}, // Context
+        elementProps: {}, // Wrapper
+        inputProps: {}, // Custom
+      };
+
+
+  D: COMPONENT (MAIN EXPORT)
+
+    - Connects HOOKs to RENDER_FUNCTIONs.
+
+*/
 
 const Group = forwardRef<
   HTMLDivElement,
   RadioGroupProps<HTMLAttributes<HTMLDivElement>>
 >((props, forwardedRef) => {
-  const { ctx, radioGroupProps } = useRadioGroup({
+  const renderArgs = useRadioGroup({
     props,
     forwardedRef,
   });
-  return (
-    // QUESTION: Does it make sense to have a render function here?
-    // My feeling is that it probably doesn't.
-    <RadioGroupContext.Provider value={ctx}>
-      <div {...radioGroupProps} />
-    </RadioGroupContext.Provider>
-  );
+  return renderRadioGroup(renderArgs);
 });
 
 const Item = forwardRef<HTMLLabelElement, RadioGroupItemProps>(
   (props, forwardedRef) => {
-    // QUESTION: (related to above) So there is no distinction made
-    // between main & wrapper elements, so I'm not sure how to handle the semantics here.
-    const { label, labelProps, inputProps } = useRadioGroupItem({
+    const renderArgs = useRadioGroupItem({
       props,
       forwardedRef,
     });
-    // QUESTION: How do you think we should name/handle the label/children prop?
-    return renderRadio({ labelProps, inputProps, children: label });
+    return renderRadioItem(renderArgs);
   },
 );
 

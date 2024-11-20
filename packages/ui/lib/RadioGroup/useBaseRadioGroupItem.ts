@@ -48,6 +48,6 @@ export function useBaseRadioGroupItem<Props extends BaseRadioGroupItemProps>({
       type: "radio",
       className: "",
     },
-    label,
+    children: label,
   };
 }
