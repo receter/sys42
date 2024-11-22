@@ -1,8 +1,10 @@
 import { createContext } from "react";
 
-export type FormFieldContext = {
+export type FormFieldContextType = {
   htmlFor: string;
   isError: boolean;
 };
 
-export const FormFieldContext = createContext<FormFieldContext | null>(null);
+export const FormFieldContext = createContext<FormFieldContextType | undefined>(
+  undefined,
+);

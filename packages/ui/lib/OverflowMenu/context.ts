@@ -1,10 +1,11 @@
 import { createContext } from "react";
 
-type OverflowMenuContextType = {
+export type OverflowMenuContextType = {
   isOpen: boolean;
   close: () => void;
   open: () => void;
 };
 
-export const OverflowMenuContext =
-  createContext<OverflowMenuContextType | null>(null);
+export const OverflowMenuContext = createContext<
+  OverflowMenuContextType | undefined
+>(undefined);

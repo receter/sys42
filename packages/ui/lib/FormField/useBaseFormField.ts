@@ -1,14 +1,16 @@
 import React, { HTMLAttributes, useState } from "react";
 import { isArray, uniqueId } from "lodash-es";
 
-import { FormFieldContext } from "./context";
+import { FormFieldContextType } from "./context";
 
 export type BaseFormFieldProps<ElemProps> = Sys42Props<
   {
     errorMessage?: string | string[];
     label: React.ReactNode;
     htmlFor?: string;
-    children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode);
+    children:
+      | React.ReactNode
+      | ((ctx: FormFieldContextType) => React.ReactNode);
   },
   ElemProps
 >;
@@ -34,7 +36,7 @@ export function useBaseFormField<
     errorMessageArray = [errorMessage];
   }
 
-  const ctx: FormFieldContext = {
+  const ctx: FormFieldContextType = {
     htmlFor: htmlFor || uniqueFormFieldId,
     isError: errorMessageArray.length > 0,
   };

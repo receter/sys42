@@ -2,8 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { uniqueId } from "lodash-es";
 import { mergeRefs } from "react-merge-refs";
 
-import { OverflowMenuContext } from "./context";
-
 // This are our props that we want to expose as an interface to the Button component
 interface OverflowMenuProps {
   onClose?: () => void;
@@ -30,8 +28,8 @@ export function useBaseOverflowMenu<
   const {
     onClose,
     onOpen,
-    children,
     triggerLabel = "more",
+    children,
     ...restProps
   } = props;
   const [isOpen, setIsOpen] = useState(false);
@@ -87,35 +85,35 @@ export function useBaseOverflowMenu<
     isOpen ? close() : open();
   }
 
-  const contextValue = {
+  const ctx = {
     isOpen,
     close,
     open,
+    menuId,
   };
 
-  const content = (
-    <OverflowMenuContext.Provider value={contextValue}>
-      <button
-        onClick={handleClickTrigger}
-        ref={triggerButtonRef}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        aria-controls={menuId}
-      >
-        {triggerLabel}
-      </button>
-      <div id={menuId} ref={menuRef} role="menu" aria-hidden={!isOpen}>
-        {children}
-      </div>
-    </OverflowMenuContext.Provider>
-  );
-
   return {
-    overflowMenuProps: {
-      children: content,
+    elementProps: {
       ...restProps,
     },
-    overflowMenuRef: mergeRefs([forwardedRef, overflowMenuRef]),
-    isOpen: isOpen,
+    elementRef: mergeRefs([forwardedRef, overflowMenuRef]),
+    renderArgs: {
+      ctx,
+      triggerProps: {
+        onClick: handleClickTrigger,
+        "aria-expanded": isOpen,
+        "aria-haspopup": "true",
+        "aria-controls": menuId,
+        children: triggerLabel,
+      } satisfies React.ButtonHTMLAttributes<HTMLButtonElement>,
+      triggerRef: triggerButtonRef,
+      menuProps: {
+        id: menuId,
+        role: "menu",
+        "aria-hidden": !isOpen,
+        children,
+      } satisfies React.HTMLAttributes<HTMLDivElement>,
+      menuRef: menuRef,
+    },
   };
 }

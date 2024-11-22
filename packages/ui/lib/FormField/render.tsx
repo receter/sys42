@@ -1,12 +1,12 @@
 import { Label } from "../Label";
 
-import { FormFieldContext } from "./context";
+import { FormFieldContext, FormFieldContextType } from "./context";
 
 export function renderFormField(args: {
   labelProps: React.LabelHTMLAttributes<HTMLLabelElement>;
   errorMessagesProps: React.HTMLAttributes<HTMLElement>[];
-  children: React.ReactNode | ((ctx: FormFieldContext) => React.ReactNode);
-  ctx: FormFieldContext;
+  children: React.ReactNode | ((ctx: FormFieldContextType) => React.ReactNode);
+  ctx: FormFieldContextType;
 }) {
   const { labelProps, errorMessagesProps, children, ctx } = args;
 

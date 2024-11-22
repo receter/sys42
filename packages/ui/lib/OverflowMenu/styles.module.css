@@ -11,7 +11,7 @@
   height: fit-content;
 }
 
-.overflowMenuItem {
+.overflowMenu_Item {
   background: none;
   border: 0;
   color: inherit;
@@ -23,7 +23,7 @@
   border-radius: var(--sys42-button-border-radius);
 }
 
-.overflowMenuItem:hover {
+.overflowMenu_Item:hover {
   background: color-mix(
     in srgb,
     currentColor 8%,

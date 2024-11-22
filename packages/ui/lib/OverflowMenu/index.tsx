@@ -1,52 +1,44 @@
-import { forwardRef, useContext } from "react";
-import { cn } from "@sys42/utils";
+import { forwardRef } from "react";
 
-import { OverflowMenuContext } from "./context";
+import { renderOverflowMenu } from "./render";
+import { OverflowMenuProps, useOverflowMenu } from "./useOverflowMenu";
 import {
-  BaseOverflowMenuProps,
-  useBaseOverflowMenu,
-} from "./useBaseOverflowMenu";
+  OverflowMenu_ItemProps,
+  useOverflowMenu_Item,
+} from "./useOverflowMenu_Item";
 
 import styles from "./styles.module.css";
 
 const OverflowMenuRoot = forwardRef<
   HTMLDivElement,
-  BaseOverflowMenuProps<React.ComponentProps<"div">>
+  OverflowMenuProps<React.ComponentProps<"div">>
 >((props, forwardedRef) => {
-  const { triggerLabel = svgTriggerIcon } = props;
-  const { overflowMenuProps, overflowMenuRef, isOpen } = useBaseOverflowMenu({
-    props: { ...props, triggerLabel },
+  const { elementProps, elementRef, renderArgs } = useOverflowMenu({
+    props: {
+      triggerLabel: svgTriggerIcon,
+      ...props,
+    },
     elementType: "div",
     forwardedRef,
   });
   return (
-    <div
-      {...overflowMenuProps}
-      className={cn(styles.overflowMenu, isOpen && styles.overflowMenu_isOpen)}
-      ref={overflowMenuRef}
-    />
+    <div {...elementProps} ref={elementRef}>
+      {renderOverflowMenu(renderArgs)}
+    </div>
   );
 });
 
-const OverflowMenuItem = forwardRef<
+const OverflowMenu_Item = forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<"button">
+  OverflowMenu_ItemProps<React.ComponentProps<"button">>
 >((props, forwardedRef) => {
-  const overflowMenuContext = useContext(OverflowMenuContext);
+  const { elementProps, elementRef } = useOverflowMenu_Item({
+    props,
+    elementType: "button",
+    forwardedRef,
+  });
 
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-    props.onClick?.(e);
-    overflowMenuContext?.close();
-  }
-
-  return (
-    <button
-      {...props}
-      onClick={handleClick}
-      className={cn(styles.overflowMenuItem, props.className)}
-      ref={forwardedRef}
-    />
-  );
+  return <button {...elementProps} ref={elementRef} />;
 });
 
 const svgTriggerIcon = (
@@ -65,5 +57,5 @@ const svgTriggerIcon = (
 );
 
 export const OverflowMenu = Object.assign(OverflowMenuRoot, {
-  Item: OverflowMenuItem,
+  Item: OverflowMenu_Item,
 });
