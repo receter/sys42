@@ -175,6 +175,10 @@ export const MyFormField = forwardRef<
 
 ```
 
+## Types
+
+Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
+
 ## Custom Properties
 
 You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)

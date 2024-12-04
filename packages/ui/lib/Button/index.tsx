@@ -1,28 +1,16 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { ButtonProps, useButton } from "./useButton";
 
-export const Button = forwardRef<
-  HTMLButtonElement,
-  ButtonProps<React.ComponentProps<"button">>
->((props, forwardedRef) => {
-  const { elementProps, elementRef } = useButton({
-    props,
-    elementType: "button",
-    forwardedRef,
-  });
-  return <button {...elementProps} ref={elementRef} />;
-});
+export const Button = createComponent<ButtonProps, "button">(
+  "button",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useButton(hookOptions);
+    return <button {...elementProps} ref={elementRef} />;
+  },
+);
 
-export const ButtonA = forwardRef<
-  HTMLAnchorElement,
-  ButtonProps<React.ComponentProps<"a">>
->((props, forwardedRef) => {
-  const { elementProps, elementRef } = useButton({
-    props,
-    elementType: "a",
-    forwardedRef,
-  });
-
+export const ButtonA = createComponent<ButtonProps, "a">("a", (hookOptions) => {
+  const { elementProps, elementRef } = useButton(hookOptions);
   return <a {...elementProps} ref={elementRef} />;
 });
