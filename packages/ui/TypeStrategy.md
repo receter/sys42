@@ -5,11 +5,11 @@ Props for `sys42` components combine the intrinsic element’s supported props w
 To get the props type for a `sys42` component, you can use the type utility `Sys42Props`. It merges the intrinsic element’s props with the custom props defined by the library. The utility uses `Omit` to exclude custom props from the intrinsic element’s props before merging the two types to avoid conflicts and prefer the library’s definition.
 
 ```typescript
-type Sys42Props<Props, TagName extends HTMLElementTagName> = Omit<
-  React.ComponentPropsWithoutRef<TagName>,
-  keyof Props
+type Sys42Props<TProps, TTagName extends HTMLElementTagName> = Omit<
+  React.ComponentPropsWithoutRef<TTagName>,
+  keyof TProps
 > &
-  Props;
+  TProps;
 ```
 
 ## Safely Filter Custom Props
@@ -20,16 +20,16 @@ For this purpose, the incoming props are typed as an object with only the props 
 
 This way we can use `satisfies EmptyObject` to ensure we did split the props correctly.
 
-And we can safely cast it to `React.ComponentPropsWithoutRef<TagName>` without any risk of including custom props.
+And we can safely cast it to `React.ComponentPropsWithoutRef<TTagName>` without any risk of including custom props.
 
 ```typescript
 const { hello, world, ...restProps } = props;
 
 const elementProps =
-  restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>;
+  restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>;
 ```
 
-At this point `TagName` is not known and `elementProps` will have a type that only includes props that all potential intrinsic elements support.
+At this point `TTagName` is not known and `elementProps` will have a type that only includes props that all potential intrinsic elements support.
 
 To set attributes that are specific to a certain element, it is necessary check the `elementType` to narrow the type. The helper function `isPropsForElement` can be used for this purpose.
 

@@ -6,8 +6,8 @@ import styles from "./styles.module.css";
 
 export type TextLinkProps = BaseTextLinkProps;
 
-export function useTextLink<TagName extends HTMLElementTagName>(
-  options: UseComponentOptions<TextLinkProps, TagName>,
+export function useTextLink<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<TextLinkProps, TTagName>,
 ) {
   return useBaseTextLink(options, (draft) => {
     draft.elementProps.className = cn(

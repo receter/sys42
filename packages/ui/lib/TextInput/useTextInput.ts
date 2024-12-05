@@ -6,8 +6,8 @@ import styles from "./styles.module.css";
 
 export type TextInputProps = BaseTextInputProps;
 
-export function useTextInput<TagName extends HTMLElementTagName>(
-  options: UseComponentOptions<TextInputProps, TagName>,
+export function useTextInput<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<TextInputProps, TTagName>,
 ) {
   return useBaseTextInput(options, (draft) => {
     draft.elementProps.className = cn(

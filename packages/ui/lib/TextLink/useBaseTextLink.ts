@@ -1,14 +1,14 @@
 export interface BaseTextLinkProps {}
 
-export function useBaseTextLink<TagName extends HTMLElementTagName>(
-  { props, forwardedRef }: UseComponentOptions<BaseTextLinkProps, TagName>,
-  interceptor?: UseComponentInterceptor<TagName>,
+export function useBaseTextLink<TTagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseTextLinkProps, TTagName>,
+  interceptor?: UseComponentInterceptor<TTagName>,
 ) {
   const { ...restProps } = props;
 
   const draft = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
   interceptor?.(draft);

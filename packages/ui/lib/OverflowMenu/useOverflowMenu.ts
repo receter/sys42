@@ -9,8 +9,8 @@ import styles from "./styles.module.css";
 
 export type OverflowMenuProps = BaseOverflowMenuProps;
 
-export function useOverflowMenu<TagName extends HTMLElementTagName>(
-  options: UseComponentOptions<OverflowMenuProps, TagName>,
+export function useOverflowMenu<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<OverflowMenuProps, TTagName>,
 ) {
   return useBaseOverflowMenu(options, (draft, ctx) => {
     draft.elementProps.className = cn(

@@ -9,15 +9,15 @@ export type BaseStackProps = {
   style?: React.CSSProperties;
 };
 
-export function useBaseStack<TagName extends HTMLElementTagName>(
-  { props, forwardedRef }: UseComponentOptions<BaseStackProps, TagName>,
-  interceptor?: UseComponentInterceptor<TagName>,
+export function useBaseStack<TTagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseStackProps, TTagName>,
+  interceptor?: UseComponentInterceptor<TTagName>,
 ) {
   const { spacing = "md", style, ...restProps } = props;
 
   const draft = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
   draft.elementProps.style = useMemo(() => {

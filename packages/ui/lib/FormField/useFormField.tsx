@@ -6,8 +6,8 @@ import styles from "./styles.module.css";
 
 export type FormFieldProps = BaseFormFieldProps;
 
-export function useFormField<TagName extends HTMLElementTagName>(
-  options: UseComponentOptions<FormFieldProps, TagName>,
+export function useFormField<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<FormFieldProps, TTagName>,
 ) {
   return useBaseFormField(options, (draft) => {
     draft.elementProps.className = cn(

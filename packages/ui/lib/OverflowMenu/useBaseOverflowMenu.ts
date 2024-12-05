@@ -11,8 +11,8 @@ export type BaseOverflowMenuProps = {
   triggerLabel?: string | React.ReactNode;
 };
 
-export type BaseOverflowMenuDraft<TagName extends HTMLElementTagName> = {
-  elementProps: React.ComponentPropsWithoutRef<TagName>;
+export type BaseOverflowMenuDraft<TTagName extends HTMLElementTagName> = {
+  elementProps: React.ComponentPropsWithoutRef<TTagName>;
   triggerProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
   menuProps: React.HTMLAttributes<HTMLDivElement>;
 };
@@ -25,11 +25,11 @@ export type BaseOverflowMenuRenderArgs = {
   menuRef: React.RefObject<HTMLDivElement>;
 };
 
-export function useBaseOverflowMenu<TagName extends HTMLElementTagName>(
-  { props, forwardedRef }: UseComponentOptions<BaseOverflowMenuProps, TagName>,
+export function useBaseOverflowMenu<TTagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseOverflowMenuProps, TTagName>,
   interceptor?: UseComponentInterceptor<
-    TagName,
-    BaseOverflowMenuDraft<TagName>,
+    TTagName,
+    BaseOverflowMenuDraft<TTagName>,
     OverflowMenuContextType
   >,
 ) {
@@ -44,7 +44,7 @@ export function useBaseOverflowMenu<TagName extends HTMLElementTagName>(
   const [isOpen, setIsOpen] = useState(false);
   const [menuId] = useState(() => uniqueId("sys42-overflow-menu-"));
 
-  const elementRef = useRef<HTMLElementTagNameMap[TagName]>(null);
+  const elementRef = useRef<HTMLElementTagNameMap[TTagName]>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -94,9 +94,9 @@ export function useBaseOverflowMenu<TagName extends HTMLElementTagName>(
     isOpen ? close() : open();
   }
 
-  const draft: BaseOverflowMenuDraft<TagName> = {
+  const draft: BaseOverflowMenuDraft<TTagName> = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
     triggerProps: {
       onClick: handleClickTrigger,
       "aria-expanded": isOpen,

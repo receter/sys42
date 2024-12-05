@@ -2,15 +2,15 @@
 
 export interface BaseLabelProps {}
 
-export function useBaseLabel<TagName extends HTMLElementTagName>(
-  { props, forwardedRef }: UseComponentOptions<BaseLabelProps, TagName>,
-  interceptor?: UseComponentInterceptor<TagName>,
+export function useBaseLabel(
+  { props, forwardedRef }: UseComponentOptions<BaseLabelProps, "label">,
+  interceptor?: UseComponentInterceptor<"label">,
 ) {
   const { ...restProps } = props;
 
   const draft = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<"label">,
   };
 
   interceptor?.(draft);

@@ -10,8 +10,8 @@ export type ButtonProps = BaseButtonProps & {
   size?: "lg";
 };
 
-export function useButton<TagName extends HTMLElementTagName>(
-  options: UseComponentOptions<ButtonProps, TagName>,
+export function useButton<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<ButtonProps, TTagName>,
 ) {
   const { variant, size, ...baseProps } = options.props;
 

@@ -4,19 +4,19 @@ export type BaseTextInputProps = {
   type?: "text" | "password" | "email" | "tel" | "url";
 };
 
-export function useBaseTextInput<TagName extends HTMLElementTagName>(
+export function useBaseTextInput<TTagName extends HTMLElementTagName>(
   {
     props,
     elementType,
     forwardedRef,
-  }: UseComponentOptions<BaseTextInputProps, TagName>,
-  interceptor?: UseComponentInterceptor<TagName>,
+  }: UseComponentOptions<BaseTextInputProps, TTagName>,
+  interceptor?: UseComponentInterceptor<TTagName>,
 ) {
   const { type = "text", ...restProps } = props;
 
   const draft = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
   if (isPropsForElement(draft.elementProps, elementType, "input")) {

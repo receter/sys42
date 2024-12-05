@@ -6,8 +6,8 @@ import styles from "./styles.module.css";
 
 export type StackProps = BaseStackProps;
 
-export function useStack<TagName extends HTMLElementTagName>(
-  options: UseComponentOptions<StackProps, TagName>,
+export function useStack<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<StackProps, TTagName>,
 ) {
   return useBaseStack(options, (draft) => {
     draft.elementProps.className = cn(

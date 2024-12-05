@@ -10,14 +10,8 @@ export type BaseFormFieldProps = {
   children: React.ReactNode | ((ctx: FormFieldContextType) => React.ReactNode);
 };
 
-export type UseBaseFormFieldOptions<Props, Elem extends HTMLElement> = {
-  props: Props;
-  elementType: keyof JSX.IntrinsicElements;
-  forwardedRef: React.ForwardedRef<Elem>;
-};
-
-export type BaseFormFieldDraft<TagName extends HTMLElementTagName> = {
-  elementProps: React.ComponentPropsWithoutRef<TagName>;
+export type BaseFormFieldDraft<TTagName extends HTMLElementTagName> = {
+  elementProps: React.ComponentPropsWithoutRef<TTagName>;
   labelProps: React.ComponentPropsWithoutRef<"label">;
   errorMessagesProps: React.ComponentPropsWithoutRef<"div">[];
 };
@@ -29,11 +23,11 @@ export type BaseFormFieldRenderArgs = {
   children: React.ReactNode | ((ctx: FormFieldContextType) => React.ReactNode);
 };
 
-export function useBaseFormField<TagName extends HTMLElementTagName>(
-  { props, forwardedRef }: UseComponentOptions<BaseFormFieldProps, TagName>,
+export function useBaseFormField<TTagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseFormFieldProps, TTagName>,
   interceptor?: UseComponentInterceptor<
-    TagName,
-    BaseFormFieldDraft<TagName>,
+    TTagName,
+    BaseFormFieldDraft<TTagName>,
     FormFieldContextType
   >,
 ) {
@@ -53,9 +47,9 @@ export function useBaseFormField<TagName extends HTMLElementTagName>(
     isError: errorMessageArray.length > 0,
   };
 
-  const draft: BaseFormFieldDraft<TagName> = {
+  const draft: BaseFormFieldDraft<TTagName> = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
     labelProps: {
       htmlFor: ctx.htmlFor,
       children: label,

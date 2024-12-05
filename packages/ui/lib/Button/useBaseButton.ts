@@ -10,22 +10,22 @@ export interface BaseButtonProps {}
 // Using Record<string | number | symbol, never> or EmptyObject does not work, it breaks
 // the "props: baseProps satisfies …"  in useButton
 
-export function useBaseButton<TagName extends HTMLElementTagName>(
+export function useBaseButton<TTagName extends HTMLElementTagName>(
   {
     props,
     elementType,
     forwardedRef,
-  }: UseComponentOptions<BaseButtonProps, TagName>,
-  interceptor?: UseComponentInterceptor<TagName>,
+  }: UseComponentOptions<BaseButtonProps, TTagName>,
+  interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const ref = useRef<HTMLElementTagNameMap[TagName]>(null);
+  const ref = useRef<HTMLElementTagNameMap[TTagName]>(null);
 
   const { ...restProps } = props;
 
   // restProps should now be an empty object in TypeScripts eyes
   const draft = {
     elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
   if (isPropsForElement(draft.elementProps, elementType, "button")) {
