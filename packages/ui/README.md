@@ -57,18 +57,10 @@ For simple components that render a single element, like a button, simply spread
 
 ```jsx
 import { Link } from "react-router-dom";
-import { useButton } from "@sys42/ui";
+import { createComponent, useButton } from "@sys42/ui";
 
-export const ButtonLink = forwardRef<
-  HTMLAnchorElement,
-  ButtonProps<React.ComponentProps<Link>>
->((props, forwardedRef) => {
-  const { elementProps, elementRef } = useButton({
-    props,
-    elementType: "a",
-    forwardedRef,
-  });
-
+export const ButtonLink = createComponent<ButtonProps, "a">("a", (hookOptions) => {
+  const { elementProps, elementRef } = useButton(hookOptions);
   return <Link {...elementProps} ref={elementRef} />;
 });
 ```
@@ -78,28 +70,25 @@ export const ButtonLink = forwardRef<
 For more complex components that render multiple elements, you'll need to invoke an additional render function to handle the children. The hook will return a `renderArgs` object, which must be passed to the render function. You can either use the default render function provided for each component or write your own.
 
 ```jsx
-import { useBaseFormField, renderFormField } from "@sys42/ui";
+import {
+  FormFieldProps,
+  createComponent,
+  useFormField,
+  renderFormField,
+} from "@sys42/ui";
 
-export const MyFormField = forwardRef<
-  HTMLDivElement,
-  FormFieldProps<React.ComponentProps<"div">>
->((props, forwardedRef) => {
-  const {
-    elementProps,
-    elementRef,
-    renderArgs,
-  } = useFormField({
-    props,
-    elementType: "div",
-    forwardedRef,
-  });
+export const MyFormField = createComponent<FormFieldProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } = useFormField(hookOptions);
 
-  return (
-    <div {...elementProps} ref={elementRef}>
-      {renderFormField(renderArgs)}
-    </div>
-  );
-};
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderFormField(renderArgs)}
+      </div>
+    );
+  }
+);
 ```
 
 ### Using the Base Hooks
@@ -113,66 +102,66 @@ For guidance on using Base Hooks, you can refer to the implementation of the cor
 Here’s a simple example of using a Base Hook to create a custom styled component:
 
 ```jsx
-import { useBaseFormField, renderFormField } from "@sys42/ui";
+import {
+  BaseFormFieldProps,
+  createComponent,
+  useBaseFormField,
+  renderFormField,
+  ExactProps,
+} from "@sys42/ui";
+
 import { cn } from "@sys42/utils";
 
-export type MyFormFieldProps<ElemProps> = BaseFormFieldProps<ElemProps> & {
+type MyFormFieldProps = BaseFormFieldProps & {
   myProp: boolean;
-}
-
-export function useMyFormField<
-  Props extends FormFieldProps<HTMLAttributes<HTMLElement>>,
-  Elem extends HTMLElement,
->(options: UseBaseFormFieldOptions<Props, Elem>) {
-
-  // The custom prop "myProp" is extracted from the props
-  const { myProp, ...restProps } = options.props;
-
-  const button = useBaseButton({
-    ...options,
-    props: restProps,
-  });
-
-  const formField = useBaseFormField(options);
-
-  // If you want to attach a CSS class to the component
-  // you can do this by simply extending the className
-  formField.elementProps.className = cn(
-    formField.elementProps.className,
-    "my-form-field",
-  );
-
-  if (myProp) {
-    formField.elementProps.className += " my-form-field--my-prop";
-  }
-
-  formField.renderArgs.labelProps.className = cn(
-    formField.renderArgs.labelProps.className,
-    "my-form-field-label",
-  );
-
-  return formField;
-}
-
-export const MyFormField = forwardRef<
-  HTMLDivElement,
-  MyFormFieldProps<React.ComponentProps<"div">>
->((props, forwardedRef) => {
-  const {
-    elementProps,
-    elementRef,
-    renderArgs,
-  } = useMyFormField({
-    props,
-    elementType: "div",
-    forwardedRef,
-  });
-
-  return <div {...elementProps} ref={elementRef}>
-    {renderFormField(renderArgs)}
-  </div>;
 };
 
+function useMyFormField<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<MyFormFieldProps, TTagName>
+) {
+  // The custom prop "myProp" is extracted from the props
+  const { myProp, ...baseProps } = options.props;
+
+  return useBaseFormField(
+    {
+      ...options,
+      props: baseProps satisfies ExactProps<
+        BaseFormFieldProps,
+        MyFormFieldProps
+      >,
+    },
+    (draft) => {
+      // You can modify the formField here
+      draft.elementProps.className = cn(
+        draft.elementProps.className,
+        "my-form-field"
+      );
+
+      if (myProp) {
+        draft.elementProps.className += " my-form-field--my-prop";
+      }
+
+      draft.labelProps.className = cn(
+        draft.labelProps.className,
+        "my-form-field-label"
+      );
+    }
+  );
+}
+
+export const MyFormField = createComponent<MyFormFieldProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } =
+      useMyFormField(hookOptions);
+
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderFormField(renderArgs)}
+      </div>
+    );
+  }
+);
 ```
 
 ## Types
