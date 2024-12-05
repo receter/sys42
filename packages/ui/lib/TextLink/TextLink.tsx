@@ -9,11 +9,3 @@ export const TextLink = createComponent<TextLinkProps, "a">(
     return <a {...elementProps} ref={elementRef} />;
   },
 );
-
-export const TextLinkButton = createComponent<TextLinkProps, "button">(
-  "button",
-  (hookOptions) => {
-    const { elementProps, elementRef } = useTextLink(hookOptions);
-    return <button {...elementProps} ref={elementRef} />;
-  },
-);

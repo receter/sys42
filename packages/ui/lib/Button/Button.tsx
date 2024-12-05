@@ -9,8 +9,3 @@ export const Button = createComponent<ButtonProps, "button">(
     return <button {...elementProps} ref={elementRef} />;
   },
 );
-
-export const ButtonA = createComponent<ButtonProps, "a">("a", (hookOptions) => {
-  const { elementProps, elementRef } = useButton(hookOptions);
-  return <a {...elementProps} ref={elementRef} />;
-});
