@@ -1,28 +1,20 @@
-import React from "react";
+export interface BaseTextAreaProps {}
 
-// Define specific props for the component
-interface TextAreaProps {}
+export function useBaseTextArea(
+  { props, forwardedRef }: UseComponentOptions<BaseTextAreaProps, "textarea">,
+  interceptor?: UseComponentInterceptor<"textarea">,
+) {
+  const { ...restProps } = props;
 
-export type BaseTextAreaProps = Sys42Props<
-  TextAreaProps,
-  React.ComponentProps<"textarea">
->;
-
-export type UseBaseTextAreaOptions<Props> = {
-  props: Props;
-  forwardedRef: React.ForwardedRef<HTMLTextAreaElement>;
-};
-
-export function useBaseTextArea<Props extends BaseTextAreaProps>({
-  props,
-  forwardedRef,
-}: UseBaseTextAreaOptions<Props>) {
-  const textAreaProps: React.ComponentProps<"textarea"> = {
-    ...props,
+  const draft = {
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<"textarea">,
   };
 
+  interceptor?.(draft);
+
   return {
-    textAreaProps,
-    textAreaRef: forwardedRef,
+    elementProps: draft.elementProps,
+    elementRef: forwardedRef,
   };
 }

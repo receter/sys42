@@ -9,7 +9,12 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [dts({ include: ["lib"] }), react(), libInjectCss(), svgr()],
+  plugins: [
+    dts({ tsconfigPath: "tsconfig-build.json", copyDtsFiles: true }),
+    react(),
+    libInjectCss(),
+    svgr(),
+  ],
   build: {
     copyPublicDir: false,
     lib: {

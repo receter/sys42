@@ -51,100 +51,122 @@ function App() {
 
 For all components, there are hooks available that can be used to change how the component is rendered. The hooks are named the same as the components but with a `use` prefix. The main use case for the hooks is to change the element type of the component.
 
-For example you can use the `useButton` hook and spread the returned `buttonProps` on a `Link` component.
+#### Simple Components
+
+For simple components that render a single element, like a button, simply spread the returned `elementProps` and attach the `elementRef` to the element.
 
 ```jsx
 import { Link } from "react-router-dom";
-import { useButton } from "@sys42/ui";
+import { createComponent, useButton } from "@sys42/ui";
 
-export const ButtonLink = forwardRef<
-  HTMLAnchorElement,
-  ButtonProps<React.ComponentProps<Link>>
->((props, forwardedRef) => {
-  const { buttonProps, buttonRef } = useButton({
-    props,
-    elementType: "a",
-    forwardedRef,
-  });
-
-  return <Link {...buttonProps} ref={buttonRef} />;
+export const ButtonLink = createComponent<ButtonProps, "a">("a", (hookOptions) => {
+  const { elementProps, elementRef } = useButton(hookOptions);
+  return <Link {...elementProps} ref={elementRef} />;
 });
+```
+
+#### Complex Components
+
+For more complex components that render multiple elements, you'll need to invoke an additional render function to handle the children. The hook will return a `renderArgs` object, which must be passed to the render function. You can either use the default render function provided for each component or write your own.
+
+```jsx
+import {
+  FormFieldProps,
+  createComponent,
+  useFormField,
+  renderFormField,
+} from "@sys42/ui";
+
+export const MyFormField = createComponent<FormFieldProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } = useFormField(hookOptions);
+
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderFormField(renderArgs)}
+      </div>
+    );
+  }
+);
 ```
 
 ### Using the Base Hooks
 
-In addition to the React components and [Component Hooks](#using-the-component-hooks), there are Base Hooks that can be used in case you want to opt out of the default styling.
+"In addition to React components and [Component Hooks](#using-the-component-hooks), the library provides Base Hooks for cases where you want to opt out of default styling.
 
-Base Hooks do not import any CSS and have no style-related props, such as the `variant` prop for styled buttons.
+Base Hooks don’t include any CSS and omit style-related props, such as the `variant` prop in styled buttons. These hooks are prefixed with `useBase…` and return everything needed to render the component.
 
-The hooks are named the same as the components but with a `useBase…` prefix. The hooks return everything you need to render the component. You can refer to implementation of the Component Hooks like `useButton` to for examples on how to use the Base Hooks.
+For guidance on using Base Hooks, you can refer to the implementation of the corresponding Component Hook like `useButton`.
 
-#### Simple Usage
-
-This is the most basic way to use a Base Hook. It will render the default internal markup and only change the element type and/or modify the attributes of the wrapper element.
+Here’s a simple example of using a Base Hook to create a custom styled component:
 
 ```jsx
-import { useBaseFoobar } from "@sys42/ui";
+import {
+  BaseFormFieldProps,
+  createComponent,
+  useBaseFormField,
+  renderFormField,
+  ExactProps,
+} from "@sys42/ui";
 
-export const MyFoobar = forwardRef<
-  HTMLDivElement,
-  ButtonProps<React.ComponentProps<"div">>
->((props, forwardedRef) => {
-  const { foobarProps, foobarRef } = useBaseFoobar({
-    props,
-    elementType: "div",
-    forwardedRef,
-  });
+import { cn } from "@sys42/utils";
 
-  // If you want to attach a CSS class to the component
-  // you can do this by simply mutating the className
-  foobarProps.className = "btn btn-blue";
-
-  return <div {...foobarProps} ref={foobarRef} />;
+type MyFormFieldProps = BaseFormFieldProps & {
+  myProp: boolean;
 };
-```
 
-#### Advanced Usage
+function useMyFormField<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<MyFormFieldProps, TTagName>
+) {
+  // The custom prop "myProp" is extracted from the props
+  const { myProp, ...baseProps } = options.props;
 
-Some components that render more complex markup might give you advanced control over the rendered markup by returning additional props that allow you to customize the rendered markup. In this cases you can choose to either use the returned props or ignore them in favor of the default children.
+  return useBaseFormField(
+    {
+      ...options,
+      props: baseProps satisfies ExactProps<
+        BaseFormFieldProps,
+        MyFormFieldProps
+      >,
+    },
+    (draft) => {
+      // You can modify the formField here
+      draft.elementProps.className = cn(
+        draft.elementProps.className,
+        "my-form-field"
+      );
 
-```jsx
-import { useBaseFoobar } from "@sys42/ui";
+      if (myProp) {
+        draft.elementProps.className += " my-form-field--my-prop";
+      }
 
-export const MyComplexThing = forwardRef<
-  HTMLDivElement,
-  ButtonProps<React.ComponentProps<"div">>
->((props, forwardedRef) => {
-  const {
-    complexThingProps,
-    complexThingRef,
-    internalThingProps,
-    internalThingRef,
-    readTheDocs
-  } = useBaseComplexThing({
-    props,
-    elementType: "div",
-    forwardedRef,
-  });
-
-  // To render the default markup you can simply spread the props
-  // which will contain children with the default markup
-
-  // return <div {...complexThingProps} ref={complexThingRef} />;
-
-  // If you want to render custom markup you can do this by
-  // recreating the component with the help of the returned variables.
-  // It might be a good idea to read the documentation of the component
-  // to understand the requirements of the custom markup.
-
-  return (
-    <div {...complexThingProps} ref={complexThingRef}>
-      <nav {...internalThingProps} ref={internalThingRef} />
-      {readTheDocs}
-    </div>
+      draft.labelProps.className = cn(
+        draft.labelProps.className,
+        "my-form-field-label"
+      );
+    }
   );
-};
+}
+
+export const MyFormField = createComponent<MyFormFieldProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } =
+      useMyFormField(hookOptions);
+
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderFormField(renderArgs)}
+      </div>
+    );
+  }
+);
 ```
+
+## Types
+
+Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
 
 ## Custom Properties
 
@@ -162,12 +184,10 @@ If you want to override styles for a specific occurence of a component, you can 
 
 ## Styling opinions
 
-System 42 is designed to be a flexible design system that can be customized to fit your needs.
-
-There are some opinionated decisions that are made in the design system:
+System 42 is built as a flexible design system, allowing you to customize it to suit your needs. However, it includes a few opinionated design choices:
 
 **Margin Top**
 
-Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin-top` for some elements.
+Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin` for some elements.
 
 For more information see this [article](https://dev.to/receter/why-i-fell-in-love-with-margin-top-3flg).

@@ -1,23 +1,18 @@
-import { HTMLAttributes } from "react";
 import { cn } from "@sys42/utils";
 
-import {
-  BaseStackProps,
-  useBaseStack,
-  UseBaseStackOptions,
-} from "./useBaseStack";
+import { BaseStackProps, useBaseStack } from "./useBaseStack";
 
 import styles from "./styles.module.css";
 
-export type StackProps<ElemProps> = BaseStackProps<ElemProps>;
+export type StackProps = BaseStackProps;
 
-export function useStack<
-  Props extends StackProps<HTMLAttributes<HTMLElement>>,
-  Elem extends HTMLElement,
->(options: UseBaseStackOptions<Props, Elem>) {
-  const stack = useBaseStack(options);
-
-  stack.stackProps.className = cn(styles.stack, stack.stackProps.className);
-
-  return stack;
+export function useStack<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<StackProps, TTagName>,
+) {
+  return useBaseStack(options, (draft) => {
+    draft.elementProps.className = cn(
+      draft.elementProps.className,
+      styles.stack,
+    );
+  });
 }

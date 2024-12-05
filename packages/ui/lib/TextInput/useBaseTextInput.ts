@@ -1,31 +1,32 @@
-import React, { useRef } from "react";
-import { mergeRefs } from "react-merge-refs";
+import { isPropsForElement } from "../helpers";
 
-// This are our props that we want to expose as an interface to the TextInput component
-export type BaseTextInputProps = Sys42Props<
-  {
-    type?: "text" | "password" | "email" | "tel" | "url";
-  },
-  React.ComponentProps<"input">
->;
-
-export type UseBaseTextInputOptions<Props> = {
-  props: Props;
-  forwardedRef: React.ForwardedRef<HTMLInputElement>;
+export type BaseTextInputProps = {
+  type?: "text" | "password" | "email" | "tel" | "url";
 };
 
-export function useBaseTextInput<Props extends BaseTextInputProps>({
-  props,
-  forwardedRef,
-}: UseBaseTextInputOptions<Props>) {
-  const { type = "text", ...passedOnProps } = props;
+export function useBaseTextInput<TTagName extends HTMLElementTagName>(
+  {
+    props,
+    elementType,
+    forwardedRef,
+  }: UseComponentOptions<BaseTextInputProps, TTagName>,
+  interceptor?: UseComponentInterceptor<TTagName>,
+) {
+  const { type = "text", ...restProps } = props;
 
-  const ref = useRef<HTMLInputElement>(null);
-
-  const textInputProps: React.ComponentProps<"input"> = {
-    type,
-    ...passedOnProps,
+  const draft = {
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
-  return { textInputProps, textInputRef: mergeRefs([forwardedRef, ref]) };
+  if (isPropsForElement(draft.elementProps, elementType, "input")) {
+    draft.elementProps.type = type;
+  }
+
+  interceptor?.(draft);
+
+  return {
+    elementProps: draft.elementProps,
+    elementRef: forwardedRef,
+  };
 }
