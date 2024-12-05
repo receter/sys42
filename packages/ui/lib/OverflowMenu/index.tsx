@@ -1,45 +1,27 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { renderOverflowMenu } from "./render";
 import { OverflowMenuProps, useOverflowMenu } from "./useOverflowMenu";
-import {
-  OverflowMenu_ItemProps,
-  useOverflowMenu_Item,
-} from "./useOverflowMenu_Item";
 
 import styles from "./styles.module.css";
 
-const OverflowMenuRoot = forwardRef<
-  HTMLDivElement,
-  OverflowMenuProps<React.ComponentProps<"div">>
->((props, forwardedRef) => {
-  const { elementProps, elementRef, renderArgs } = useOverflowMenu({
-    props: {
-      triggerLabel: svgTriggerIcon,
-      ...props,
-    },
-    elementType: "div",
-    forwardedRef,
-  });
-  return (
-    <div {...elementProps} ref={elementRef}>
-      {renderOverflowMenu(renderArgs)}
-    </div>
-  );
-});
-
-const OverflowMenu_Item = forwardRef<
-  HTMLButtonElement,
-  OverflowMenu_ItemProps<React.ComponentProps<"button">>
->((props, forwardedRef) => {
-  const { elementProps, elementRef } = useOverflowMenu_Item({
-    props,
-    elementType: "button",
-    forwardedRef,
-  });
-
-  return <button {...elementProps} ref={elementRef} />;
-});
+export const OverflowMenu = createComponent<OverflowMenuProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } = useOverflowMenu({
+      ...hookOptions,
+      props: {
+        triggerLabel: svgTriggerIcon,
+        ...hookOptions.props,
+      },
+    });
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderOverflowMenu(renderArgs)}
+      </div>
+    );
+  },
+);
 
 const svgTriggerIcon = (
   <svg
@@ -55,7 +37,3 @@ const svgTriggerIcon = (
     />
   </svg>
 );
-
-export const OverflowMenu = Object.assign(OverflowMenuRoot, {
-  Item: OverflowMenu_Item,
-});

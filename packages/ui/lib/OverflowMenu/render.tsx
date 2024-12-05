@@ -1,11 +1,6 @@
-import { OverflowMenuContext, OverflowMenuContextType } from "./context";
-export function renderOverflowMenu(args: {
-  ctx: OverflowMenuContextType;
-  triggerProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
-  triggerRef: React.RefObject<HTMLButtonElement>;
-  menuProps: React.HTMLAttributes<HTMLDivElement>;
-  menuRef: React.RefObject<HTMLDivElement>;
-}) {
+import { OverflowMenuContext } from "./context";
+import { BaseOverflowMenuRenderArgs } from "./useBaseOverflowMenu";
+export function renderOverflowMenu(args: BaseOverflowMenuRenderArgs) {
   const { ctx, triggerProps, menuProps, triggerRef, menuRef } = args;
   return (
     <OverflowMenuContext.Provider value={ctx}>

@@ -1,15 +1,11 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { StackProps, useStack } from "./useStack";
 
-export const Stack = forwardRef<
-  HTMLDivElement,
-  StackProps<React.ComponentProps<"div">>
->((props, forwardedRef) => {
-  const { stackProps, stackRef } = useStack({
-    props,
-    elementType: "div",
-    forwardedRef,
-  });
-  return <div {...stackProps} ref={stackRef} />;
-});
+export const Stack = createComponent<StackProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useStack(hookOptions);
+    return <div {...elementProps} ref={elementRef} />;
+  },
+);

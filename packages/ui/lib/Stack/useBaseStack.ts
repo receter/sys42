@@ -1,53 +1,44 @@
-import React, { HTMLAttributes, useMemo, useRef } from "react";
-import { mergeRefs } from "react-merge-refs";
+import React, { useMemo } from "react";
 
 import { knownSpacingAbbreviations } from "../helpers";
 
 // This are our props that we want to expose as an interface to the Stack component
 // Further we also define attributes that the component "consumes" here
-export type BaseStackProps<ElemProps> = Sys42Props<
-  {
-    spacing?: string;
-    style?: React.CSSProperties;
-  },
-  ElemProps
->;
-
-export type UseBaseStackOptions<Props, Elem extends HTMLElement> = {
-  props: Props;
-  elementType: keyof JSX.IntrinsicElements;
-  forwardedRef: React.ForwardedRef<Elem>;
+export type BaseStackProps = {
+  spacing?: string;
+  style?: React.CSSProperties;
 };
 
-export function useBaseStack<
-  Props extends BaseStackProps<HTMLAttributes<HTMLElement>>,
-  Elem extends HTMLElement,
->({ props, forwardedRef }: UseBaseStackOptions<Props, Elem>) {
-  // When we split our props (StackProps) all props that remain will be props
-  // that are defined in ElemAttr but not in StackProps
-  const { spacing = "md", style: passedStyle, ...passedOnProps } = props;
+export function useBaseStack<TagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseStackProps, TagName>,
+  interceptor?: UseComponentInterceptor<TagName>,
+) {
+  const { spacing = "md", style, ...restProps } = props;
 
-  const ref = useRef<Elem>(null);
+  const draft = {
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+  };
 
-  const style = useMemo(() => {
+  draft.elementProps.style = useMemo(() => {
     if (spacing) {
       let spacingValue = spacing;
       if (knownSpacingAbbreviations.includes(spacing)) {
         spacingValue = `var(--sys42-spacing-${spacing})`;
       }
       return {
-        ...passedStyle,
+        ...style,
         "--sys42-stack-spacing": spacingValue,
       };
     } else {
-      return passedStyle;
+      return style;
     }
-  }, [spacing, passedStyle]);
+  }, [spacing, style]);
 
-  const stackProps: React.HTMLAttributes<HTMLElement> = {
-    style,
-    ...passedOnProps,
+  interceptor?.(draft);
+
+  return {
+    elementProps: draft.elementProps,
+    elementRef: forwardedRef,
   };
-
-  return { stackProps, stackRef: mergeRefs([forwardedRef, ref]) };
 }

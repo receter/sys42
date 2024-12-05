@@ -23,22 +23,20 @@ export function useBaseButton<TagName extends HTMLElementTagName>(
   const { ...restProps } = props;
 
   // restProps should now be an empty object in TypeScripts eyes
-  const elementProps =
-    restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>;
-
-  if (isPropsForElement(elementProps, elementType, "button")) {
-    // If the element is a button, we want to make sure it has a type attribute that defaults to button
-    elementProps.type = elementProps.type ?? "button";
-  }
-
   const draft = {
-    elementProps,
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
   };
+
+  if (isPropsForElement(draft.elementProps, elementType, "button")) {
+    // If the element is a button, we want to make sure it has a type attribute that defaults to button
+    draft.elementProps.type = draft.elementProps.type ?? "button";
+  }
 
   interceptor?.(draft);
 
   return {
-    elementProps,
+    elementProps: draft.elementProps,
     elementRef: mergeRefs([forwardedRef, ref]),
   };
 }

@@ -1,13 +1,11 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { TextInputProps, useTextInput } from "./useTextInput";
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  (props, forwardedRef) => {
-    const { elementProps, elementRef } = useTextInput({
-      props,
-      forwardedRef,
-    });
+export const TextInput = createComponent<TextInputProps, "input">(
+  "input",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useTextInput(hookOptions);
     return <input {...elementProps} ref={elementRef} />;
   },
 );

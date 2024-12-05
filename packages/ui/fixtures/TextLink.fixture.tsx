@@ -41,9 +41,7 @@ export default function ButtonFixture() {
         </TextLinkButton>
 
         <div>{"<a>"}</div>
-        <div>
-          <a href={`#a-${timestamp}`}>This is a link</a>
-        </div>
+        <a href={`#a-${timestamp}`}>This is a link</a>
       </Stack>
     </>
   );

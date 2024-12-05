@@ -1,21 +1,17 @@
 import { Label } from "../Label";
 
-import { FormFieldContext, FormFieldContextType } from "./context";
+import { FormFieldContext } from "./context";
+import { BaseFormFieldRenderArgs } from "./useBaseFormField";
 
-export function renderFormField(args: {
-  labelProps: React.LabelHTMLAttributes<HTMLLabelElement>;
-  errorMessagesProps: React.HTMLAttributes<HTMLElement>[];
-  children: React.ReactNode | ((ctx: FormFieldContextType) => React.ReactNode);
-  ctx: FormFieldContextType;
-}) {
+export function renderFormField(args: BaseFormFieldRenderArgs) {
   const { labelProps, errorMessagesProps, children, ctx } = args;
 
   return (
     <FormFieldContext.Provider value={ctx}>
       <Label {...labelProps} />
       {typeof children === "function" ? children(ctx) : children}
-      {errorMessagesProps.map((props) => (
-        <div {...props} />
+      {errorMessagesProps.map((props, i) => (
+        <div {...props} key={i} />
       ))}
     </FormFieldContext.Provider>
   );

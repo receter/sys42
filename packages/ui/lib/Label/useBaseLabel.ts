@@ -1,23 +1,22 @@
 // DOCS: The label must be rendered as a label element.
 
-interface LabelProps {}
+export interface BaseLabelProps {}
 
-export type BaseLabelProps = Sys42Props<
-  LabelProps,
-  React.ComponentProps<"label">
->;
+export function useBaseLabel<TagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseLabelProps, TagName>,
+  interceptor?: UseComponentInterceptor<TagName>,
+) {
+  const { ...restProps } = props;
 
-export type UseBaseLabelOptions<Props> = {
-  props: Sys42Props<Props, React.ComponentProps<"label">>;
-  forwardedRef: React.ForwardedRef<HTMLLabelElement>;
-};
+  const draft = {
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+  };
 
-export function useBaseLabel<Props extends BaseLabelProps>({
-  props,
-  forwardedRef,
-}: UseBaseLabelOptions<Props>) {
+  interceptor?.(draft);
+
   return {
-    elementProps: { ...props },
+    elementProps: draft.elementProps,
     elementRef: forwardedRef,
   };
 }

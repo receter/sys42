@@ -11,26 +11,6 @@
   height: fit-content;
 }
 
-.overflowMenu_Item {
-  background: none;
-  border: 0;
-  color: inherit;
-  display: block;
-  padding: 0.5rem;
-  text-align: left;
-  cursor: pointer;
-  width: 100%;
-  border-radius: var(--sys42-button-border-radius);
-}
-
-.overflowMenu_Item:hover {
-  background: color-mix(
-    in srgb,
-    currentColor 8%,
-    var(--sys42-overflow-menu-background)
-  );
-}
-
 .overflowMenu > button {
   border: 0;
   cursor: pointer;

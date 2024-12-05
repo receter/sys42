@@ -1,13 +1,11 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { LabelProps, useLabel } from "./useLabel";
 
-export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  (props, forwardedRef) => {
-    const { elementProps, elementRef } = useLabel({
-      props,
-      forwardedRef,
-    });
+export const Label = createComponent<LabelProps, "label">(
+  "label",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useLabel(hookOptions);
     return <label {...elementProps} ref={elementRef} />;
   },
 );

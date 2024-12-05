@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { OverflowMenu, Stack } from "../lib/main";
+import { OverflowMenu, OverflowMenuItem, Stack } from "../lib/main";
 
 import styles from "./overflowMenu.module.css";
 
@@ -27,29 +27,29 @@ export default function OverflowMenuFixture() {
         <div className={styles.header}>
           <h2>Look right →</h2>
           <OverflowMenu ref={refMenu}>
-            <OverflowMenu.Item onClick={handleClickItem1}>
+            <OverflowMenuItem onClick={handleClickItem1}>
               This item is a little longer, in fact it is extremely long.
-            </OverflowMenu.Item>
-            <OverflowMenu.Item onClick={handleClickItem2}>
+            </OverflowMenuItem>
+            <OverflowMenuItem onClick={handleClickItem2}>
               Item 2
-            </OverflowMenu.Item>
-            <OverflowMenu.Item onClick={handleClickItem3}>
+            </OverflowMenuItem>
+            <OverflowMenuItem onClick={handleClickItem3}>
               Item 3
-            </OverflowMenu.Item>
+            </OverflowMenuItem>
           </OverflowMenu>
         </div>
         <div className={styles.header}>
           <h2>Small items →</h2>
           <OverflowMenu ref={refMenu}>
-            <OverflowMenu.Item onClick={handleClickItem1}>
+            <OverflowMenuItem onClick={handleClickItem1}>
               Item 1
-            </OverflowMenu.Item>
-            <OverflowMenu.Item onClick={handleClickItem2}>
+            </OverflowMenuItem>
+            <OverflowMenuItem onClick={handleClickItem2}>
               Item 2
-            </OverflowMenu.Item>
-            <OverflowMenu.Item onClick={handleClickItem3}>
+            </OverflowMenuItem>
+            <OverflowMenuItem onClick={handleClickItem3}>
               Item 3
-            </OverflowMenu.Item>
+            </OverflowMenuItem>
           </OverflowMenu>
         </div>
 
@@ -61,15 +61,15 @@ export default function OverflowMenuFixture() {
                 maxWidth: "20rem",
               }}
             >
-              <OverflowMenu.Item onClick={handleClickItem1}>
+              <OverflowMenuItem onClick={handleClickItem1}>
                 This item is a little longer, in fact it is extremely long.
-              </OverflowMenu.Item>
-              <OverflowMenu.Item onClick={handleClickItem2}>
+              </OverflowMenuItem>
+              <OverflowMenuItem onClick={handleClickItem2}>
                 Item 2
-              </OverflowMenu.Item>
-              <OverflowMenu.Item onClick={handleClickItem3}>
+              </OverflowMenuItem>
+              <OverflowMenuItem onClick={handleClickItem3}>
                 Item 3
-              </OverflowMenu.Item>
+              </OverflowMenuItem>
             </div>
           </OverflowMenu>
         </div>

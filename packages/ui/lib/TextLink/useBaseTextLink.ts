@@ -1,23 +1,20 @@
-import React, { HTMLAttributes } from "react";
+export interface BaseTextLinkProps {}
 
-interface TextLinkProps {}
+export function useBaseTextLink<TagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseTextLinkProps, TagName>,
+  interceptor?: UseComponentInterceptor<TagName>,
+) {
+  const { ...restProps } = props;
 
-export type BaseTextLinkProps<ElemProps> = Sys42Props<TextLinkProps, ElemProps>;
+  const draft = {
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+  };
 
-export type UseBaseTextLinkOptions<Props, Elem extends HTMLElement> = {
-  props: Props;
-  elementType: keyof JSX.IntrinsicElements;
-  forwardedRef: React.ForwardedRef<Elem>;
-};
+  interceptor?.(draft);
 
-export function useBaseTextLink<
-  Props extends BaseTextLinkProps<HTMLAttributes<HTMLElement>>,
-  Elem extends HTMLElement,
->({ props, forwardedRef }: UseBaseTextLinkOptions<Props, Elem>) {
   return {
-    elementProps: {
-      ...props,
-    },
+    elementProps: draft.elementProps,
     elementRef: forwardedRef,
   };
 }

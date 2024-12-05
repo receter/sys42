@@ -45,7 +45,7 @@ if (isPropsForElement(elementProps, elementType, "a")) {
 
 Later the returned `elementProps` will know about the element type. When the props are spread onto the intrinsic element, TypeScript will warn if any of the props are not supported by the element.
 
-The same is also true for the `elementRef` returned by a `useComponent` hook. If the element is not of the correct type, TypeScript will warn.
+The same is also true for the `elementRef` returned by a `useComponent` hook. If the ref is not compatible with the element, TypeScript will warn.
 
 ## Ensure Correct Ref Types
 

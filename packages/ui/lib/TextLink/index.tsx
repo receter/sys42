@@ -1,28 +1,19 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { TextLinkProps, useTextLink } from "./useTextLink";
 
-export const TextLink = forwardRef<
-  HTMLAnchorElement,
-  TextLinkProps<React.ComponentProps<"a">>
->((props, forwardedRef) => {
-  const { elementProps, elementRef } = useTextLink({
-    props,
-    elementType: "a",
-    forwardedRef,
-  });
-  return <a {...elementProps} ref={elementRef} />;
-});
+export const TextLink = createComponent<TextLinkProps, "a">(
+  "a",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useTextLink(hookOptions);
+    return <a {...elementProps} ref={elementRef} />;
+  },
+);
 
-export const TextLinkButton = forwardRef<
-  HTMLButtonElement,
-  TextLinkProps<React.ComponentProps<"button">>
->((props, forwardedRef) => {
-  const { elementProps, elementRef } = useTextLink({
-    props,
-    elementType: "button",
-    forwardedRef,
-  });
-
-  return <button {...elementProps} ref={elementRef} />;
-});
+export const TextLinkButton = createComponent<TextLinkProps, "button">(
+  "button",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useTextLink(hookOptions);
+    return <button {...elementProps} ref={elementRef} />;
+  },
+);

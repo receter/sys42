@@ -1,14 +1,11 @@
-import { forwardRef } from "react";
+import { createComponent } from "../helpers";
 
 import { TextAreaProps, useTextArea } from "./useTextArea";
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  (props, ref) => {
-    const { elementProps, elementRef } = useTextArea({
-      props,
-      forwardedRef: ref,
-    });
-
-    return <textarea ref={elementRef} {...elementProps} />;
+export const TextArea = createComponent<TextAreaProps, "textarea">(
+  "textarea",
+  (hookOptions) => {
+    const { elementProps, elementRef } = useTextArea(hookOptions);
+    return <textarea {...elementProps} ref={elementRef} />;
   },
 );

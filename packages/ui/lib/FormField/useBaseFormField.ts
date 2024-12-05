@@ -1,19 +1,14 @@
-import React, { HTMLAttributes, useState } from "react";
+import React, { useState } from "react";
 import { isArray, uniqueId } from "lodash-es";
 
 import { FormFieldContextType } from "./context";
 
-export type BaseFormFieldProps<ElemProps> = Sys42Props<
-  {
-    errorMessage?: string | string[];
-    label: React.ReactNode;
-    htmlFor?: string;
-    children:
-      | React.ReactNode
-      | ((ctx: FormFieldContextType) => React.ReactNode);
-  },
-  ElemProps
->;
+export type BaseFormFieldProps = {
+  errorMessage?: string | string[];
+  label: React.ReactNode;
+  htmlFor?: string;
+  children: React.ReactNode | ((ctx: FormFieldContextType) => React.ReactNode);
+};
 
 export type UseBaseFormFieldOptions<Props, Elem extends HTMLElement> = {
   props: Props;
@@ -21,13 +16,30 @@ export type UseBaseFormFieldOptions<Props, Elem extends HTMLElement> = {
   forwardedRef: React.ForwardedRef<Elem>;
 };
 
-export function useBaseFormField<
-  Props extends BaseFormFieldProps<HTMLAttributes<HTMLElement>>,
-  Elem extends HTMLElement,
->({ props, forwardedRef }: UseBaseFormFieldOptions<Props, Elem>) {
+export type BaseFormFieldDraft<TagName extends HTMLElementTagName> = {
+  elementProps: React.ComponentPropsWithoutRef<TagName>;
+  labelProps: React.ComponentPropsWithoutRef<"label">;
+  errorMessagesProps: React.ComponentPropsWithoutRef<"div">[];
+};
+
+export type BaseFormFieldRenderArgs = {
+  labelProps: React.ComponentPropsWithoutRef<"label">;
+  errorMessagesProps: React.ComponentPropsWithoutRef<"div">[];
+  ctx: FormFieldContextType;
+  children: React.ReactNode | ((ctx: FormFieldContextType) => React.ReactNode);
+};
+
+export function useBaseFormField<TagName extends HTMLElementTagName>(
+  { props, forwardedRef }: UseComponentOptions<BaseFormFieldProps, TagName>,
+  interceptor?: UseComponentInterceptor<
+    TagName,
+    BaseFormFieldDraft<TagName>,
+    FormFieldContextType
+  >,
+) {
   const [uniqueFormFieldId] = useState(() => uniqueId("sys42-form-field-"));
 
-  const { errorMessage, label, htmlFor, children, ...passedOnProps } = props;
+  const { errorMessage, label, htmlFor, children, ...restProps } = props;
 
   let errorMessageArray: string[] = [];
   if (isArray(errorMessage)) {
@@ -41,29 +53,30 @@ export function useBaseFormField<
     isError: errorMessageArray.length > 0,
   };
 
-  const labelProps: React.LabelHTMLAttributes<HTMLLabelElement> = {
-    htmlFor: ctx.htmlFor,
-    children: label,
+  const draft: BaseFormFieldDraft<TagName> = {
+    elementProps:
+      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TagName>,
+    labelProps: {
+      htmlFor: ctx.htmlFor,
+      children: label,
+    },
+    errorMessagesProps: errorMessageArray.map((errorMessage) => ({
+      children: errorMessage,
+    })),
   };
 
-  const errorMessagesProps: React.HTMLAttributes<HTMLElement>[] =
-    errorMessageArray.map((errorMessage, i) => ({
-      key: i,
-      children: errorMessage,
-    }));
+  interceptor?.(draft, ctx);
 
-  const elementProps: React.HTMLAttributes<HTMLElement> = {
-    ...passedOnProps,
+  const renderArgs: BaseFormFieldRenderArgs = {
+    labelProps: draft.labelProps,
+    errorMessagesProps: draft.errorMessagesProps,
+    ctx,
+    children,
   };
 
   return {
-    elementProps,
+    elementProps: draft.elementProps,
     elementRef: forwardedRef,
-    renderArgs: {
-      labelProps,
-      errorMessagesProps,
-      ctx,
-      children,
-    },
+    renderArgs,
   };
 }
