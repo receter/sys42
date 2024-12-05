@@ -8,19 +8,9 @@ export * from "./TextArea";
 export * from "./TextLink";
 export * from "./TextInput";
 
-export { createComponent } from "./helpers";
+export * from "./helperClasses";
 
-// Helper Classes
-// Note: `.module.css` files should not be imported in the main entry file
-// because the content would end up in the main bundle even if the export is not used
-export {
-  classButtonGroup,
-  classButtonGroupReverse,
-} from "./helperClasses/buttonGroup";
-export { classCard } from "./helperClasses/card";
-export { classContent } from "./helperClasses/content";
-export { classInlineIcon } from "./helperClasses/inlineIcon";
-export { classTest } from "./helperClasses/test";
+export { createComponent } from "./helpers";
 
 // Types
 export type * from "./types.d.ts";
