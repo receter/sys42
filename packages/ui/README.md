@@ -10,20 +10,29 @@ npm install @sys42/ui
 
 ## Usage
 
-**Styled React Components**
-The easiest and most straight forward way to use System 42 is by directly importing the React components. The components come with basic styles that are based on a set of CSS custom properties (CSS variables). All of these properties are defined in `default-custom-properties.css` and prefixed with `--sys42-`. It is highly recommended to import this file in your application. You can customize the styling of the components by overriding the custom properties in your application.
+### Styled React Components
 
-1. Import the base CSS file followed by the default custom properties CSS in your application:
+Using the styled React components is the easiest way to work with System 42.
 
-```js
+Every component imports an individual `.css` file with default styles based on a set of CSS custom properties. You can make use of the exposed CSS custom properties to customize the look of the components.
+
+You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)
+
+> [!NOTE]
+> If you need to customize the styles beyond the exposed custom properties, you should make use of the Base Hooks and style the components yourself. You can read more about using the Base Hooks in the [Using the Base Hooks](#using-the-base-hooks) section.
+
+The component styles depend on `base.css` for CSS normalization and basic styles, and on `default-custom-properties.css` for custom property defaults. To ensure these dependencies are met, import both `base.css` and `default-custom-properties.css` in your application.
+
+All styles as well as the custom properties are inside a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
+named `sys42`.
+
+#### Example
+
+```jsx
+// Add these imports to your main file
 import "@sys42/ui/base.css";
 import "@sys42/ui/default-custom-properties.css";
 ```
-
-All styles as well as the custom properties are in a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
-named `sys42`.
-
-2. Import the components in your application:
 
 ```jsx
 import { Button, TextInput, Stack } from "@sys42/ui";
@@ -38,30 +47,132 @@ function App() {
 }
 ```
 
-**Using the React Hooks**
-In addition to the React components, React hooks exist for all components and can be used in case you want more control and/or opt out of the default styling. There are two hooks available for every component: one that contains basic behaviour and another one that is based on the first but also contains styling related things. The hooks are named the same as the components but with a `useBase`/`use` prefix. The hooks return everything you need to render the component.
+### Using the Component Hooks
 
-One use case for a hook is if you want to render a component as a different element. One typyical example would be a button as a react-router Link.
+For all components, there are hooks available that can be used to change how the component is rendered. The hooks are named the same as the components but with a `use` prefix. The main use case for the hooks is to change the element type of the component.
 
-You can use the `useButton` hook to get the button props and then spread them on a `Link` component.
+#### Simple Components
+
+For simple components that render a single element, like a button, simply spread the returned `elementProps` and attach the `elementRef` to the element.
 
 ```jsx
 import { Link } from "react-router-dom";
-import { useButton } from "@sys42/ui";
+import { createComponent, useButton } from "@sys42/ui";
 
-export const ButtonLink = forwardRef<
-  HTMLAnchorElement,
-  ButtonProps<React.ComponentProps<Link>>
->((props, forwardedRef) => {
-  const { buttonProps, buttonRef } = useButton({
-    props,
-    elementType: "a",
-    forwardedRef,
-  });
-
-  return <Link {...buttonProps} ref={buttonRef} />;
+export const ButtonLink = createComponent<ButtonProps, "a">("a", (hookOptions) => {
+  const { elementProps, elementRef } = useButton(hookOptions);
+  return <Link {...elementProps} ref={elementRef} />;
 });
 ```
+
+#### Complex Components
+
+For more complex components that render multiple elements, you'll need to invoke an additional render function to handle the children. The hook will return a `renderArgs` object, which must be passed to the render function. You can either use the default render function provided for each component or write your own.
+
+```jsx
+import {
+  FormFieldProps,
+  createComponent,
+  useFormField,
+  renderFormField,
+} from "@sys42/ui";
+
+export const MyFormField = createComponent<FormFieldProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } = useFormField(hookOptions);
+
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderFormField(renderArgs)}
+      </div>
+    );
+  }
+);
+```
+
+### Using the Base Hooks
+
+"In addition to React components and [Component Hooks](#using-the-component-hooks), the library provides Base Hooks for cases where you want to opt out of default styling.
+
+Base Hooks don’t include any CSS and omit style-related props, such as the `variant` prop in styled buttons. These hooks are prefixed with `useBase…` and return everything needed to render the component.
+
+For guidance on using Base Hooks, you can refer to the implementation of the corresponding Component Hook like `useButton`.
+
+Here’s a simple example of using a Base Hook to create a custom styled component:
+
+```jsx
+import {
+  BaseFormFieldProps,
+  createComponent,
+  useBaseFormField,
+  renderFormField,
+  ExactProps,
+} from "@sys42/ui";
+
+import { cn } from "@sys42/utils";
+
+type MyFormFieldProps = BaseFormFieldProps & {
+  myProp: boolean;
+};
+
+function useMyFormField<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<MyFormFieldProps, TTagName>
+) {
+  // The custom prop "myProp" is extracted from the props
+  const { myProp, ...baseProps } = options.props;
+
+  return useBaseFormField(
+    {
+      ...options,
+      props: baseProps satisfies ExactProps<
+        BaseFormFieldProps,
+        MyFormFieldProps
+      >,
+    },
+    (draft) => {
+      // You can modify the formField here
+      draft.elementProps.className = cn(
+        draft.elementProps.className,
+        "my-form-field"
+      );
+
+      if (myProp) {
+        draft.elementProps.className += " my-form-field--my-prop";
+      }
+
+      draft.labelProps.className = cn(
+        draft.labelProps.className,
+        "my-form-field-label"
+      );
+    }
+  );
+}
+
+export const MyFormField = createComponent<MyFormFieldProps, "div">(
+  "div",
+  (hookOptions) => {
+    const { elementProps, elementRef, renderArgs } =
+      useMyFormField(hookOptions);
+
+    return (
+      <div {...elementProps} ref={elementRef}>
+        {renderFormField(renderArgs)}
+      </div>
+    );
+  }
+);
+```
+
+## Types
+
+Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
+
+## Custom Properties
+
+You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)
+
+All custom properties are prefixed with `--sys42-`.
 
 ## Overriding Styles
 
@@ -73,43 +184,10 @@ If you want to override styles for a specific occurence of a component, you can 
 
 ## Styling opinions
 
-System 42 is designed to be a flexible design system that can be customized to fit your needs.
-
-There are some opinionated decisions that are made in the design system:
+System 42 is built as a flexible design system, allowing you to customize it to suit your needs. However, it includes a few opinionated design choices:
 
 **Margin Top**
 
-Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin-top` for some elements.
+Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin` for some elements.
 
 For more information see this [article](https://dev.to/receter/why-i-fell-in-love-with-margin-top-3flg).
-
-## React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-### Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

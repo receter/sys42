@@ -1,5 +1,6 @@
 .textInput {
   box-sizing: border-box;
+  max-width: 100%;
   font-size: 1em;
   line-height: var(--sys42-input-text-line-height);
   background: var(--sys42-input-text-background);

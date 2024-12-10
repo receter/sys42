@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@sys42/ui": "workspace:^",
+    "@sys42/utils": "workspace:^",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

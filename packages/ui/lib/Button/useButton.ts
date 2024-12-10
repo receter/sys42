@@ -1,37 +1,32 @@
-import { HTMLAttributes } from "react";
 import { cn } from "@sys42/utils";
 
-import {
-  BaseButtonProps,
-  useBaseButton,
-  UseBaseButtonOptions,
-} from "./useBaseButton";
+import { BaseButtonProps, useBaseButton } from "./useBaseButton";
 
 import styles from "./styles.module.css";
 
 // DOC: Props that are specific to the styled version of the button can be added at this point.
-export type ButtonProps<ElemProps> = BaseButtonProps<ElemProps> & {
+export type ButtonProps = BaseButtonProps & {
   variant?: "primary";
   size?: "lg";
 };
 
-export function useButton<
-  Props extends ButtonProps<HTMLAttributes<HTMLElement>>,
-  Elem extends HTMLElement,
->(options: UseBaseButtonOptions<Props, Elem>) {
-  const { variant, size, ...restProps } = options.props;
+export function useButton<TTagName extends HTMLElementTagName>(
+  options: UseComponentOptions<ButtonProps, TTagName>,
+) {
+  const { variant, size, ...baseProps } = options.props;
 
-  const button = useBaseButton({
-    ...options,
-    props: restProps,
-  });
-
-  button.buttonProps.className = cn(
-    button.buttonProps.className,
-    variant === "primary" && styles.button_primary,
-    size === "lg" && styles.button_lg,
-    styles.button,
+  return useBaseButton(
+    {
+      ...options,
+      props: baseProps satisfies ExactProps<BaseButtonProps, ButtonProps>,
+    },
+    (draft) => {
+      draft.elementProps.className = cn(
+        draft.elementProps.className,
+        variant === "primary" && styles.button_primary,
+        size === "lg" && styles.button_lg,
+        styles.button,
+      );
+    },
   );
-
-  return button;
 }
