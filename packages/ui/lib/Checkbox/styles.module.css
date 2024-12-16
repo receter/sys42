@@ -1,0 +1,8 @@
+.checkbox {
+}
+
+.checkbox:focus,
+.checkbox:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
