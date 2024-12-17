@@ -2,6 +2,7 @@ export * from "./Button";
 export * from "./Checkbox";
 export * from "./FormField";
 export * from "./Label";
+export * from "./LabeledControl";
 export * from "./OverflowMenu";
 export * from "./OverflowMenuItem";
 export * from "./Radio";
