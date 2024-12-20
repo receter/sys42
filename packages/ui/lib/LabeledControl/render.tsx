@@ -5,7 +5,8 @@ export function renderLabeledControl(args: BaseLabeledControlRenderArgs) {
 
   return (
     <>
-      {control} {label}
+      {control}
+      {label}
     </>
   );
 }

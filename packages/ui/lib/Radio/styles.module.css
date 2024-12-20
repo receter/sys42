@@ -1,7 +1,40 @@
 .radio {
+  all: unset;
+  height: 1em;
+  width: 1em;
+  border-radius: var(--sys42-radio-border-radius);
+  border: var(--sys42-radio-border-width) solid var(--sys42-radio-border-color);
+  flex-shrink: 0;
+  color: var(--sys42-radio-color);
+  display: inline-block;
 }
 
-.radio:focus,
+.radio:checked {
+  background-color: var(--sys42-radio-background--checked);
+  border-color: var(--sys42-radio-border-color--checked);
+  color: var(--sys42-radio-color--checked);
+}
+
+.radio:checked:before {
+  content: "";
+  height: 0.5em;
+  width: 0.5em;
+  display: block;
+  background: currentColor;
+  border-radius: var(--sys42-radio-border-radius);
+  /* center */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio:disabled {
+  background-color: var(--sys42-radio-background--disabled);
+  border-color: var(--sys42-radio-border-color--disabled);
+  color: var(--sys42-radio-color--disabled);
+}
+
 .radio:focus-visible {
   outline: var(--sys42-focus-outline);
   outline-offset: var(--sys42-focus-outline-offset);

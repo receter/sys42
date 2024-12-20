@@ -1,3 +1,11 @@
 .labeledControl {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sys42-spacing-sm);
+}
+
+.labeledControl > *:first-child {
+  position: relative;
+  top: calc(1lh / 2);
+  transform: translateY(-50%);
 }

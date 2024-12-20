@@ -1,12 +1,21 @@
+import { useEffect, useRef } from "react";
 import { useFixtureSelect, useValue } from "react-cosmos/client";
 
-import { Checkbox, LabeledControl, Radio } from "../lib/main";
+import { Checkbox, LabeledControl, Radio, Stack } from "../lib/main";
 
 export default function LabeledControlFixture() {
   const [selected, setSelected] = useFixtureSelect("Selected", {
     options: ["option1", "option2", "option3"],
     defaultValue: "default",
   });
+
+  const refIndeterminateCheckbox = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (refIndeterminateCheckbox.current) {
+      refIndeterminateCheckbox.current.indeterminate = true;
+    }
+  }, []);
 
   const [checkbox1, setCheckbox1] = useValue("Checkbox 1", {
     defaultValue: false,
@@ -17,10 +26,23 @@ export default function LabeledControlFixture() {
   const [checkbox3, setCheckbox3] = useValue("Checkbox 3", {
     defaultValue: false,
   });
+  const [checkbox4, setCheckbox4] = useValue("Checkbox 4", {
+    defaultValue: false,
+  });
 
   return (
-    <div>
+    <Stack>
       <div>
+        <LabeledControl
+          control={<Radio value="option1" checked={true} disabled={true} />}
+        >
+          Hello I am a radio button label
+        </LabeledControl>
+        <LabeledControl
+          control={<Radio value="option1" checked={false} disabled={true} />}
+        >
+          Hello I am a radio button label
+        </LabeledControl>
         <LabeledControl
           control={
             <Radio
@@ -45,7 +67,9 @@ export default function LabeledControlFixture() {
         >
           Hello I am a radio button label
         </LabeledControl>
+
         <LabeledControl
+          style={{ fontSize: "2rem" }}
           control={
             <Radio
               name="group1"
@@ -55,10 +79,19 @@ export default function LabeledControlFixture() {
             />
           }
         >
-          Hello I am a radio button label
+          I am big
         </LabeledControl>
       </div>
       <div>
+        <LabeledControl control={<Checkbox checked={true} disabled={true} />}>
+          Hello I am a checkbox label
+        </LabeledControl>
+        <LabeledControl control={<Checkbox checked={false} disabled={true} />}>
+          Hello I am a checkbox label
+        </LabeledControl>
+        <LabeledControl control={<Checkbox ref={refIndeterminateCheckbox} />}>
+          Hello I am a checkbox label
+        </LabeledControl>
         <LabeledControl
           control={
             <Checkbox
@@ -86,8 +119,20 @@ export default function LabeledControlFixture() {
         >
           Hello I am a checkbox label
         </MyLabeledCheckbox>
+        {/* This one is made bigger by using font-size */}
+        <LabeledControl
+          style={{ fontSize: "2rem" }}
+          control={
+            <Checkbox
+              checked={checkbox4}
+              onChange={() => setCheckbox4((v) => !v)}
+            />
+          }
+        >
+          I am big
+        </LabeledControl>
       </div>
-    </div>
+    </Stack>
   );
 }
 
