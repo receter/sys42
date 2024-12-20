@@ -113,6 +113,40 @@
   --sys42-textLink-color--visited: #551a8b;
   --sys42-textLink-color--active: #ff0000;
 
+  /* Checkbox */
+  --sys42-checkbox-background: #fff;
+  --sys42-checkbox-border-width: 2px;
+  --sys42-checkbox-border-color: #ddd;
+  --sys42-checkbox-border-radius: var(--sys42-border-radius-sm);
+  --sys42-checkbox-color: transparent;
+
+  /* :checked */
+  --sys42-checkbox-color--checked: #fff;
+  --sys42-checkbox-background--checked: #505b92;
+  --sys42-checkbox-border-color--checked: transparent;
+
+  /* :disabled */
+  --sys42-checkbox-background--disabled: rgba(29, 27, 32, 0.12);
+  --sys42-checkbox-border-color--disabled: transparent;
+  --sys42-checkbox-color--disabled: rgba(29, 27, 32, 0.38);
+
+  /* Radio */
+  --sys42-radio-background: #fff;
+  --sys42-radio-border-width: 2px;
+  --sys42-radio-border-color: #ddd;
+  --sys42-radio-border-radius: 50%;
+  --sys42-radio-color: transparent;
+
+  /* :checked */
+  --sys42-radio-color--checked: #fff;
+  --sys42-radio-background--checked: #505b92;
+  --sys42-radio-border-color--checked: transparent;
+
+  /* :disabled */
+  --sys42-radio-background--disabled: rgba(29, 27, 32, 0.12);
+  --sys42-radio-border-color--disabled: transparent;
+  --sys42-radio-color--disabled: rgba(29, 27, 32, 0.38);
+
   /* classCard */
   --sys42-card-background: #fff;
   --sys42-card-border-radius: var(--sys42-button-border-radius);
