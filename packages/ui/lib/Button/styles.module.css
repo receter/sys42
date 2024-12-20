@@ -1,5 +1,6 @@
 .button {
   font: inherit;
+  color: var(--sys42-button-color);
   border: var(--sys42-button-border-width) solid
     var(--sys42-button-border-color);
   font-size: var(--sys42-button-font-size);
@@ -16,11 +17,6 @@
   display: inline-block;
   text-align: center;
   cursor: pointer;
-}
-
-.button,
-a.button {
-  color: var(--sys42-button-color);
   text-decoration: none;
 }
 
@@ -84,6 +80,31 @@ a.button {
   background: var(--sys42-button_primary-background--disabled);
   border-color: var(--sys42-button_primary-border-color--disabled);
   color: var(--sys42-button_primary-color--disabled);
+}
+
+.button_warning {
+  background: var(--sys42-button_warning-background);
+  border-color: var(--sys42-button_warning-border-color);
+  color: var(--sys42-button_warning-color);
+}
+
+.button_warning:hover {
+  background: var(--sys42-button_warning-background--hover);
+  border-color: var(--sys42-button_warning-border-color--hover);
+  color: var(--sys42-button_warning-color--hover);
+}
+
+.button_warning:active {
+  background: var(--sys42-button_warning-background--active);
+  border-color: var(--sys42-button_warning-border-color--active);
+  color: var(--sys42-button_warning-color--active);
+}
+
+.button_warning:disabled,
+.button_warning[aria-disabled="true"] {
+  background: var(--sys42-button_warning-background--disabled);
+  border-color: var(--sys42-button_warning-border-color--disabled);
+  color: var(--sys42-button_warning-color--disabled);
 }
 
 .button_lg {

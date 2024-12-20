@@ -87,6 +87,41 @@
   );
   --sys42-button_primary-color--disabled: var(--sys42-button-color--disabled);
 
+  /* Button (warning) */
+  --sys42-button_warning-background: #ba1a1a;
+  --sys42-button_warning-border-color: transparent;
+  --sys42-button_warning-color: #fff;
+  --sys42-button_warning-font-weight: normal;
+
+  /* :hover */
+  --sys42-button_warning-background--hover: color-mix(
+    in srgb,
+    #ba1a1a,
+    currentColor 8%
+  );
+  --sys42-button_warning-border-color--hover: transparent;
+  --sys42-button_warning-color--hover: var(--sys42-button_warning-color);
+
+  /* :active */
+  --sys42-button_warning-background--active: var(
+    --sys42-button_warning-background--hover
+  );
+  --sys42-button_warning-border-color--active: var(
+    --sys42-button_warning-border-color--hover
+  );
+  --sys42-button_warning-color--active: var(
+    --sys42-button_warning-color--hover
+  );
+
+  /* :disabled */
+  --sys42-button_warning-background--disabled: var(
+    --sys42-button-background--disabled
+  );
+  --sys42-button_warning-border-color--disabled: var(
+    --sys42-button-border-color--disabled
+  );
+  --sys42-button_warning-color--disabled: var(--sys42-button-color--disabled);
+
   /* Button (size: lg) */
   --sys42-button_lg-font-size: var(--sys42-button-font-size);
   --sys42-button_lg-border-radius: var(--sys42-button-border-radius);

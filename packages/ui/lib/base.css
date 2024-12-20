@@ -1,4 +1,5 @@
-/* import normalize.css install with npm*/
+/* all styles here are added to the sys42-base layer */
+/* import normalize.css install with npm */
 @import url(../node_modules/normalize.css/normalize.css);
 
 :root {
