@@ -1,5 +1,6 @@
 .button {
   font: inherit;
+  color: var(--sys42-button-color);
   border: var(--sys42-button-border-width) solid
     var(--sys42-button-border-color);
   font-size: var(--sys42-button-font-size);
