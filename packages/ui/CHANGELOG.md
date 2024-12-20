@@ -1,5 +1,36 @@
 # Changelog
 
+## [2.0.0](https://github.com/receter/sys42/compare/ui-v1.5.0...ui-v2.0.0) (2024-12-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** The OverflowMenuItem is a separate export now instead of OverflowMenu.Item
+
+### Features
+
+* add checkbox and radio ([54f038a](https://github.com/receter/sys42/commit/54f038a2e7fcacda5dcd9879b57f7bad2bcd4956))
+* add LabeledControl component ([283d655](https://github.com/receter/sys42/commit/283d6552e6f16018867c545e250fd175c16b5fa2))
+* add TextArea ([818116f](https://github.com/receter/sys42/commit/818116f79bd8e0b2ecd145b117394cd80fb6cc67))
+* add warning variant to Button component and update styles ([5000691](https://github.com/receter/sys42/commit/5000691cdc7d719d72b7f80cffba86dcb6f4e4cc))
+* styling for checkboxes and radios ([ed4e571](https://github.com/receter/sys42/commit/ed4e5719fbf16347f398c5a6a63c8ea7cf13f02f))
+
+
+### Bug Fixes
+
+* concat class name of label and refactor to match new naming conventions ([dc9cd80](https://github.com/receter/sys42/commit/dc9cd800736eb669b1f1c10da55c4bca7608334c))
+* correct naming convention for container props ([e167131](https://github.com/receter/sys42/commit/e16713161a3f477669ec3812fba1e32d205e7b27))
+* fix type exports and update readme ([86d57d4](https://github.com/receter/sys42/commit/86d57d4e358220c8eac0d60ac903faed3d1d4355))
+* make text input max 100% width ([bcf020a](https://github.com/receter/sys42/commit/bcf020a81ad062604542596ae973bfa44e197e98))
+* remove unnecessary type ([9a23eed](https://github.com/receter/sys42/commit/9a23eedd4719276a80da947c82eabb252989fa88))
+* small improvements to overflow menu ([d205b05](https://github.com/receter/sys42/commit/d205b050c6380813318f8085a08f39a75cf7d3ff))
+* update Button styles to include color ([5d8bfaf](https://github.com/receter/sys42/commit/5d8bfafaf41ccb3f2fcf3b4ce78aac35463eab33))
+
+
+### Code Refactoring
+
+* **ui:** new type system and coding style ([860b5fd](https://github.com/receter/sys42/commit/860b5fd469b9d64a0a3806991e81e14ce3d9edac))
+
 ## [1.5.0](https://github.com/receter/sys42/compare/ui-v1.4.0...ui-v1.5.0) (2024-10-30)
 
 
