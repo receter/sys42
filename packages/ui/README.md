@@ -24,7 +24,7 @@ You can find all available custom properties here: [default-custom-properties.cs
 The component styles depend on `base.css` for CSS normalization and basic styles, and on `default-custom-properties.css` for custom property defaults. To ensure these dependencies are met, import both `base.css` and `default-custom-properties.css` in your application.
 
 All styles as well as the custom properties are inside a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
-named `sys42`.
+named `sys42`. The base styles, defined in `base.css`, are inside a layer named `sys42-base`.
 
 #### Example
 
