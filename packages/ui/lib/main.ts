@@ -1,5 +1,7 @@
 export * from "./Button";
 export * from "./Checkbox";
+export * from "./CheckboxGroup";
+export * from "./CheckboxGroupItem";
 export * from "./FormField";
 export * from "./FormFieldSet";
 export * from "./Label";

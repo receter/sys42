@@ -25,10 +25,6 @@ export function useBaseRadioGroup<TTagName extends HTMLElementTagName>(
       restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
-  if (role) {
-    throw new Error("role should be forbidden to pass to the props");
-  }
-
   draft.elementProps.role = role ?? "radiogroup";
 
   function handleChangeRadio(e: React.ChangeEvent<HTMLInputElement>) {
