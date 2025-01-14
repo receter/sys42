@@ -4,7 +4,7 @@ export default {
   plugins: [
     pluginAssignLayer([
       {
-        include: "lib/**/*.css,!lib/**/base.css",
+        include: ["!(lib/**/base.css)lib/**/*.css"],
         layerName: "sys42",
       },
       {
