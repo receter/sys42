@@ -1,5 +1,6 @@
 .formFieldSet {
   all: unset;
+  display: block;
 }
 
 .errorMessage {
