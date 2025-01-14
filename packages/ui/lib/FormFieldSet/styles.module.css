@@ -1,0 +1,15 @@
+.formFieldSet {
+  all: unset;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.legend {
+  display: block;
+}
+
+.legend + * {
+  margin-top: var(--sys42-spacing-xs);
+}
