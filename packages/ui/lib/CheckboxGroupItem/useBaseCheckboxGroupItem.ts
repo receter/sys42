@@ -29,6 +29,7 @@ export function useBaseCheckboxGroupItem<TTagName extends HTMLElementTagName>(
       disabled,
       checked: ctx?.value.includes(value),
       onChange: ctx?.onChangeCheckbox,
+      name: ctx?.name,
     },
   };
 

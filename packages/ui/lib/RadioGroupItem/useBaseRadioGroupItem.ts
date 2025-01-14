@@ -29,6 +29,7 @@ export function useBaseRadioGroupItem<TTagName extends HTMLElementTagName>(
       disabled,
       checked: ctx?.value === value,
       onChange: ctx?.onChangeRadio,
+      name: ctx?.name,
     },
   };
 

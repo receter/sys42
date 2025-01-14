@@ -6,6 +6,7 @@ export type BaseCheckboxGroupProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
   role?: "group";
+  name?: string;
 };
 
 export type BaseCheckboxGroupRenderArgs = {
@@ -20,7 +21,7 @@ export function useBaseCheckboxGroup<TTagName extends HTMLElementTagName>(
   }: UseComponentOptions<BaseCheckboxGroupProps, TTagName>,
   interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const { value, onChangeValue, onChange, children, role, ...restProps } =
+  const { value, onChangeValue, onChange, children, role, name, ...restProps } =
     props;
 
   const draft = {
@@ -41,6 +42,7 @@ export function useBaseCheckboxGroup<TTagName extends HTMLElementTagName>(
 
   const ctx: CheckboxGroupContextType = {
     value,
+    name,
     onChangeCheckbox: handleChangeCheckbox,
   };
 

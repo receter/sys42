@@ -6,6 +6,7 @@ export type BaseRadioGroupProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
   role?: "radiogroup";
+  name?: string;
 };
 
 export type BaseRadioGroupRenderArgs = {
@@ -17,7 +18,7 @@ export function useBaseRadioGroup<TTagName extends HTMLElementTagName>(
   { props, forwardedRef }: UseComponentOptions<BaseRadioGroupProps, TTagName>,
   interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const { value, onChangeValue, onChange, children, role, ...restProps } =
+  const { value, onChangeValue, onChange, children, role, name, ...restProps } =
     props;
 
   const draft = {
@@ -36,6 +37,7 @@ export function useBaseRadioGroup<TTagName extends HTMLElementTagName>(
 
   const ctx: RadioGroupContextType = {
     value,
+    name,
     onChangeRadio: handleChangeRadio,
   };
 
