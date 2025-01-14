@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.1](https://github.com/receter/sys42/compare/ui-v2.1.0...ui-v2.1.1) (2025-01-14)
+
+
+### Bug Fixes
+
+* css layers are now correct ([79923fe](https://github.com/receter/sys42/commit/79923fe67067884ecfb51b3d7c7e5282d9cb0347))
+* onChange and onChangeValue should not be required ([eb16a1b](https://github.com/receter/sys42/commit/eb16a1b3b7cbd1c0011d3706a8676a24bd33fad9))
+* set FormFieldSet to display block ([f91fc8c](https://github.com/receter/sys42/commit/f91fc8c5c86f7e82c942e8421998cfc39e47cb2e))
+
 ## [2.1.0](https://github.com/receter/sys42/compare/ui-v2.0.0...ui-v2.1.0) (2025-01-14)
 
 
