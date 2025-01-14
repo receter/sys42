@@ -20,10 +20,6 @@ export default function RadioGroupFixture() {
     <Stack>
       <div>
         <h2>Radio Group</h2>
-        <div>
-          DOC: If the radio group is not in a fieldset, the group must be
-          labeled using aria-label or aria-labelledby.
-        </div>
         <RadioGroup
           value={selected}
           onChangeValue={handleChangeValue}

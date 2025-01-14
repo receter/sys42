@@ -43,10 +43,6 @@ export default function CheckboxGroupFixture() {
     <Stack>
       <div>
         <h2>Checkbox Group</h2>
-        <div>
-          DOC: If the checkbox group is not in a fieldset, the group should be
-          labeled using aria-label or aria-labelledby.
-        </div>
         <CheckboxGroup
           value={checkboxGroupValue}
           onChangeValue={handleChangeValue}
