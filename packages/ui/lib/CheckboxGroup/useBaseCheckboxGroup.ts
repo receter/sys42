@@ -2,8 +2,8 @@ import { CheckboxGroupContextType } from "./context";
 
 export type BaseCheckboxGroupProps = {
   value: string[];
-  onChangeValue: (value: string[]) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeValue?: (value: string[]) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
   role?: "group";
   name?: string;
@@ -34,9 +34,9 @@ export function useBaseCheckboxGroup<TTagName extends HTMLElementTagName>(
   function handleChangeCheckbox(e: React.ChangeEvent<HTMLInputElement>) {
     onChange?.(e);
     if (e.target.checked && !value.includes(e.target.value)) {
-      onChangeValue([...value, e.target.value]);
+      onChangeValue?.([...value, e.target.value]);
     } else if (!e.target.checked && value.includes(e.target.value)) {
-      onChangeValue(value.filter((v) => v !== e.target.value));
+      onChangeValue?.(value.filter((v) => v !== e.target.value));
     }
   }
 

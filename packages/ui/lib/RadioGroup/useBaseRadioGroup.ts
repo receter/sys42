@@ -2,8 +2,8 @@ import { RadioGroupContextType } from "./context";
 
 export type BaseRadioGroupProps = {
   value: string;
-  onChangeValue: (value: string) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeValue?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
   role?: "radiogroup";
   name?: string;
@@ -31,7 +31,7 @@ export function useBaseRadioGroup<TTagName extends HTMLElementTagName>(
   function handleChangeRadio(e: React.ChangeEvent<HTMLInputElement>) {
     onChange?.(e);
     if (e.target.checked && e.target.value !== value) {
-      onChangeValue(e.target.value);
+      onChangeValue?.(e.target.value);
     }
   }
 
