@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.0](https://github.com/receter/sys42/compare/ui-v2.0.0...ui-v2.1.0) (2025-01-14)
+
+
+### Features
+
+* add CheckboxGroup and CheckboxGroupItem ([18a7b94](https://github.com/receter/sys42/commit/18a7b943b86b1e6ac9df407d7080c29890af091e))
+* add RadioGroup, RadioGroupItem, and FormFieldSet ([1fe6070](https://github.com/receter/sys42/commit/1fe607064ec2a7fbdd37f00577b644a45a2760e1))
+* Support name for RadioGroup and CheckboxGroup ([5398d03](https://github.com/receter/sys42/commit/5398d0346d6625002aadb4219285c17f387ce0c1))
+
 ## [2.0.0](https://github.com/receter/sys42/compare/ui-v1.5.0...ui-v2.0.0) (2024-12-20)
 
 
