@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/receter/sys42/compare/ui-v2.2.0...ui-v2.3.0) (2025-01-15)
+
+
+### Features
+
+* add variable for control-size, shadow for checkbox and radio, and radio indicator size ([80b23b1](https://github.com/receter/sys42/commit/80b23b1e7192954e83443db5153aee79972fec6c))
+
 ## [2.2.0](https://github.com/receter/sys42/compare/ui-v2.1.1...ui-v2.2.0) (2025-01-15)
 
 
