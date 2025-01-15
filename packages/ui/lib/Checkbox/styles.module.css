@@ -1,13 +1,15 @@
 .checkbox {
   all: unset;
-  height: 1em;
-  width: 1em;
+  box-sizing: border-box;
+  height: var(--sys42-control-height);
+  width: var(--sys42-control-height);
   border-radius: var(--sys42-checkbox-border-radius);
   border: var(--sys42-checkbox-border-width) solid
     var(--sys42-checkbox-border-color);
   flex-shrink: 0;
   color: var(--sys42-checkbox-color);
   display: inline-block;
+  box-shadow: var(--sys42-checkbox-box-shadow);
 }
 
 .checkbox:checked,
@@ -20,8 +22,8 @@
 .checkbox:checked:before,
 .checkbox:indeterminate:before {
   content: "";
-  height: 1em;
-  width: 1em;
+  height: 100%;
+  width: 100%;
   display: block;
   background: currentColor;
   mask: url(./checked.svg);
@@ -32,7 +34,7 @@
 
 .checkbox:indeterminate:before {
   background: currentColor;
-  mask: url(./indeterminate.svg);
+  mask-image: url(./indeterminate.svg);
 }
 
 .checkbox:disabled {

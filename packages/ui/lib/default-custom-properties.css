@@ -158,12 +158,17 @@
   --sys42-textLink-color--visited: #551a8b;
   --sys42-textLink-color--active: #ff0000;
 
+  /* Controls */
+  /* Currently this applies to Checkbox and Radio */
+  --sys42-control-height: 1.25em;
+
   /* Checkbox */
   --sys42-checkbox-background: #fff;
   --sys42-checkbox-border-width: 2px;
   --sys42-checkbox-border-color: #ddd;
   --sys42-checkbox-border-radius: var(--sys42-border-radius-sm);
   --sys42-checkbox-color: transparent;
+  --sys42-checkbox-box-shadow: none;
 
   /* :checked */
   --sys42-checkbox-color--checked: #fff;
@@ -181,6 +186,8 @@
   --sys42-radio-border-color: #ddd;
   --sys42-radio-border-radius: 50%;
   --sys42-radio-color: transparent;
+  --sys42-radio-box-shadow: none;
+  --sys42-radio-indicator-size: 50%;
 
   /* :checked */
   --sys42-radio-color--checked: #fff;

@@ -1,11 +1,13 @@
 .labeledControl {
   display: flex;
-  align-items: flex-start;
+  align-items: start;
   gap: var(--sys42-spacing-sm);
 }
 
-.labeledControl > *:first-child {
-  position: relative;
-  top: calc(1lh / 2);
-  transform: translateY(-50%);
+.labeledControl *:first-child {
+  margin-top: max(0px, calc((1lh - var(--sys42-control-height)) / 2));
+}
+
+.labeledControl div:last-child {
+  margin-top: max(0px, calc((var(--sys42-control-height) - 1lh) / 2));
 }

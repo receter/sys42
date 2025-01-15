@@ -6,7 +6,7 @@ export function renderLabeledControl(args: BaseLabeledControlRenderArgs) {
   return (
     <>
       {control}
-      {label}
+      <div>{label}</div>
     </>
   );
 }
