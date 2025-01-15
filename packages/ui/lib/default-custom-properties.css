@@ -34,10 +34,14 @@
   --sys42-button-transition: none;
 
   /* :hover */
-  --sys42-button-background--hover: #d3d4ec;
+  --sys42-button-background--hover: color-mix(
+    in srgb,
+    var(--sys42-button-background),
+    var(--sys42-button-color) 8%
+  );
   --sys42-button-border-color--hover: var(--sys42-button-border-color);
-  --sys42-button-box-shadow--hover: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
-    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --sys42-button-box-shadow--hover: 0 3px 2px -2px rgba(0, 0, 0, 0.12),
+    0 4px 6px rgba(0, 0, 0, 0.04);
   --sys42-button-color--hover: var(--sys42-button-color);
   --sys42-button-transition--hover: background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -50,11 +54,9 @@
   --sys42-button-transition--active: none;
 
   /* :disabled */
-  --sys42-button-background--disabled: rgba(29, 27, 32, 0.12);
+  --sys42-button-background--disabled: rgba(32, 32, 32, 0.12);
   --sys42-button-border-color--disabled: transparent;
-  --sys42-button-color--disabled: rgba(
-    from var(--sys42-button-color) r g b / 38%
-  );
+  --sys42-button-color--disabled: rgba(32, 32, 32, 0.38);
 
   /* Button (primary) */
   --sys42-button_primary-background: #505b92;
@@ -63,8 +65,14 @@
   --sys42-button_primary-font-weight: normal;
 
   /* :hover */
-  --sys42-button_primary-background--hover: #5e689b;
-  --sys42-button_primary-border-color--hover: transparent;
+  --sys42-button_primary-background--hover: color-mix(
+    in srgb,
+    var(--sys42-button_primary-background),
+    var(--sys42-button_primary-color) 8%
+  );
+  --sys42-button_primary-border-color--hover: var(
+    --sys42-button_primary-border-color
+  );
   --sys42-button_primary-color--hover: var(--sys42-button_primary-color);
 
   /* :active */
@@ -96,10 +104,12 @@
   /* :hover */
   --sys42-button_warning-background--hover: color-mix(
     in srgb,
-    #ba1a1a,
-    currentColor 8%
+    var(--sys42-button_warning-background),
+    var(--sys42-button_warning-color) 8%
   );
-  --sys42-button_warning-border-color--hover: transparent;
+  --sys42-button_warning-border-color--hover: var(
+    --sys42-button_warning-border-color
+  );
   --sys42-button_warning-color--hover: var(--sys42-button_warning-color);
 
   /* :active */
