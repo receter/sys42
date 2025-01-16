@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.0.0](https://github.com/receter/sys42/compare/ui-v2.3.0...ui-v3.0.0) (2025-01-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* The variant "warning" of Button was renamed to "danger"
+
+### Features
+
+* add Message component ([bf3400f](https://github.com/receter/sys42/commit/bf3400f9ed62702b6308269cd7b6a69cf8dc431b))
+
+
+### Bug Fixes
+
+* rename button variant "warning" to "danger" ([fe29390](https://github.com/receter/sys42/commit/fe29390c664582d4720496c59b7946dd2d649c51))
+
 ## [2.3.0](https://github.com/receter/sys42/compare/ui-v2.2.0...ui-v2.3.0) (2025-01-15)
 
 
