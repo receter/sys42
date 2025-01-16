@@ -95,42 +95,40 @@
   );
   --sys42-button_primary-color--disabled: var(--sys42-button-color--disabled);
 
-  /* Button (warning) */
-  --sys42-button_warning-background: #ba1a1a;
-  --sys42-button_warning-border-color: transparent;
-  --sys42-button_warning-color: #fff;
-  --sys42-button_warning-font-weight: normal;
+  /* Button (danger) */
+  --sys42-button_danger-background: #ba1a1a;
+  --sys42-button_danger-border-color: transparent;
+  --sys42-button_danger-color: #fff;
+  --sys42-button_danger-font-weight: normal;
 
   /* :hover */
-  --sys42-button_warning-background--hover: color-mix(
+  --sys42-button_danger-background--hover: color-mix(
     in srgb,
-    var(--sys42-button_warning-background),
-    var(--sys42-button_warning-color) 8%
+    var(--sys42-button_danger-background),
+    var(--sys42-button_danger-color) 8%
   );
-  --sys42-button_warning-border-color--hover: var(
-    --sys42-button_warning-border-color
+  --sys42-button_danger-border-color--hover: var(
+    --sys42-button_danger-border-color
   );
-  --sys42-button_warning-color--hover: var(--sys42-button_warning-color);
+  --sys42-button_danger-color--hover: var(--sys42-button_danger-color);
 
   /* :active */
-  --sys42-button_warning-background--active: var(
-    --sys42-button_warning-background--hover
+  --sys42-button_danger-background--active: var(
+    --sys42-button_danger-background--hover
   );
-  --sys42-button_warning-border-color--active: var(
-    --sys42-button_warning-border-color--hover
+  --sys42-button_danger-border-color--active: var(
+    --sys42-button_danger-border-color--hover
   );
-  --sys42-button_warning-color--active: var(
-    --sys42-button_warning-color--hover
-  );
+  --sys42-button_danger-color--active: var(--sys42-button_danger-color--hover);
 
   /* :disabled */
-  --sys42-button_warning-background--disabled: var(
+  --sys42-button_danger-background--disabled: var(
     --sys42-button-background--disabled
   );
-  --sys42-button_warning-border-color--disabled: var(
+  --sys42-button_danger-border-color--disabled: var(
     --sys42-button-border-color--disabled
   );
-  --sys42-button_warning-color--disabled: var(--sys42-button-color--disabled);
+  --sys42-button_danger-color--disabled: var(--sys42-button-color--disabled);
 
   /* Button (size: lg) */
   --sys42-button_lg-font-size: var(--sys42-button-font-size);
