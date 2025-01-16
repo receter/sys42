@@ -1,4 +1,12 @@
 :root {
+  /* Font Size */
+  --sys42-font-size-xs: 0.75rem;
+  --sys42-font-size-sm: 0.875rem;
+  --sys42-font-size-md: 1rem;
+  --sys42-font-size-lg: 1.25rem;
+  --sys42-font-size-xl: 1.5rem;
+  --sys42-font-size-2xl: 2rem;
+
   /* Spacing */
   --sys42-spacing-2xs: 0.125rem;
   --sys42-spacing-xs: 0.25rem;
@@ -137,6 +145,34 @@
     var(--sys42-button-padding-horiz) * 1.5
   );
   --sys42-button_lg-padding-vert: calc(var(--sys42-button-padding-vert) * 1.5);
+
+  /* Message */
+  --sys42-message-font-size: var(--sys42-font-size-sm);
+  --sys42-message-border-radius: var(--sys42-border-radius-sm);
+  --sys42-message-background: #efedf4;
+  --sys42-message-border-width: 1px;
+  --sys42-message-border-color: transparent;
+  --sys42-message-color: #1b1b21;
+
+  /* Message (info) */
+  --sys42-message-background--info: #dfe1f9;
+  --sys42-message-border-color--info: transparent;
+  --sys42-message-color--info: #171b2c;
+
+  /* Message (success) */
+  --sys42-message-background--success: #c0efaf;
+  --sys42-message-border-color--success: transparent;
+  --sys42-message-color--success: #002200;
+
+  /* Message (warning) */
+  --sys42-message-background--warning: #ffdea3;
+  --sys42-message-border-color--warning: transparent;
+  --sys42-message-color--warning: #261900;
+
+  /* Message (error) */
+  --sys42-message-background--error: #ffdad6;
+  --sys42-message-border-color--error: transparent;
+  --sys42-message-color--error: #410002;
 
   /* Input Text */
   --sys42-input-text-background: #fff;

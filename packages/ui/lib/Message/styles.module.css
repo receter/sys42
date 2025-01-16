@@ -1,0 +1,43 @@
+.message {
+  font-size: var(--sys42-message-font-size);
+  border-radius: var(--sys42-message-border-radius);
+  text-align: left;
+  padding: var(--sys42-spacing-xs) var(--sys42-spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--sys42-spacing-sm);
+  justify-content: center;
+  background: var(--sys42-message-background);
+  border: var(--sys42-message-border-width) solid
+    var(--sys42-message-border-color);
+  color: var(--sys42-message-color);
+}
+
+.icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.message_info {
+  background: var(--sys42-message-background--info);
+  border-color: var(--sys42-message-border-color--info);
+  color: var(--sys42-message-color--info);
+}
+
+.message_success {
+  background: var(--sys42-message-background--success);
+  border-color: var(--sys42-message-border-color--success);
+  color: var(--sys42-message-color--success);
+}
+
+.message_warning {
+  background: var(--sys42-message-background--warning);
+  border-color: var(--sys42-message-border-color--warning);
+  color: var(--sys42-message-color--warning);
+}
+
+.message_error {
+  background: var(--sys42-message-background--error);
+  border-color: var(--sys42-message-border-color--error);
+  color: var(--sys42-message-color--error);
+}

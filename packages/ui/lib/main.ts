@@ -6,6 +6,7 @@ export * from "./FormField";
 export * from "./FormFieldSet";
 export * from "./Label";
 export * from "./LabeledControl";
+export * from "./Message";
 export * from "./OverflowMenu";
 export * from "./OverflowMenuItem";
 export * from "./Radio";
