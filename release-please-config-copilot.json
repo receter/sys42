@@ -2,6 +2,7 @@
   "packages": {
     "packages/copilot": {
       "release-type": "node",
+      "monorepo-tags": false,
       "manifest-path": ".release-please-manifest-copilot.json"
     }
   }
