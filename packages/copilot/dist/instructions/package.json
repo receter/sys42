@@ -1,0 +1,14 @@
+{
+  "name": "@sys42/copilot",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {},
+  "dependencies": {}
+}

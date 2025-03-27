@@ -13,13 +13,30 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      utils--release_created: ${{ steps.release.outputs['packages/utils--release_created']}}
+      copilot--release_created: ${{ steps.release.outputs['packages/copilot--release_created']}}
       ui--release_created: ${{ steps.release.outputs['packages/ui--release_created']}}
+      utils--release_created: ${{ steps.release.outputs['packages/utils--release_created']}}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+
+  publish-copilot:
+    if: ${{needs.release-please.outputs.copilot--release_created}}
+    runs-on: ubuntu-latest
+    needs: release-please
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/workflows/init-pnpm
+
+      - name: Publish 🚀
+        shell: bash
+        run: pnpm publish packages/copilot --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-utils:
     if: ${{needs.release-please.outputs.utils--release_created}}
