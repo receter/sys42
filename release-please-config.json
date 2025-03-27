@@ -6,6 +6,9 @@
     },
     "packages/ui": {
       "release-type": "node"
+    },
+    "packages/copilot": {
+      "release-type": "node"
     }
   }
 }
