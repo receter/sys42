@@ -9,6 +9,9 @@
   "files": [
     "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "mkdir -p dist && cp -r instructions/* dist",
+    "prepublishOnly": "npm run build"
+  },
   "dependencies": {}
 }
