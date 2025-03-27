@@ -4,6 +4,8 @@ This package contains some files with instructions for GitHub Copilot. These ins
 
 ## Instruction files
 
+https://code.visualstudio.com/docs/copilot/copilot-customization
+
 The following files contain instructions for Copilot:
 
 - [commit-message-generation.md](./instructions/commit-message-generation.md): Instructions for writing commit messages.
