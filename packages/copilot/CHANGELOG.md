@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/receter/sys42/compare/copilot-v1.0.1...copilot-v1.1.0) (2025-03-27)
+
+
+### Features
+
+* **copilot:** add instructions and scripts for code generation and commit message guidance ([6280682](https://github.com/receter/sys42/commit/62806822b926c3a40b5a24056dbb5cc81d69063c))
+
 ## [1.0.1](https://github.com/receter/sys42/compare/copilot-v1.0.0...copilot-v1.0.1) (2025-03-27)
 
 
