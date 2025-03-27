@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/receter/sys42/compare/copilot-v1.0.0...copilot-v1.0.1) (2025-03-27)
+
+
+### Bug Fixes
+
+* correct grammar and details in commit message instructions for package updates ([67f6206](https://github.com/receter/sys42/commit/67f6206afbd77c11d9643bb836418bee79e8394b))
+
 ## 1.0.0 (2025-03-27)
 
 
