@@ -19,7 +19,7 @@ jobs:
         id: release
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
-          config-file: packages/copilot/release-please-config.json
+          config-file: release-please-config-copilot.json
 
   publish-copilot:
     if: ${{needs.release-please.outputs.release_created}}

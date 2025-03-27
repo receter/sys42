@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "packages/copilot": {
+      "release-type": "node",
+      "manifest-path": ".release-please-manifest-copilot.json"
+    }
+  }
+}
