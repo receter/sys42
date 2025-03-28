@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/receter/sys42/compare/ui-v3.0.0...ui-v3.0.1) (2025-03-28)
+
+
+### Bug Fixes
+
+* set box-sizing border box for button in case it is not a button element ([6004536](https://github.com/receter/sys42/commit/6004536db4d49daa7ce75bef09ec3bc0b23e01f1))
+
 ## [3.0.0](https://github.com/receter/sys42/compare/ui-v2.3.0...ui-v3.0.0) (2025-01-16)
 
 
