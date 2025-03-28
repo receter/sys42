@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/receter/sys42/compare/copilot-v1.1.0...copilot-v1.1.1) (2025-03-28)
+
+
+### Bug Fixes
+
+* **copilot:** update build script to create nested instructions directory ([016951d](https://github.com/receter/sys42/commit/016951de9c8c36106f56a8838f6ce698393459c8))
+
 ## [1.1.0](https://github.com/receter/sys42/compare/copilot-v1.0.1...copilot-v1.1.0) (2025-03-27)
 
 
