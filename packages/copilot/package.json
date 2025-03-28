@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "mkdir -p dist && cp -r instructions/* dist",
+    "build": "mkdir -p dist/instructions && cp -r instructions/* dist/instructions",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {}
