@@ -15,6 +15,9 @@ jobs:
 
       - uses: ./.github/workflows/init-pnpm
 
+      - name: Build all that is needed for React Cosmos
+        run: pnpm --filter ui... build
+
       - name: Build React Cosmos
         run: pnpm --filter @sys42/ui run cosmos-export
 
