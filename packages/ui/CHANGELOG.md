@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0](https://github.com/receter/sys42/compare/ui-v3.0.0...ui-v3.1.0) (2025-04-14)
+
+
+### Features
+
+* **ci:** add GitHub Actions workflow for deploying React Cosmos to GitHub Pages ([ba53d23](https://github.com/receter/sys42/commit/ba53d23a6d482dc4831970d32730e29ef0f606c7))
+
+
+### Bug Fixes
+
+* set box-sizing border box for button in case it is not a button element ([6004536](https://github.com/receter/sys42/commit/6004536db4d49daa7ce75bef09ec3bc0b23e01f1))
+
 ## [3.0.0](https://github.com/receter/sys42/compare/ui-v2.3.0...ui-v3.0.0) (2025-01-16)
 
 
