@@ -1,0 +1,1097 @@
+@layer sys42-base {/* all styles here are added to the sys42-base layer */
+/* import normalize.css install with npm */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+:root {
+  /* Typography */
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+table,
+figure,
+hr {
+  margin: 0;
+}
+a {
+  color: var(--sys42-textLink-color);
+}
+a:visited {
+  color: var(--sys42-textLink-color--visited);
+}
+a:active,
+a:visited:active {
+  color: var(--sys42-textLink-color--active);
+}
+}
+@layer sys42 {:root {
+  /* Font Size */
+  --sys42-font-size-xs: 0.75rem;
+  --sys42-font-size-sm: 0.875rem;
+  --sys42-font-size-md: 1rem;
+  --sys42-font-size-lg: 1.25rem;
+  --sys42-font-size-xl: 1.5rem;
+  --sys42-font-size-2xl: 2rem;
+
+  /* Spacing */
+  --sys42-spacing-2xs: 0.125rem;
+  --sys42-spacing-xs: 0.25rem;
+  --sys42-spacing-sm: 0.5rem;
+  --sys42-spacing-md: 1rem;
+  --sys42-spacing-lg: 2rem;
+  --sys42-spacing-xl: 4rem;
+  --sys42-spacing-2xl: 8rem;
+
+  /* Border radius */
+  --sys42-border-radius-sm: 0.25rem;
+  --sys42-border-radius-md: 0.5rem;
+  --sys42-border-radius-lg: 1rem;
+
+  /* Focus style */
+  /* This is used for :focus-visible (buttons) and :focus (inputs) */
+  --sys42-focus-outline: 0.125rem solid #505b92;
+  --sys42-focus-outline-offset: 0.125rem;
+
+  /* Button */
+  /* There is a bug with border-width in Firefox when values differ between normal and :hover */
+  --sys42-button-background: #dfe1f9;
+  --sys42-button-border-color: transparent;
+  --sys42-button-border-width: 1px;
+  --sys42-button-color: #171b2c;
+  --sys42-button-font-weight: normal;
+  --sys42-button-font-size: 1rem;
+  --sys42-button-line-height: inherit;
+  --sys42-button-padding-horiz: 1rem;
+  --sys42-button-padding-vert: 0.5rem;
+  --sys42-button-border-radius: var(--sys42-border-radius-md);
+  --sys42-button-box-shadow: none;
+  --sys42-button-transition: none;
+
+  /* :hover */
+  --sys42-button-background--hover: color-mix(
+    in srgb,
+    var(--sys42-button-background),
+    var(--sys42-button-color) 8%
+  );
+  --sys42-button-border-color--hover: var(--sys42-button-border-color);
+  --sys42-button-box-shadow--hover: 0 3px 2px -2px rgba(0, 0, 0, 0.12),
+    0 4px 6px rgba(0, 0, 0, 0.04);
+  --sys42-button-color--hover: var(--sys42-button-color);
+  --sys42-button-transition--hover: background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  /* :active */
+  --sys42-button-background--active: var(--sys42-button-background--hover);
+  --sys42-button-border-color--active: var(--sys42-button-border-color--hover);
+  --sys42-button-box-shadow--active: none;
+  --sys42-button-color--active: var(--sys42-button-color--hover);
+  --sys42-button-transition--active: none;
+
+  /* :disabled */
+  --sys42-button-background--disabled: rgba(32, 32, 32, 0.12);
+  --sys42-button-border-color--disabled: transparent;
+  --sys42-button-color--disabled: rgba(32, 32, 32, 0.38);
+
+  /* Button (primary) */
+  --sys42-button_primary-background: #505b92;
+  --sys42-button_primary-border-color: transparent;
+  --sys42-button_primary-color: #fff;
+  --sys42-button_primary-font-weight: normal;
+
+  /* :hover */
+  --sys42-button_primary-background--hover: color-mix(
+    in srgb,
+    var(--sys42-button_primary-background),
+    var(--sys42-button_primary-color) 8%
+  );
+  --sys42-button_primary-border-color--hover: var(
+    --sys42-button_primary-border-color
+  );
+  --sys42-button_primary-color--hover: var(--sys42-button_primary-color);
+
+  /* :active */
+  --sys42-button_primary-background--active: var(
+    --sys42-button_primary-background--hover
+  );
+  --sys42-button_primary-border-color--active: var(
+    --sys42-button_primary-border-color--hover
+  );
+  --sys42-button_primary-color--active: var(
+    --sys42-button_primary-color--hover
+  );
+
+  /* :disabled */
+  --sys42-button_primary-background--disabled: var(
+    --sys42-button-background--disabled
+  );
+  --sys42-button_primary-border-color--disabled: var(
+    --sys42-button-border-color--disabled
+  );
+  --sys42-button_primary-color--disabled: var(--sys42-button-color--disabled);
+
+  /* Button (danger) */
+  --sys42-button_danger-background: #ba1a1a;
+  --sys42-button_danger-border-color: transparent;
+  --sys42-button_danger-color: #fff;
+  --sys42-button_danger-font-weight: normal;
+
+  /* :hover */
+  --sys42-button_danger-background--hover: color-mix(
+    in srgb,
+    var(--sys42-button_danger-background),
+    var(--sys42-button_danger-color) 8%
+  );
+  --sys42-button_danger-border-color--hover: var(
+    --sys42-button_danger-border-color
+  );
+  --sys42-button_danger-color--hover: var(--sys42-button_danger-color);
+
+  /* :active */
+  --sys42-button_danger-background--active: var(
+    --sys42-button_danger-background--hover
+  );
+  --sys42-button_danger-border-color--active: var(
+    --sys42-button_danger-border-color--hover
+  );
+  --sys42-button_danger-color--active: var(--sys42-button_danger-color--hover);
+
+  /* :disabled */
+  --sys42-button_danger-background--disabled: var(
+    --sys42-button-background--disabled
+  );
+  --sys42-button_danger-border-color--disabled: var(
+    --sys42-button-border-color--disabled
+  );
+  --sys42-button_danger-color--disabled: var(--sys42-button-color--disabled);
+
+  /* Button (size: lg) */
+  --sys42-button_lg-font-size: var(--sys42-button-font-size);
+  --sys42-button_lg-border-radius: var(--sys42-button-border-radius);
+  --sys42-button_lg-padding-horiz: calc(
+    var(--sys42-button-padding-horiz) * 1.5
+  );
+  --sys42-button_lg-padding-vert: calc(var(--sys42-button-padding-vert) * 1.5);
+
+  /* Message */
+  --sys42-message-font-size: var(--sys42-font-size-sm);
+  --sys42-message-border-radius: var(--sys42-border-radius-sm);
+  --sys42-message-background: #efedf4;
+  --sys42-message-border-width: 1px;
+  --sys42-message-border-color: transparent;
+  --sys42-message-color: #1b1b21;
+
+  /* Message (info) */
+  --sys42-message-background--info: #dfe1f9;
+  --sys42-message-border-color--info: transparent;
+  --sys42-message-color--info: #171b2c;
+
+  /* Message (success) */
+  --sys42-message-background--success: #c0efaf;
+  --sys42-message-border-color--success: transparent;
+  --sys42-message-color--success: #002200;
+
+  /* Message (warning) */
+  --sys42-message-background--warning: #ffdea3;
+  --sys42-message-border-color--warning: transparent;
+  --sys42-message-color--warning: #261900;
+
+  /* Message (error) */
+  --sys42-message-background--error: #ffdad6;
+  --sys42-message-border-color--error: transparent;
+  --sys42-message-color--error: #410002;
+
+  /* Input Text */
+  --sys42-input-text-background: #fff;
+  --sys42-input-text-border-radius: var(--sys42-border-radius-sm);
+  --sys42-input-text-border-width: 1px;
+  --sys42-input-text-border-color: #ddd;
+  --sys42-input-text-line-height: inherit;
+  --sys42-input-text-padding-horiz: 0.5rem;
+  --sys42-input-text-padding-vert: 0.5rem;
+
+  /* Stack */
+  --sys42-stack-spacing: var(--sys42-spacing-md);
+
+  /* Text Link */
+  /* Note: This color does also control the global color of <a> */
+  --sys42-textLink-color: #0000ee;
+  --sys42-textLink-color--visited: #551a8b;
+  --sys42-textLink-color--active: #ff0000;
+
+  /* Controls */
+  /* Currently this applies to Checkbox and Radio */
+  --sys42-control-height: 1.25em;
+
+  /* Checkbox */
+  --sys42-checkbox-background: #fff;
+  --sys42-checkbox-border-width: 2px;
+  --sys42-checkbox-border-color: #ddd;
+  --sys42-checkbox-border-radius: var(--sys42-border-radius-sm);
+  --sys42-checkbox-color: transparent;
+  --sys42-checkbox-box-shadow: none;
+
+  /* :checked */
+  --sys42-checkbox-color--checked: #fff;
+  --sys42-checkbox-background--checked: #505b92;
+  --sys42-checkbox-border-color--checked: transparent;
+
+  /* :disabled */
+  --sys42-checkbox-background--disabled: rgba(29, 27, 32, 0.12);
+  --sys42-checkbox-border-color--disabled: transparent;
+  --sys42-checkbox-color--disabled: rgba(29, 27, 32, 0.38);
+
+  /* Radio */
+  --sys42-radio-background: #fff;
+  --sys42-radio-border-width: 2px;
+  --sys42-radio-border-color: #ddd;
+  --sys42-radio-border-radius: 50%;
+  --sys42-radio-color: transparent;
+  --sys42-radio-box-shadow: none;
+  --sys42-radio-indicator-size: 50%;
+
+  /* :checked */
+  --sys42-radio-color--checked: #fff;
+  --sys42-radio-background--checked: #505b92;
+  --sys42-radio-border-color--checked: transparent;
+
+  /* :disabled */
+  --sys42-radio-background--disabled: rgba(29, 27, 32, 0.12);
+  --sys42-radio-border-color--disabled: transparent;
+  --sys42-radio-color--disabled: rgba(29, 27, 32, 0.38);
+
+  /* classCard */
+  --sys42-card-background: #fff;
+  --sys42-card-border-radius: var(--sys42-button-border-radius);
+  --sys42-card-border-width: 1px;
+  --sys42-card-border-color: #ddd;
+  --sys42-card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --sys42-card-padding-vert: var(--sys42-spacing-md);
+  --sys42-card-padding-horiz: var(--sys42-spacing-md);
+}
+}
+@layer sys42 {._button_1ac43_1 {
+  font: inherit;
+  color: var(--sys42-button-color);
+  border: var(--sys42-button-border-width) solid
+    var(--sys42-button-border-color);
+  font-size: var(--sys42-button-font-size);
+  font-weight: var(--sys42-button-font-weight);
+  line-height: var(--sys42-button-line-height);
+  background: var(--sys42-button-background);
+  padding: calc(
+      var(--sys42-button-padding-vert) - var(--sys42-button-border-width)
+    )
+    calc(var(--sys42-button-padding-horiz) - var(--sys42-button-border-width));
+  border-radius: var(--sys42-button-border-radius);
+  box-shadow: var(--sys42-button-shadow);
+  transition: var(--sys42-button-transition);
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+._button_1ac43_1:focus {
+  outline: 0;
+}
+
+._button_1ac43_1:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+
+._button_1ac43_1:hover {
+  background: var(--sys42-button-background--hover);
+  border-color: var(--sys42-button-border-color--hover);
+  box-shadow: var(--sys42-button-box-shadow--hover);
+  color: var(--sys42-button-color--hover);
+  transition: var(--sys42-button-transition--hover);
+}
+
+._button_1ac43_1:active {
+  background: var(--sys42-button-background--active);
+  border-color: var(--sys42-button-border-color--active);
+  box-shadow: var(--sys42-button-box-shadow--active);
+  color: var(--sys42-button-color--active);
+  transition: var(--sys42-button-transition--active);
+}
+
+._button_1ac43_1:disabled,
+._button_1ac43_1[aria-disabled="true"] {
+  background: var(--sys42-button-background--disabled);
+  border-color: var(--sys42-button-border-color--disabled);
+  box-shadow: var(
+    --sys42-button-box-shadow
+  ); /* When disabled use the default button shadow */
+  color: var(--sys42-button-color--disabled);
+  cursor: default;
+}
+
+._button_primary_1ac43_60 {
+  background: var(--sys42-button_primary-background);
+  border-color: var(--sys42-button_primary-border-color);
+  color: var(--sys42-button_primary-color);
+  font-weight: var(--sys42-button_primary-font-weight);
+}
+
+._button_primary_1ac43_60:hover {
+  background: var(--sys42-button_primary-background--hover);
+  border-color: var(--sys42-button_primary-border-color--hover);
+  color: var(--sys42-button_primary-color--hover);
+}
+
+._button_primary_1ac43_60:active {
+  background: var(--sys42-button_primary-background--active);
+  border-color: var(--sys42-button_primary-border-color--active);
+  color: var(--sys42-button_primary-color--active);
+}
+
+._button_primary_1ac43_60:disabled,
+._button_primary_1ac43_60[aria-disabled="true"] {
+  background: var(--sys42-button_primary-background--disabled);
+  border-color: var(--sys42-button_primary-border-color--disabled);
+  color: var(--sys42-button_primary-color--disabled);
+}
+
+._button_danger_1ac43_86 {
+  background: var(--sys42-button_danger-background);
+  border-color: var(--sys42-button_danger-border-color);
+  color: var(--sys42-button_danger-color);
+}
+
+._button_danger_1ac43_86:hover {
+  background: var(--sys42-button_danger-background--hover);
+  border-color: var(--sys42-button_danger-border-color--hover);
+  color: var(--sys42-button_danger-color--hover);
+}
+
+._button_danger_1ac43_86:active {
+  background: var(--sys42-button_danger-background--active);
+  border-color: var(--sys42-button_danger-border-color--active);
+  color: var(--sys42-button_danger-color--active);
+}
+
+._button_danger_1ac43_86:disabled,
+._button_danger_1ac43_86[aria-disabled="true"] {
+  background: var(--sys42-button_danger-background--disabled);
+  border-color: var(--sys42-button_danger-border-color--disabled);
+  color: var(--sys42-button_danger-color--disabled);
+}
+
+._button_lg_1ac43_111 {
+  font-size: var(--sys42-button_lg-font-size);
+  border-radius: var(--sys42-button_lg-border-radius);
+  padding: calc(
+      var(--sys42-button_lg-padding-vert) - var(--sys42-button-border-width)
+    )
+    calc(
+      var(--sys42-button_lg-padding-horiz) - var(--sys42-button-border-width)
+    );
+}
+}
+@layer sys42 {._checkbox_10xtx_1 {
+  all: unset;
+  box-sizing: border-box;
+  height: var(--sys42-control-height);
+  width: var(--sys42-control-height);
+  border-radius: var(--sys42-checkbox-border-radius);
+  border: var(--sys42-checkbox-border-width) solid
+    var(--sys42-checkbox-border-color);
+  flex-shrink: 0;
+  color: var(--sys42-checkbox-color);
+  display: inline-block;
+  box-shadow: var(--sys42-checkbox-box-shadow);
+}
+
+._checkbox_10xtx_1:checked,
+._checkbox_10xtx_1:indeterminate {
+  background-color: var(--sys42-checkbox-background--checked);
+  border-color: var(--sys42-checkbox-border-color--checked);
+  color: var(--sys42-checkbox-color--checked);
+}
+
+._checkbox_10xtx_1:checked:before,
+._checkbox_10xtx_1:indeterminate:before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: block;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M14.2071%203.79289C14.5976%204.18342%2014.5976%204.81658%2014.2071%205.20711L6.70711%2012.7071C6.31658%2013.0976%205.68342%2013.0976%205.29289%2012.7071L1.79289%209.20711C1.40237%208.81658%201.40237%208.18342%201.79289%207.79289C2.18342%207.40237%202.81658%207.40237%203.20711%207.79289L6%2010.5858L12.7929%203.79289C13.1834%203.40237%2013.8166%203.40237%2014.2071%203.79289Z'%20fill='white'/%3e%3c/svg%3e");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 87.5%;
+}
+
+._checkbox_10xtx_1:indeterminate:before {
+  background: currentColor;
+  mask-image: url("data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.5%208C1.5%207.44772%201.94772%207%202.5%207H13.5C14.0523%207%2014.5%207.44772%2014.5%208C14.5%208.55228%2014.0523%209%2013.5%209H2.5C1.94772%209%201.5%208.55228%201.5%208Z'%20fill='white'/%3e%3c/svg%3e");
+}
+
+._checkbox_10xtx_1:disabled {
+  background-color: var(--sys42-checkbox-background--disabled);
+  border-color: var(--sys42-checkbox-border-color--disabled);
+  color: var(--sys42-checkbox-color--disabled);
+}
+
+._checkbox_10xtx_1:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+}
+@layer sys42 {._labeledControl_1h0u8_1 {
+  display: flex;
+  align-items: start;
+  gap: var(--sys42-spacing-sm);
+}
+
+._labeledControl_1h0u8_1 *:first-child {
+  margin-top: max(0px, calc((1lh - var(--sys42-control-height)) / 2));
+}
+
+._labeledControl_1h0u8_1 div:last-child {
+  margin-top: max(0px, calc((var(--sys42-control-height) - 1lh) / 2));
+}
+}
+@layer sys42 {._checkboxGroupItem_2ngu2_1 + ._checkboxGroupItem_2ngu2_1 {
+  margin-top: var(--sys42-spacing-xs);
+}
+}
+@layer sys42 {._label_syi2f_1 {
+  font-weight: bold;
+}
+}
+@layer sys42 {._formField_16nus_1 {
+}
+
+._errorMessage_16nus_4 {
+  color: red;
+}
+
+/* Component */
+
+._label_16nus_10 {
+  display: block;
+}
+
+._label_16nus_10 + * {
+  margin-top: var(--sys42-spacing-xs);
+}
+}
+@layer sys42 {._formFieldSet_xdl1i_1 {
+  all: unset;
+  display: block;
+}
+
+._errorMessage_xdl1i_6 {
+  color: red;
+}
+
+._legend_xdl1i_10 {
+  display: block;
+}
+
+._legend_xdl1i_10 + * {
+  margin-top: var(--sys42-spacing-xs);
+}
+}
+@layer sys42 {._message_lpuk9_1 {
+  font-size: var(--sys42-message-font-size);
+  border-radius: var(--sys42-message-border-radius);
+  text-align: left;
+  padding: var(--sys42-spacing-xs) var(--sys42-spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--sys42-spacing-sm);
+  justify-content: center;
+  background: var(--sys42-message-background);
+  border: var(--sys42-message-border-width) solid
+    var(--sys42-message-border-color);
+  color: var(--sys42-message-color);
+}
+
+._icon_lpuk9_16 {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+._message_info_lpuk9_21 {
+  background: var(--sys42-message-background--info);
+  border-color: var(--sys42-message-border-color--info);
+  color: var(--sys42-message-color--info);
+}
+
+._message_success_lpuk9_27 {
+  background: var(--sys42-message-background--success);
+  border-color: var(--sys42-message-border-color--success);
+  color: var(--sys42-message-color--success);
+}
+
+._message_warning_lpuk9_33 {
+  background: var(--sys42-message-background--warning);
+  border-color: var(--sys42-message-border-color--warning);
+  color: var(--sys42-message-color--warning);
+}
+
+._message_error_lpuk9_39 {
+  background: var(--sys42-message-background--error);
+  border-color: var(--sys42-message-border-color--error);
+  color: var(--sys42-message-color--error);
+}
+}
+@layer sys42 {:root {
+  /* 
+    TODO: This variable is not available if OverflowMenu is not in use and I need a decision if I want this
+   */
+  --sys42-overflow-menu-background: #fff;
+}
+
+._overflowMenu_1te5t_8 {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+._overflowMenu_1te5t_8 > button {
+  border: 0;
+  cursor: pointer;
+  background: var(--sys42-button-background);
+  color: var(--sys42-button-color);
+  padding: var(--sys42-button-padding-vert);
+  line-height: var(--sys42-button-line-height);
+  box-sizing: content-box;
+  min-width: 1lh;
+  border-radius: 50%;
+}
+
+._overflowMenu_1te5t_8 > button:focus {
+  outline: 0;
+}
+
+._overflowMenu_1te5t_8 > button:hover {
+  background: var(--sys42-button-background--hover);
+}
+
+._overflowMenu_1te5t_8 > button:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+
+._overflowMenu_1te5t_8 > button + div {
+  background: var(--sys42-overflow-menu-background);
+  box-shadow: var(--sys42-card-shadow);
+  box-sizing: border-box;
+  padding: var(--sys42-spacing-sm);
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--sys42-spacing-sm));
+  right: 0;
+  width: max-content;
+  border-radius: var(--sys42-border-radius-md);
+}
+
+._overflowMenu_isOpen_1te5t_52 > button + div {
+  display: block;
+  z-index: 999;
+}
+
+._svgTriggerIcon_1te5t_57 {
+  width: 1em;
+  vertical-align: middle;
+}
+}
+@layer sys42 {._overflowMenuItem_1ous9_1 {
+  background: none;
+  border: 0;
+  color: inherit;
+  display: block;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border-radius: var(--sys42-button-border-radius);
+}
+
+._overflowMenuItem_1ous9_1:hover {
+  background: color-mix(
+    in srgb,
+    currentColor 8%,
+    var(--sys42-overflow-menu-background)
+  );
+}
+}
+@layer sys42 {._radio_1hixc_1 {
+  all: unset;
+  box-sizing: border-box;
+  height: var(--sys42-control-height);
+  width: var(--sys42-control-height);
+  border-radius: var(--sys42-radio-border-radius);
+  border: var(--sys42-radio-border-width) solid var(--sys42-radio-border-color);
+  flex-shrink: 0;
+  color: var(--sys42-radio-color);
+  display: inline-block;
+  box-shadow: var(--sys42-radio-box-shadow);
+}
+
+._radio_1hixc_1:checked {
+  background-color: var(--sys42-radio-background--checked);
+  border-color: var(--sys42-radio-border-color--checked);
+  color: var(--sys42-radio-color--checked);
+}
+
+._radio_1hixc_1:checked:before {
+  content: "";
+  height: var(--sys42-radio-indicator-size);
+  width: var(--sys42-radio-indicator-size);
+  display: block;
+  background: currentColor;
+  border-radius: var(--sys42-radio-border-radius);
+  /* center */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+._radio_1hixc_1:disabled {
+  background-color: var(--sys42-radio-background--disabled);
+  border-color: var(--sys42-radio-border-color--disabled);
+  color: var(--sys42-radio-color--disabled);
+}
+
+._radio_1hixc_1:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+}
+@layer sys42 {._radioGroupItem_olh7i_1 + ._radioGroupItem_olh7i_1 {
+  margin-top: var(--sys42-spacing-xs);
+}
+}
+@layer sys42 {._stack_1wu08_1 > * + * {
+  margin-top: var(--sys42-stack-spacing);
+}
+}
+@layer sys42 {._textArea_1r8zh_1 {
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: var(--sys42-input-text-line-height);
+  background: var(--sys42-input-text-background);
+  border: var(--sys42-input-text-border-width) solid
+    var(--sys42-input-text-border-color);
+  border-radius: var(--sys42-input-text-border-radius);
+  padding: calc(
+      var(--sys42-input-text-padding-vert) -
+        var(--sys42-input-text-border-width)
+    )
+    calc(
+      var(--sys42-input-text-padding-horiz) -
+        var(--sys42-input-text-border-width)
+    );
+}
+
+._textArea_1r8zh_1:focus,
+._textArea_1r8zh_1:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+}
+@layer sys42 {._textInput_esn6q_1 {
+  box-sizing: border-box;
+  max-width: 100%;
+  font-size: 1em;
+  line-height: var(--sys42-input-text-line-height);
+  background: var(--sys42-input-text-background);
+  border: var(--sys42-input-text-border-width) solid
+    var(--sys42-input-text-border-color);
+  border-radius: var(--sys42-input-text-border-radius);
+  padding: calc(
+      var(--sys42-input-text-padding-vert) -
+        var(--sys42-input-text-border-width)
+    )
+    calc(
+      var(--sys42-input-text-padding-horiz) -
+        var(--sys42-input-text-border-width)
+    );
+}
+
+._textInput_esn6q_1:focus,
+._textInput_esn6q_1:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+}
+@layer sys42 {/*
+DOCS: In this special case the textLink class is not used per default
+as a "<a>" already styled globally.  
+*/
+
+/*
+.textLink {
+}
+*/
+
+/* .textLinkNotAnchor is applied to the element if it is not an anchor tag */
+/* in this case it needs to be styled to look like a link */
+._textLinkNotAnchor_1e0fo_11 {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--sys42-textLink-color);
+}
+
+._textLinkNotAnchor_1e0fo_11:active {
+  color: var(--sys42-textLink-color--active);
+}
+}
+@layer sys42 {._buttonGroup_wrpto_1 {
+  align-items: baseline;
+  display: flex;
+  gap: 1rem;
+}
+
+._buttonGroupReverse_wrpto_7 {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+}
+@layer sys42 {._card_861dz_1 {
+  background: var(--sys42-card-background);
+  border-radius: var(--sys42-card-border-radius);
+  border: var(--sys42-card-border-width) solid var(--sys42-card-border-color);
+  box-shadow: var(--sys42-card-shadow);
+  padding: calc(var(--sys42-card-padding-vert) - var(--sys42-card-border-width))
+    calc(var(--sys42-card-padding-horiz) - var(--sys42-card-border-width));
+}
+}
+@layer sys42 {._classContent_1d1yq_1 h1,
+._classContent_1d1yq_1 h2,
+._classContent_1d1yq_1 h3,
+._classContent_1d1yq_1 h4,
+._classContent_1d1yq_1 h5,
+._classContent_1d1yq_1 h6,
+._classContent_1d1yq_1 p,
+._classContent_1d1yq_1 ul,
+._classContent_1d1yq_1 ol,
+._classContent_1d1yq_1 dl,
+._classContent_1d1yq_1 blockquote,
+._classContent_1d1yq_1 pre,
+._classContent_1d1yq_1 table,
+._classContent_1d1yq_1 figure,
+._classContent_1d1yq_1 hr {
+  margin: revert;
+}
+
+._classContent_1d1yq_1 > *:last-child {
+  margin-bottom: 0;
+}
+
+._classContent_1d1yq_1 > *:first-child {
+  margin-top: 0;
+}
+}
+@layer sys42 {._inlineIcon_1muss_1 {
+  display: inline;
+  max-height: 1lh;
+  width: auto;
+  vertical-align: top;
+  position: relative;
+  top: calc(1lh / 2);
+  transform: translateY(-50%);
+}
+}
+._header_exi9a_1 {
+  display: flex;
+  justify-content: space-between;
+}
