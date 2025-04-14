@@ -52,3 +52,12 @@ jobs:
         run: pnpm publish packages/ui --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build React Cosmos
+        run: pnpm --filter @sys42/ui run cosmos-export
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/ui/cosmos-export
