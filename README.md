@@ -2,18 +2,19 @@
 
 System 42 is a collection of principles, components, and utilities that are designed to work together to make it easier to build consistent, accessible, and performant UIs for web applications.
 
-It can be used right out of the box or serve as a foundation for building your own component library. In fact, the primary reason behind its creation was to lay the groundwork for the design system at Userbrain.
+The component library @sys42/ui can be used right out of the box or serve as a foundation for building your own component library.
 
 You can find a deployed list of components at: https://receter.github.io/sys42/
 
 ## Packages
 
-This project is a monorepo managed with PNPM. It consists of the following two main packages:
+This is a monorepo managed with PNPM. It contains the following packages:
 
 - `@sys42/ui`: React component library
 - `@sys42/utils`: Utility library
+- `@sys42/copilot`: A collection of markdown files that serve as instructions for AI assistants
 
-Further the monorepo includes an example project that uses the component library `example-consumer` and a collection of markdown files to serve as instructions for AI assistants `@sys42/copilot`.
+Further the monorepo includes an example project that uses the component library: `example-consumer`.
 
 ## Technical Simplicity
 
