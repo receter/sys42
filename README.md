@@ -65,6 +65,7 @@ If you encounter any problems or have questions, please create an issues.
 
 - https://github.com/receter/focus-log-extension
 - https://github.com/receter/gym-tracker
+- https://stl.parts
 
 ## License
 
