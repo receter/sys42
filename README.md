@@ -63,7 +63,8 @@ If you encounter any problems or have questions, please create an issues.
 
 ## Projects using System 42
 
-https://github.com/receter/focus-log-extension
+- https://github.com/receter/focus-log-extension
+- https://github.com/receter/gym-tracker
 
 ## License
 
