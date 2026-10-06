@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@sys42/utils": "workspace:^",
+    "downshift": "^9.4.0",
     "normalize.css": "^8.0.1",
     "react-merge-refs": "^2.1.1"
   },

@@ -3,15 +3,13 @@ import { createComponent } from "../helpers";
 import { renderOverflowMenu } from "./render";
 import { OverflowMenuProps, useOverflowMenu } from "./useOverflowMenu";
 
-import styles from "./styles.module.css";
-
 export const OverflowMenu = createComponent<OverflowMenuProps, "div">(
   "div",
   (hookOptions) => {
     const { elementProps, elementRef, renderArgs } = useOverflowMenu({
       ...hookOptions,
       props: {
-        triggerLabel: svgTriggerIcon,
+        icon: svgTriggerIcon,
         ...hookOptions.props,
       },
     });
@@ -28,7 +26,7 @@ const svgTriggerIcon = (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
-    className={styles.svgTriggerIcon}
+    aria-hidden="true"
   >
     <path
       fillRule="evenodd"

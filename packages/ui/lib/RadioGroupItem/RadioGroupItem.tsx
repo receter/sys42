@@ -1,6 +1,6 @@
 import { createComponent } from "../helpers";
 import { LabeledControl } from "../LabeledControl";
-import { Radio } from "../main";
+import { Radio } from "../Radio";
 
 import { RadioGroupItemProps, useRadioGroupItem } from "./useRadioGroupItem";
 

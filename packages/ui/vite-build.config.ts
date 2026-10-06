@@ -22,7 +22,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react/jsx-runtime", "@sys42/utils"],
+      external: ["react", "react/jsx-runtime", "@sys42/utils", "downshift"],
       input: Object.fromEntries(
         glob
           .sync("lib/**/*.{ts,tsx}", {

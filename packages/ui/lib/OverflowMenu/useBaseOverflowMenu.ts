@@ -1,28 +1,33 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { uniqueId } from "lodash-es";
+import { useRef } from "react";
 import { mergeRefs } from "react-merge-refs";
 
-import { OverflowMenuContextType } from "./context";
+import { MenuContextType, useMenu } from "../hooks/useMenu";
 
 export type BaseOverflowMenuProps = {
+  // Menu items, usually OverflowMenuItem elements
+  children: React.ReactNode;
   onClose?: () => void;
   onOpen?: () => void;
-  children: React.ReactNode;
-  triggerLabel?: string | React.ReactNode;
+  // Accessible name of the trigger (it shows only the icon)
+  label?: string;
+  // Decorative content of the trigger
+  icon?: React.ReactNode;
+};
+
+export type BaseOverflowMenuContext = {
+  isOpen: boolean;
 };
 
 export type BaseOverflowMenuDraft<TTagName extends HTMLElementTagName> = {
   elementProps: React.ComponentPropsWithoutRef<TTagName>;
-  triggerProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
-  menuProps: React.HTMLAttributes<HTMLDivElement>;
+  triggerProps: React.ComponentPropsWithRef<"button">;
+  menuProps: React.ComponentPropsWithRef<"div">;
 };
 
 export type BaseOverflowMenuRenderArgs = {
-  ctx: OverflowMenuContextType;
-  triggerProps: React.ComponentPropsWithoutRef<"button">;
-  triggerRef: React.RefObject<HTMLButtonElement>;
-  menuProps: React.ComponentPropsWithoutRef<"div">;
-  menuRef: React.RefObject<HTMLDivElement>;
+  ctx: MenuContextType;
+  triggerProps: React.ComponentPropsWithRef<"button">;
+  menuProps: React.ComponentPropsWithRef<"div">;
 };
 
 export function useBaseOverflowMenu<TTagName extends HTMLElementTagName>(
@@ -30,103 +35,45 @@ export function useBaseOverflowMenu<TTagName extends HTMLElementTagName>(
   interceptor?: UseComponentInterceptor<
     TTagName,
     BaseOverflowMenuDraft<TTagName>,
-    OverflowMenuContextType
+    BaseOverflowMenuContext
   >,
 ) {
   const {
+    children,
     onClose,
     onOpen,
-    triggerLabel = "more",
-    children,
+    label = "More actions",
+    icon = "⋯",
     ...restProps
   } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [menuId] = useState(() => uniqueId("sys42-overflow-menu-"));
-
   const elementRef = useRef<HTMLElementTagNameMap[TTagName]>(null);
-  const triggerButtonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
 
-  const close = useCallback(() => {
-    onClose?.();
-    setIsOpen(false);
-  }, [onClose]);
-
-  const open = useCallback(() => {
-    onOpen?.();
-    setIsOpen(true);
-  }, [onOpen]);
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-    function handleMouseUp(e: MouseEvent) {
-      if (
-        triggerButtonRef.current &&
-        !triggerButtonRef.current.contains(e.target as Node) &&
-        menuRef.current &&
-        !menuRef.current.contains(e.target as Node)
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-        close();
-      }
-    }
-
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        close();
-      }
-    }
-
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, close]);
-
-  function handleClickTrigger() {
-    isOpen ? close() : open();
-  }
+  const { isOpen, triggerProps, menuProps, ctx } = useMenu({
+    onOpen,
+    onClose,
+  });
 
   const draft: BaseOverflowMenuDraft<TTagName> = {
     elementProps:
       restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
     triggerProps: {
-      onClick: handleClickTrigger,
-      "aria-expanded": isOpen,
-      "aria-haspopup": "true",
-      "aria-controls": menuId,
-      children: triggerLabel,
+      ...triggerProps,
+      "aria-label": label,
+      children: icon,
     },
     menuProps: {
-      id: menuId,
-      role: "menu",
-      "aria-hidden": !isOpen,
+      ...menuProps,
       children,
     },
   };
 
-  const ctx: OverflowMenuContextType = {
-    isOpen,
-    close,
-    open,
-    menuId,
-  };
-
-  interceptor?.(draft, ctx);
+  interceptor?.(draft, { isOpen });
 
   const renderArgs: BaseOverflowMenuRenderArgs = {
     ctx,
     triggerProps: draft.triggerProps,
-    triggerRef: triggerButtonRef,
     menuProps: draft.menuProps,
-    menuRef: menuRef,
   };
 
   return {

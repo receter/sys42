@@ -1,0 +1,21 @@
+/* Focus stays on the Listbox toggle, the highlighted item is marked via class */
+
+.listboxItem {
+  padding: var(--sys42-menu-item-padding-vert)
+    var(--sys42-menu-item-padding-horiz);
+  border-radius: var(--sys42-menu-item-border-radius);
+  cursor: pointer;
+}
+
+.listboxItem_isHighlighted {
+  background: var(--sys42-menu-item-background--highlighted);
+}
+
+.listboxItem_isSelected {
+  font-weight: var(--sys42-menu-item-font-weight--selected);
+}
+
+.listboxItem[aria-disabled="true"] {
+  color: var(--sys42-menu-item-color--disabled);
+  cursor: default;
+}

@@ -5,6 +5,7 @@ import {
   useOverflowMenuItem,
 } from "./useOverflowMenuItem";
 
+// DOC: Item for OverflowMenu
 export const OverflowMenuItem = createComponent<
   OverflowMenuItemProps,
   "button"

@@ -1,0 +1,27 @@
+.splitButtonItem {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--sys42-menu-item-padding-vert)
+    var(--sys42-menu-item-padding-horiz);
+  border-radius: var(--sys42-menu-item-border-radius);
+  cursor: pointer;
+}
+
+.splitButtonItem:focus {
+  outline: 0;
+}
+
+/* Focus follows the pointer, so :focus is the highlight for mouse and keyboard */
+.splitButtonItem:not([aria-disabled="true"]):focus {
+  background: var(--sys42-menu-item-background--highlighted);
+}
+
+.splitButtonItem[aria-disabled="true"] {
+  color: var(--sys42-menu-item-color--disabled);
+  cursor: default;
+}

@@ -183,6 +183,34 @@
   --sys42-input-text-padding-horiz: 0.5rem;
   --sys42-input-text-padding-vert: 0.5rem;
 
+  /* Menu (OverflowMenu, SplitButton, Listbox) */
+  --sys42-menu-background: #fff;
+  --sys42-menu-color: inherit;
+  --sys42-menu-border-width: 0;
+  --sys42-menu-border-color: transparent;
+  --sys42-menu-border-radius: var(--sys42-border-radius-md);
+  --sys42-menu-shadow: var(--sys42-card-shadow);
+  --sys42-menu-padding: var(--sys42-spacing-sm);
+  --sys42-menu-max-width: 20rem;
+  --sys42-menu-max-height: 20rem;
+  --sys42-menu-item-padding-vert: var(--sys42-spacing-sm);
+  --sys42-menu-item-padding-horiz: var(--sys42-spacing-sm);
+  --sys42-menu-item-border-radius: var(--sys42-button-border-radius);
+  --sys42-menu-item-background--highlighted: color-mix(
+    in srgb,
+    currentColor 8%,
+    var(--sys42-menu-background)
+  );
+  --sys42-menu-item-color--disabled: rgba(32, 32, 32, 0.38);
+  --sys42-menu-item-font-weight--selected: bold;
+
+  /* Listbox */
+  --sys42-listbox-min-width: 10rem;
+  --sys42-listbox-placeholder-color: #757575;
+
+  /* Split Button */
+  --sys42-split-button-divider: 1px solid rgba(0, 0, 0, 0.15);
+
   /* Stack */
   --sys42-stack-spacing: var(--sys42-spacing-md);
 

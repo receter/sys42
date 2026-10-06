@@ -1,17 +1,11 @@
-:root {
-  /* 
-    TODO: This variable is not available if OverflowMenu is not in use and I need a decision if I want this
-   */
-  --sys42-overflow-menu-background: #fff;
-}
-
 .overflowMenu {
   position: relative;
   width: fit-content;
   height: fit-content;
 }
 
-.overflowMenu > button {
+.trigger {
+  font: inherit;
   border: 0;
   cursor: pointer;
   background: var(--sys42-button-background);
@@ -23,38 +17,51 @@
   border-radius: 50%;
 }
 
-.overflowMenu > button:focus {
+.trigger:focus {
   outline: 0;
 }
 
-.overflowMenu > button:hover {
+.trigger:hover,
+.overflowMenu_isOpen > .trigger {
   background: var(--sys42-button-background--hover);
 }
 
-.overflowMenu > button:focus-visible {
+.trigger:focus-visible {
   outline: var(--sys42-focus-outline);
   outline-offset: var(--sys42-focus-outline-offset);
 }
 
-.overflowMenu > button + div {
-  background: var(--sys42-overflow-menu-background);
-  box-shadow: var(--sys42-card-shadow);
-  box-sizing: border-box;
-  padding: var(--sys42-spacing-sm);
-  display: none;
-  position: absolute;
-  top: calc(100% + var(--sys42-spacing-sm));
-  right: 0;
-  width: max-content;
-  border-radius: var(--sys42-border-radius-md);
-}
-
-.overflowMenu_isOpen > button + div {
-  display: block;
-  z-index: 999;
-}
-
-.svgTriggerIcon {
+.trigger > svg {
   width: 1em;
   vertical-align: middle;
+}
+
+/* Menu, items are styled by OverflowMenuItem */
+
+.menu {
+  list-style: none;
+  margin: 0;
+  background: var(--sys42-menu-background);
+  color: var(--sys42-menu-color);
+  border: var(--sys42-menu-border-width) solid var(--sys42-menu-border-color);
+  box-shadow: var(--sys42-menu-shadow);
+  box-sizing: border-box;
+  padding: var(--sys42-menu-padding);
+  position: absolute;
+  top: calc(100% + var(--sys42-spacing-xs));
+  right: 0;
+  z-index: 999;
+  width: max-content;
+  max-width: var(--sys42-menu-max-width);
+  max-height: var(--sys42-menu-max-height);
+  overflow-y: auto;
+  border-radius: var(--sys42-menu-border-radius);
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menu:focus {
+  outline: 0;
 }

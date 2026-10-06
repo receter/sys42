@@ -1,6 +1,6 @@
+import { Checkbox } from "../Checkbox";
 import { createComponent } from "../helpers";
 import { LabeledControl } from "../LabeledControl";
-import { Checkbox } from "../main";
 
 import {
   CheckboxGroupItemProps,

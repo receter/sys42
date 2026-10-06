@@ -1,4 +1,5 @@
 import type {
+  BaseOverflowMenuContext,
   BaseOverflowMenuDraft,
   BaseOverflowMenuProps,
   BaseOverflowMenuRenderArgs,
@@ -9,10 +10,10 @@ export { OverflowMenu } from "./OverflowMenu";
 export { useOverflowMenu } from "./useOverflowMenu";
 export { useBaseOverflowMenu } from "./useBaseOverflowMenu";
 export { renderOverflowMenu } from "./render";
-export { OverflowMenuContext } from "./context";
 
 export type {
   BaseOverflowMenuProps,
+  BaseOverflowMenuContext,
   BaseOverflowMenuDraft,
   BaseOverflowMenuRenderArgs,
   OverflowMenuProps,

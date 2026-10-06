@@ -1,19 +1,27 @@
 .overflowMenuItem {
+  font: inherit;
+  color: inherit;
   background: none;
   border: 0;
-  color: inherit;
   display: block;
-  padding: 0.5rem;
-  text-align: left;
-  cursor: pointer;
   width: 100%;
-  border-radius: var(--sys42-button-border-radius);
+  text-align: left;
+  padding: var(--sys42-menu-item-padding-vert)
+    var(--sys42-menu-item-padding-horiz);
+  border-radius: var(--sys42-menu-item-border-radius);
+  cursor: pointer;
 }
 
-.overflowMenuItem:hover {
-  background: color-mix(
-    in srgb,
-    currentColor 8%,
-    var(--sys42-overflow-menu-background)
-  );
+.overflowMenuItem:focus {
+  outline: 0;
+}
+
+/* Focus follows the pointer, so :focus is the highlight for mouse and keyboard */
+.overflowMenuItem:not([aria-disabled="true"]):focus {
+  background: var(--sys42-menu-item-background--highlighted);
+}
+
+.overflowMenuItem[aria-disabled="true"] {
+  color: var(--sys42-menu-item-color--disabled);
+  cursor: default;
 }

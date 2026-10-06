@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import { useMenuItem } from "../hooks/useMenuItem";
 
-import { OverflowMenuContext } from "../OverflowMenu/context";
-
-export interface BaseOverflowMenuItemProps {
+export type BaseOverflowMenuItemProps = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
+  disabled?: boolean;
+  // Used for typeahead if the text content is not suitable (e.g. includes an icon)
+  textValue?: string;
+};
 
 export function useBaseOverflowMenuItem(
   {
@@ -13,21 +14,16 @@ export function useBaseOverflowMenuItem(
   }: UseComponentOptions<BaseOverflowMenuItemProps, "button">,
   interceptor?: UseComponentInterceptor<"button">,
 ) {
-  const overflowMenuContext = useContext(OverflowMenuContext);
+  const { onClick, disabled, textValue, ...restProps } = props;
 
-  const { onClick, ...restProps } = props;
-
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-    onClick?.(e);
-    overflowMenuContext?.close();
-  }
+  const itemProps = useMenuItem({ onClick, disabled, textValue });
 
   const draft = {
-    elementProps:
-      restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<"button">,
+    elementProps: {
+      ...(restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<"button">),
+      ...itemProps,
+    },
   };
-
-  draft.elementProps.onClick = handleClick;
 
   interceptor?.(draft);
 

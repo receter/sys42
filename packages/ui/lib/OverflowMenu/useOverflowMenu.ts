@@ -18,5 +18,10 @@ export function useOverflowMenu<TTagName extends HTMLElementTagName>(
       styles.overflowMenu,
       ctx.isOpen && styles.overflowMenu_isOpen,
     );
+    draft.triggerProps.className = cn(
+      draft.triggerProps.className,
+      styles.trigger,
+    );
+    draft.menuProps.className = cn(draft.menuProps.className, styles.menu);
   });
 }
