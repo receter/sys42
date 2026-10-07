@@ -1,0 +1,61 @@
+/* Styled like TextInput, using the --sys42-input-text-* custom properties */
+
+.select {
+  font: inherit;
+  color: inherit;
+  box-sizing: border-box;
+  max-width: 100%;
+  line-height: var(--sys42-input-text-line-height);
+  background-color: var(--sys42-input-text-background);
+  border: var(--sys42-input-text-border-width) solid
+    var(--sys42-input-text-border-color);
+  border-radius: var(--sys42-input-text-border-radius);
+  padding: calc(
+      var(--sys42-input-text-padding-vert) -
+        var(--sys42-input-text-border-width)
+    )
+    calc(
+      var(--sys42-input-text-padding-horiz) * 2 + 0.5em -
+        var(--sys42-input-text-border-width)
+    )
+    calc(
+      var(--sys42-input-text-padding-vert) -
+        var(--sys42-input-text-border-width)
+    )
+    calc(
+      var(--sys42-input-text-padding-horiz) -
+        var(--sys42-input-text-border-width)
+    );
+  appearance: none;
+  /* Chevron drawn with two gradients so it uses currentColor */
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    right calc(var(--sys42-input-text-padding-horiz) + 0.25em) center,
+    right var(--sys42-input-text-padding-horiz) center;
+  background-size: 0.25em 0.25em;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* List boxes (multiple or size > 1) have no chevron */
+.select[multiple],
+.select[size]:not([size="1"]) {
+  background-image: none;
+  padding-right: calc(
+    var(--sys42-input-text-padding-horiz) - var(--sys42-input-text-border-width)
+  );
+  cursor: default;
+}
+
+.select:focus,
+.select:focus-visible {
+  outline: var(--sys42-focus-outline);
+  outline-offset: var(--sys42-focus-outline-offset);
+}
+
+.select:disabled {
+  background-color: var(--sys42-button-background--disabled);
+  color: var(--sys42-button-color--disabled);
+  cursor: default;
+}

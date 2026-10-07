@@ -175,13 +175,14 @@ For convenience, components that hold a value also accept `onValueChange`, which
 - If the change comes from an HTML element, `onValueChange` is called with `(value, event)`, where `event` is the original event. `onChange` is still called as usual, before `onValueChange`.
 - If there is no HTML element that changes the value, as with custom widgets like `Listbox`, `onValueChange` is called with `(value)` only.
 
-| Component       | `onChange(event)` | `onValueChange`            |
-| --------------- | ----------------- | -------------------------- |
-| `TextInput`     | ✓                 | `(value: string, event)`   |
-| `TextArea`      | ✓                 | `(value: string, event)`   |
-| `RadioGroup`    | ✓                 | `(value: string, event)`   |
-| `CheckboxGroup` | ✓                 | `(value: string[], event)` |
-| `Listbox`       | –                 | `(value: string \| null)`  |
+| Component       | `onChange(event)` | `onValueChange`                                                       |
+| --------------- | ----------------- | --------------------------------------------------------------------- |
+| `TextInput`     | ✓                 | `(value: string, event)`                                              |
+| `TextArea`      | ✓                 | `(value: string, event)`                                              |
+| `Select`        | ✓                 | `(value: string, event)`, with `multiple`: `(value: string[], event)` |
+| `RadioGroup`    | ✓                 | `(value: string, event)`                                              |
+| `CheckboxGroup` | ✓                 | `(value: string[], event)`                                            |
+| `Listbox`       | –                 | `(value: string \| null)`                                             |
 
 ```jsx
 const [name, setName] = useState("");
