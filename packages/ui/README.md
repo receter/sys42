@@ -164,6 +164,35 @@ export const MyFormField = createComponent<MyFormFieldProps, "div">(
 );
 ```
 
+## Props and Event Handlers
+
+Components that replace an HTML element are drop-in replacements and accept all props of that element. Some share its name (`Button` for `<button>`, `Label` for `<label>`), others are named after what they are (`TextInput` for `<input type="text">`).
+
+Native props keep their native behavior. In particular, `onChange` always receives the original event, just like on the HTML element. A component never changes the signature of a native handler.
+
+For convenience, components that hold a value also accept `onValueChange`, which receives the new value directly:
+
+- If the change comes from an HTML element, `onValueChange` is called with `(value, event)`, where `event` is the original event. `onChange` is still called as usual, before `onValueChange`.
+- If there is no HTML element that changes the value, as with custom widgets like `Listbox`, `onValueChange` is called with `(value)` only.
+
+| Component       | `onChange(event)` | `onValueChange`            |
+| --------------- | ----------------- | -------------------------- |
+| `TextInput`     | ✓                 | `(value: string, event)`   |
+| `TextArea`      | ✓                 | `(value: string, event)`   |
+| `RadioGroup`    | ✓                 | `(value: string, event)`   |
+| `CheckboxGroup` | ✓                 | `(value: string[], event)` |
+| `Listbox`       | –                 | `(value: string \| null)`  |
+
+```jsx
+const [name, setName] = useState("");
+
+// Both are equivalent
+<TextInput value={name} onChange={(event) => setName(event.target.value)} />
+<TextInput value={name} onValueChange={setName} />
+```
+
+The same applies to other handlers: a custom handler that does not receive the native event gets its own name (`on<Something>Change`) instead of reusing the name of a native handler.
+
 ## Types
 
 Read more about the types in the [Type Strategy](./TypeStrategy.md) document.

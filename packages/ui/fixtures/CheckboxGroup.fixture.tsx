@@ -29,7 +29,7 @@ export default function CheckboxGroupFixture() {
     checkboxGroupValue.push("option3");
   }
 
-  function handleChangeValue(values: string[]) {
+  function handleValueChange(values: string[]) {
     setOption1Checked(values.includes("option1"));
     setOption2Checked(values.includes("option2"));
     setOption3Checked(values.includes("option3"));
@@ -45,7 +45,7 @@ export default function CheckboxGroupFixture() {
         <h2>Checkbox Group</h2>
         <CheckboxGroup
           value={checkboxGroupValue}
-          onChangeValue={handleChangeValue}
+          onValueChange={handleValueChange}
           onChange={handleChange}
           aria-label="Choose an option"
         >
@@ -59,7 +59,7 @@ export default function CheckboxGroupFixture() {
         <FormFieldSet label="Choose an option">
           <CheckboxGroup
             value={checkboxGroupValue}
-            onChangeValue={handleChangeValue}
+            onValueChange={handleValueChange}
             onChange={handleChange}
           >
             <CheckboxGroupItem value="option1">Option 1</CheckboxGroupItem>
@@ -72,7 +72,7 @@ export default function CheckboxGroupFixture() {
         <h2>Checkbox Group with Text in Between</h2>
         <CheckboxGroup
           value={checkboxGroupValue}
-          onChangeValue={handleChangeValue}
+          onValueChange={handleValueChange}
           onChange={handleChange}
           aria-label="Choose an option"
         >

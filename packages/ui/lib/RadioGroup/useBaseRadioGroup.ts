@@ -2,7 +2,10 @@ import { RadioGroupContextType } from "./context";
 
 export type BaseRadioGroupProps = {
   value: string;
-  onChangeValue?: (value: string) => void;
+  onValueChange?: (
+    value: string,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
   role?: "radiogroup";
@@ -18,7 +21,7 @@ export function useBaseRadioGroup<TTagName extends HTMLElementTagName>(
   { props, forwardedRef }: UseComponentOptions<BaseRadioGroupProps, TTagName>,
   interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const { value, onChangeValue, onChange, children, role, name, ...restProps } =
+  const { value, onValueChange, onChange, children, role, name, ...restProps } =
     props;
 
   const draft = {
@@ -31,7 +34,7 @@ export function useBaseRadioGroup<TTagName extends HTMLElementTagName>(
   function handleChangeRadio(e: React.ChangeEvent<HTMLInputElement>) {
     onChange?.(e);
     if (e.target.checked && e.target.value !== value) {
-      onChangeValue?.(e.target.value);
+      onValueChange?.(e.target.value, e);
     }
   }
 

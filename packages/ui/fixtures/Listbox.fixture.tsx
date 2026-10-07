@@ -32,7 +32,7 @@ export default function ListboxFixture() {
             <Listbox
               id={htmlFor}
               value={value}
-              onChange={setValue}
+              onValueChange={setValue}
               placeholder="Choose a fruit"
             >
               {fruits.map((fruit) => (

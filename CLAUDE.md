@@ -66,6 +66,7 @@ From `.github/copilot-instructions.md` and ESLint config:
 - Name the outermost element's class after the component in camelCase (`MyComponent` → `myComponent`); modifiers use `_` (e.g. `button_primary`).
 - Use `function handleClick() {}` rather than arrow-function consts for handlers.
 - Use `type` rather than `interface` for props (an exception is empty base props like `BaseButtonProps`, see the comment there).
+- Components that replace an HTML element stay compatible with its props. Native handlers like `onChange` keep their native signature (the original event). Value callbacks are named `onValueChange` and are called with `(value, event)` when a native event exists, or `(value)` for custom widgets like `Listbox`. Call `onChange` before `onValueChange`. See "Props and Event Handlers" in `packages/ui/README.md`.
 - Declare components with the `function` keyword (`export function MyComponent() {}`), unless they're created with `createComponent`.
 - Don't `import React` just for JSX.
 - Import order is enforced by `simple-import-sort` with these groups: side-effect imports, packages, absolute/parent, `./` relative, `*.module.css`, then media.

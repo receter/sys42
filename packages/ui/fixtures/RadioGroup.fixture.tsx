@@ -8,7 +8,7 @@ export default function RadioGroupFixture() {
     defaultValue: "default",
   });
 
-  function handleChangeValue(value: string) {
+  function handleValueChange(value: string) {
     setSelected(value as "option1" | "option2" | "option3");
   }
 
@@ -22,7 +22,7 @@ export default function RadioGroupFixture() {
         <h2>Radio Group</h2>
         <RadioGroup
           value={selected}
-          onChangeValue={handleChangeValue}
+          onValueChange={handleValueChange}
           onChange={handleChange}
           aria-label="Choose an option"
         >
@@ -36,7 +36,7 @@ export default function RadioGroupFixture() {
         <FormFieldSet label="Choose an option">
           <RadioGroup
             value={selected}
-            onChangeValue={handleChangeValue}
+            onValueChange={handleValueChange}
             onChange={handleChange}
           >
             <RadioGroupItem value="option1">Option 1</RadioGroupItem>
@@ -49,7 +49,7 @@ export default function RadioGroupFixture() {
         <h2>Radio Group with Text in Between</h2>
         <RadioGroup
           value={selected}
-          onChangeValue={handleChangeValue}
+          onValueChange={handleValueChange}
           onChange={handleChange}
           aria-label="Choose an option"
         >

@@ -11,7 +11,8 @@ export type BaseListboxProps = {
   children: React.ReactNode;
   value?: string | null;
   defaultValue?: string | null;
-  onChange?: (value: string | null) => void;
+  // Called without an event, there is no native element that changes the value
+  onValueChange?: (value: string | null) => void;
   placeholder?: React.ReactNode;
   // Renders a hidden input so the value is submitted with a form
   name?: string;
@@ -87,7 +88,7 @@ export function useBaseListbox<TTagName extends HTMLElementTagName>(
     children,
     value,
     defaultValue,
-    onChange,
+    onValueChange,
     placeholder,
     name,
     disabled,
@@ -131,7 +132,7 @@ export function useBaseListbox<TTagName extends HTMLElementTagName>(
     itemToString: (item) => getItemText(itemsByValue.get(item ?? "")),
     isItemDisabled: (item) => !!itemsByValue.get(item)?.disabled,
     onSelectedItemChange: ({ selectedItem }) =>
-      onChange?.(selectedItem ?? null),
+      onValueChange?.(selectedItem ?? null),
   });
 
   const selectedItem =

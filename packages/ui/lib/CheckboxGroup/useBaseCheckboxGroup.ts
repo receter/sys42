@@ -2,7 +2,10 @@ import { CheckboxGroupContextType } from "./context";
 
 export type BaseCheckboxGroupProps = {
   value: string[];
-  onChangeValue?: (value: string[]) => void;
+  onValueChange?: (
+    value: string[],
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
   role?: "group";
@@ -21,7 +24,7 @@ export function useBaseCheckboxGroup<TTagName extends HTMLElementTagName>(
   }: UseComponentOptions<BaseCheckboxGroupProps, TTagName>,
   interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const { value, onChangeValue, onChange, children, role, name, ...restProps } =
+  const { value, onValueChange, onChange, children, role, name, ...restProps } =
     props;
 
   const draft = {
@@ -34,9 +37,12 @@ export function useBaseCheckboxGroup<TTagName extends HTMLElementTagName>(
   function handleChangeCheckbox(e: React.ChangeEvent<HTMLInputElement>) {
     onChange?.(e);
     if (e.target.checked && !value.includes(e.target.value)) {
-      onChangeValue?.([...value, e.target.value]);
+      onValueChange?.([...value, e.target.value], e);
     } else if (!e.target.checked && value.includes(e.target.value)) {
-      onChangeValue?.(value.filter((v) => v !== e.target.value));
+      onValueChange?.(
+        value.filter((v) => v !== e.target.value),
+        e,
+      );
     }
   }
 

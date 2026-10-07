@@ -2,6 +2,10 @@ import { isPropsForElement } from "../helpers";
 
 export type BaseTextInputProps = {
   type?: "text" | "password" | "email" | "tel" | "url";
+  onValueChange?: (
+    value: string,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => void;
 };
 
 export function useBaseTextInput<TTagName extends HTMLElementTagName>(
@@ -12,7 +16,7 @@ export function useBaseTextInput<TTagName extends HTMLElementTagName>(
   }: UseComponentOptions<BaseTextInputProps, TTagName>,
   interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const { type = "text", ...restProps } = props;
+  const { type = "text", onValueChange, ...restProps } = props;
 
   const draft = {
     elementProps:
@@ -21,6 +25,14 @@ export function useBaseTextInput<TTagName extends HTMLElementTagName>(
 
   if (isPropsForElement(draft.elementProps, elementType, "input")) {
     draft.elementProps.type = type;
+
+    const { onChange } = draft.elementProps;
+    draft.elementProps.onChange = function handleChange(
+      event: React.ChangeEvent<HTMLInputElement>,
+    ) {
+      onChange?.(event);
+      onValueChange?.(event.target.value, event);
+    };
   }
 
   interceptor?.(draft);

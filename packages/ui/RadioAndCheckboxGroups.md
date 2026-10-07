@@ -80,7 +80,7 @@ You can achieve the same output with the `RadioGroup` component:
 ```jsx
 <RadioGroup
   value={selected}
-  onChangeValue={handleChangeValue}
+  onValueChange={handleValueChange}
   name="myGroup"
   aria-label="Choose an option"
 >
@@ -95,7 +95,7 @@ The `name` attribute is not stricly required because the checked state is contro
 
 ```jsx
 <FormFieldSet label="Choose an option">
-  <RadioGroup value={selected} onChangeValue={handleChangeValue}>
+  <RadioGroup value={selected} onValueChange={handleValueChange}>
     <RadioGroupItem value="option1">Option 1</RadioGroupItem>
     <RadioGroupItem value="option2">Option 2</RadioGroupItem>
   </RadioGroup>
@@ -128,7 +128,7 @@ The `CheckboxGroup` component is similar to the `RadioGroup` component. Here is 
 <FormFieldSet label="Choose options">
   <CheckboxGroup
     value={checkboxGroupValue}
-    onChangeValue={handleChangeValue}
+    onValueChange={handleValueChange}
     onChange={handleChange}
     name="myGroup"
   >
