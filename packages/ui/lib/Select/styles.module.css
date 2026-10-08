@@ -1,38 +1,33 @@
-/* Styled like TextInput, using the --sys42-input-text-* custom properties */
+/* Input family: reads only --input-* inputs, each with a semantic fallback */
 
 .select {
+  --_background-color: var(--input-background, var(--sys42-color-field));
+  --_color: var(--input-color, var(--sys42-color-on-field));
+  --_border-color: var(--input-border-color, var(--sys42-color-field-border));
+  --_border-width: var(--input-border-width, var(--sys42-border-width-field));
+  --_radius: var(--input-radius, var(--sys42-radius-field));
+  --_padding-x: var(--input-padding-x, var(--sys42-space-field-x));
+  --_padding-y: var(--input-padding-y, var(--sys42-space-field-y));
+
   font: inherit;
-  color: inherit;
+  color: var(--_color);
   box-sizing: border-box;
   max-width: 100%;
-  line-height: var(--sys42-input-text-line-height);
-  background-color: var(--sys42-input-text-background);
-  border: var(--sys42-input-text-border-width) solid
-    var(--sys42-input-text-border-color);
-  border-radius: var(--sys42-input-text-border-radius);
-  padding: calc(
-      var(--sys42-input-text-padding-vert) -
-        var(--sys42-input-text-border-width)
-    )
-    calc(
-      var(--sys42-input-text-padding-horiz) * 2 + 0.5em -
-        var(--sys42-input-text-border-width)
-    )
-    calc(
-      var(--sys42-input-text-padding-vert) -
-        var(--sys42-input-text-border-width)
-    )
-    calc(
-      var(--sys42-input-text-padding-horiz) -
-        var(--sys42-input-text-border-width)
-    );
+  line-height: var(--input-line-height, inherit);
+  background-color: var(--_background-color);
+  border: var(--_border-width) solid var(--_border-color);
+  border-radius: var(--_radius);
+  padding: calc(var(--_padding-y) - var(--_border-width))
+    calc(var(--_padding-x) * 2 + 0.5em - var(--_border-width))
+    calc(var(--_padding-y) - var(--_border-width))
+    calc(var(--_padding-x) - var(--_border-width));
   appearance: none;
   /* Chevron drawn with two gradients so it uses currentColor */
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
     linear-gradient(135deg, currentColor 50%, transparent 50%);
   background-position:
-    right calc(var(--sys42-input-text-padding-horiz) + 0.25em) center,
-    right var(--sys42-input-text-padding-horiz) center;
+    right calc(var(--_padding-x) + 0.25em) center,
+    right var(--_padding-x) center;
   background-size: 0.25em 0.25em;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -42,20 +37,18 @@
 .select[multiple],
 .select[size]:not([size="1"]) {
   background-image: none;
-  padding-right: calc(
-    var(--sys42-input-text-padding-horiz) - var(--sys42-input-text-border-width)
-  );
+  padding-right: calc(var(--_padding-x) - var(--_border-width));
   cursor: default;
 }
 
 .select:focus,
 .select:focus-visible {
-  outline: var(--sys42-focus-outline);
-  outline-offset: var(--sys42-focus-outline-offset);
+  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
+  outline-offset: var(--sys42-space-focus-offset);
 }
 
 .select:disabled {
-  background-color: var(--sys42-button-background--disabled);
-  color: var(--sys42-button-color--disabled);
+  background-color: var(--sys42-color-control-disabled);
+  color: var(--sys42-color-on-control-disabled);
   cursor: default;
 }

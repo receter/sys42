@@ -1,0 +1,177 @@
+/*
+  Native primitive tokens.
+
+  Raw values and scales without a semantic role. sys42 component styles never
+  read these directly; they only read the --sys42-* semantic tokens, which
+  semantic-tokens.css maps to these primitives.
+
+  Projects can use these primitives in their own CSS as long as they import
+  this file, or replace them entirely with their own primitives and a complete
+  semantic mapping (see TOKENS.md).
+*/
+
+:root {
+  /* Color: palettes run from light (50) to dark (950). Neutral also has 0 (white) and 1000 (black). */
+  /* @generated colors start: scripts/generate-primitive-colors.mjs */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f5f5f5;
+  --color-neutral-100: #e8e8e8;
+  --color-neutral-200: #d4d4d4;
+  --color-neutral-300: #bababa;
+  --color-neutral-400: #a1a1a1;
+  --color-neutral-500: #898989;
+  --color-neutral-600: #6c6c6c;
+  --color-neutral-700: #555555;
+  --color-neutral-800: #404040;
+  --color-neutral-900: #242424;
+  --color-neutral-950: #161616;
+  --color-neutral-1000: #000000;
+
+  --color-mauve-50: #f5f5f7;
+  --color-mauve-100: #e8e7eb;
+  --color-mauve-200: #d4d3da;
+  --color-mauve-300: #bab9c2;
+  --color-mauve-400: #a1a0aa;
+  --color-mauve-500: #898892;
+  --color-mauve-600: #6b6a74;
+  --color-mauve-700: #55545c;
+  --color-mauve-800: #3f3f45;
+  --color-mauve-900: #242426;
+  --color-mauve-950: #161617;
+
+  --color-indigo-50: #f2f4ff;
+  --color-indigo-100: #e2e6ff;
+  --color-indigo-200: #c9d1ff;
+  --color-indigo-300: #acb6f3;
+  --color-indigo-400: #919be1;
+  --color-indigo-500: #7982cb;
+  --color-indigo-600: #5d65a9;
+  --color-indigo-700: #484f8a;
+  --color-indigo-800: #363b68;
+  --color-indigo-900: #1f2236;
+  --color-indigo-950: #15161b;
+
+  --color-blue-50: #f0f5ff;
+  --color-blue-100: #dde8ff;
+  --color-blue-200: #bfd5ff;
+  --color-blue-300: #98baff;
+  --color-blue-400: #719eff;
+  --color-blue-500: #4980ff;
+  --color-blue-600: #2059ef;
+  --color-blue-700: #1343c7;
+  --color-blue-800: #0d3396;
+  --color-blue-900: #0e214b;
+  --color-blue-950: #111620;
+
+  --color-purple-50: #f8f2ff;
+  --color-purple-100: #eee1ff;
+  --color-purple-200: #e0c8ff;
+  --color-purple-300: #cea4ff;
+  --color-purple-400: #bd7efd;
+  --color-purple-500: #a661e7;
+  --color-purple-600: #8742c3;
+  --color-purple-700: #6d30a1;
+  --color-purple-800: #522479;
+  --color-purple-900: #2c1a3e;
+  --color-purple-950: #18141d;
+
+  --color-red-50: #fff2f0;
+  --color-red-100: #ffe0db;
+  --color-red-200: #ffc3bc;
+  --color-red-300: #ff9b90;
+  --color-red-400: #ff6b60;
+  --color-red-500: #f13a37;
+  --color-red-600: #ca0617;
+  --color-red-700: #a3000f;
+  --color-red-800: #7d0008;
+  --color-red-900: #42110e;
+  --color-red-950: #1f1211;
+
+  --color-amber-50: #fff3e4;
+  --color-amber-100: #ffe3be;
+  --color-amber-200: #fbcb89;
+  --color-amber-300: #edad4b;
+  --color-amber-400: #d79100;
+  --color-amber-500: #b77b00;
+  --color-amber-600: #916100;
+  --color-amber-700: #734c00;
+  --color-amber-800: #573900;
+  --color-amber-900: #331f00;
+  --color-amber-950: #1a150e;
+
+  --color-green-50: #e7fce5;
+  --color-green-100: #d0f4cc;
+  --color-green-200: #afe5a8;
+  --color-green-300: #86d07e;
+  --color-green-400: #61ba59;
+  --color-green-500: #41a138;
+  --color-green-600: #1f8216;
+  --color-green-700: #0d6805;
+  --color-green-800: #0b4e06;
+  --color-green-900: #112b0f;
+  --color-green-950: #121811;
+  /* @generated colors end */
+
+  /* Space */
+  --space-2xs: 0.125rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+
+  /* Size */
+  --size-em-md: 1em;
+  --size-em-lg: 1.25em;
+  --size-sm: 10rem;
+  --size-md: 20rem;
+  --size-lg: 40rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Border width */
+  --border-width-none: 0;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+
+  /* Font family */
+  --font-family-sans: sans-serif;
+  --font-family-serif: serif;
+  --font-family-mono: monospace;
+
+  /* Font size */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* Font weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line height */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.75;
+
+  /* Shadow */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 3px 2px -2px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+
+  /* Motion */
+  --duration-fast: 0.15s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.4s;
+  --easing-in-out: ease-in-out;
+  --easing-out: ease-out;
+}

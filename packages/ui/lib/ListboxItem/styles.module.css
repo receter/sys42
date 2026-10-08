@@ -1,21 +1,29 @@
+/* Menu item family: reads only --menu-item-* inputs */
 /* Focus stays on the Listbox toggle, the highlighted item is marked via class */
 
 .listboxItem {
-  padding: var(--sys42-menu-item-padding-vert)
-    var(--sys42-menu-item-padding-horiz);
-  border-radius: var(--sys42-menu-item-border-radius);
+  --_padding-x: var(--menu-item-padding-x, var(--sys42-space-item-x));
+  --_padding-y: var(--menu-item-padding-y, var(--sys42-space-item-y));
+  --_radius: var(--menu-item-radius, var(--sys42-radius-item));
+  --_font-weight-selected: var(
+    --menu-item-font-weight-selected,
+    var(--sys42-font-weight-emphasis)
+  );
+
+  padding: var(--_padding-y) var(--_padding-x);
+  border-radius: var(--_radius);
   cursor: pointer;
 }
 
 .listboxItem_isHighlighted {
-  background: var(--sys42-menu-item-background--highlighted);
+  background: color-mix(in srgb, currentColor 8%, var(--sys42-color-overlay));
 }
 
 .listboxItem_isSelected {
-  font-weight: var(--sys42-menu-item-font-weight--selected);
+  font-weight: var(--_font-weight-selected);
 }
 
 .listboxItem[aria-disabled="true"] {
-  color: var(--sys42-menu-item-color--disabled);
+  color: var(--sys42-color-disabled-on-overlay);
   cursor: default;
 }

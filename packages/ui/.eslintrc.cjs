@@ -9,6 +9,13 @@ module.exports = {
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh", "simple-import-sort"],
+  overrides: [
+    {
+      // Node.js scripts and the sys42-check-tokens CLI
+      files: ["bin/**/*.mjs", "scripts/**/*.mjs"],
+      env: { node: true, browser: false },
+    },
+  ],
   rules: {
     "react-refresh/only-export-components": [
       "warn",

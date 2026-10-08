@@ -1,22 +1,34 @@
+/* Checkbox family: reads only --checkbox-* inputs, each with a semantic fallback */
+
 .checkbox {
+  --_background-color: var(--checkbox-background, var(--sys42-color-field));
+  --_border-color: var(
+    --checkbox-border-color,
+    var(--sys42-color-field-border)
+  );
+  --_border-width: var(
+    --checkbox-border-width,
+    var(--sys42-border-width-field-strong)
+  );
+  --_radius: var(--checkbox-radius, var(--sys42-radius-field));
+
   all: unset;
   box-sizing: border-box;
-  height: var(--sys42-control-height);
-  width: var(--sys42-control-height);
-  border-radius: var(--sys42-checkbox-border-radius);
-  border: var(--sys42-checkbox-border-width) solid
-    var(--sys42-checkbox-border-color);
+  height: var(--sys42-size-indicator);
+  width: var(--sys42-size-indicator);
+  border-radius: var(--_radius);
+  background-color: var(--_background-color);
+  border: var(--_border-width) solid var(--_border-color);
   flex-shrink: 0;
-  color: var(--sys42-checkbox-color);
+  color: transparent;
   display: inline-block;
-  box-shadow: var(--sys42-checkbox-box-shadow);
 }
 
 .checkbox:checked,
 .checkbox:indeterminate {
-  background-color: var(--sys42-checkbox-background--checked);
-  border-color: var(--sys42-checkbox-border-color--checked);
-  color: var(--sys42-checkbox-color--checked);
+  background-color: var(--sys42-color-control-accent);
+  border-color: transparent;
+  color: var(--sys42-color-on-control-accent);
 }
 
 .checkbox:checked:before,
@@ -38,12 +50,12 @@
 }
 
 .checkbox:disabled {
-  background-color: var(--sys42-checkbox-background--disabled);
-  border-color: var(--sys42-checkbox-border-color--disabled);
-  color: var(--sys42-checkbox-color--disabled);
+  background-color: var(--sys42-color-control-disabled);
+  border-color: transparent;
+  color: var(--sys42-color-on-control-disabled);
 }
 
 .checkbox:focus-visible {
-  outline: var(--sys42-focus-outline);
-  outline-offset: var(--sys42-focus-outline-offset);
+  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
+  outline-offset: var(--sys42-space-focus-offset);
 }

@@ -1,0 +1,4 @@
+{
+  "$comment": "Explicit history of public token renames and removals since 4.0.0, read by sys42-check-tokens. Never inferred from similar names. Each entry: { \"version\", \"renamed\": [{ \"from\", \"to\", \"note\"? }], \"removed\": [{ \"name\", \"guidance\" }] }.",
+  "migrations": []
+}

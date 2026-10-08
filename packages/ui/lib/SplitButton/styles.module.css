@@ -1,26 +1,26 @@
 /*
-  Styled like Button using the --sys42-button-* custom properties.
-  Variants set the local --_* properties that are used by both buttons.
+  Button family: reads the same --button-* inputs as Button, each with a
+  semantic fallback. Variants set the internal --_* values used by both buttons.
+  The popup menu uses the overlay semantic tokens.
 */
 
 .splitButton {
-  --_background: var(--sys42-button-background);
-  --_background--hover: var(--sys42-button-background--hover);
-  --_background--active: var(--sys42-button-background--active);
-  --_background--disabled: var(--sys42-button-background--disabled);
-  --_border-color: var(--sys42-button-border-color);
-  --_border-color--hover: var(--sys42-button-border-color--hover);
-  --_border-color--active: var(--sys42-button-border-color--active);
-  --_border-color--disabled: var(--sys42-button-border-color--disabled);
-  --_color: var(--sys42-button-color);
-  --_color--hover: var(--sys42-button-color--hover);
-  --_color--active: var(--sys42-button-color--active);
-  --_color--disabled: var(--sys42-button-color--disabled);
-  --_font-weight: var(--sys42-button-font-weight);
-  --_font-size: var(--sys42-button-font-size);
-  --_border-radius: var(--sys42-button-border-radius);
-  --_padding-vert: var(--sys42-button-padding-vert);
-  --_padding-horiz: var(--sys42-button-padding-horiz);
+  --_background-color: var(--button-background, var(--sys42-color-control));
+  --_color: var(--button-color, var(--sys42-color-on-control));
+  --_border-color: var(--button-border-color, transparent);
+  --_border-width: var(
+    --button-border-width,
+    var(--sys42-border-width-control)
+  );
+  --_radius: var(--button-radius, var(--sys42-radius-control));
+  --_padding-x: var(--button-padding-x, var(--sys42-space-control-x));
+  --_padding-y: var(--button-padding-y, var(--sys42-space-control-y));
+  --_font-size: var(--button-font-size, var(--sys42-font-size-control));
+  --_font-weight: var(--button-font-weight, var(--sys42-font-weight-control));
+  --_divider: var(
+    --button-divider,
+    var(--sys42-border-width-control) solid var(--sys42-color-control-divider)
+  );
 
   position: relative;
   display: inline-flex;
@@ -29,57 +29,45 @@
 }
 
 .splitButton_primary {
-  --_background: var(--sys42-button_primary-background);
-  --_background--hover: var(--sys42-button_primary-background--hover);
-  --_background--active: var(--sys42-button_primary-background--active);
-  --_background--disabled: var(--sys42-button_primary-background--disabled);
-  --_border-color: var(--sys42-button_primary-border-color);
-  --_border-color--hover: var(--sys42-button_primary-border-color--hover);
-  --_border-color--active: var(--sys42-button_primary-border-color--active);
-  --_border-color--disabled: var(--sys42-button_primary-border-color--disabled);
-  --_color: var(--sys42-button_primary-color);
-  --_color--hover: var(--sys42-button_primary-color--hover);
-  --_color--active: var(--sys42-button_primary-color--active);
-  --_color--disabled: var(--sys42-button_primary-color--disabled);
-  --_font-weight: var(--sys42-button_primary-font-weight);
+  --_background-color: var(
+    --button-background-primary,
+    var(--sys42-color-control-accent)
+  );
+  --_color: var(--button-color-primary, var(--sys42-color-on-control-accent));
+  --_border-color: var(--button-border-color-primary, transparent);
 }
 
 .splitButton_danger {
-  --_background: var(--sys42-button_danger-background);
-  --_background--hover: var(--sys42-button_danger-background--hover);
-  --_background--active: var(--sys42-button_danger-background--active);
-  --_background--disabled: var(--sys42-button_danger-background--disabled);
-  --_border-color: var(--sys42-button_danger-border-color);
-  --_border-color--hover: var(--sys42-button_danger-border-color--hover);
-  --_border-color--active: var(--sys42-button_danger-border-color--active);
-  --_border-color--disabled: var(--sys42-button_danger-border-color--disabled);
-  --_color: var(--sys42-button_danger-color);
-  --_color--hover: var(--sys42-button_danger-color--hover);
-  --_color--active: var(--sys42-button_danger-color--active);
-  --_color--disabled: var(--sys42-button_danger-color--disabled);
-  --_font-weight: var(--sys42-button_danger-font-weight);
+  --_background-color: var(
+    --button-background-danger,
+    var(--sys42-color-danger)
+  );
+  --_color: var(--button-color-danger, var(--sys42-color-on-danger));
+  --_border-color: var(--button-border-color-danger, transparent);
 }
 
 .splitButton_lg {
-  --_font-size: var(--sys42-button_lg-font-size);
-  --_border-radius: var(--sys42-button_lg-border-radius);
-  --_padding-vert: var(--sys42-button_lg-padding-vert);
-  --_padding-horiz: var(--sys42-button_lg-padding-horiz);
+  --_padding-x: calc(
+    var(--button-padding-x, var(--sys42-space-control-x)) * 1.5
+  );
+  --_padding-y: calc(
+    var(--button-padding-y, var(--sys42-space-control-y)) * 1.5
+  );
 }
 
 .button {
   font: inherit;
   font-size: var(--_font-size);
   font-weight: var(--_font-weight);
-  line-height: var(--sys42-button-line-height);
+  line-height: var(--button-line-height, inherit);
   color: var(--_color);
-  background: var(--_background);
-  border: var(--sys42-button-border-width) solid var(--_border-color);
-  border-radius: var(--_border-radius);
-  box-shadow: var(--sys42-button-box-shadow);
-  transition: var(--sys42-button-transition);
-  padding: calc(var(--_padding-vert) - var(--sys42-button-border-width))
-    calc(var(--_padding-horiz) - var(--sys42-button-border-width));
+  background: var(--_background-color);
+  border: var(--_border-width) solid var(--_border-color);
+  border-radius: var(--_radius);
+  box-shadow: none;
+  transition: none;
+  padding: calc(var(--_padding-y) - var(--_border-width))
+    calc(var(--_padding-x) - var(--_border-width));
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -94,8 +82,8 @@
 }
 
 .button:focus-visible {
-  outline: var(--sys42-focus-outline);
-  outline-offset: var(--sys42-focus-outline-offset);
+  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
+  outline-offset: var(--sys42-space-focus-offset);
   /* Keep the outline above the adjacent button */
   position: relative;
   z-index: 1;
@@ -103,35 +91,36 @@
 
 .button:hover,
 .splitButton_isOpen > .toggle {
-  background: var(--_background--hover);
-  border-color: var(--_border-color--hover);
-  box-shadow: var(--sys42-button-box-shadow--hover);
-  color: var(--_color--hover);
-  transition: var(--sys42-button-transition--hover);
+  background: color-mix(in srgb, var(--_background-color), var(--_color) 8%);
+  border-color: var(--_border-color);
+  box-shadow: var(--sys42-shadow-raised);
+  transition:
+    background-color var(--sys42-duration-control) var(--sys42-easing-control),
+    border-color var(--sys42-duration-control) var(--sys42-easing-control),
+    box-shadow var(--sys42-duration-control) var(--sys42-easing-control);
 }
 
 .button:active {
-  background: var(--_background--active);
-  border-color: var(--_border-color--active);
-  box-shadow: var(--sys42-button-box-shadow--active);
-  color: var(--_color--active);
-  transition: var(--sys42-button-transition--active);
+  background: color-mix(in srgb, var(--_background-color), var(--_color) 8%);
+  border-color: var(--_border-color);
+  box-shadow: none;
+  transition: none;
 }
 
 .button:disabled {
-  background: var(--_background--disabled);
-  border-color: var(--_border-color--disabled);
-  box-shadow: var(--sys42-button-box-shadow);
-  color: var(--_color--disabled);
+  background: var(--sys42-color-control-disabled);
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--sys42-color-on-control-disabled);
   cursor: default;
 }
 
 .toggle {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: var(--sys42-split-button-divider);
-  padding-left: calc(var(--_padding-horiz) / 2);
-  padding-right: calc(var(--_padding-horiz) / 2);
+  border-left: var(--_divider);
+  padding-left: calc(var(--_padding-x) / 2);
+  padding-right: calc(var(--_padding-x) / 2);
 }
 
 .toggle > svg {
@@ -144,21 +133,22 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--sys42-menu-background);
-  color: var(--sys42-menu-color);
-  border: var(--sys42-menu-border-width) solid var(--sys42-menu-border-color);
-  box-shadow: var(--sys42-menu-shadow);
+  background: var(--sys42-color-overlay);
+  color: var(--sys42-color-on-overlay);
+  border: var(--sys42-border-width-overlay) solid
+    var(--sys42-color-overlay-border);
+  box-shadow: var(--sys42-shadow-overlay);
   box-sizing: border-box;
-  padding: var(--sys42-menu-padding);
+  padding: var(--sys42-space-overlay);
   position: absolute;
-  top: calc(100% + var(--sys42-spacing-xs));
+  top: calc(100% + var(--sys42-space-gap-xs));
   left: 0;
   z-index: 999;
   width: max-content;
-  max-width: var(--sys42-menu-max-width);
-  max-height: var(--sys42-menu-max-height);
+  max-width: var(--sys42-size-overlay-max-width);
+  max-height: var(--sys42-size-overlay-max-height);
   overflow-y: auto;
-  border-radius: var(--sys42-menu-border-radius);
+  border-radius: var(--sys42-radius-overlay);
 }
 
 .menu[hidden] {

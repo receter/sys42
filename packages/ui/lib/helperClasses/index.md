@@ -12,11 +12,6 @@ Known issue: This class does not properly center the icon if the font metrics `a
 
 `classCard` can be used on html elements to give them a card-like appearance.
 
-### Custom properties
+### Tokens
 
-- `--sys42-card-padding-vert`
-- `--sys42-card-padding-horiz`
-- `--sys42-card-background`
-- `--sys42-card-border-radius`
-- `--sys42-card-border`
-- `--sys42-card-shadow`
+`classCard` is the Card family. It reads `--card-background`, `--card-color`, `--card-border-color`, `--card-border-width`, `--card-radius`, `--card-box-shadow`, `--card-padding-x` and `--card-padding-y`, each with a semantic fallback. See [TOKENS.md](../../TOKENS.md#card).

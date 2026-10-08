@@ -1,29 +1,38 @@
+/* Radio family: reads only --radio-* inputs, each with a semantic fallback */
+
 .radio {
+  --_background-color: var(--radio-background, var(--sys42-color-field));
+  --_border-color: var(--radio-border-color, var(--sys42-color-field-border));
+  --_border-width: var(
+    --radio-border-width,
+    var(--sys42-border-width-field-strong)
+  );
+
   all: unset;
   box-sizing: border-box;
-  height: var(--sys42-control-height);
-  width: var(--sys42-control-height);
-  border-radius: var(--sys42-radio-border-radius);
-  border: var(--sys42-radio-border-width) solid var(--sys42-radio-border-color);
+  height: var(--sys42-size-indicator);
+  width: var(--sys42-size-indicator);
+  border-radius: 50%;
+  background-color: var(--_background-color);
+  border: var(--_border-width) solid var(--_border-color);
   flex-shrink: 0;
-  color: var(--sys42-radio-color);
+  color: transparent;
   display: inline-block;
-  box-shadow: var(--sys42-radio-box-shadow);
 }
 
 .radio:checked {
-  background-color: var(--sys42-radio-background--checked);
-  border-color: var(--sys42-radio-border-color--checked);
-  color: var(--sys42-radio-color--checked);
+  background-color: var(--sys42-color-control-accent);
+  border-color: transparent;
+  color: var(--sys42-color-on-control-accent);
 }
 
 .radio:checked:before {
   content: "";
-  height: var(--sys42-radio-indicator-size);
-  width: var(--sys42-radio-indicator-size);
+  height: 50%;
+  width: 50%;
   display: block;
   background: currentColor;
-  border-radius: var(--sys42-radio-border-radius);
+  border-radius: 50%;
   /* center */
   position: relative;
   top: 50%;
@@ -32,12 +41,12 @@
 }
 
 .radio:disabled {
-  background-color: var(--sys42-radio-background--disabled);
-  border-color: var(--sys42-radio-border-color--disabled);
-  color: var(--sys42-radio-color--disabled);
+  background-color: var(--sys42-color-control-disabled);
+  border-color: transparent;
+  color: var(--sys42-color-on-control-disabled);
 }
 
 .radio:focus-visible {
-  outline: var(--sys42-focus-outline);
-  outline-offset: var(--sys42-focus-outline-offset);
+  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
+  outline-offset: var(--sys42-space-focus-offset);
 }

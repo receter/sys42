@@ -1,16 +1,31 @@
+/* Message family: reads only --message-* inputs, each with a semantic fallback */
+
 .message {
-  font-size: var(--sys42-message-font-size);
-  border-radius: var(--sys42-message-border-radius);
+  --_background-color: var(
+    --message-background,
+    var(--sys42-color-container-subtle)
+  );
+  --_color: var(--message-color, var(--sys42-color-on-container-subtle));
+  --_border-color: var(--message-border-color, transparent);
+  --_border-width: var(
+    --message-border-width,
+    var(--sys42-border-width-container-compact)
+  );
+  --_radius: var(--message-radius, var(--sys42-radius-container-compact));
+  --_font-size: var(--message-font-size, var(--sys42-font-size-body-sm));
+
+  font-size: var(--_font-size);
+  border-radius: var(--_radius);
   text-align: left;
-  padding: var(--sys42-spacing-xs) var(--sys42-spacing-sm);
+  padding: var(--sys42-space-container-compact-y)
+    var(--sys42-space-container-compact-x);
   display: flex;
   align-items: center;
-  gap: var(--sys42-spacing-sm);
+  gap: var(--sys42-space-gap-sm);
   justify-content: center;
-  background: var(--sys42-message-background);
-  border: var(--sys42-message-border-width) solid
-    var(--sys42-message-border-color);
-  color: var(--sys42-message-color);
+  background: var(--_background-color);
+  border: var(--_border-width) solid var(--_border-color);
+  color: var(--_color);
 }
 
 .icon {
@@ -19,25 +34,43 @@
 }
 
 .message_info {
-  background: var(--sys42-message-background--info);
-  border-color: var(--sys42-message-border-color--info);
-  color: var(--sys42-message-color--info);
+  --_background-color: var(
+    --message-background-info,
+    var(--sys42-color-info-container)
+  );
+  --_color: var(--message-color-info, var(--sys42-color-on-info-container));
+  --_border-color: var(--message-border-color-info, transparent);
 }
 
 .message_success {
-  background: var(--sys42-message-background--success);
-  border-color: var(--sys42-message-border-color--success);
-  color: var(--sys42-message-color--success);
+  --_background-color: var(
+    --message-background-success,
+    var(--sys42-color-success-container)
+  );
+  --_color: var(
+    --message-color-success,
+    var(--sys42-color-on-success-container)
+  );
+  --_border-color: var(--message-border-color-success, transparent);
 }
 
 .message_warning {
-  background: var(--sys42-message-background--warning);
-  border-color: var(--sys42-message-border-color--warning);
-  color: var(--sys42-message-color--warning);
+  --_background-color: var(
+    --message-background-warning,
+    var(--sys42-color-warning-container)
+  );
+  --_color: var(
+    --message-color-warning,
+    var(--sys42-color-on-warning-container)
+  );
+  --_border-color: var(--message-border-color-warning, transparent);
 }
 
 .message_error {
-  background: var(--sys42-message-background--error);
-  border-color: var(--sys42-message-border-color--error);
-  color: var(--sys42-message-color--error);
+  --_background-color: var(
+    --message-background-error,
+    var(--sys42-color-danger-container)
+  );
+  --_color: var(--message-color-error, var(--sys42-color-on-danger-container));
+  --_border-color: var(--message-border-color-error, transparent);
 }

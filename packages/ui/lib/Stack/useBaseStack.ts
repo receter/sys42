@@ -13,22 +13,24 @@ export function useBaseStack<TTagName extends HTMLElementTagName>(
   { props, forwardedRef }: UseComponentOptions<BaseStackProps, TTagName>,
   interceptor?: UseComponentInterceptor<TTagName>,
 ) {
-  const { spacing = "md", style, ...restProps } = props;
+  const { spacing, style, ...restProps } = props;
 
   const draft = {
     elementProps:
       restProps satisfies EmptyObject as React.ComponentPropsWithoutRef<TTagName>,
   };
 
+  // Without the prop the stylesheet resolves --stack-spacing or the semantic default
   draft.elementProps.style = useMemo(() => {
     if (spacing) {
       let spacingValue = spacing;
       if (knownSpacingAbbreviations.includes(spacing)) {
-        spacingValue = `var(--sys42-spacing-${spacing})`;
+        const size = spacing.replace(/^xx/, "2x");
+        spacingValue = `var(--sys42-space-gap-${size})`;
       }
       return {
         ...style,
-        "--sys42-stack-spacing": spacingValue,
+        "--_spacing": spacingValue,
       };
     } else {
       return style;

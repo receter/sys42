@@ -14,14 +14,14 @@ npm install @sys42/ui
 
 Using the styled React components is the easiest way to work with System 42.
 
-Every component imports an individual `.css` file with default styles based on a set of CSS custom properties. You can make use of the exposed CSS custom properties to customize the look of the components.
+Every component imports an individual `.css` file with default styles based on design tokens (CSS custom properties). You can customize the look of the components by overriding semantic tokens (`--sys42-*`) for system-wide decisions, or optional family tokens (e.g. `--button-radius`) for a group of components.
 
-You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)
+Read [Design Tokens and Theming](./TOKENS.md) for all tokens and the setup options.
 
 > [!NOTE]
 > If you need to customize the styles beyond the exposed custom properties, you should make use of the Base Hooks and style the components yourself. You can read more about using the Base Hooks in the [Using the Base Hooks](#using-the-base-hooks) section.
 
-The component styles depend on `base.css` for CSS normalization and basic styles, and on `default-custom-properties.css` for custom property defaults. To ensure these dependencies are met, import both `base.css` and `default-custom-properties.css` in your application.
+The component styles depend on `base.css` for CSS normalization and basic styles, and on a complete mapping of the semantic tokens. To use the native theme, import both `base.css` and `default-custom-properties.css` in your application. If your project has its own primitives, import `base.css` and your own semantic mapping instead, see [Your own primitives](./TOKENS.md#your-own-primitives).
 
 All styles as well as the custom properties are inside a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
 named `sys42`. The base styles, defined in `base.css`, are inside a layer named `sys42-base`.
@@ -198,17 +198,22 @@ The same applies to other handlers: a custom handler that does not receive the n
 
 Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
 
-## Custom Properties
+## Design Tokens
 
-You can find all available custom properties here: [default-custom-properties.css](./lib/default-custom-properties.css)
+System 42 uses three token layers: native primitives (`--color-indigo-100`), semantic tokens (`--sys42-color-control`) and optional family tokens (`--button-background`). See [Design Tokens and Theming](./TOKENS.md) for:
 
-All custom properties are prefixed with `--sys42-`.
+- which tokens you can use in your own CSS
+- setup with the native theme or your own primitives, and the `sys42-check-tokens` mapping check
+- nested themes and global, subtree and instance overrides
+- the full token reference and the compatibility policy
+
+Coming from 3.x? See [Migrating to the token system](./TOKENS-MIGRATION.md).
 
 ## Overriding Styles
 
 As all styles are in a CSS Layer named `sys42`, you can easily override the styles by adding your own styles without a layer or in a layer with a higher priority.
 
-If you want to overide styles globally, the easiest way is to do this by overriding custom properties. You can find a list of all available customer properties in the defaults file [`default-custom-properties.css`](./lib/default-custom-properties.css).
+If you want to override styles globally, the easiest way is to override tokens: semantic tokens for system-wide decisions, family tokens for a group of components. See the [token reference](./TOKENS.md).
 
 If you want to override styles for a specific occurence of a component, you can do this by adding a class to the component and then adding styles to this class.
 

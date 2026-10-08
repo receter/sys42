@@ -6,7 +6,12 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: ["lib/default-custom-properties.css", "lib/base.css"],
+      entry: [
+        "lib/default-custom-properties.css",
+        "lib/primitive-tokens.css",
+        "lib/semantic-tokens.css",
+        "lib/base.css",
+      ],
       formats: ["es"],
     },
     cssCodeSplit: true,

@@ -1,13 +1,23 @@
+/* Input family: reads only --input-* inputs, each with a semantic fallback */
+
 .listbox {
   position: relative;
   display: inline-block;
   max-width: 100%;
-  min-width: var(--sys42-listbox-min-width);
+  min-width: var(--input-min-width, var(--sys42-size-field-min-width));
 }
 
 .toggle {
+  --_background-color: var(--input-background, var(--sys42-color-field));
+  --_color: var(--input-color, var(--sys42-color-on-field));
+  --_border-color: var(--input-border-color, var(--sys42-color-field-border));
+  --_border-width: var(--input-border-width, var(--sys42-border-width-field));
+  --_radius: var(--input-radius, var(--sys42-radius-field));
+  --_padding-x: var(--input-padding-x, var(--sys42-space-field-x));
+  --_padding-y: var(--input-padding-y, var(--sys42-space-field-y));
+
   font: inherit;
-  color: inherit;
+  color: var(--_color);
   text-align: left;
   cursor: pointer;
   box-sizing: border-box;
@@ -15,27 +25,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: var(--sys42-input-text-line-height);
-  background: var(--sys42-input-text-background);
-  border: var(--sys42-input-text-border-width) solid
-    var(--sys42-input-text-border-color);
-  border-radius: var(--sys42-input-text-border-radius);
-  padding: calc(
-      var(--sys42-input-text-padding-vert) -
-        var(--sys42-input-text-border-width)
-    )
-    calc(
-      var(--sys42-input-text-padding-horiz) * 2 + 1em -
-        var(--sys42-input-text-border-width)
-    )
-    calc(
-      var(--sys42-input-text-padding-vert) -
-        var(--sys42-input-text-border-width)
-    )
-    calc(
-      var(--sys42-input-text-padding-horiz) -
-        var(--sys42-input-text-border-width)
-    );
+  line-height: var(--input-line-height, inherit);
+  background: var(--_background-color);
+  border: var(--_border-width) solid var(--_border-color);
+  border-radius: var(--_radius);
+  padding: calc(var(--_padding-y) - var(--_border-width))
+    calc(var(--_padding-x) * 2 + 1em - var(--_border-width))
+    calc(var(--_padding-y) - var(--_border-width))
+    calc(var(--_padding-x) - var(--_border-width));
   position: relative;
 }
 
@@ -43,7 +40,7 @@
 .toggle::after {
   content: "";
   position: absolute;
-  right: var(--sys42-input-text-padding-horiz);
+  right: var(--_padding-x);
   top: 50%;
   width: 0.4em;
   height: 0.4em;
@@ -58,18 +55,21 @@
 
 .toggle:focus,
 .toggle:focus-visible {
-  outline: var(--sys42-focus-outline);
-  outline-offset: var(--sys42-focus-outline-offset);
+  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
+  outline-offset: var(--sys42-space-focus-offset);
 }
 
 .toggle:disabled {
-  background: var(--sys42-button-background--disabled);
-  color: var(--sys42-button-color--disabled);
+  background: var(--sys42-color-control-disabled);
+  color: var(--sys42-color-on-control-disabled);
   cursor: default;
 }
 
 .toggle_isPlaceholder {
-  color: var(--sys42-listbox-placeholder-color);
+  color: var(
+    --input-color-placeholder,
+    var(--sys42-color-placeholder-on-field)
+  );
 }
 
 /* Menu, items are styled by ListboxItem */
@@ -77,22 +77,23 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--sys42-menu-background);
-  color: var(--sys42-menu-color);
-  border: var(--sys42-menu-border-width) solid var(--sys42-menu-border-color);
-  box-shadow: var(--sys42-menu-shadow);
+  background: var(--sys42-color-overlay);
+  color: var(--sys42-color-on-overlay);
+  border: var(--sys42-border-width-overlay) solid
+    var(--sys42-color-overlay-border);
+  box-shadow: var(--sys42-shadow-overlay);
   box-sizing: border-box;
-  padding: var(--sys42-menu-padding);
+  padding: var(--sys42-space-overlay);
   position: absolute;
-  top: calc(100% + var(--sys42-spacing-xs));
+  top: calc(100% + var(--sys42-space-gap-xs));
   left: 0;
   z-index: 999;
   width: max-content;
   min-width: 100%;
-  max-width: var(--sys42-menu-max-width);
-  max-height: var(--sys42-menu-max-height);
+  max-width: var(--sys42-size-overlay-max-width);
+  max-height: var(--sys42-size-overlay-max-height);
   overflow-y: auto;
-  border-radius: var(--sys42-menu-border-radius);
+  border-radius: var(--sys42-radius-overlay);
 }
 
 .menu[hidden] {

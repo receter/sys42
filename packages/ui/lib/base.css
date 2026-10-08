@@ -3,9 +3,12 @@
 @import url(../node_modules/normalize.css/normalize.css);
 
 :root {
+  background-color: var(--sys42-color-container);
+  color: var(--sys42-color-on-container);
+
   /* Typography */
-  font-family: sans-serif;
-  line-height: 1.5;
+  font-family: var(--sys42-font-family-body);
+  line-height: var(--sys42-line-height-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -31,14 +34,14 @@ hr {
 }
 
 a {
-  color: var(--sys42-textLink-color);
+  color: var(--sys42-color-link);
 }
 
 a:visited {
-  color: var(--sys42-textLink-color--visited);
+  color: var(--sys42-color-link-visited);
 }
 
 a:active,
 a:visited:active {
-  color: var(--sys42-textLink-color--active);
+  color: var(--sys42-color-link-active);
 }

@@ -1,4 +1,10 @@
+/* Menu item family: reads only --menu-item-* inputs */
+
 .splitButtonItem {
+  --_padding-x: var(--menu-item-padding-x, var(--sys42-space-item-x));
+  --_padding-y: var(--menu-item-padding-y, var(--sys42-space-item-y));
+  --_radius: var(--menu-item-radius, var(--sys42-radius-item));
+
   font: inherit;
   color: inherit;
   background: none;
@@ -6,9 +12,8 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: var(--sys42-menu-item-padding-vert)
-    var(--sys42-menu-item-padding-horiz);
-  border-radius: var(--sys42-menu-item-border-radius);
+  padding: var(--_padding-y) var(--_padding-x);
+  border-radius: var(--_radius);
   cursor: pointer;
 }
 
@@ -18,10 +23,10 @@
 
 /* Focus follows the pointer, so :focus is the highlight for mouse and keyboard */
 .splitButtonItem:not([aria-disabled="true"]):focus {
-  background: var(--sys42-menu-item-background--highlighted);
+  background: color-mix(in srgb, currentColor 8%, var(--sys42-color-overlay));
 }
 
 .splitButtonItem[aria-disabled="true"] {
-  color: var(--sys42-menu-item-color--disabled);
+  color: var(--sys42-color-disabled-on-overlay);
   cursor: default;
 }

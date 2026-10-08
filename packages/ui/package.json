@@ -11,24 +11,40 @@
     "./default-custom-properties.css": {
       "default": "./dist/default-custom-properties.css"
     },
+    "./primitive-tokens.css": {
+      "default": "./dist/primitive-tokens.css"
+    },
+    "./semantic-tokens.css": {
+      "default": "./dist/semantic-tokens.css"
+    },
+    "./semantic-tokens.json": {
+      "default": "./dist/semantic-tokens.json"
+    },
     "./base.css": {
       "default": "./dist/base.css"
     }
   },
+  "bin": {
+    "sys42-check-tokens": "./bin/sys42-check-tokens.mjs"
+  },
   "files": [
-    "dist"
+    "dist",
+    "bin",
+    "token-migrations.json"
   ],
   "sideEffects": [
     "**/*.css"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --p ./tsconfig-build.json && vite --config ./vite-build.config.ts build && vite --config ./vite-build-css.config.ts build --emptyOutDir false",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "tsc --p ./tsconfig-build.json && vite --config ./vite-build.config.ts build && vite --config ./vite-build-css.config.ts build --emptyOutDir false && node scripts/generate-token-inventory.mjs",
+    "lint": "eslint . --ext ts,tsx,mjs --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "cosmos": "cosmos",
     "cosmos-export": "cosmos-export",
-    "prepublishOnly": "pnpm -r --filter ui... build"
+    "prepublishOnly": "pnpm -r --filter ui... build",
+    "tokens:colors": "node scripts/generate-primitive-colors.mjs",
+    "tokens:check": "node scripts/generate-primitive-colors.mjs --check"
   },
   "dependencies": {
     "@sys42/utils": "workspace:^",

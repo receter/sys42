@@ -1,3 +1,10 @@
+/*
+  Button family: the round trigger reads the default Button variant inputs
+  (--button-background, --button-color, --button-padding-y,
+  --button-line-height), each with a semantic fallback.
+  The popup menu uses the overlay semantic tokens.
+*/
+
 .overflowMenu {
   position: relative;
   width: fit-content;
@@ -5,13 +12,17 @@
 }
 
 .trigger {
+  --_background-color: var(--button-background, var(--sys42-color-control));
+  --_color: var(--button-color, var(--sys42-color-on-control));
+  --_padding: var(--button-padding-y, var(--sys42-space-control-y));
+
   font: inherit;
   border: 0;
   cursor: pointer;
-  background: var(--sys42-button-background);
-  color: var(--sys42-button-color);
-  padding: var(--sys42-button-padding-vert);
-  line-height: var(--sys42-button-line-height);
+  background: var(--_background-color);
+  color: var(--_color);
+  padding: var(--_padding);
+  line-height: var(--button-line-height, inherit);
   box-sizing: content-box;
   min-width: 1lh;
   border-radius: 50%;
@@ -23,12 +34,12 @@
 
 .trigger:hover,
 .overflowMenu_isOpen > .trigger {
-  background: var(--sys42-button-background--hover);
+  background: color-mix(in srgb, var(--_background-color), var(--_color) 8%);
 }
 
 .trigger:focus-visible {
-  outline: var(--sys42-focus-outline);
-  outline-offset: var(--sys42-focus-outline-offset);
+  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
+  outline-offset: var(--sys42-space-focus-offset);
 }
 
 .trigger > svg {
@@ -41,21 +52,22 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--sys42-menu-background);
-  color: var(--sys42-menu-color);
-  border: var(--sys42-menu-border-width) solid var(--sys42-menu-border-color);
-  box-shadow: var(--sys42-menu-shadow);
+  background: var(--sys42-color-overlay);
+  color: var(--sys42-color-on-overlay);
+  border: var(--sys42-border-width-overlay) solid
+    var(--sys42-color-overlay-border);
+  box-shadow: var(--sys42-shadow-overlay);
   box-sizing: border-box;
-  padding: var(--sys42-menu-padding);
+  padding: var(--sys42-space-overlay);
   position: absolute;
-  top: calc(100% + var(--sys42-spacing-xs));
+  top: calc(100% + var(--sys42-space-gap-xs));
   right: 0;
   z-index: 999;
   width: max-content;
-  max-width: var(--sys42-menu-max-width);
-  max-height: var(--sys42-menu-max-height);
+  max-width: var(--sys42-size-overlay-max-width);
+  max-height: var(--sys42-size-overlay-max-height);
   overflow-y: auto;
-  border-radius: var(--sys42-menu-border-radius);
+  border-radius: var(--sys42-radius-overlay);
 }
 
 .menu[hidden] {
