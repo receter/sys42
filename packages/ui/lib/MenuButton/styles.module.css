@@ -5,18 +5,18 @@
 */
 
 .menuButton {
-  --_background-color: var(--button-background, var(--sys42-color-control));
-  --_color: var(--button-color, var(--sys42-color-on-control));
+  --_background-color: var(--button-background, var(--s42-color-control));
+  --_color: var(--button-color, var(--s42-color-on-control));
   --_border-color: var(--button-border-color, transparent);
   --_border-width: var(
     --button-border-width,
-    var(--sys42-border-width-control)
+    var(--s42-border-width-control)
   );
-  --_radius: var(--button-radius, var(--sys42-radius-control));
-  --_padding-x: var(--button-padding-x, var(--sys42-space-control-x));
-  --_padding-y: var(--button-padding-y, var(--sys42-space-control-y));
-  --_font-size: var(--button-font-size, var(--sys42-font-size-control));
-  --_font-weight: var(--button-font-weight, var(--sys42-font-weight-control));
+  --_radius: var(--button-radius, var(--s42-radius-control));
+  --_padding-x: var(--button-padding-x, var(--s42-space-control-x));
+  --_padding-y: var(--button-padding-y, var(--s42-space-control-y));
+  --_font-size: var(--button-font-size, var(--s42-font-size-control));
+  --_font-weight: var(--button-font-weight, var(--s42-font-weight-control));
 
   position: relative;
   display: inline-flex;
@@ -27,27 +27,27 @@
 .menuButton_primary {
   --_background-color: var(
     --button-background-primary,
-    var(--sys42-color-control-accent)
+    var(--s42-color-control-accent)
   );
-  --_color: var(--button-color-primary, var(--sys42-color-on-control-accent));
+  --_color: var(--button-color-primary, var(--s42-color-on-control-accent));
   --_border-color: var(--button-border-color-primary, transparent);
 }
 
 .menuButton_danger {
   --_background-color: var(
     --button-background-danger,
-    var(--sys42-color-danger)
+    var(--s42-color-danger)
   );
-  --_color: var(--button-color-danger, var(--sys42-color-on-danger));
+  --_color: var(--button-color-danger, var(--s42-color-on-danger));
   --_border-color: var(--button-border-color-danger, transparent);
 }
 
 .menuButton_lg {
   --_padding-x: calc(
-    var(--button-padding-x, var(--sys42-space-control-x)) * 1.5
+    var(--button-padding-x, var(--s42-space-control-x)) * 1.5
   );
   --_padding-y: calc(
-    var(--button-padding-y, var(--sys42-space-control-y)) * 1.5
+    var(--button-padding-y, var(--s42-space-control-y)) * 1.5
   );
 }
 
@@ -73,19 +73,19 @@
 }
 
 .button:focus-visible {
-  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
-  outline-offset: var(--sys42-space-focus-offset);
+  outline: var(--s42-border-width-focus) solid var(--s42-color-focus);
+  outline-offset: var(--s42-space-focus-offset);
 }
 
 .button:hover,
 .menuButton_isOpen > .button {
   background: color-mix(in srgb, var(--_background-color), var(--_color) 8%);
   border-color: var(--_border-color);
-  box-shadow: var(--sys42-shadow-raised);
+  box-shadow: var(--s42-shadow-raised);
   transition:
-    background-color var(--sys42-duration-control) var(--sys42-easing-control),
-    border-color var(--sys42-duration-control) var(--sys42-easing-control),
-    box-shadow var(--sys42-duration-control) var(--sys42-easing-control);
+    background-color var(--s42-duration-control) var(--s42-easing-control),
+    border-color var(--s42-duration-control) var(--s42-easing-control),
+    box-shadow var(--s42-duration-control) var(--s42-easing-control);
 }
 
 .button:active {
@@ -96,17 +96,17 @@
 }
 
 .button:disabled {
-  background: var(--sys42-color-control-disabled);
+  background: var(--s42-color-control-disabled);
   border-color: transparent;
   box-shadow: none;
-  color: var(--sys42-color-on-control-disabled);
+  color: var(--s42-color-on-control-disabled);
   cursor: default;
 }
 
 .button > svg {
   width: 1.25em;
-  margin-left: var(--sys42-space-gap-xs);
-  margin-right: calc(var(--sys42-space-gap-xs) * -1);
+  margin-left: var(--s42-space-gap-xs);
+  margin-right: calc(var(--s42-space-gap-xs) * -1);
   vertical-align: middle;
 }
 
@@ -115,22 +115,22 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--sys42-color-overlay);
-  color: var(--sys42-color-on-overlay);
-  border: var(--sys42-border-width-overlay) solid
-    var(--sys42-color-overlay-border);
-  box-shadow: var(--sys42-shadow-overlay);
+  background: var(--s42-color-overlay);
+  color: var(--s42-color-on-overlay);
+  border: var(--s42-border-width-overlay) solid
+    var(--s42-color-overlay-border);
+  box-shadow: var(--s42-shadow-overlay);
   box-sizing: border-box;
-  padding: var(--sys42-space-overlay);
+  padding: var(--s42-space-overlay);
   position: absolute;
-  top: calc(100% + var(--sys42-space-gap-xs));
+  top: calc(100% + var(--s42-space-gap-xs));
   left: 0;
   z-index: 999;
   width: max-content;
-  max-width: var(--sys42-size-overlay-max-width);
-  max-height: var(--sys42-size-overlay-max-height);
+  max-width: var(--s42-size-overlay-max-width);
+  max-height: var(--s42-size-overlay-max-height);
   overflow-y: auto;
-  border-radius: var(--sys42-radius-overlay);
+  border-radius: var(--s42-radius-overlay);
 }
 
 .menu[hidden] {

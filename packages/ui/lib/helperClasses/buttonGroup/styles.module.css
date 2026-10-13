@@ -1,12 +1,12 @@
 .buttonGroup {
   align-items: baseline;
   display: flex;
-  gap: var(--sys42-space-gap-md);
+  gap: var(--s42-space-gap-md);
 }
 
 .buttonGroupReverse {
   align-items: baseline;
   display: flex;
   flex-direction: row-reverse;
-  gap: var(--sys42-space-gap-md);
+  gap: var(--s42-space-gap-md);
 }

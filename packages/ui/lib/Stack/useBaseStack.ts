@@ -26,7 +26,7 @@ export function useBaseStack<TTagName extends HTMLElementTagName>(
       let spacingValue = spacing;
       if (knownSpacingAbbreviations.includes(spacing)) {
         const size = spacing.replace(/^xx/, "2x");
-        spacingValue = `var(--sys42-space-gap-${size})`;
+        spacingValue = `var(--s42-space-gap-${size})`;
       }
       return {
         ...style,

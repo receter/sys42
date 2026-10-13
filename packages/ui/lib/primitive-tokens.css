@@ -2,7 +2,7 @@
   Native primitive tokens.
 
   Raw values and scales without a semantic role. sys42 component styles never
-  read these directly; they only read the --sys42-* semantic tokens, which
+  read these directly; they only read the --s42-* semantic tokens, which
   semantic-tokens.css maps to these primitives.
 
   Projects can use these primitives in their own CSS as long as they import

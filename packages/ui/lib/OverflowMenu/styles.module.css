@@ -12,9 +12,9 @@
 }
 
 .trigger {
-  --_background-color: var(--button-background, var(--sys42-color-control));
-  --_color: var(--button-color, var(--sys42-color-on-control));
-  --_padding: var(--button-padding-y, var(--sys42-space-control-y));
+  --_background-color: var(--button-background, var(--s42-color-control));
+  --_color: var(--button-color, var(--s42-color-on-control));
+  --_padding: var(--button-padding-y, var(--s42-space-control-y));
 
   font: inherit;
   border: 0;
@@ -38,8 +38,8 @@
 }
 
 .trigger:focus-visible {
-  outline: var(--sys42-border-width-focus) solid var(--sys42-color-focus);
-  outline-offset: var(--sys42-space-focus-offset);
+  outline: var(--s42-border-width-focus) solid var(--s42-color-focus);
+  outline-offset: var(--s42-space-focus-offset);
 }
 
 .trigger > svg {
@@ -52,22 +52,22 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--sys42-color-overlay);
-  color: var(--sys42-color-on-overlay);
-  border: var(--sys42-border-width-overlay) solid
-    var(--sys42-color-overlay-border);
-  box-shadow: var(--sys42-shadow-overlay);
+  background: var(--s42-color-overlay);
+  color: var(--s42-color-on-overlay);
+  border: var(--s42-border-width-overlay) solid
+    var(--s42-color-overlay-border);
+  box-shadow: var(--s42-shadow-overlay);
   box-sizing: border-box;
-  padding: var(--sys42-space-overlay);
+  padding: var(--s42-space-overlay);
   position: absolute;
-  top: calc(100% + var(--sys42-space-gap-xs));
+  top: calc(100% + var(--s42-space-gap-xs));
   right: 0;
   z-index: 999;
   width: max-content;
-  max-width: var(--sys42-size-overlay-max-width);
-  max-height: var(--sys42-size-overlay-max-height);
+  max-width: var(--s42-size-overlay-max-width);
+  max-height: var(--s42-size-overlay-max-height);
   overflow-y: auto;
-  border-radius: var(--sys42-radius-overlay);
+  border-radius: var(--s42-radius-overlay);
 }
 
 .menu[hidden] {

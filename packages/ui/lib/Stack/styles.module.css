@@ -1,7 +1,7 @@
 /* Stack family: reads only --stack-spacing, with a semantic fallback */
 
 .stack {
-  --_spacing: var(--stack-spacing, var(--sys42-space-gap-md));
+  --_spacing: var(--stack-spacing, var(--s42-space-gap-md));
 }
 
 .stack > * + * {

@@ -1,13 +1,13 @@
 .labeledControl {
   display: flex;
   align-items: start;
-  gap: var(--sys42-space-gap-sm);
+  gap: var(--s42-space-gap-sm);
 }
 
 .labeledControl *:first-child {
-  margin-top: max(0px, calc((1lh - var(--sys42-size-indicator)) / 2));
+  margin-top: max(0px, calc((1lh - var(--s42-size-indicator)) / 2));
 }
 
 .labeledControl div:last-child {
-  margin-top: max(0px, calc((var(--sys42-size-indicator) - 1lh) / 2));
+  margin-top: max(0px, calc((var(--s42-size-indicator) - 1lh) / 2));
 }

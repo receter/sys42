@@ -16,7 +16,7 @@ const { version } = JSON.parse(
 
 const declarations = css
   .replace(/\/\*[\s\S]*?\*\//g, "")
-  .matchAll(/(--sys42-[\w-]+)\s*:\s*([^;]+);/g);
+  .matchAll(/(--s42-[\w-]+)\s*:\s*([^;]+);/g);
 
 const tokens = [];
 for (const [, name, value] of declarations) {
@@ -25,7 +25,7 @@ for (const [, name, value] of declarations) {
   }
   tokens.push({
     name,
-    category: name.replace(/^--sys42-/, "").split("-")[0],
+    category: name.replace(/^--s42-/, "").split("-")[0],
     defaultValue: value.replace(/\s+/g, " ").trim(),
   });
 }
@@ -36,8 +36,8 @@ for (const [, name, value] of declarations) {
 const names = new Set(tokens.map((token) => token.name));
 const unpaired = [...names].filter(
   (name) =>
-    name.startsWith("--sys42-color-on-") &&
-    !names.has(name.replace("--sys42-color-on-", "--sys42-color-")),
+    name.startsWith("--s42-color-on-") &&
+    !names.has(name.replace("--s42-color-on-", "--s42-color-")),
 );
 if (unpaired.length > 0) {
   throw new Error(

@@ -14,7 +14,7 @@ npm install @sys42/ui
 
 Using the styled React components is the easiest way to work with System 42.
 
-Every component imports an individual `.css` file with default styles based on design tokens (CSS custom properties). You can customize the look of the components by overriding semantic tokens (`--sys42-*`) for system-wide decisions, or optional family tokens (e.g. `--button-radius`) for a group of components.
+Every component imports an individual `.css` file with default styles based on design tokens (CSS custom properties). You can customize the look of the components by overriding semantic tokens (`--s42-*`) for system-wide decisions, or optional family tokens (e.g. `--button-radius`) for a group of components.
 
 Read [Design Tokens and Theming](./TOKENS.md) for all tokens and the setup options.
 
@@ -200,7 +200,7 @@ Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
 
 ## Design Tokens
 
-System 42 uses three token layers: native primitives (`--color-indigo-100`), semantic tokens (`--sys42-color-control`) and optional family tokens (`--button-background`). See [Design Tokens and Theming](./TOKENS.md) for:
+System 42 uses three token layers: native primitives (`--color-indigo-100`), semantic tokens (`--s42-color-control`) and optional family tokens (`--button-background`). See [Design Tokens and Theming](./TOKENS.md) for:
 
 - which tokens you can use in your own CSS
 - setup with the native theme or your own primitives, and the `sys42-check-tokens` mapping check

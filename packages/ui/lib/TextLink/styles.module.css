@@ -14,9 +14,9 @@ as a "<a>" already styled globally.
   all: unset;
   cursor: pointer;
   text-decoration: underline;
-  color: var(--sys42-color-link);
+  color: var(--s42-color-link);
 }
 
 .textLinkNotAnchor:active {
-  color: var(--sys42-color-link-active);
+  color: var(--s42-color-link-active);
 }

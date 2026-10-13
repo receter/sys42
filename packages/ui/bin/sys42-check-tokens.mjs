@@ -10,9 +10,10 @@
     for projects that load the native default mapping and only override a few)
   - renamed tokens, with the new name from token-migrations.json
   - removed tokens, with migration guidance
-  - unknown --sys42-* names
+  - unknown --s42-* names
+  - custom properties from 3.x (--sys42-*), which were replaced in 4.0.0
 
-  Only --sys42-* names are checked. Your own primitives and the optional family
+  Only --s42-* names are checked. Your own primitives and the optional family
   tokens (e.g. --button-radius) are never reported.
 
   Limits: this is a static text check. It does not know which selectors apply
@@ -63,6 +64,8 @@ for (const migration of readJson("token-migrations.json").migrations) {
 // name -> [{ file, line, kind }]
 const declared = new Map();
 const referenced = new Map();
+// 3.x custom properties used the --sys42- prefix
+const legacy = new Map();
 
 function record(map, name, location) {
   if (!map.has(name)) map.set(name, []);
@@ -77,16 +80,29 @@ for (const file of files) {
   );
   css.split("\n").forEach((text, index) => {
     const location = `${file}:${index + 1}`;
-    for (const [, name] of text.matchAll(/(--sys42-[\w-]+)\s*:/g)) {
+    for (const [, name] of text.matchAll(/(--s42-[\w-]+)\s*:/g)) {
       record(declared, name, location);
     }
-    for (const [, name] of text.matchAll(/var\(\s*(--sys42-[\w-]+)/g)) {
+    for (const [, name] of text.matchAll(/var\(\s*(--s42-[\w-]+)/g)) {
       record(referenced, name, location);
+    }
+    for (const [, name] of text.matchAll(/(--sys42-[\w-]+)/g)) {
+      record(legacy, name, location);
     }
   });
 }
 
-const problems = { missing: [], renamed: [], removed: [], unknown: [] };
+const problems = {
+  missing: [],
+  renamed: [],
+  removed: [],
+  unknown: [],
+  legacy: [],
+};
+
+for (const [name, locations] of [...legacy].sort()) {
+  problems.legacy.push({ name, locations });
+}
 
 if (!isOverridesOnly) {
   for (const name of required) {
@@ -133,13 +149,20 @@ if (problems.removed.length > 0) {
   }
 }
 if (problems.unknown.length > 0) {
-  console.log(`\nUnknown --sys42-* tokens (${problems.unknown.length}):`);
+  console.log(`\nUnknown --s42-* tokens (${problems.unknown.length}):`);
   for (const entry of problems.unknown) {
     console.log(`  ${entry.name}`);
     console.log(`    at ${where(entry.locations)}`);
   }
+}
+if (problems.legacy.length > 0) {
+  console.log(`\n3.x custom properties (${problems.legacy.length}):`);
+  for (const entry of problems.legacy) {
+    console.log(`  ${entry.name}`);
+    console.log(`    at ${where(entry.locations)}`);
+  }
   console.log(
-    "  Upgrading from 3.x? The custom properties were replaced by a new token system, see TOKENS-MIGRATION.md in @sys42/ui.",
+    "  4.0.0 replaced them with a new token system, see TOKENS-MIGRATION.md in @sys42/ui.",
   );
 }
 

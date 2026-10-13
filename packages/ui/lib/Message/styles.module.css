@@ -3,25 +3,25 @@
 .message {
   --_background-color: var(
     --message-background,
-    var(--sys42-color-container-subtle)
+    var(--s42-color-container-subtle)
   );
-  --_color: var(--message-color, var(--sys42-color-on-container-subtle));
+  --_color: var(--message-color, var(--s42-color-on-container-subtle));
   --_border-color: var(--message-border-color, transparent);
   --_border-width: var(
     --message-border-width,
-    var(--sys42-border-width-container-compact)
+    var(--s42-border-width-container-compact)
   );
-  --_radius: var(--message-radius, var(--sys42-radius-container-compact));
-  --_font-size: var(--message-font-size, var(--sys42-font-size-body-sm));
+  --_radius: var(--message-radius, var(--s42-radius-container-compact));
+  --_font-size: var(--message-font-size, var(--s42-font-size-body-sm));
 
   font-size: var(--_font-size);
   border-radius: var(--_radius);
   text-align: left;
-  padding: var(--sys42-space-container-compact-y)
-    var(--sys42-space-container-compact-x);
+  padding: var(--s42-space-container-compact-y)
+    var(--s42-space-container-compact-x);
   display: flex;
   align-items: center;
-  gap: var(--sys42-space-gap-sm);
+  gap: var(--s42-space-gap-sm);
   justify-content: center;
   background: var(--_background-color);
   border: var(--_border-width) solid var(--_border-color);
@@ -36,20 +36,20 @@
 .message_info {
   --_background-color: var(
     --message-background-info,
-    var(--sys42-color-info-container)
+    var(--s42-color-info-container)
   );
-  --_color: var(--message-color-info, var(--sys42-color-on-info-container));
+  --_color: var(--message-color-info, var(--s42-color-on-info-container));
   --_border-color: var(--message-border-color-info, transparent);
 }
 
 .message_success {
   --_background-color: var(
     --message-background-success,
-    var(--sys42-color-success-container)
+    var(--s42-color-success-container)
   );
   --_color: var(
     --message-color-success,
-    var(--sys42-color-on-success-container)
+    var(--s42-color-on-success-container)
   );
   --_border-color: var(--message-border-color-success, transparent);
 }
@@ -57,11 +57,11 @@
 .message_warning {
   --_background-color: var(
     --message-background-warning,
-    var(--sys42-color-warning-container)
+    var(--s42-color-warning-container)
   );
   --_color: var(
     --message-color-warning,
-    var(--sys42-color-on-warning-container)
+    var(--s42-color-on-warning-container)
   );
   --_border-color: var(--message-border-color-warning, transparent);
 }
@@ -69,8 +69,8 @@
 .message_error {
   --_background-color: var(
     --message-background-error,
-    var(--sys42-color-danger-container)
+    var(--s42-color-danger-container)
   );
-  --_color: var(--message-color-error, var(--sys42-color-on-danger-container));
+  --_color: var(--message-color-error, var(--s42-color-on-danger-container));
   --_border-color: var(--message-border-color-error, transparent);
 }

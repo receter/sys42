@@ -4,7 +4,7 @@
 }
 
 .errorMessage {
-  color: var(--sys42-color-danger-on-container);
+  color: var(--s42-color-danger-on-container);
 }
 
 .legend {
@@ -12,5 +12,5 @@
 }
 
 .legend + * {
-  margin-top: var(--sys42-space-gap-xs);
+  margin-top: var(--s42-space-gap-xs);
 }
