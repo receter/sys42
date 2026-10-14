@@ -14,12 +14,6 @@ export default function LabelFixture() {
           <Message icon={icon}>{content}</Message>
         </div>
         <div>
-          <strong>Info:</strong>
-          <Message variant={"info"} icon={icon}>
-            {content}
-          </Message>
-        </div>
-        <div>
           <strong>Success:</strong>
           <Message variant={"success"} icon={icon}>
             {content}
@@ -32,8 +26,8 @@ export default function LabelFixture() {
           </Message>
         </div>
         <div>
-          <strong>Error:</strong>
-          <Message variant={"error"} icon={icon}>
+          <strong>Danger:</strong>
+          <Message variant={"danger"} icon={icon}>
             {content}
           </Message>
         </div>

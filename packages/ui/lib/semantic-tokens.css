@@ -11,86 +11,89 @@
 */
 
 :root {
-  /* Color: default container (page and card background and text) */
-  --s42-color-container: var(--color-neutral-0);
-  --s42-color-on-container: var(--color-neutral-1000);
-  --s42-color-danger-on-container: var(--color-red-600);
-  --s42-color-container-border: var(--color-neutral-200);
+  /* Color: surfaces. All onSurface* colors work on surface and surfaceBright. */
+  --s42-color-surface: var(--color-tertiary-98);
+  --s42-color-surfaceBright: var(--color-tertiary-100);
+  --s42-color-onSurface: var(--color-primary-10);
+  --s42-color-onSurface-muted: var(--color-primary-30);
+  --s42-color-onSurface-subtle: var(--color-primary-50);
+  --s42-color-onSurface-danger: var(--color-danger-40);
 
-  /* Color: subtle container (default Message) */
-  --s42-color-container-subtle: var(--color-mauve-50);
-  --s42-color-on-container-subtle: var(--color-mauve-900);
+  /* Color: outlines on surfaces (field borders, card borders) */
+  --s42-color-outline: var(--color-neutral-50);
+  --s42-color-outline-subtle: var(--color-neutral-80);
 
-  /* Color: overlay (menus and listbox popups) */
-  --s42-color-overlay: var(--color-neutral-0);
-  --s42-color-on-overlay: var(--color-neutral-1000);
-  --s42-color-disabled-on-overlay: color-mix(
+  /* Color: controls. control* is the control itself (a button, a toggle handle),
+     control*Container holds a control (a toggle track, a slider bar) and works
+     on surface and surfaceBright. */
+  --s42-color-control: var(--color-secondary-80);
+  --s42-color-onControl: var(--color-secondary-10);
+  --s42-color-controlContainer: var(--color-secondary-60);
+
+  --s42-color-controlAccent: var(--color-secondary-10);
+  --s42-color-onControlAccent: var(--color-secondary-100);
+  --s42-color-controlAccentContainer: var(--color-secondary-90);
+
+  --s42-color-controlHighlight: var(--color-primary-90);
+  --s42-color-onControlHighlight: var(--color-primary-10);
+  --s42-color-controlHighlightContainer: var(--color-primary-90);
+
+  --s42-color-controlDanger: var(--color-danger-40);
+  --s42-color-onControlDanger: var(--color-danger-100);
+  --s42-color-controlDangerContainer: var(--color-danger-90);
+
+  --s42-color-controlDisabled: color-mix(
     in srgb,
-    var(--color-neutral-900) 38%,
+    var(--color-primary-10) 12%,
     transparent
   );
-  --s42-color-overlay-border: transparent;
-
-  /* Color: controls (buttons) */
-  --s42-color-control: var(--color-indigo-100);
-  --s42-color-on-control: var(--color-indigo-900);
-  --s42-color-control-accent: var(--color-indigo-600);
-  --s42-color-on-control-accent: var(--color-neutral-0);
-  --s42-color-control-disabled: color-mix(
+  --s42-color-onControlDisabled: color-mix(
     in srgb,
-    var(--color-neutral-900) 12%,
+    var(--color-primary-10) 38%,
     transparent
   );
-  --s42-color-on-control-disabled: color-mix(
+  --s42-color-controlDisabledContainer: color-mix(
     in srgb,
-    var(--color-neutral-900) 38%,
-    transparent
-  );
-  --s42-color-control-divider: color-mix(
-    in srgb,
-    var(--color-neutral-1000) 15%,
+    var(--color-primary-10) 8%,
     transparent
   );
 
-  /* Color: danger emphasis (filled danger button) */
-  --s42-color-danger: var(--color-red-600);
-  --s42-color-on-danger: var(--color-neutral-0);
+  /* Color: divider between the two parts of a split control, works on all control colors */
+  --s42-color-controlDivider: color-mix(
+    in srgb,
+    var(--color-primary-0) 15%,
+    transparent
+  );
 
-  /* Color: fields (text inputs, selects, checkboxes, radios) */
-  --s42-color-field: var(--color-neutral-0);
-  --s42-color-on-field: var(--color-neutral-1000);
-  --s42-color-placeholder-on-field: var(--color-neutral-600);
-  --s42-color-field-border: var(--color-neutral-200);
-
-  /* Color: status containers (Message variants) */
-  --s42-color-info-container: var(--color-indigo-100);
-  --s42-color-on-info-container: var(--color-indigo-900);
-  --s42-color-success-container: var(--color-green-100);
-  --s42-color-on-success-container: var(--color-green-900);
-  --s42-color-warning-container: var(--color-amber-100);
-  --s42-color-on-warning-container: var(--color-amber-900);
-  --s42-color-danger-container: var(--color-red-100);
-  --s42-color-on-danger-container: var(--color-red-900);
+  /* Color: containers (Message variants) */
+  --s42-color-container: var(--color-primary-90);
+  --s42-color-onContainer: var(--color-primary-10);
+  --s42-color-containerSuccess: var(--color-success-95);
+  --s42-color-onContainerSuccess: var(--color-success-30);
+  --s42-color-containerWarning: var(--color-warning-90);
+  --s42-color-onContainerWarning: var(--color-warning-10);
+  --s42-color-containerDanger: var(--color-danger-90);
+  --s42-color-onContainerDanger: var(--color-danger-10);
 
   /* Color: focus ring and links */
-  --s42-color-focus: var(--color-indigo-600);
-  --s42-color-link: var(--color-blue-600);
-  --s42-color-link-visited: var(--color-purple-700);
-  --s42-color-link-active: var(--color-red-500);
+  --s42-color-focus: var(--color-primary-40);
+  --s42-color-link: var(--color-primary-40);
+  --s42-color-link-visited: var(--color-primary-30);
+  --s42-color-link-active: var(--color-danger-40);
 
   /* Space */
-  --s42-space-control-x: var(--space-md);
-  --s42-space-control-y: var(--space-sm);
-  --s42-space-field-x: var(--space-sm);
-  --s42-space-field-y: var(--space-sm);
-  --s42-space-item-x: var(--space-sm);
-  --s42-space-item-y: var(--space-sm);
-  --s42-space-container-x: var(--space-md);
-  --s42-space-container-y: var(--space-md);
-  --s42-space-container-compact-x: var(--space-sm);
-  --s42-space-container-compact-y: var(--space-xs);
+  --s42-space-controlX: var(--space-md);
+  --s42-space-controlY: var(--space-sm);
+  --s42-space-fieldX: var(--space-sm);
+  --s42-space-fieldY: var(--space-sm);
+  --s42-space-itemX: var(--space-sm);
+  --s42-space-itemY: var(--space-sm);
+  --s42-space-containerX: var(--space-md);
+  --s42-space-containerY: var(--space-md);
+  --s42-space-containerX-compact: var(--space-sm);
+  --s42-space-containerY-compact: var(--space-xs);
   --s42-space-overlay: var(--space-sm);
-  --s42-space-focus-offset: var(--space-2xs);
+  --s42-space-focusOffset: var(--space-2xs);
 
   /* Space: gaps between elements (Stack, form fields, groups) */
   --s42-space-gap-2xs: var(--space-2xs);
@@ -103,9 +106,9 @@
 
   /* Size */
   --s42-size-indicator: var(--size-em-lg);
-  --s42-size-field-min-width: var(--size-sm);
-  --s42-size-overlay-max-width: var(--size-md);
-  --s42-size-overlay-max-height: var(--size-md);
+  --s42-size-fieldMinWidth: var(--size-sm);
+  --s42-size-overlayMaxWidth: var(--size-md);
+  --s42-size-overlayMaxHeight: var(--size-md);
 
   /* Radius */
   --s42-radius-control: var(--radius-md);
@@ -116,22 +119,22 @@
   --s42-radius-overlay: var(--radius-md);
 
   /* Border width */
-  --s42-border-width-control: var(--border-width-thin);
-  --s42-border-width-field: var(--border-width-thin);
-  --s42-border-width-field-strong: var(--border-width-medium);
-  --s42-border-width-container: var(--border-width-thin);
-  --s42-border-width-container-compact: var(--border-width-thin);
-  --s42-border-width-overlay: var(--border-width-none);
-  --s42-border-width-focus: var(--border-width-medium);
+  --s42-borderWidth-control: var(--borderWidth-thin);
+  --s42-borderWidth-field: var(--borderWidth-thin);
+  --s42-borderWidth-field-strong: var(--borderWidth-medium);
+  --s42-borderWidth-container: var(--borderWidth-thin);
+  --s42-borderWidth-container-compact: var(--borderWidth-thin);
+  --s42-borderWidth-overlay: var(--borderWidth-none);
+  --s42-borderWidth-focus: var(--borderWidth-medium);
 
   /* Typography */
-  --s42-font-family-body: var(--font-family-sans);
-  --s42-font-size-control: var(--font-size-md);
-  --s42-font-size-body-sm: var(--font-size-sm);
-  --s42-font-weight-control: var(--font-weight-regular);
-  --s42-font-weight-label: var(--font-weight-bold);
-  --s42-font-weight-emphasis: var(--font-weight-bold);
-  --s42-line-height-body: var(--line-height-normal);
+  --s42-fontFamily-body: var(--fontFamily-sans);
+  --s42-fontSize-control: var(--fontSize-md);
+  --s42-fontSize-body-sm: var(--fontSize-sm);
+  --s42-fontWeight-control: var(--fontWeight-regular);
+  --s42-fontWeight-label: var(--fontWeight-bold);
+  --s42-fontWeight-emphasis: var(--fontWeight-bold);
+  --s42-lineHeight-body: var(--lineHeight-normal);
 
   /* Elevation */
   --s42-shadow-container: var(--shadow-sm);
@@ -140,5 +143,5 @@
 
   /* Motion */
   --s42-duration-control: var(--duration-fast);
-  --s42-easing-control: var(--easing-in-out);
+  --s42-easing-control: var(--easing-inOut);
 }

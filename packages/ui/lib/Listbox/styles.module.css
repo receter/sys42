@@ -4,17 +4,17 @@
   position: relative;
   display: inline-block;
   max-width: 100%;
-  min-width: var(--input-min-width, var(--s42-size-field-min-width));
+  min-width: var(--input-minWidth, var(--s42-size-fieldMinWidth));
 }
 
 .toggle {
-  --_background-color: var(--input-background, var(--s42-color-field));
-  --_color: var(--input-color, var(--s42-color-on-field));
-  --_border-color: var(--input-border-color, var(--s42-color-field-border));
-  --_border-width: var(--input-border-width, var(--s42-border-width-field));
+  --_background-color: var(--input-background, var(--s42-color-surfaceBright));
+  --_color: var(--input-color, var(--s42-color-onSurface));
+  --_border-color: var(--input-borderColor, var(--s42-color-outline));
+  --_border-width: var(--input-borderWidth, var(--s42-borderWidth-field));
   --_radius: var(--input-radius, var(--s42-radius-field));
-  --_padding-x: var(--input-padding-x, var(--s42-space-field-x));
-  --_padding-y: var(--input-padding-y, var(--s42-space-field-y));
+  --_padding-x: var(--input-paddingX, var(--s42-space-fieldX));
+  --_padding-y: var(--input-paddingY, var(--s42-space-fieldY));
 
   font: inherit;
   color: var(--_color);
@@ -25,7 +25,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: var(--input-line-height, inherit);
+  line-height: var(--input-lineHeight, inherit);
   background: var(--_background-color);
   border: var(--_border-width) solid var(--_border-color);
   border-radius: var(--_radius);
@@ -55,21 +55,18 @@
 
 .toggle:focus,
 .toggle:focus-visible {
-  outline: var(--s42-border-width-focus) solid var(--s42-color-focus);
-  outline-offset: var(--s42-space-focus-offset);
+  outline: var(--s42-borderWidth-focus) solid var(--s42-color-focus);
+  outline-offset: var(--s42-space-focusOffset);
 }
 
 .toggle:disabled {
-  background: var(--s42-color-control-disabled);
-  color: var(--s42-color-on-control-disabled);
+  background: var(--s42-color-controlDisabled);
+  color: var(--s42-color-onControlDisabled);
   cursor: default;
 }
 
 .toggle_isPlaceholder {
-  color: var(
-    --input-color-placeholder,
-    var(--s42-color-placeholder-on-field)
-  );
+  color: var(--input-placeholder-color, var(--s42-color-onSurface-subtle));
 }
 
 /* Menu, items are styled by ListboxItem */
@@ -77,10 +74,9 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--s42-color-overlay);
-  color: var(--s42-color-on-overlay);
-  border: var(--s42-border-width-overlay) solid
-    var(--s42-color-overlay-border);
+  background: var(--s42-color-surfaceBright);
+  color: var(--s42-color-onSurface);
+  border: var(--s42-borderWidth-overlay) solid var(--s42-color-outline-subtle);
   box-shadow: var(--s42-shadow-overlay);
   box-sizing: border-box;
   padding: var(--s42-space-overlay);
@@ -90,8 +86,8 @@
   z-index: 999;
   width: max-content;
   min-width: 100%;
-  max-width: var(--s42-size-overlay-max-width);
-  max-height: var(--s42-size-overlay-max-height);
+  max-width: var(--s42-size-overlayMaxWidth);
+  max-height: var(--s42-size-overlayMaxHeight);
   overflow-y: auto;
   border-radius: var(--s42-radius-overlay);
 }

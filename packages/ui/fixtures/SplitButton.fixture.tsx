@@ -33,9 +33,19 @@ export default function SplitButtonFixture() {
 
         <div>
           <SplitButton
-            variant="primary"
+            variant="accent"
             label="Save"
-            onClick={() => setLastAction("Save (primary)")}
+            onClick={() => setLastAction("Save (accent)")}
+          >
+            {items}
+          </SplitButton>
+        </div>
+
+        <div>
+          <SplitButton
+            variant="highlight"
+            label="Save"
+            onClick={() => setLastAction("Save (highlight)")}
           >
             {items}
           </SplitButton>

@@ -5,7 +5,7 @@ import { BaseSplitButtonProps, useBaseSplitButton } from "./useBaseSplitButton";
 import styles from "./styles.module.css";
 
 export type SplitButtonProps = BaseSplitButtonProps & {
-  variant?: "primary" | "danger";
+  variant?: "accent" | "highlight" | "danger";
   size?: "lg";
 };
 
@@ -26,7 +26,8 @@ export function useSplitButton<TTagName extends HTMLElementTagName>(
       draft.elementProps.className = cn(
         draft.elementProps.className,
         styles.splitButton,
-        variant === "primary" && styles.splitButton_primary,
+        variant === "accent" && styles.splitButton_accent,
+        variant === "highlight" && styles.splitButton_highlight,
         variant === "danger" && styles.splitButton_danger,
         size === "lg" && styles.splitButton_lg,
         ctx.isOpen && styles.splitButton_isOpen,

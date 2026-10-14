@@ -22,7 +22,7 @@ export default function Fixture() {
           {({ htmlFor }) => <TextInput id={htmlFor} type="tel" />}
         </FormField>
         <div className={classButtonGroup}>
-          <Button variant="primary" onClick={() => window.alert("Hi!")}>
+          <Button variant="accent" onClick={() => window.alert("Hi!")}>
             {label}
           </Button>
           <Button onClick={() => window.alert("Hi!")}>Cancel</Button>
@@ -36,7 +36,7 @@ export default function Fixture() {
               {({ htmlFor }) => <TextInput id={htmlFor} type="tel" />}
             </FormField>
             <div className={classButtonGroupReverse}>
-              <Button variant="primary" onClick={() => window.alert("Hi!")}>
+              <Button variant="accent" onClick={() => window.alert("Hi!")}>
                 {label}
               </Button>
               <Button onClick={() => window.alert("Hi!")}>Cancel</Button>

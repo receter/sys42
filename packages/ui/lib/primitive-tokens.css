@@ -11,105 +11,140 @@
 */
 
 :root {
-  /* Color: palettes run from light (50) to dark (950). Neutral also has 0 (white) and 1000 (black). */
+  /* Color: Material 3 tonal palettes, named by role. Tones run from 0 (black) to 100 (white). */
   /* @generated colors start: scripts/generate-primitive-colors.mjs */
-  --color-neutral-0: #ffffff;
-  --color-neutral-50: #f5f5f5;
-  --color-neutral-100: #e8e8e8;
-  --color-neutral-200: #d4d4d4;
-  --color-neutral-300: #bababa;
-  --color-neutral-400: #a1a1a1;
-  --color-neutral-500: #898989;
-  --color-neutral-600: #6c6c6c;
-  --color-neutral-700: #555555;
-  --color-neutral-800: #404040;
-  --color-neutral-900: #242424;
-  --color-neutral-950: #161616;
-  --color-neutral-1000: #000000;
+  --color-primary-100: #ffffff;
+  --color-primary-99: #fffbff;
+  --color-primary-98: #fff8f8;
+  --color-primary-95: #ffecf0;
+  --color-primary-90: #ffd9e4;
+  --color-primary-80: #e9bac9;
+  --color-primary-70: #cc9fae;
+  --color-primary-60: #af8593;
+  --color-primary-50: #946c79;
+  --color-primary-40: #795461;
+  --color-primary-35: #6c4855;
+  --color-primary-30: #5f3d49;
+  --color-primary-25: #52323e;
+  --color-primary-20: #462733;
+  --color-primary-15: #3a1d28;
+  --color-primary-10: #2e131e;
+  --color-primary-5: #210813;
+  --color-primary-0: #000000;
 
-  --color-mauve-50: #f5f5f7;
-  --color-mauve-100: #e8e7eb;
-  --color-mauve-200: #d4d3da;
-  --color-mauve-300: #bab9c2;
-  --color-mauve-400: #a1a0aa;
-  --color-mauve-500: #898892;
-  --color-mauve-600: #6b6a74;
-  --color-mauve-700: #55545c;
-  --color-mauve-800: #3f3f45;
-  --color-mauve-900: #242426;
-  --color-mauve-950: #161617;
+  --color-secondary-100: #ffffff;
+  --color-secondary-99: #fffbff;
+  --color-secondary-98: #fff8f8;
+  --color-secondary-95: #ffecf1;
+  --color-secondary-90: #f0dee2;
+  --color-secondary-80: #d3c2c6;
+  --color-secondary-70: #b7a7ab;
+  --color-secondary-60: #9c8d91;
+  --color-secondary-50: #817377;
+  --color-secondary-40: #685b5f;
+  --color-secondary-35: #5c4f53;
+  --color-secondary-30: #4f4447;
+  --color-secondary-25: #44383c;
+  --color-secondary-20: #382e31;
+  --color-secondary-15: #2d2326;
+  --color-secondary-10: #22191c;
+  --color-secondary-5: #170f12;
+  --color-secondary-0: #000000;
 
-  --color-indigo-50: #f2f4ff;
-  --color-indigo-100: #e2e6ff;
-  --color-indigo-200: #c9d1ff;
-  --color-indigo-300: #acb6f3;
-  --color-indigo-400: #919be1;
-  --color-indigo-500: #7982cb;
-  --color-indigo-600: #5d65a9;
-  --color-indigo-700: #484f8a;
-  --color-indigo-800: #363b68;
-  --color-indigo-900: #1f2236;
-  --color-indigo-950: #15161b;
+  --color-tertiary-100: #ffffff;
+  --color-tertiary-99: #fffbff;
+  --color-tertiary-98: #fff8f5;
+  --color-tertiary-95: #ffede2;
+  --color-tertiary-90: #f7decd;
+  --color-tertiary-80: #dac2b2;
+  --color-tertiary-70: #bda797;
+  --color-tertiary-60: #a28d7e;
+  --color-tertiary-50: #877365;
+  --color-tertiary-40: #6d5b4e;
+  --color-tertiary-35: #604f42;
+  --color-tertiary-30: #544437;
+  --color-tertiary-25: #48382c;
+  --color-tertiary-20: #3c2d22;
+  --color-tertiary-15: #312318;
+  --color-tertiary-10: #26190f;
+  --color-tertiary-5: #1a0e06;
+  --color-tertiary-0: #000000;
 
-  --color-blue-50: #f0f5ff;
-  --color-blue-100: #dde8ff;
-  --color-blue-200: #bfd5ff;
-  --color-blue-300: #98baff;
-  --color-blue-400: #719eff;
-  --color-blue-500: #4980ff;
-  --color-blue-600: #2059ef;
-  --color-blue-700: #1343c7;
-  --color-blue-800: #0d3396;
-  --color-blue-900: #0e214b;
-  --color-blue-950: #111620;
+  --color-neutral-100: #ffffff;
+  --color-neutral-99: #fffbff;
+  --color-neutral-98: #fff8f8;
+  --color-neutral-95: #f7eff0;
+  --color-neutral-90: #e8e1e2;
+  --color-neutral-80: #ccc5c6;
+  --color-neutral-70: #b0aaab;
+  --color-neutral-60: #958f90;
+  --color-neutral-50: #7b7677;
+  --color-neutral-40: #625d5e;
+  --color-neutral-35: #565152;
+  --color-neutral-30: #4a4647;
+  --color-neutral-25: #3e3a3b;
+  --color-neutral-20: #332f30;
+  --color-neutral-15: #282526;
+  --color-neutral-10: #1e1b1c;
+  --color-neutral-5: #131011;
+  --color-neutral-0: #000000;
 
-  --color-purple-50: #f8f2ff;
-  --color-purple-100: #eee1ff;
-  --color-purple-200: #e0c8ff;
-  --color-purple-300: #cea4ff;
-  --color-purple-400: #bd7efd;
-  --color-purple-500: #a661e7;
-  --color-purple-600: #8742c3;
-  --color-purple-700: #6d30a1;
-  --color-purple-800: #522479;
-  --color-purple-900: #2c1a3e;
-  --color-purple-950: #18141d;
+  --color-danger-100: #ffffff;
+  --color-danger-99: #fffbff;
+  --color-danger-98: #fff8f7;
+  --color-danger-95: #ffedea;
+  --color-danger-90: #ffdad6;
+  --color-danger-80: #ffb4ab;
+  --color-danger-70: #ff897d;
+  --color-danger-60: #ff5449;
+  --color-danger-50: #db3a33;
+  --color-danger-40: #b81f1e;
+  --color-danger-35: #a60f13;
+  --color-danger-30: #93000a;
+  --color-danger-25: #7e0007;
+  --color-danger-20: #690005;
+  --color-danger-15: #540003;
+  --color-danger-10: #410002;
+  --color-danger-5: #2d0001;
+  --color-danger-0: #000000;
 
-  --color-red-50: #fff2f0;
-  --color-red-100: #ffe0db;
-  --color-red-200: #ffc3bc;
-  --color-red-300: #ff9b90;
-  --color-red-400: #ff6b60;
-  --color-red-500: #f13a37;
-  --color-red-600: #ca0617;
-  --color-red-700: #a3000f;
-  --color-red-800: #7d0008;
-  --color-red-900: #42110e;
-  --color-red-950: #1f1211;
+  --color-warning-100: #ffffff;
+  --color-warning-99: #fffbff;
+  --color-warning-98: #fff8f2;
+  --color-warning-95: #ffefd5;
+  --color-warning-90: #ffdea0;
+  --color-warning-80: #f8bd2c;
+  --color-warning-70: #daa200;
+  --color-warning-60: #b88900;
+  --color-warning-50: #987100;
+  --color-warning-40: #795900;
+  --color-warning-35: #6a4e00;
+  --color-warning-30: #5c4300;
+  --color-warning-25: #4e3800;
+  --color-warning-20: #402d00;
+  --color-warning-15: #332300;
+  --color-warning-10: #261900;
+  --color-warning-5: #190f00;
+  --color-warning-0: #000000;
 
-  --color-amber-50: #fff3e4;
-  --color-amber-100: #ffe3be;
-  --color-amber-200: #fbcb89;
-  --color-amber-300: #edad4b;
-  --color-amber-400: #d79100;
-  --color-amber-500: #b77b00;
-  --color-amber-600: #916100;
-  --color-amber-700: #734c00;
-  --color-amber-800: #573900;
-  --color-amber-900: #331f00;
-  --color-amber-950: #1a150e;
-
-  --color-green-50: #e7fce5;
-  --color-green-100: #d0f4cc;
-  --color-green-200: #afe5a8;
-  --color-green-300: #86d07e;
-  --color-green-400: #61ba59;
-  --color-green-500: #41a138;
-  --color-green-600: #1f8216;
-  --color-green-700: #0d6805;
-  --color-green-800: #0b4e06;
-  --color-green-900: #112b0f;
-  --color-green-950: #121811;
+  --color-success-100: #ffffff;
+  --color-success-99: #f6ffef;
+  --color-success-98: #ecffe4;
+  --color-success-95: #c9ffbe;
+  --color-success-90: #a9f59f;
+  --color-success-80: #8ed885;
+  --color-success-70: #73bc6d;
+  --color-success-60: #59a155;
+  --color-success-50: #3f863d;
+  --color-success-40: #256c27;
+  --color-success-35: #165f1c;
+  --color-success-30: #035310;
+  --color-success-25: #00460b;
+  --color-success-20: #003908;
+  --color-success-15: #002d05;
+  --color-success-10: #002203;
+  --color-success-5: #001501;
+  --color-success-0: #000000;
   /* @generated colors end */
 
   /* Space */
@@ -135,33 +170,33 @@
   --radius-full: 9999px;
 
   /* Border width */
-  --border-width-none: 0;
-  --border-width-thin: 1px;
-  --border-width-medium: 2px;
+  --borderWidth-none: 0;
+  --borderWidth-thin: 1px;
+  --borderWidth-medium: 2px;
 
   /* Font family */
-  --font-family-sans: sans-serif;
-  --font-family-serif: serif;
-  --font-family-mono: monospace;
+  --fontFamily-sans: sans-serif;
+  --fontFamily-serif: serif;
+  --fontFamily-mono: monospace;
 
   /* Font size */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 2rem;
+  --fontSize-xs: 0.75rem;
+  --fontSize-sm: 0.875rem;
+  --fontSize-md: 1rem;
+  --fontSize-lg: 1.25rem;
+  --fontSize-xl: 1.5rem;
+  --fontSize-2xl: 2rem;
 
   /* Font weight */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --fontWeight-regular: 400;
+  --fontWeight-medium: 500;
+  --fontWeight-semibold: 600;
+  --fontWeight-bold: 700;
 
   /* Line height */
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-loose: 1.75;
+  --lineHeight-tight: 1.25;
+  --lineHeight-normal: 1.5;
+  --lineHeight-loose: 1.75;
 
   /* Shadow */
   --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -172,6 +207,6 @@
   --duration-fast: 0.15s;
   --duration-normal: 0.25s;
   --duration-slow: 0.4s;
-  --easing-in-out: ease-in-out;
+  --easing-inOut: ease-in-out;
   --easing-out: ease-out;
 }

@@ -4,7 +4,7 @@
   The inventory is derived from lib/semantic-tokens.css, which stays the single
   source of truth. sys42-check-tokens reads the generated file.
 */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -30,19 +30,44 @@ for (const [, name, value] of declarations) {
   });
 }
 
-// `on-<background>` names the paired foreground of exactly that background
-// token, so the background must exist. A foreground used on a background it
-// isn't paired with is named `<tone>-on-<background>` instead.
+// Color roles are camelCase, modifiers follow after a hyphen
+// (onSurface-muted). on<Role> is the foreground for the background <role>, so
+// that background must exist: onSurface-danger needs surface, onControlAccent
+// needs controlAccent.
 const names = new Set(tokens.map((token) => token.name));
-const unpaired = [...names].filter(
-  (name) =>
-    name.startsWith("--s42-color-on-") &&
-    !names.has(name.replace("--s42-color-on-", "--s42-color-")),
-);
+const unpaired = [...names].filter((name) => {
+  const match = name.match(/^--s42-color-on([A-Z][a-zA-Z]*)/);
+  if (!match) return false;
+  const role = match[1][0].toLowerCase() + match[1].slice(1);
+  return !names.has(`--s42-color-${role}`);
+});
 if (unpaired.length > 0) {
   throw new Error(
-    `These on-* tokens have no matching background token: ${unpaired.join(", ")}. ` +
-      "Add the background or rename them to <tone>-on-<background>.",
+    `These on<Role> tokens have no matching background token: ${unpaired.join(", ")}. ` +
+      "Add the background token or use a modifier of an existing pair (onSurface-danger).",
+  );
+}
+
+// Token names have two or three segments after --, separated by hyphens, and
+// each segment is one camelCase word: --(s42-){category}-{name}-{modifier} for
+// semantic tokens and primitives, --{family}-{variant}-{property} for family
+// tokens. Private --_* variables are exempt.
+const TOKEN_NAME =
+  /^--(s42-)?[a-z][a-zA-Z0-9]*-[a-z0-9][a-zA-Z0-9]*(-[a-z0-9][a-zA-Z0-9]*)?$/;
+const invalid = new Set();
+for (const entry of readdirSync(resolve(root, "lib"), { recursive: true })) {
+  if (!entry.endsWith(".css")) continue;
+  const source = readFileSync(resolve(root, "lib", entry), "utf8").replace(
+    /\/\*[\s\S]*?\*\//g,
+    "",
+  );
+  for (const [, name] of source.matchAll(/(?<![\w-])(--[a-zA-Z][\w-]*)/g)) {
+    if (!TOKEN_NAME.test(name)) invalid.add(`${name} (lib/${entry})`);
+  }
+}
+if (invalid.size > 0) {
+  throw new Error(
+    `These token names need two or three camelCase segments (see Naming in TOKENS.md): ${[...invalid].join(", ")}`,
   );
 }
 

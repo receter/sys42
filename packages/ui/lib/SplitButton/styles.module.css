@@ -6,20 +6,17 @@
 
 .splitButton {
   --_background-color: var(--button-background, var(--s42-color-control));
-  --_color: var(--button-color, var(--s42-color-on-control));
-  --_border-color: var(--button-border-color, transparent);
-  --_border-width: var(
-    --button-border-width,
-    var(--s42-border-width-control)
-  );
+  --_color: var(--button-color, var(--s42-color-onControl));
+  --_border-color: var(--button-borderColor, transparent);
+  --_border-width: var(--button-borderWidth, var(--s42-borderWidth-control));
   --_radius: var(--button-radius, var(--s42-radius-control));
-  --_padding-x: var(--button-padding-x, var(--s42-space-control-x));
-  --_padding-y: var(--button-padding-y, var(--s42-space-control-y));
-  --_font-size: var(--button-font-size, var(--s42-font-size-control));
-  --_font-weight: var(--button-font-weight, var(--s42-font-weight-control));
+  --_padding-x: var(--button-paddingX, var(--s42-space-controlX));
+  --_padding-y: var(--button-paddingY, var(--s42-space-controlY));
+  --_font-size: var(--button-fontSize, var(--s42-fontSize-control));
+  --_font-weight: var(--button-fontWeight, var(--s42-fontWeight-control));
   --_divider: var(
     --button-divider,
-    var(--s42-border-width-control) solid var(--s42-color-control-divider)
+    var(--s42-borderWidth-control) solid var(--s42-color-controlDivider)
   );
 
   position: relative;
@@ -28,38 +25,43 @@
   vertical-align: middle;
 }
 
-.splitButton_primary {
+.splitButton_accent {
   --_background-color: var(
-    --button-background-primary,
-    var(--s42-color-control-accent)
+    --button-accent-background,
+    var(--s42-color-controlAccent)
   );
-  --_color: var(--button-color-primary, var(--s42-color-on-control-accent));
-  --_border-color: var(--button-border-color-primary, transparent);
+  --_color: var(--button-accent-color, var(--s42-color-onControlAccent));
+  --_border-color: var(--button-accent-borderColor, transparent);
+}
+
+.splitButton_highlight {
+  --_background-color: var(
+    --button-highlight-background,
+    var(--s42-color-controlHighlight)
+  );
+  --_color: var(--button-highlight-color, var(--s42-color-onControlHighlight));
+  --_border-color: var(--button-highlight-borderColor, transparent);
 }
 
 .splitButton_danger {
   --_background-color: var(
-    --button-background-danger,
-    var(--s42-color-danger)
+    --button-danger-background,
+    var(--s42-color-controlDanger)
   );
-  --_color: var(--button-color-danger, var(--s42-color-on-danger));
-  --_border-color: var(--button-border-color-danger, transparent);
+  --_color: var(--button-danger-color, var(--s42-color-onControlDanger));
+  --_border-color: var(--button-danger-borderColor, transparent);
 }
 
 .splitButton_lg {
-  --_padding-x: calc(
-    var(--button-padding-x, var(--s42-space-control-x)) * 1.5
-  );
-  --_padding-y: calc(
-    var(--button-padding-y, var(--s42-space-control-y)) * 1.5
-  );
+  --_padding-x: calc(var(--button-paddingX, var(--s42-space-controlX)) * 1.5);
+  --_padding-y: calc(var(--button-paddingY, var(--s42-space-controlY)) * 1.5);
 }
 
 .button {
   font: inherit;
   font-size: var(--_font-size);
   font-weight: var(--_font-weight);
-  line-height: var(--button-line-height, inherit);
+  line-height: var(--button-lineHeight, inherit);
   color: var(--_color);
   background: var(--_background-color);
   border: var(--_border-width) solid var(--_border-color);
@@ -82,8 +84,8 @@
 }
 
 .button:focus-visible {
-  outline: var(--s42-border-width-focus) solid var(--s42-color-focus);
-  outline-offset: var(--s42-space-focus-offset);
+  outline: var(--s42-borderWidth-focus) solid var(--s42-color-focus);
+  outline-offset: var(--s42-space-focusOffset);
   /* Keep the outline above the adjacent button */
   position: relative;
   z-index: 1;
@@ -108,10 +110,10 @@
 }
 
 .button:disabled {
-  background: var(--s42-color-control-disabled);
+  background: var(--s42-color-controlDisabled);
   border-color: transparent;
   box-shadow: none;
-  color: var(--s42-color-on-control-disabled);
+  color: var(--s42-color-onControlDisabled);
   cursor: default;
 }
 
@@ -133,10 +135,9 @@
 .menu {
   list-style: none;
   margin: 0;
-  background: var(--s42-color-overlay);
-  color: var(--s42-color-on-overlay);
-  border: var(--s42-border-width-overlay) solid
-    var(--s42-color-overlay-border);
+  background: var(--s42-color-surfaceBright);
+  color: var(--s42-color-onSurface);
+  border: var(--s42-borderWidth-overlay) solid var(--s42-color-outline-subtle);
   box-shadow: var(--s42-shadow-overlay);
   box-sizing: border-box;
   padding: var(--s42-space-overlay);
@@ -145,8 +146,8 @@
   left: 0;
   z-index: 999;
   width: max-content;
-  max-width: var(--s42-size-overlay-max-width);
-  max-height: var(--s42-size-overlay-max-height);
+  max-width: var(--s42-size-overlayMaxWidth);
+  max-height: var(--s42-size-overlayMaxHeight);
   overflow-y: auto;
   border-radius: var(--s42-radius-overlay);
 }

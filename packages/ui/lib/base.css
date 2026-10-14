@@ -3,12 +3,12 @@
 @import url(../node_modules/normalize.css/normalize.css);
 
 :root {
-  background-color: var(--s42-color-container);
-  color: var(--s42-color-on-container);
+  background-color: var(--s42-color-surface);
+  color: var(--s42-color-onSurface);
 
   /* Typography */
-  font-family: var(--s42-font-family-body);
-  line-height: var(--s42-line-height-body);
+  font-family: var(--s42-fontFamily-body);
+  line-height: var(--s42-lineHeight-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

@@ -30,7 +30,13 @@ export default function MenuButtonFixture() {
         </div>
 
         <div>
-          <MenuButton variant="primary" label="Export">
+          <MenuButton variant="accent" label="Export">
+            {items}
+          </MenuButton>
+        </div>
+
+        <div>
+          <MenuButton variant="highlight" label="Export">
             {items}
           </MenuButton>
         </div>

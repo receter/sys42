@@ -15,7 +15,7 @@ export default function ButtonFixture() {
   const [label] = useValue("Label", { defaultValue: "Blick me!" });
   const [withIcon] = useValue("With icon", { defaultValue: false });
   const [variant] = useFixtureSelect("Variant", {
-    options: ["default", "primary", "danger"],
+    options: ["default", "accent", "highlight", "danger"],
     defaultValue: "default",
   });
   const [size] = useFixtureSelect("Size", {
@@ -62,15 +62,27 @@ export default function ButtonFixture() {
           <Button disabled>Default</Button>
         </div>
         <div className={classButtonGroup}>
-          <Button variant="primary" size="lg">
-            Primary
+          <Button variant="accent" size="lg">
+            Accent
           </Button>
-          <Button variant="primary" size="lg" disabled>
-            Primary
+          <Button variant="accent" size="lg" disabled>
+            Accent
           </Button>
-          <Button variant="primary">Primary</Button>
-          <Button variant="primary" disabled>
-            Primary
+          <Button variant="accent">Accent</Button>
+          <Button variant="accent" disabled>
+            Accent
+          </Button>
+        </div>
+        <div className={classButtonGroup}>
+          <Button variant="highlight" size="lg">
+            Highlight
+          </Button>
+          <Button variant="highlight" size="lg" disabled>
+            Highlight
+          </Button>
+          <Button variant="highlight">Highlight</Button>
+          <Button variant="highlight" disabled>
+            Highlight
           </Button>
         </div>
         <div className={classButtonGroup}>

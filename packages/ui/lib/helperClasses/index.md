@@ -14,4 +14,4 @@ Known issue: This class does not properly center the icon if the font metrics `a
 
 ### Tokens
 
-`classCard` is the Card family. It reads `--card-background`, `--card-color`, `--card-border-color`, `--card-border-width`, `--card-radius`, `--card-box-shadow`, `--card-padding-x` and `--card-padding-y`, each with a semantic fallback. See [TOKENS.md](../../TOKENS.md#card).
+`classCard` is the Card family. It reads `--card-background`, `--card-color`, `--card-borderColor`, `--card-borderWidth`, `--card-radius`, `--card-boxShadow`, `--card-paddingX` and `--card-paddingY`, each with a semantic fallback. See [TOKENS.md](../../TOKENS.md#card).

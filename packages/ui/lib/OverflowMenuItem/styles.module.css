@@ -1,9 +1,9 @@
-/* Menu item family: reads only --menu-item-* inputs */
+/* Menu item family: reads only --menuItem-* inputs */
 
 .overflowMenuItem {
-  --_padding-x: var(--menu-item-padding-x, var(--s42-space-item-x));
-  --_padding-y: var(--menu-item-padding-y, var(--s42-space-item-y));
-  --_radius: var(--menu-item-radius, var(--s42-radius-item));
+  --_padding-x: var(--menuItem-paddingX, var(--s42-space-itemX));
+  --_padding-y: var(--menuItem-paddingY, var(--s42-space-itemY));
+  --_radius: var(--menuItem-radius, var(--s42-radius-item));
 
   font: inherit;
   color: inherit;
@@ -23,10 +23,14 @@
 
 /* Focus follows the pointer, so :focus is the highlight for mouse and keyboard */
 .overflowMenuItem:not([aria-disabled="true"]):focus {
-  background: color-mix(in srgb, currentColor 8%, var(--s42-color-overlay));
+  background: color-mix(
+    in srgb,
+    currentColor 8%,
+    var(--s42-color-surfaceBright)
+  );
 }
 
 .overflowMenuItem[aria-disabled="true"] {
-  color: var(--s42-color-disabled-on-overlay);
+  color: var(--s42-color-onSurface-subtle);
   cursor: default;
 }

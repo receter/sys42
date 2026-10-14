@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 
 // DOC: Props that are specific to the styled version of the button can be added at this point.
 export type ButtonProps = BaseButtonProps & {
-  variant?: "primary" | "danger";
+  variant?: "accent" | "highlight" | "danger";
   size?: "lg";
 };
 
@@ -23,7 +23,8 @@ export function useButton<TTagName extends HTMLElementTagName>(
     (draft) => {
       draft.elementProps.className = cn(
         draft.elementProps.className,
-        variant === "primary" && styles.button_primary,
+        variant === "accent" && styles.button_accent,
+        variant === "highlight" && styles.button_highlight,
         variant === "danger" && styles.button_danger,
         size === "lg" && styles.button_lg,
         styles.button,

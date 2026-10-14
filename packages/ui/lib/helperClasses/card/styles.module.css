@@ -1,20 +1,14 @@
 /* Card family: reads only --card-* inputs, each with a semantic fallback */
 
 .card {
-  --_background-color: var(--card-background, var(--s42-color-container));
-  --_color: var(--card-color, var(--s42-color-on-container));
-  --_border-color: var(
-    --card-border-color,
-    var(--s42-color-container-border)
-  );
-  --_border-width: var(
-    --card-border-width,
-    var(--s42-border-width-container)
-  );
+  --_background-color: var(--card-background, var(--s42-color-surfaceBright));
+  --_color: var(--card-color, var(--s42-color-onSurface));
+  --_border-color: var(--card-borderColor, var(--s42-color-outline-subtle));
+  --_border-width: var(--card-borderWidth, var(--s42-borderWidth-container));
   --_radius: var(--card-radius, var(--s42-radius-container));
-  --_box-shadow: var(--card-box-shadow, var(--s42-shadow-container));
-  --_padding-x: var(--card-padding-x, var(--s42-space-container-x));
-  --_padding-y: var(--card-padding-y, var(--s42-space-container-y));
+  --_box-shadow: var(--card-boxShadow, var(--s42-shadow-container));
+  --_padding-x: var(--card-paddingX, var(--s42-space-containerX));
+  --_padding-y: var(--card-paddingY, var(--s42-space-containerY));
 
   background: var(--_background-color);
   color: var(--_color);

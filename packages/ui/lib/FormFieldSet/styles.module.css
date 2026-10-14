@@ -4,7 +4,7 @@
 }
 
 .errorMessage {
-  color: var(--s42-color-danger-on-container);
+  color: var(--s42-color-onSurface-danger);
 }
 
 .legend {

@@ -5,7 +5,7 @@ import { BaseMenuButtonProps, useBaseMenuButton } from "./useBaseMenuButton";
 import styles from "./styles.module.css";
 
 export type MenuButtonProps = BaseMenuButtonProps & {
-  variant?: "primary" | "danger";
+  variant?: "accent" | "highlight" | "danger";
   size?: "lg";
 };
 
@@ -26,7 +26,8 @@ export function useMenuButton<TTagName extends HTMLElementTagName>(
       draft.elementProps.className = cn(
         draft.elementProps.className,
         styles.menuButton,
-        variant === "primary" && styles.menuButton_primary,
+        variant === "accent" && styles.menuButton_accent,
+        variant === "highlight" && styles.menuButton_highlight,
         variant === "danger" && styles.menuButton_danger,
         size === "lg" && styles.menuButton_lg,
         ctx.isOpen && styles.menuButton_isOpen,

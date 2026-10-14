@@ -200,7 +200,7 @@ Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
 
 ## Design Tokens
 
-System 42 uses three token layers: native primitives (`--color-indigo-100`), semantic tokens (`--s42-color-control`) and optional family tokens (`--button-background`). See [Design Tokens and Theming](./TOKENS.md) for:
+System 42 uses three token layers: native primitives (`--color-primary-90`), semantic tokens (`--s42-color-control`) and optional family tokens (`--button-background`). See [Design Tokens and Theming](./TOKENS.md) for:
 
 - which tokens you can use in your own CSS
 - setup with the native theme or your own primitives, and the `sys42-check-tokens` mapping check

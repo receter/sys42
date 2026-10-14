@@ -5,7 +5,7 @@ import { BaseMessageProps, useBaseMessage } from "./useBaseMessage";
 import styles from "./styles.module.css";
 
 export type MessageProps = BaseMessageProps & {
-  variant?: "info" | "success" | "warning" | "error";
+  variant?: "success" | "warning" | "danger";
 };
 
 export function useMessage<TTagName extends HTMLElementTagName>(
@@ -22,10 +22,9 @@ export function useMessage<TTagName extends HTMLElementTagName>(
       draft.iconProps.className = cn(draft.iconProps.className, styles.icon);
       draft.elementProps.className = cn(
         draft.elementProps.className,
-        variant === "info" && styles.message_info,
         variant === "success" && styles.message_success,
         variant === "warning" && styles.message_warning,
-        variant === "error" && styles.message_error,
+        variant === "danger" && styles.message_danger,
         styles.message,
       );
     },

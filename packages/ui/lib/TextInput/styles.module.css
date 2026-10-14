@@ -1,18 +1,18 @@
 /* Input family: reads only --input-* inputs, each with a semantic fallback */
 
 .textInput {
-  --_background-color: var(--input-background, var(--s42-color-field));
-  --_color: var(--input-color, var(--s42-color-on-field));
-  --_border-color: var(--input-border-color, var(--s42-color-field-border));
-  --_border-width: var(--input-border-width, var(--s42-border-width-field));
+  --_background-color: var(--input-background, var(--s42-color-surfaceBright));
+  --_color: var(--input-color, var(--s42-color-onSurface));
+  --_border-color: var(--input-borderColor, var(--s42-color-outline));
+  --_border-width: var(--input-borderWidth, var(--s42-borderWidth-field));
   --_radius: var(--input-radius, var(--s42-radius-field));
-  --_padding-x: var(--input-padding-x, var(--s42-space-field-x));
-  --_padding-y: var(--input-padding-y, var(--s42-space-field-y));
+  --_padding-x: var(--input-paddingX, var(--s42-space-fieldX));
+  --_padding-y: var(--input-paddingY, var(--s42-space-fieldY));
 
   box-sizing: border-box;
   max-width: 100%;
   font-size: 1em;
-  line-height: var(--input-line-height, inherit);
+  line-height: var(--input-lineHeight, inherit);
   color: var(--_color);
   background: var(--_background-color);
   border: var(--_border-width) solid var(--_border-color);
@@ -23,6 +23,6 @@
 
 .textInput:focus,
 .textInput:focus-visible {
-  outline: var(--s42-border-width-focus) solid var(--s42-color-focus);
-  outline-offset: var(--s42-space-focus-offset);
+  outline: var(--s42-borderWidth-focus) solid var(--s42-color-focus);
+  outline-offset: var(--s42-space-focusOffset);
 }

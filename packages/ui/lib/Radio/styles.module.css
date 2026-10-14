@@ -1,11 +1,11 @@
 /* Radio family: reads only --radio-* inputs, each with a semantic fallback */
 
 .radio {
-  --_background-color: var(--radio-background, var(--s42-color-field));
-  --_border-color: var(--radio-border-color, var(--s42-color-field-border));
+  --_background-color: var(--radio-background, var(--s42-color-surfaceBright));
+  --_border-color: var(--radio-borderColor, var(--s42-color-outline));
   --_border-width: var(
-    --radio-border-width,
-    var(--s42-border-width-field-strong)
+    --radio-borderWidth,
+    var(--s42-borderWidth-field-strong)
   );
 
   all: unset;
@@ -21,9 +21,9 @@
 }
 
 .radio:checked {
-  background-color: var(--s42-color-control-accent);
+  background-color: var(--s42-color-controlAccent);
   border-color: transparent;
-  color: var(--s42-color-on-control-accent);
+  color: var(--s42-color-onControlAccent);
 }
 
 .radio:checked:before {
@@ -41,12 +41,12 @@
 }
 
 .radio:disabled {
-  background-color: var(--s42-color-control-disabled);
+  background-color: var(--s42-color-controlDisabled);
   border-color: transparent;
-  color: var(--s42-color-on-control-disabled);
+  color: var(--s42-color-onControlDisabled);
 }
 
 .radio:focus-visible {
-  outline: var(--s42-border-width-focus) solid var(--s42-color-focus);
-  outline-offset: var(--s42-space-focus-offset);
+  outline: var(--s42-borderWidth-focus) solid var(--s42-color-focus);
+  outline-offset: var(--s42-space-focusOffset);
 }
