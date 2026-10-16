@@ -1,0 +1,162 @@
+/*
+  Global styles for the System 42 docs site.
+
+  The site is themed from the sys42 design tokens: the primitives and the
+  semantic tokens from @sys42/ui are loaded on :root and Infima's variables
+  are mapped to them below. The website is a consumer, so it may reference
+  primitives (component CSS in the library never does).
+
+  There is no dark mode yet, because the semantic tokens have no dark
+  variants. Once they exist, map them under [data-theme='dark'].
+*/
+@import "@sys42/ui/default-custom-properties.css";
+
+:root {
+  --ifm-color-scheme: light;
+
+  /* Accent: the interactive color of sys42 (links, focus) */
+  --ifm-color-primary: var(--s42-color-link);
+  --ifm-color-primary-dark: var(--color-primary-35);
+  --ifm-color-primary-darker: var(--color-primary-30);
+  --ifm-color-primary-darkest: var(--color-primary-20);
+  --ifm-color-primary-light: var(--color-primary-50);
+  --ifm-color-primary-lighter: var(--color-primary-60);
+  --ifm-color-primary-lightest: var(--color-primary-70);
+  --ifm-color-primary-contrast-background: var(--s42-color-container);
+  --ifm-color-primary-contrast-foreground: var(--s42-color-onContainer);
+
+  /* Status colors (admonitions, badges) */
+  --ifm-color-secondary: var(--s42-color-outline);
+  --ifm-color-secondary-contrast-background: var(--color-neutral-95);
+  --ifm-color-secondary-contrast-foreground: var(--s42-color-onSurface);
+  --ifm-color-info: var(--s42-color-onContainer);
+  --ifm-color-info-dark: var(--s42-color-onContainer);
+  --ifm-color-info-contrast-background: var(--s42-color-container);
+  --ifm-color-info-contrast-foreground: var(--s42-color-onContainer);
+  --ifm-color-success: var(--s42-color-onContainerSuccess);
+  --ifm-color-success-dark: var(--s42-color-onContainerSuccess);
+  --ifm-color-success-contrast-background: var(--s42-color-containerSuccess);
+  --ifm-color-success-contrast-foreground: var(--s42-color-onContainerSuccess);
+  --ifm-color-warning: var(--color-warning-40);
+  --ifm-color-warning-dark: var(--color-warning-40);
+  --ifm-color-warning-contrast-background: var(--s42-color-containerWarning);
+  --ifm-color-warning-contrast-foreground: var(--s42-color-onContainerWarning);
+  --ifm-color-danger: var(--s42-color-controlDanger);
+  --ifm-color-danger-dark: var(--s42-color-controlDanger);
+  --ifm-color-danger-contrast-background: var(--s42-color-containerDanger);
+  --ifm-color-danger-contrast-foreground: var(--s42-color-onContainerDanger);
+
+  /* Grays: Infima's emphasis scale from the neutral palette */
+  --ifm-color-emphasis-0: var(--color-neutral-100);
+  --ifm-color-emphasis-100: var(--color-neutral-95);
+  --ifm-color-emphasis-200: var(--color-neutral-90);
+  --ifm-color-emphasis-300: var(--color-neutral-80);
+  --ifm-color-emphasis-400: var(--color-neutral-70);
+  --ifm-color-emphasis-500: var(--color-neutral-60);
+  --ifm-color-emphasis-600: var(--color-neutral-50);
+  --ifm-color-emphasis-700: var(--color-neutral-40);
+  --ifm-color-emphasis-800: var(--color-neutral-30);
+  --ifm-color-emphasis-900: var(--color-neutral-20);
+  --ifm-color-emphasis-1000: var(--color-neutral-10);
+
+  /* Surfaces and text */
+  --ifm-background-color: var(--s42-color-surface);
+  --ifm-background-surface-color: var(--s42-color-surfaceBright);
+  --ifm-font-color-base: var(--s42-color-onSurface);
+  --ifm-font-color-secondary: var(--s42-color-onSurface-muted);
+  --ifm-color-content: var(--s42-color-onSurface);
+  --ifm-color-content-secondary: var(--s42-color-onSurface-muted);
+  --ifm-heading-color: var(--s42-color-onSurface);
+  --ifm-link-color: var(--s42-color-link);
+  --ifm-link-hover-color: var(--s42-color-link);
+
+  /* Typography */
+  --ifm-font-family-base: var(--s42-fontFamily-body);
+  --ifm-font-family-monospace: var(--fontFamily-mono);
+  --ifm-line-height-base: var(--s42-lineHeight-body);
+  --ifm-font-weight-bold: var(--s42-fontWeight-emphasis);
+  --ifm-code-font-size: 95%;
+
+  /* Shape and elevation */
+  --ifm-global-radius: var(--s42-radius-container);
+  --ifm-code-border-radius: var(--s42-radius-field);
+  --ifm-global-shadow-lw: var(--s42-shadow-container);
+  --ifm-global-shadow-md: var(--s42-shadow-raised);
+
+  /* Chrome: navbar, sidebar, footer, table of contents */
+  --ifm-navbar-background-color: var(--s42-color-surfaceBright);
+  --ifm-navbar-shadow: var(--s42-shadow-container);
+  --ifm-navbar-link-color: var(--s42-color-onSurface);
+  --ifm-menu-color: var(--s42-color-onSurface-muted);
+  --ifm-menu-color-active: var(--ifm-color-primary);
+  /* Hover and selected are overlays of the item's own text color, like the
+     derived state colors of the sys42 components. currentColor resolves on
+     the menu link, so the selected item is tinted with its accent color. */
+  --ifm-menu-color-background-hover: color-mix(in srgb, currentColor 8%, transparent);
+  --ifm-menu-color-background-active: color-mix(in srgb, currentColor 12%, transparent);
+  --ifm-toc-border-color: var(--s42-color-outline-subtle);
+  --ifm-toc-link-color: var(--s42-color-onSurface-muted);
+  --ifm-hr-background-color: var(--s42-color-outline-subtle);
+  --ifm-table-border-color: var(--s42-color-outline-subtle);
+  --ifm-footer-background-color: var(--s42-color-surfaceBright);
+  --ifm-footer-color: var(--s42-color-onSurface-muted);
+  --ifm-footer-link-color: var(--s42-color-onSurface);
+  --ifm-footer-link-hover-color: var(--s42-color-link);
+  --ifm-footer-title-color: var(--s42-color-onSurface);
+  --ifm-pre-background: var(--s42-color-surfaceBright);
+  --ifm-dropdown-hover-background-color: color-mix(in srgb, currentColor 8%, transparent);
+  --docusaurus-highlighted-code-line-bg: var(--s42-color-controlHighlightContainer);
+}
+
+/*
+  Live example previews.
+
+  react-live renders previews inline in the page, inside the `.markdown`
+  container. Infima's element styles are not in a cascade layer, so they win
+  over the `sys42` layer. The rules below re-apply the sys42 base look
+  (lib/base.css of @sys42/ui, scoped) with unlayered selectors, so a preview
+  looks like a sys42 app and not like the docs page around it.
+*/
+.s42Preview {
+  background: var(--s42-color-surfaceBright);
+  color: var(--s42-color-onSurface);
+  font-family: var(--s42-fontFamily-body);
+  font-size: 1rem;
+  line-height: var(--s42-lineHeight-body);
+  font-synthesis: none;
+  padding: var(--s42-space-containerY) var(--s42-space-containerX);
+}
+
+.s42Preview :is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, pre, table, figure, hr) {
+  margin: 0;
+}
+
+.s42Preview :is(h1, h2, h3, h4, h5, h6) {
+  font-family: inherit;
+  font-weight: var(--s42-fontWeight-emphasis);
+  line-height: inherit;
+}
+
+.s42Preview :is(ul, ol) {
+  padding-left: 0;
+  list-style: none;
+}
+
+.s42Preview a {
+  color: var(--s42-color-link);
+  text-decoration: none;
+}
+
+.s42Preview a:visited {
+  color: var(--s42-color-link-visited);
+}
+
+.s42Preview a:active,
+.s42Preview a:visited:active {
+  color: var(--s42-color-link-active);
+}
+
+/* Infima sets `font: inherit` on form controls; keep the sys42 controls intact. */
+.s42Preview :is(button, input, select, textarea) {
+  font-family: inherit;
+}

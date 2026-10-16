@@ -1,0 +1,115 @@
+---
+sidebar_position: 4
+---
+
+# Select
+
+`Select` and `Option` wrap the native `<select>` and `<option>`. Select has a minimal style based on the Input family tokens, like TextInput. Option has no styles, so `<optgroup>` and other native children work as usual. Use [Listbox](./listbox.mdx) when you need rich option content or full styling.
+
+```jsx
+import { Option, Select } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const [value, setValue] = useState("banana");
+  return (
+    <Stack>
+      <FormField label="Favorite fruit">
+        {({ htmlFor }) => (
+          <Select id={htmlFor} value={value} onValueChange={setValue}>
+            <Option value="apple">Apple</Option>
+            <Option value="banana">Banana</Option>
+            <Option value="durian" disabled>Durian (disabled)</Option>
+            <optgroup label="Exotic">
+              <Option value="kiwi">Kiwi</Option>
+              <Option value="mango">Mango</Option>
+            </optgroup>
+          </Select>
+        )}
+      </FormField>
+      <p>Value: {value}</p>
+    </Stack>
+  );
+}
+```
+
+## Uncontrolled in a form
+
+Like the native element, Select works uncontrolled with `name` and `defaultValue`:
+
+```jsx live
+function Demo() {
+  const [submitted, setSubmitted] = useState("");
+  function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    setSubmitted(JSON.stringify(Object.fromEntries(data)));
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <Stack>
+        <FormField label="Fruit">
+          {({ htmlFor }) => (
+            <Select id={htmlFor} name="fruit" defaultValue="">
+              <Option value="" disabled>Choose a fruit</Option>
+              <Option value="apple">Apple</Option>
+              <Option value="banana">Banana</Option>
+            </Select>
+          )}
+        </FormField>
+        <div>
+          <Button type="submit">Submit</Button>
+        </div>
+        <p>Submitted: {submitted}</p>
+      </Stack>
+    </form>
+  );
+}
+```
+
+## Multiple
+
+With `multiple`, the value is an array and the chevron is not shown.
+
+```jsx live
+function Demo() {
+  const [values, setValues] = useState(["apple"]);
+  return (
+    <Stack>
+      <FormField label="Fruits">
+        {({ htmlFor }) => (
+          <Select id={htmlFor} multiple value={values} onValueChange={setValues}>
+            <Option value="apple">Apple</Option>
+            <Option value="banana">Banana</Option>
+            <Option value="kiwi">Kiwi</Option>
+          </Select>
+        )}
+      </FormField>
+      <p>Values: {values.join(", ")}</p>
+      <FormField label="Disabled">
+        {({ htmlFor }) => (
+          <Select id={htmlFor} disabled>
+            <Option>Apple</Option>
+          </Select>
+        )}
+      </FormField>
+    </Stack>
+  );
+}
+```
+
+## Props
+
+`Select` accepts all props of `<select>`, `Option` all props of `<option>`. In addition, `Select` accepts:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onValueChange` | `(value: string, event) => void` | – | Called with the selected value after `onChange`. |
+| `onValueChange` (with `multiple`) | `(value: string[], event) => void` | – | Called with all selected values. |
+
+## Hooks and tokens
+
+Hooks: `useSelect`, `useBaseSelect`, `useBaseOption` (Option has no styled hook). Types: `SelectProps`, `BaseSelectProps`, `OptionProps`.
+
+Select is a member of the [Input family](../tokens/families.md#input) and reads the `--input-*` tokens.

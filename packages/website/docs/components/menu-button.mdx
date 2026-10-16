@@ -1,0 +1,72 @@
+---
+sidebar_position: 14
+---
+
+# MenuButton
+
+A [Button](./button.mdx) that opens a menu of actions. Unlike [SplitButton](./split-button.mdx), the whole button is the toggle; unlike [OverflowMenu](./overflow-menu.mdx), it has a visible label. The menu follows the [WAI-ARIA menu button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/).
+
+```jsx
+import { MenuButton, MenuButtonItem } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const [lastAction, setLastAction] = useState("none");
+  const items = (
+    <>
+      <MenuButtonItem onClick={() => setLastAction("Export as CSV")}>Export as CSV</MenuButtonItem>
+      <MenuButtonItem onClick={() => setLastAction("Export as PDF")}>Export as PDF</MenuButtonItem>
+      <MenuButtonItem disabled>Export as XLSX (disabled)</MenuButtonItem>
+    </>
+  );
+  return (
+    <Stack>
+      <div className={classButtonGroup}>
+        <MenuButton label="Export">{items}</MenuButton>
+        <MenuButton variant="accent" label="Export">{items}</MenuButton>
+        <MenuButton variant="highlight" label="Export">{items}</MenuButton>
+      </div>
+      <div className={classButtonGroup}>
+        <MenuButton variant="danger" size="lg" label="Delete">
+          <MenuButtonItem onClick={() => setLastAction("Delete selected")}>Delete selected</MenuButtonItem>
+          <MenuButtonItem onClick={() => setLastAction("Delete all")}>Delete all</MenuButtonItem>
+        </MenuButton>
+        <MenuButton label="Disabled" disabled>{items}</MenuButton>
+      </div>
+      <p>Last action: {lastAction}</p>
+    </Stack>
+  );
+}
+```
+
+## Props
+
+### MenuButton
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` | – | The label of the button. |
+| `children` | `ReactNode` | – | The menu items, usually `MenuButtonItem` elements. |
+| `variant` | `"accent" \| "highlight" \| "danger"` | – | The color variant, like Button. |
+| `size` | `"lg"` | – | The large size. |
+| `icon` | `ReactNode` | chevron | Decorative content rendered after the label. |
+| `disabled` | `boolean` | `false` | Disables the button. |
+| `onOpen` | `() => void` | – | Called when the menu opens. |
+| `onClose` | `() => void` | – | Called when the menu closes. |
+
+Other props go to the root element.
+
+### MenuButtonItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onClick` | `(event) => void` | – | Called after the menu closed. |
+| `disabled` | `boolean` | `false` | Disables the item. |
+| `textValue` | `string` | text content | Used for typeahead if the content is not plain text. |
+
+## Hooks and tokens
+
+Hooks: `useMenuButton`, `useBaseMenuButton`, `renderMenuButton`, `useMenuButtonItem`, `useBaseMenuButtonItem`.
+
+MenuButton is a member of the [Button family](../tokens/families.md#button) and recreates the Button look from the `--button-*` tokens. The items are the [Menu item family](../tokens/families.md#menu-item).

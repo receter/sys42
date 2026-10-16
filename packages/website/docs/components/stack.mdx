@@ -1,0 +1,54 @@
+---
+sidebar_position: 7
+---
+
+# Stack
+
+The Stack component adds vertical space between its children. It is the System 42 way of spacing: instead of margins on the children, the stack adds a `margin-top` to every child after the first (`.stack > * + *`), following the [margin-top principle](../index.md#margin-top).
+
+```jsx
+import { Stack } from "@sys42/ui";
+```
+
+```jsx live
+<Stack>
+  <Button>One</Button>
+  <Button>Two</Button>
+  <Button>Three</Button>
+</Stack>
+```
+
+## Spacing
+
+The spacing is `--stack-spacing` if set, otherwise `--s42-space-gap-md`. The `spacing` prop takes precedence over the token. It accepts any CSS length, or an abbreviation from `xxs` to `xxl` that maps to `--s42-space-gap-2xs` … `--s42-space-gap-2xl`.
+
+```jsx live
+<Stack spacing="xl">
+  <Stack spacing="xxs">
+    <Button>xxs</Button>
+    <Button>xxs</Button>
+  </Stack>
+  <Stack spacing="2em">
+    <Button>2em</Button>
+    <Button>2em</Button>
+  </Stack>
+  <Stack style={{ "--stack-spacing": "var(--s42-space-gap-lg)" }}>
+    <Button>token</Button>
+    <Button>token</Button>
+  </Stack>
+</Stack>
+```
+
+## Props
+
+`Stack` accepts all props of `<div>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `spacing` | `string` | – | A CSS length or `xxs`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl`. |
+
+## Hooks and tokens
+
+Hooks: `useStack`, `useBaseStack`. Types: `StackProps`, `BaseStackProps`.
+
+Stack is the [Stack family](../tokens/families.md#stack) and reads `--stack-spacing`.

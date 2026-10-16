@@ -1,6 +1,8 @@
 # System 42 UI
 
-System 42 is a design system for building consistent and accessible web applications. This package contains components and styles that can easily be used in React applications.
+System 42 is a design system for building consistent and accessible web applications. This package contains React components and styles.
+
+**Documentation: https://receter.github.io/sys42/**
 
 ## Installation
 
@@ -8,34 +10,15 @@ System 42 is a design system for building consistent and accessible web applicat
 npm install @sys42/ui
 ```
 
-## Usage
-
-### Styled React Components
-
-Using the styled React components is the easiest way to work with System 42.
-
-Every component imports an individual `.css` file with default styles based on design tokens (CSS custom properties). You can customize the look of the components by overriding semantic tokens (`--s42-*`) for system-wide decisions, or optional family tokens (e.g. `--button-radius`) for a group of components.
-
-Read [Design Tokens and Theming](./TOKENS.md) for all tokens and the setup options.
-
-> [!NOTE]
-> If you need to customize the styles beyond the exposed custom properties, you should make use of the Base Hooks and style the components yourself. You can read more about using the Base Hooks in the [Using the Base Hooks](#using-the-base-hooks) section.
-
-The component styles depend on `base.css` for CSS normalization and basic styles, and on a complete mapping of the semantic tokens. To use the native theme, import both `base.css` and `default-custom-properties.css` in your application. If your project has its own primitives, import `base.css` and your own semantic mapping instead, see [Your own primitives](./TOKENS.md#your-own-primitives).
-
-All styles as well as the custom properties are inside a [CSS Layer](https://www.w3.org/TR/css-cascade-5/#layering)
-named `sys42`. The base styles, defined in `base.css`, are inside a layer named `sys42-base`.
-
-#### Example
+Add the base styles and the native theme to your main file:
 
 ```jsx
-// Add these imports to your main file
 import "@sys42/ui/base.css";
 import "@sys42/ui/default-custom-properties.css";
 ```
 
 ```jsx
-import { Button, TextInput, Stack } from "@sys42/ui";
+import { Button, Stack, TextInput } from "@sys42/ui";
 
 function App() {
   return (
@@ -47,182 +30,23 @@ function App() {
 }
 ```
 
-### Using the Component Hooks
+## Documentation
 
-For all components, there are hooks available that can be used to change how the component is rendered. The hooks are named the same as the components but with a `use` prefix. The main use case for the hooks is to change the element type of the component.
+- [Getting started](https://receter.github.io/sys42/getting-started)
+- [Components](https://receter.github.io/sys42/components/button) with editable examples
+- [Extending components](https://receter.github.io/sys42/extending/overview): component hooks, base hooks and the type strategy
+- [Design tokens and theming](https://receter.github.io/sys42/tokens/overview), the [color system](https://receter.github.io/sys42/colors/color-system) and the [migration to 4.0.0](https://receter.github.io/sys42/tokens/migration-4)
+- [Cosmos showcase](https://receter.github.io/sys42/cosmos/)
 
-#### Simple Components
+The docs live in `packages/website` of the [repository](https://github.com/receter/sys42).
 
-For simple components that render a single element, like a button, simply spread the returned `elementProps` and attach the `elementRef` to the element.
+## Checking a token mapping
 
-```jsx
-import { Link } from "react-router-dom";
-import { createComponent, useButton } from "@sys42/ui";
+`@sys42/ui` ships a reporting-only CLI that compares your CSS with the semantic token inventory of the installed version:
 
-export const ButtonLink = createComponent<ButtonProps, "a">("a", (hookOptions) => {
-  const { elementProps, elementRef } = useButton(hookOptions);
-  return <Link {...elementProps} ref={elementRef} />;
-});
+```bash
+npx sys42-check-tokens src/styles/theme.css
+npx sys42-check-tokens --overrides src/styles/overrides.css
 ```
 
-#### Complex Components
-
-For more complex components that render multiple elements, you'll need to invoke an additional render function to handle the children. The hook will return a `renderArgs` object, which must be passed to the render function. You can either use the default render function provided for each component or write your own.
-
-```jsx
-import {
-  FormFieldProps,
-  createComponent,
-  useFormField,
-  renderFormField,
-} from "@sys42/ui";
-
-export const MyFormField = createComponent<FormFieldProps, "div">(
-  "div",
-  (hookOptions) => {
-    const { elementProps, elementRef, renderArgs } = useFormField(hookOptions);
-
-    return (
-      <div {...elementProps} ref={elementRef}>
-        {renderFormField(renderArgs)}
-      </div>
-    );
-  }
-);
-```
-
-### Using the Base Hooks
-
-"In addition to React components and [Component Hooks](#using-the-component-hooks), the library provides Base Hooks for cases where you want to opt out of default styling.
-
-Base Hooks don’t include any CSS and omit style-related props, such as the `variant` prop in styled buttons. These hooks are prefixed with `useBase…` and return everything needed to render the component.
-
-For guidance on using Base Hooks, you can refer to the implementation of the corresponding Component Hook like `useButton`.
-
-Here’s a simple example of using a Base Hook to create a custom styled component:
-
-```jsx
-import {
-  BaseFormFieldProps,
-  createComponent,
-  useBaseFormField,
-  renderFormField,
-  ExactProps,
-} from "@sys42/ui";
-
-import { cn } from "@sys42/utils";
-
-type MyFormFieldProps = BaseFormFieldProps & {
-  myProp: boolean;
-};
-
-function useMyFormField<TTagName extends HTMLElementTagName>(
-  options: UseComponentOptions<MyFormFieldProps, TTagName>
-) {
-  // The custom prop "myProp" is extracted from the props
-  const { myProp, ...baseProps } = options.props;
-
-  return useBaseFormField(
-    {
-      ...options,
-      props: baseProps satisfies ExactProps<
-        BaseFormFieldProps,
-        MyFormFieldProps
-      >,
-    },
-    (draft) => {
-      // You can modify the formField here
-      draft.elementProps.className = cn(
-        draft.elementProps.className,
-        "my-form-field"
-      );
-
-      if (myProp) {
-        draft.elementProps.className += " my-form-field--my-prop";
-      }
-
-      draft.labelProps.className = cn(
-        draft.labelProps.className,
-        "my-form-field-label"
-      );
-    }
-  );
-}
-
-export const MyFormField = createComponent<MyFormFieldProps, "div">(
-  "div",
-  (hookOptions) => {
-    const { elementProps, elementRef, renderArgs } =
-      useMyFormField(hookOptions);
-
-    return (
-      <div {...elementProps} ref={elementRef}>
-        {renderFormField(renderArgs)}
-      </div>
-    );
-  }
-);
-```
-
-## Props and Event Handlers
-
-Components that replace an HTML element are drop-in replacements and accept all props of that element. Some share its name (`Button` for `<button>`, `Label` for `<label>`), others are named after what they are (`TextInput` for `<input type="text">`).
-
-Native props keep their native behavior. In particular, `onChange` always receives the original event, just like on the HTML element. A component never changes the signature of a native handler.
-
-For convenience, components that hold a value also accept `onValueChange`, which receives the new value directly:
-
-- If the change comes from an HTML element, `onValueChange` is called with `(value, event)`, where `event` is the original event. `onChange` is still called as usual, before `onValueChange`.
-- If there is no HTML element that changes the value, as with custom widgets like `Listbox`, `onValueChange` is called with `(value)` only.
-
-| Component       | `onChange(event)` | `onValueChange`                                                       |
-| --------------- | ----------------- | --------------------------------------------------------------------- |
-| `TextInput`     | ✓                 | `(value: string, event)`                                              |
-| `TextArea`      | ✓                 | `(value: string, event)`                                              |
-| `Select`        | ✓                 | `(value: string, event)`, with `multiple`: `(value: string[], event)` |
-| `RadioGroup`    | ✓                 | `(value: string, event)`                                              |
-| `CheckboxGroup` | ✓                 | `(value: string[], event)`                                            |
-| `Listbox`       | –                 | `(value: string \| null)`                                             |
-
-```jsx
-const [name, setName] = useState("");
-
-// Both are equivalent
-<TextInput value={name} onChange={(event) => setName(event.target.value)} />
-<TextInput value={name} onValueChange={setName} />
-```
-
-The same applies to other handlers: a custom handler that does not receive the native event gets its own name (`on<Something>Change`) instead of reusing the name of a native handler.
-
-## Types
-
-Read more about the types in the [Type Strategy](./TypeStrategy.md) document.
-
-## Design Tokens
-
-System 42 uses three token layers: native primitives (`--color-primary-90`), semantic tokens (`--s42-color-control`) and optional family tokens (`--button-background`). See [Design Tokens and Theming](./TOKENS.md) for:
-
-- which tokens you can use in your own CSS
-- setup with the native theme or your own primitives, and the `sys42-check-tokens` mapping check
-- nested themes and global, subtree and instance overrides
-- the full token reference and the compatibility policy
-
-Coming from 3.x? See [Migrating to the token system](./TOKENS-MIGRATION.md).
-
-## Overriding Styles
-
-As all styles are in a CSS Layer named `sys42`, you can easily override the styles by adding your own styles without a layer or in a layer with a higher priority.
-
-If you want to override styles globally, the easiest way is to override tokens: semantic tokens for system-wide decisions, family tokens for a group of components. See the [token reference](./TOKENS.md).
-
-If you want to override styles for a specific occurence of a component, you can do this by adding a class to the component and then adding styles to this class.
-
-## Styling opinions
-
-System 42 is built as a flexible design system, allowing you to customize it to suit your needs. However, it includes a few opinionated design choices:
-
-**Margin Top**
-
-Whenever `margin` is used to create space between elements, `margin-top` is preferred. The the CSS reset (which is base on `normalize.css`) is extended and removes `margin` for some elements.
-
-For more information see this [article](https://dev.to/receter/why-i-fell-in-love-with-margin-top-3flg).
+See [Setup](https://receter.github.io/sys42/tokens/setup#checking-your-mapping).

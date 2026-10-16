@@ -1,0 +1,35 @@
+---
+sidebar_position: 8
+---
+
+# TextLink
+
+A link in running text. `TextLink` renders an `<a>`, `TextLinkButton` a `<button>` that looks like a link, for actions that are not navigation.
+
+```jsx
+import { TextLink, TextLinkButton } from "@sys42/ui";
+```
+
+```jsx live
+<Stack>
+  <p>
+    Read the <TextLink href="https://github.com/receter/sys42">source on GitHub</TextLink>.
+  </p>
+  <p>
+    Changed your mind? <TextLinkButton onClick={() => alert("Undone")}>Undo</TextLinkButton>
+  </p>
+  <p>
+    <TextLinkButton disabled>Disabled link button</TextLinkButton>
+  </p>
+</Stack>
+```
+
+## Props
+
+`TextLink` accepts all props of `<a>`, `TextLinkButton` all props of `<button>`. Neither has custom props.
+
+## Hooks and tokens
+
+Hooks: `useTextLink`, `useBaseTextLink`. Types: `TextLinkProps`, `BaseTextLinkProps`.
+
+TextLink has no family tokens. It uses `--s42-color-link`, `--s42-color-link-visited` and `--s42-color-link-active`.

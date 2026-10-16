@@ -1,0 +1,146 @@
+---
+sidebar_position: 10
+---
+
+# Radio and RadioGroup
+
+`Radio` is an `<input type="radio">`. `RadioGroup` manages a set of them as one value, with `RadioGroupItem`s as labelled options.
+
+```jsx
+import { Radio, RadioGroup, RadioGroupItem } from "@sys42/ui";
+```
+
+## Radio
+
+In HTML, radio buttons are grouped by the `name` attribute. You can do the same with the `Radio` component:
+
+```jsx live
+function Demo() {
+  const [selected, setSelected] = useState("option1");
+  return (
+    <Stack spacing="xs">
+      <LabeledControl
+        control={<Radio name="group" value="option1" checked={selected === "option1"} onChange={() => setSelected("option1")} />}
+      >
+        Option 1
+      </LabeledControl>
+      <LabeledControl
+        control={<Radio name="group" value="option2" checked={selected === "option2"} onChange={() => setSelected("option2")} />}
+      >
+        Option 2
+      </LabeledControl>
+      <LabeledControl control={<Radio checked disabled />}>Checked and disabled</LabeledControl>
+    </Stack>
+  );
+}
+```
+
+Without [LabeledControl](./form-field.mdx#labeledcontrol), the labels are not associated with the radio buttons. LabeledControl renders `label` elements that are properly associated with them:
+
+```html
+<label>
+  <input name="group" type="radio" value="option1" />
+  Option 1
+</label>
+```
+
+## Group labelling for accessibility
+
+For accessibility reasons, provide a label for the group of radio buttons. In HTML, one common method is a `fieldset` with a `legend`:
+
+```html
+<fieldset>
+  <legend>Choose an option</legend>
+  <label><input name="group" type="radio" value="option1" /> Option 1</label>
+  <label><input name="group" type="radio" value="option2" /> Option 2</label>
+</fieldset>
+```
+
+Another method is `role="radiogroup"` with `aria-labelledby` or `aria-label`:
+
+```html
+<div role="radiogroup" aria-label="Choose an option">
+  <label><input name="group" type="radio" value="option1" /> Option 1</label>
+  <label><input name="group" type="radio" value="option2" /> Option 2</label>
+</div>
+```
+
+## RadioGroup
+
+The `RadioGroup` component produces the second structure:
+
+```jsx live
+function Demo() {
+  const [selected, setSelected] = useState("option1");
+  return (
+    <Stack>
+      <RadioGroup value={selected} onValueChange={setSelected} name="group" aria-label="Choose an option">
+        <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+        <RadioGroupItem value="option2">Option 2</RadioGroupItem>
+        <RadioGroupItem value="option3" disabled>Option 3 (disabled)</RadioGroupItem>
+      </RadioGroup>
+      <p>Value: {selected}</p>
+    </Stack>
+  );
+}
+```
+
+The `name` attribute is not strictly required because the checked state is controlled by React, but you can set it so that all inputs carry it, for example in a form.
+
+If you place the `RadioGroup` inside a `fieldset` or the [FormFieldSet](./form-field.mdx#formfieldset) component, you can omit the `aria-label`, as the `fieldset` and `legend` provide the semantics:
+
+```jsx live
+function Demo() {
+  const [selected, setSelected] = useState("option1");
+  return (
+    <FormFieldSet label="Choose an option">
+      <RadioGroup value={selected} onValueChange={setSelected}>
+        <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+        <RadioGroupItem value="option2">Option 2</RadioGroupItem>
+      </RadioGroup>
+    </FormFieldSet>
+  );
+}
+```
+
+The rendered HTML:
+
+```html
+<fieldset>
+  <legend>Choose an option</legend>
+  <div role="radiogroup">
+    <label><input type="radio" value="option1" /> Option 1</label>
+    <label><input type="radio" value="option2" /> Option 2</label>
+  </div>
+</fieldset>
+```
+
+## Props
+
+`Radio` accepts all props of `<input>` and has no custom props.
+
+### RadioGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | – | The selected value. |
+| `onValueChange` | `(value: string, event) => void` | – | Called with the new value after `onChange`. |
+| `onChange` | `(event) => void` | – | The native change event of the radio that changed. |
+| `name` | `string` | – | Set on every radio. |
+| `role` | `"radiogroup"` | `"radiogroup"` | The ARIA role of the group element. |
+
+Other props go to the group element (`<div>`).
+
+### RadioGroupItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | – | The value of this option. |
+| `children` | `string` | – | The label. |
+| `disabled` | `boolean` | `false` | Disables the radio. |
+
+## Hooks and tokens
+
+Hooks: `useRadio`, `useBaseRadio`, `useRadioGroup`, `useBaseRadioGroup`, `useRadioGroupItem`, `useBaseRadioGroupItem`. Items connect to the group through `RadioGroupContext`.
+
+Radio is the [Radio family](../tokens/families.md#radio) (`--radio-*`). The groups have no public tokens.

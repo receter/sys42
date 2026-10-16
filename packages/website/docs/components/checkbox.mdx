@@ -1,0 +1,116 @@
+---
+sidebar_position: 9
+---
+
+# Checkbox and CheckboxGroup
+
+`Checkbox` is an `<input type="checkbox">`. `CheckboxGroup` manages a set of them as one value, an array of the checked values, with `CheckboxGroupItem`s as labelled options.
+
+```jsx
+import { Checkbox, CheckboxGroup, CheckboxGroupItem } from "@sys42/ui";
+```
+
+## Checkbox
+
+A single checkbox is best labelled with [LabeledControl](./form-field.mdx#labeledcontrol), which renders a `<label>` around the control and the text.
+
+```jsx live
+function Demo() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Stack spacing="xs">
+      <LabeledControl control={<Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} />}>
+        Subscribe to the newsletter
+      </LabeledControl>
+      <LabeledControl control={<Checkbox checked disabled />}>Checked and disabled</LabeledControl>
+      <LabeledControl control={<Checkbox disabled />}>Disabled</LabeledControl>
+      <LabeledControl style={{ fontSize: "1.5rem" }} control={<Checkbox />}>
+        Sized by font-size
+      </LabeledControl>
+    </Stack>
+  );
+}
+```
+
+## CheckboxGroup
+
+The group's `value` is the array of checked values. `onValueChange` receives the new array and the event of the checkbox that changed.
+
+```jsx live
+function Demo() {
+  const [value, setValue] = useState(["option1"]);
+  return (
+    <Stack>
+      <FormFieldSet label="Choose options">
+        <CheckboxGroup value={value} onValueChange={setValue} name="options">
+          <CheckboxGroupItem value="option1">Option 1</CheckboxGroupItem>
+          <CheckboxGroupItem value="option2">Option 2</CheckboxGroupItem>
+          <CheckboxGroupItem value="option3" disabled>Option 3 (disabled)</CheckboxGroupItem>
+        </CheckboxGroup>
+      </FormFieldSet>
+      <p>Value: {JSON.stringify(value)}</p>
+    </Stack>
+  );
+}
+```
+
+This renders a group of checkboxes with a label:
+
+```html
+<fieldset>
+  <legend>Choose options</legend>
+  <div role="group">
+    <label><input name="options" type="checkbox" value="option1" /> Option 1</label>
+    <label><input name="options" type="checkbox" value="option2" /> Option 2</label>
+    <label><input name="options" type="checkbox" value="option3" disabled /> Option 3 (disabled)</label>
+  </div>
+</fieldset>
+```
+
+### Labelling the group
+
+Inside a `fieldset` (or [FormFieldSet](./form-field.mdx#formfieldset)) the `legend` names the group. Without one, give the group a name with `aria-label` or `aria-labelledby`:
+
+```jsx live
+function Demo() {
+  const [value, setValue] = useState([]);
+  return (
+    <CheckboxGroup value={value} onValueChange={setValue} aria-label="Toppings">
+      <CheckboxGroupItem value="cheese">Cheese</CheckboxGroupItem>
+      <CheckboxGroupItem value="tomato">Tomato</CheckboxGroupItem>
+      <div>Other content can sit between the items.</div>
+      <CheckboxGroupItem value="olives">Olives</CheckboxGroupItem>
+    </CheckboxGroup>
+  );
+}
+```
+
+## Props
+
+`Checkbox` accepts all props of `<input>` and has no custom props.
+
+### CheckboxGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string[]` | – | The checked values. |
+| `onValueChange` | `(value: string[], event) => void` | – | Called with the new array after `onChange`. |
+| `onChange` | `(event) => void` | – | The native change event of the checkbox that changed. |
+| `name` | `string` | – | Set on every checkbox. |
+| `role` | `"group"` | `"group"` | The ARIA role of the group element. |
+
+Other props go to the group element (`<div>`).
+
+### CheckboxGroupItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | – | The value of this option. |
+| `children` | `string` | – | The label. |
+| `disabled` | `boolean` | `false` | Disables the checkbox. |
+
+## Hooks and tokens
+
+Hooks: `useCheckbox`, `useBaseCheckbox`, `useCheckboxGroup`, `useBaseCheckboxGroup`, `useCheckboxGroupItem`, `useBaseCheckboxGroupItem`. Items connect to the group through `CheckboxGroupContext`.
+
+Checkbox is the [Checkbox family](../tokens/families.md#checkbox) (`--checkbox-*`). The groups have no public tokens.

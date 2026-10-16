@@ -1,0 +1,38 @@
+.roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: var(--ifm-leading);
+}
+
+.role {
+  padding: 0.75rem;
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--s42-color-outline-subtle);
+  min-height: 5rem;
+  /* a checkerboard shows through semi-transparent colors (color-mix tokens) */
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd 75%);
+  background-size: 1rem 1rem;
+  background-position: 0 0, 0 0.5rem, 0.5rem -0.5rem, -0.5rem 0;
+}
+
+.roleName {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: var(--s42-color-onSurface);
+}
+
+.roleName code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.foreground {
+  font-size: var(--ifm-code-font-size);
+  font-family: var(--ifm-font-family-monospace);
+}

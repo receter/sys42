@@ -1,0 +1,68 @@
+---
+sidebar_position: 6
+---
+
+import PrimitiveScale from "@site/src/components/PrimitiveScale";
+import { Palettes } from "@site/src/components/Palette";
+
+# Primitive tokens
+
+The native primitives in `primitive-tokens.css` are raw scales: `--color-{palette}-{tone}`, `--space-*`, `--size-*`, `--radius-*`, `--borderWidth-*`, `--fontFamily-*`, `--fontSize-*`, `--fontWeight-*`, `--lineHeight-*`, `--shadow-*`, `--duration-*` and `--easing-*`. They have no `s42-` prefix.
+
+Primitives are only available if your project loads them. The semantic tokens of the native theme map to these primitives, but [your own primitives](./setup.md#your-own-primitives) can replace them entirely. Component CSS never references a primitive.
+
+The values below are read from the stylesheet loaded by this site, so they are those of the installed `@sys42/ui`.
+
+## Color
+
+The color palettes are Material 3 tonal palettes named by role: `primary`, `secondary`, `tertiary`, `danger`, `warning`, `success` and `neutral`. Each has the tones 0 (black), 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 95, 98, 99 and 100 (white). Read the [color system](../colors/color-system.mdx) for how they are generated and used.
+
+<Palettes />
+
+## Space
+
+<PrimitiveScale
+  tokens={["--space-2xs", "--space-xs", "--space-sm", "--space-md", "--space-lg", "--space-xl", "--space-2xl"]}
+  preview="length"
+/>
+
+## Size
+
+<PrimitiveScale tokens={["--size-em-md", "--size-em-lg", "--size-sm", "--size-md", "--size-lg"]} />
+
+## Radius
+
+<PrimitiveScale tokens={["--radius-sm", "--radius-md", "--radius-lg", "--radius-full"]} preview="radius" />
+
+## Border width
+
+<PrimitiveScale
+  tokens={["--borderWidth-none", "--borderWidth-thin", "--borderWidth-medium"]}
+  preview="borderWidth"
+/>
+
+## Typography
+
+<PrimitiveScale tokens={["--fontFamily-sans", "--fontFamily-serif", "--fontFamily-mono"]} />
+
+<PrimitiveScale
+  tokens={["--fontSize-xs", "--fontSize-sm", "--fontSize-md", "--fontSize-lg", "--fontSize-xl", "--fontSize-2xl"]}
+  preview="fontSize"
+/>
+
+<PrimitiveScale
+  tokens={["--fontWeight-regular", "--fontWeight-medium", "--fontWeight-semibold", "--fontWeight-bold"]}
+  preview="fontWeight"
+/>
+
+<PrimitiveScale tokens={["--lineHeight-tight", "--lineHeight-normal", "--lineHeight-loose"]} />
+
+## Shadow
+
+<PrimitiveScale tokens={["--shadow-sm", "--shadow-md", "--shadow-lg"]} preview="shadow" />
+
+## Motion
+
+<PrimitiveScale
+  tokens={["--duration-fast", "--duration-normal", "--duration-slow", "--easing-inOut", "--easing-out"]}
+/>

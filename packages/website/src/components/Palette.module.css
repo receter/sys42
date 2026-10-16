@@ -1,0 +1,48 @@
+.palettes {
+  display: grid;
+  gap: var(--ifm-spacing-vertical);
+}
+
+.palette {
+  margin-bottom: var(--ifm-leading);
+}
+
+.name {
+  margin-bottom: 0.25rem;
+}
+
+.tones {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  border-radius: var(--ifm-global-radius);
+  overflow: hidden;
+  border: 1px solid var(--s42-color-outline-subtle);
+}
+
+.tone {
+  aspect-ratio: 1 / 1.6;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.25rem 0.15rem;
+  font-size: 0.6rem;
+  line-height: 1.2;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.toneNumber {
+  font-weight: bold;
+}
+
+.toneValue {
+  display: none;
+  writing-mode: vertical-rl;
+  opacity: 0.8;
+}
+
+@media (min-width: 997px) {
+  .toneValue {
+    display: block;
+  }
+}

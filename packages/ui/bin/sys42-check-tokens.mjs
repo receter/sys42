@@ -162,7 +162,7 @@ if (problems.legacy.length > 0) {
     console.log(`    at ${where(entry.locations)}`);
   }
   console.log(
-    "  4.0.0 replaced them with a new token system, see TOKENS-MIGRATION.md in @sys42/ui.",
+    "  4.0.0 replaced them with a new token system, see https://receter.github.io/sys42/tokens/migration-4",
   );
 }
 

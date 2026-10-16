@@ -1,0 +1,39 @@
+---
+sidebar_position: 3
+---
+
+# TextArea
+
+A `<textarea>`.
+
+```jsx
+import { TextArea } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const [value, setValue] = useState("Hello, world!");
+  return (
+    <Stack>
+      <FormField label="Message">
+        {({ htmlFor }) => <TextArea id={htmlFor} value={value} onValueChange={setValue} rows={4} />}
+      </FormField>
+      <p>{value.length} characters</p>
+    </Stack>
+  );
+}
+```
+
+## Props
+
+`TextArea` accepts all props of `<textarea>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onValueChange` | `(value: string, event) => void` | – | Called with the new value after `onChange`. |
+
+## Hooks and tokens
+
+Hooks: `useTextArea`, `useBaseTextArea`. Types: `TextAreaProps`, `BaseTextAreaProps`.
+
+TextArea is a member of the [Input family](../tokens/families.md#input) and reads the `--input-*` tokens.

@@ -1,0 +1,136 @@
+---
+sidebar_position: 11
+---
+
+# Form fields and labels
+
+Four components label form controls: `Label` is a styled `<label>`, `FormField` labels one control and shows an error message, `FormFieldSet` groups controls in a `<fieldset>` with a `<legend>`, and `LabeledControl` wraps a checkbox or radio and its text in one `<label>`.
+
+```jsx
+import { FormField, FormFieldSet, Label, LabeledControl } from "@sys42/ui";
+```
+
+## FormField
+
+FormField renders the label and the content. When `children` is a function, it receives the field context with an `htmlFor` id, generated unless you pass your own, so the label is associated with the control.
+
+```jsx live
+<Stack>
+  <FormField label="What is your name?">
+    {({ htmlFor }) => <TextInput id={htmlFor} />}
+  </FormField>
+  <FormField label="What is your number?" htmlFor="my-custom-id">
+    {({ htmlFor }) => <TextInput id={htmlFor} type="tel" />}
+  </FormField>
+  <FormField label="Email" errorMessage="Please enter a valid email address">
+    {({ htmlFor }) => <TextInput id={htmlFor} type="email" defaultValue="not an email" />}
+  </FormField>
+  <FormField label="Several errors" errorMessage={["Too short", "Needs a number"]}>
+    {({ htmlFor }) => <TextInput id={htmlFor} type="password" />}
+  </FormField>
+</Stack>
+```
+
+### Props
+
+`FormField` accepts all props of `<div>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` | – | The label text. |
+| `htmlFor` | `string` | generated | The id for the control, passed to the children function. |
+| `errorMessage` | `string \| string[]` | – | One or more error messages, shown below the control. |
+| `children` | `ReactNode \| (ctx) => ReactNode` | – | The control. A function receives `{ htmlFor }`. |
+
+Hooks: `useFormField`, `useBaseFormField`, `renderFormField`; the context is `FormFieldContext`.
+
+## FormFieldSet
+
+FormFieldSet renders a `<fieldset>` with the label as `<legend>`. Use it to label a [RadioGroup](./radio.mdx) or [CheckboxGroup](./checkbox.mdx), or any group of related fields.
+
+```jsx live
+function Demo() {
+  const [size, setSize] = useState("m");
+  return (
+    <FormFieldSet label="T-shirt size" errorMessage={size === "xl" ? "XL is sold out" : undefined}>
+      <RadioGroup value={size} onValueChange={setSize}>
+        <RadioGroupItem value="s">S</RadioGroupItem>
+        <RadioGroupItem value="m">M</RadioGroupItem>
+        <RadioGroupItem value="xl">XL</RadioGroupItem>
+      </RadioGroup>
+    </FormFieldSet>
+  );
+}
+```
+
+### Props
+
+`FormFieldSet` accepts all props of `<fieldset>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` | – | The legend. |
+| `errorMessage` | `string \| string[]` | – | One or more error messages. |
+| `children` | `ReactNode \| (ctx) => ReactNode` | – | The content. |
+
+Hooks: `useFormFieldSet`, `useBaseFormFieldSet`, `renderFormFieldSet`; the context is `FormFieldSetContext`.
+
+## LabeledControl
+
+LabeledControl renders a `<label>` that contains the control and the text, which associates them without ids. Its size follows the font size, so it can be made bigger with `font-size`.
+
+```jsx live
+function Demo() {
+  const [agreed, setAgreed] = useState(false);
+  return (
+    <Stack spacing="xs">
+      <LabeledControl control={<Checkbox checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />}>
+        I agree to the terms
+      </LabeledControl>
+      <LabeledControl style={{ fontSize: "1.5rem" }} control={<Radio name="size" />}>
+        I am big
+      </LabeledControl>
+    </Stack>
+  );
+}
+```
+
+If LabeledControl is too verbose, wrap it in a local component:
+
+```jsx
+function LabeledCheckbox({ children, checked, onChange }) {
+  return (
+    <LabeledControl control={<Checkbox checked={checked} onChange={onChange} />}>
+      {children}
+    </LabeledControl>
+  );
+}
+```
+
+### Props
+
+`LabeledControl` accepts all props of `<label>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `control` | `ReactNode` | – | The control, usually a `Checkbox` or `Radio`. |
+| `children` | `string` | – | The label text. |
+
+Hooks: `useLabeledControl`, `useBaseLabeledControl`, `renderLabeledControl`.
+
+## Label
+
+A styled `<label>` for cases where you lay out the label yourself. It accepts all props of `<label>`.
+
+```jsx live
+<Stack spacing="xs">
+  <Label htmlFor="standalone">Standalone label</Label>
+  <TextInput id="standalone" />
+</Stack>
+```
+
+Hooks: `useLabel`, `useBaseLabel`.
+
+## Tokens
+
+These components have no family tokens. They use the `--s42-space-gap-*`, `--s42-fontWeight-label` and `--s42-color-onSurface-danger` semantic tokens.

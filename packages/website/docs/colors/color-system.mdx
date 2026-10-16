@@ -1,0 +1,131 @@
+---
+sidebar_position: 1
+title: Color system
+---
+
+import ColorRoles from "@site/src/components/ColorRoles";
+import Palette, { Palettes } from "@site/src/components/Palette";
+
+# Color system
+
+The colors of System 42 are organized in two layers, like every other token: **tonal palettes** are the primitives, and **color roles** are the semantic tokens that components read. Components never reference a palette. The native theme maps every role to a tone of a palette; your own theme can map the roles to anything.
+
+```jsx live
+<Stack>
+  <div className={classButtonGroup}>
+    <Button>control</Button>
+    <Button variant="accent">controlAccent</Button>
+    <Button variant="highlight">controlHighlight</Button>
+    <Button variant="danger">controlDanger</Button>
+  </div>
+  <Message variant="success">containerSuccess with onContainerSuccess text</Message>
+  <Message variant="warning">containerWarning with onContainerWarning text</Message>
+  <Message variant="danger">containerDanger with onContainerDanger text</Message>
+</Stack>
+```
+
+## Tonal palettes
+
+The native palettes are [Material 3 tonal palettes](https://m3.material.io/styles/color/system/how-the-system-works). A tonal palette is one hue and chroma at eighteen levels of lightness, the **tones**, from 0 (black) to 100 (white). Material defines them in HCT, a color space in which equal steps in tone are equal steps in perceived lightness. That is what makes tones useful: text at tone 10 on a background at tone 90 has roughly the same contrast in every palette, whatever its hue.
+
+There are seven palettes, named by **role**, not by appearance:
+
+| Palette | Native seed | Used for (native mapping) |
+| --- | --- | --- |
+| `primary` | `#2B101B` | text on surfaces, the accent control, focus and links |
+| `secondary` | `#9C8D91` | the default and highlight controls |
+| `tertiary` | `#A28D7E` | the surfaces |
+| `neutral` | `#958F90` | outlines |
+| `danger` | `#FF5449` | errors and destructive actions |
+| `warning` | hue 85, chroma 55 | warnings |
+| `success` | hue 145, chroma 50 | success |
+
+<Palettes />
+
+Hover over a tone to see its value. The tones are `--color-{palette}-{tone}` in `primitive-tokens.css`.
+
+### How the palettes are generated
+
+The palettes are not hand-picked. `scripts/generate-primitive-colors.mjs` in the `ui` package creates them with [`@material/material-color-utilities`](https://github.com/material-foundation/material-color-utilities), the library behind the Material Theme Builder. Each palette is defined by a seed color, whose hue and chroma in HCT define all tones, or directly by a hue and a chroma (`warning` and `success` have no seed: amber and green at a similar, moderate intensity, because taking the chroma of `danger` makes success neon). The same input always gives the same colors, so the output matches the Material Theme Builder for the same seeds.
+
+```bash
+pnpm --filter @sys42/ui tokens:colors   # regenerate the palettes from the seeds
+pnpm --filter @sys42/ui tokens:check    # fails if primitive-tokens.css is out of date
+```
+
+To rebrand the native theme, change the seeds in the script and regenerate. Because the semantic mapping only refers to tones, nothing else has to change: `--s42-color-controlAccent` is still `primary-10`, it just is a different `primary`.
+
+## Color roles
+
+The semantic color tokens name **roles**, what a color is for, never what it looks like. The complete list is in the [semantic token reference](../tokens/semantic-tokens.mdx#color). Every background role is shown here with the foreground tokens defined for it:
+
+<ColorRoles />
+
+### Backgrounds and `on` colors
+
+Roles come in pairs: `<role>` is a background, `on<Role>` is the text and icon color that works on it. `--s42-color-controlAccent` is the accent button, `--s42-color-onControlAccent` is its label. An `on` token always has a matching background token. The build of the library fails otherwise, so you can rely on the pair.
+
+- `surface` and `surfaceBright` are the page and the raised backgrounds (fields, cards, menus). Every `onSurface*` color works on both.
+- `control*` is a control itself: a button, a toggle handle. `control` is the default, `controlAccent` has more contrast, `controlHighlight` is more vibrant, `controlDanger` is for errors and destructive actions, `controlDisabled` for disabled controls.
+- `control*Container` holds a control of that role, such as a toggle track or a slider bar, and works on `surface` and `surfaceBright`.
+- `container*` is a container such as a message: `container`, `containerSuccess`, `containerWarning` and `containerDanger`.
+- `outline` and `outline-subtle` are field borders and decorative borders (cards). `focus` is the focus ring, `link*` the link colors.
+
+### Modifiers are not new backgrounds
+
+A modifier after a hyphen means the same usage in another variant: `onSurface-muted`, `onSurface-subtle` and `onSurface-danger` are all text colors for surfaces. A modifier never names a new background, so `onSurface-danger` is danger text on `surface`, not the foreground of a danger surface. New backgrounds get their own camelCase role: `containerDanger` / `onContainerDanger`.
+
+### Status tones
+
+The same three tones are used everywhere a status is shown: `danger` (errors and destructive actions), `warning` and `success`. They come from the primitive palettes of the same names, and appear as controls (`controlDanger`), containers (`containerSuccess`) and text (`onSurface-danger`).
+
+### Derived state colors
+
+Hover, active, checked and disabled colors are not tokens. Components derive them from the resolved colors, for example hover mixes a little of the text color into the background, which works for any theme without extra configuration. The disabled colors and the divider of split controls are the only semi-transparent tokens: they are `color-mix()` values over `primary-10`, so they work on any background.
+
+## Theming the colors
+
+Because components only read the roles, a theme is a mapping of roles. You can override a few roles for a brand, map all of them to your own palettes, or scope a different mapping to a part of the page (see [Theme scope](../tokens/theme-scope.md)):
+
+```css
+:root {
+  --s42-color-controlAccent: var(--color-success-30);
+  --s42-color-onControlAccent: var(--color-success-100);
+}
+
+.inverted {
+  --s42-color-surface: var(--color-primary-10);
+  --s42-color-onSurface: var(--color-primary-95);
+}
+```
+
+```jsx live
+<div
+  className={classCard}
+  style={{
+    "--s42-color-surface": "var(--color-primary-10)",
+    "--s42-color-surfaceBright": "var(--color-primary-20)",
+    "--s42-color-onSurface": "var(--color-primary-95)",
+    "--s42-color-outline": "var(--color-primary-60)",
+    "--s42-color-control": "var(--color-primary-80)",
+    "--s42-color-onControl": "var(--color-primary-10)",
+    "--s42-color-controlAccent": "var(--color-primary-95)",
+    "--s42-color-onControlAccent": "var(--color-primary-10)",
+    "--card-background": "var(--s42-color-surface)",
+    "--card-color": "var(--s42-color-onSurface)",
+  }}
+>
+  <Stack>
+    <p>An inverted scope: the roles are remapped to other tones of the same palettes.</p>
+    <TextInput placeholder="Field on the dark surface" />
+    <div className={classButtonGroup}>
+      <Button variant="accent">Accent</Button>
+      <Button>Default</Button>
+    </div>
+  </Stack>
+</div>
+```
+
+There is no dark theme in the native tokens yet. The tonal palettes make one straightforward: a dark theme maps the same roles to the opposite end of each palette (surfaces around tone 10, text around tone 90), which is exactly how Material 3 builds its dark schemes. When it exists, it will be a stylesheet that redefines the `--s42-color-*` roles under a selector, nothing more.
+
+For your own palettes, keep the two properties that make the system work: name palettes by role, and keep the pairs (`<role>` / `on<Role>`) readable against each other. Check a custom mapping with [`sys42-check-tokens`](../tokens/setup.md#checking-your-mapping).

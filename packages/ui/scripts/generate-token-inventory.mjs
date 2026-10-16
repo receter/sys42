@@ -67,7 +67,7 @@ for (const entry of readdirSync(resolve(root, "lib"), { recursive: true })) {
 }
 if (invalid.size > 0) {
   throw new Error(
-    `These token names need two or three camelCase segments (see Naming in TOKENS.md): ${[...invalid].join(", ")}`,
+    `These token names need two or three camelCase segments (see https://receter.github.io/sys42/tokens/overview#naming): ${[...invalid].join(", ")}`,
   );
 }
 

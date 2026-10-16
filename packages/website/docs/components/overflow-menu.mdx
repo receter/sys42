@@ -1,0 +1,85 @@
+---
+sidebar_position: 12
+---
+
+# OverflowMenu
+
+An icon button that opens a menu of actions, the "⋯" menu. It implements the [WAI-ARIA menu button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/): the trigger has `aria-haspopup` and `aria-expanded`, the menu opens with Enter, Space, and the arrow keys, the items are navigated with the arrow keys, Home, End and typeahead, and Escape closes it.
+
+Items are `<button role="menuitem">`s that close the menu before calling `onClick`. The menu reads its items from the DOM, so items can be wrapped in other elements or rendered by other components.
+
+```jsx
+import { OverflowMenu, OverflowMenuItem } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const [lastAction, setLastAction] = useState("none");
+  return (
+    <Stack>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <strong>Document title</strong>
+        <OverflowMenu>
+          <OverflowMenuItem onClick={() => setLastAction("Edit")}>Edit</OverflowMenuItem>
+          <OverflowMenuItem onClick={() => setLastAction("Duplicate")}>Duplicate</OverflowMenuItem>
+          <OverflowMenuItem disabled>Archive (disabled)</OverflowMenuItem>
+          <OverflowMenuItem onClick={() => setLastAction("Delete")}>Delete</OverflowMenuItem>
+        </OverflowMenu>
+      </div>
+      <p>Last action: {lastAction}</p>
+    </Stack>
+  );
+}
+```
+
+## Custom icon, label and item layout
+
+The trigger shows only an icon, so `label` is its accessible name. Items can be wrapped, for example to limit the width of the menu:
+
+```jsx live
+function Demo() {
+  const verticalDots = (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+    </svg>
+  );
+  return (
+    <OverflowMenu label="Options" icon={verticalDots}>
+      <div style={{ maxWidth: "12rem" }}>
+        <OverflowMenuItem onClick={() => {}}>This item is wrapped in a div with a max-width.</OverflowMenuItem>
+        <OverflowMenuItem onClick={() => {}}>Short item</OverflowMenuItem>
+      </div>
+    </OverflowMenu>
+  );
+}
+```
+
+## Props
+
+### OverflowMenu
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | – | The menu items, usually `OverflowMenuItem` elements. |
+| `label` | `string` | `"More"` | The accessible name of the trigger. |
+| `icon` | `ReactNode` | horizontal dots | Decorative content of the trigger. |
+| `onOpen` | `() => void` | – | Called when the menu opens. |
+| `onClose` | `() => void` | – | Called when the menu closes. |
+
+Other props go to the root element.
+
+### OverflowMenuItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onClick` | `(event) => void` | – | Called after the menu closed. |
+| `disabled` | `boolean` | `false` | Disables the item. |
+| `textValue` | `string` | text content | Used for typeahead if the content is not plain text. |
+
+Other props go to the `<button>`.
+
+## Hooks and tokens
+
+Hooks: `useOverflowMenu`, `useBaseOverflowMenu`, `renderOverflowMenu`, `useOverflowMenuItem`, `useBaseOverflowMenuItem`. Items close the menu through `MenuContext`.
+
+The trigger is a member of the [Button family](../tokens/families.md#button) (`--button-background`, `--button-color`, `--button-paddingY` on all sides), the items of the [Menu item family](../tokens/families.md#menu-item). The popup uses `--s42-color-surfaceBright` and the `--s42-*-overlay` tokens.

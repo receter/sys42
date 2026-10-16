@@ -1,0 +1,46 @@
+# Builds the documentation website and the React Cosmos export and publishes
+# both to GitHub Pages: the website at the root (https://receter.github.io/sys42/)
+# and the Cosmos export under /cosmos/.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+name: deploy-pages
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/workflows/init-pnpm
+
+      - name: Build packages
+        run: |
+          pnpm --filter @sys42/utils build
+          pnpm --filter @sys42/ui build
+
+      - name: Build React Cosmos
+        run: pnpm --filter @sys42/ui run cosmos-export
+
+      - name: Build website
+        run: pnpm --filter website build
+
+      - name: Add Cosmos export to the website
+        run: cp -r packages/ui/cosmos-export packages/website/build/cosmos
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/website/build

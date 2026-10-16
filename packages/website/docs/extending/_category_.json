@@ -1,0 +1,5 @@
+{
+  "label": "Extending components",
+  "position": 4,
+  "link": { "type": "generated-index", "description": "How a sys42 component is built, and how to build your own on top of it." }
+}

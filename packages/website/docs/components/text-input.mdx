@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+---
+
+# TextInput
+
+An `<input>` for text. The `type` is limited to the text-like types.
+
+```jsx
+import { TextInput } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const [value, setValue] = useState("");
+  return (
+    <Stack>
+      <TextInput value={value} onValueChange={setValue} placeholder="Type something" />
+      <p>Value: {value || "(empty)"}</p>
+    </Stack>
+  );
+}
+```
+
+## With a label
+
+Use [FormField](./form-field.mdx) to label a field. It generates an id and hands it to the field through `htmlFor`.
+
+```jsx live
+<Stack>
+  <FormField label="Email">
+    {({ htmlFor }) => <TextInput id={htmlFor} type="email" placeholder="you@example.com" />}
+  </FormField>
+  <FormField label="Password" errorMessage="At least 8 characters">
+    {({ htmlFor }) => <TextInput id={htmlFor} type="password" />}
+  </FormField>
+  <FormField label="Disabled">
+    {({ htmlFor }) => <TextInput id={htmlFor} disabled value="Can't touch this" readOnly />}
+  </FormField>
+</Stack>
+```
+
+## Props
+
+`TextInput` accepts all props of `<input>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `type` | `"text" \| "password" \| "email" \| "tel" \| "url"` | `"text"` | The input type. |
+| `onValueChange` | `(value: string, event) => void` | – | Called with the new value after `onChange`. See [Props and event handlers](../extending/props-and-event-handlers.md). |
+
+## Hooks and tokens
+
+Hooks: `useTextInput`, `useBaseTextInput`. Types: `TextInputProps`, `BaseTextInputProps`.
+
+TextInput is a member of the [Input family](../tokens/families.md#input) and reads the `--input-*` tokens.

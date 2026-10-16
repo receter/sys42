@@ -1,0 +1,90 @@
+---
+sidebar_position: 15
+---
+
+# Helper classes
+
+Helper classes are exported class names for recurring layout needs that don't justify a component. Apply them to any element.
+
+```jsx
+import { classButtonGroup, classButtonGroupReverse, classCard, classContent, classInlineIcon } from "@sys42/ui";
+```
+
+## classButtonGroup
+
+Lays out buttons in a row with a gap and lets them wrap. `classButtonGroupReverse` reverses the visual order, for dialogs that keep the primary action first in the DOM but show it on the right.
+
+```jsx live
+<Stack>
+  <div className={classButtonGroup}>
+    <Button variant="accent">Save</Button>
+    <Button>Cancel</Button>
+  </div>
+  <div className={classButtonGroupReverse}>
+    <Button variant="accent">Save</Button>
+    <Button>Cancel</Button>
+  </div>
+</Stack>
+```
+
+## classCard
+
+Gives an element a card-like appearance: background, border, radius, shadow and padding.
+
+```jsx live
+<div className={classCard}>
+  <Stack>
+    <FormField label="What is your name?">
+      {({ htmlFor }) => <TextInput id={htmlFor} />}
+    </FormField>
+    <div className={classButtonGroupReverse}>
+      <Button variant="accent">Save</Button>
+      <Button>Cancel</Button>
+    </div>
+  </Stack>
+</div>
+```
+
+`classCard` is the [Card family](../tokens/families.md#card): it reads `--card-background`, `--card-color`, `--card-borderColor`, `--card-borderWidth`, `--card-radius`, `--card-boxShadow`, `--card-paddingX` and `--card-paddingY`, each with a semantic fallback.
+
+```jsx live
+<div className={classCard} style={{ "--card-borderColor": "var(--s42-color-controlAccent)", "--card-paddingY": "var(--s42-space-containerY-compact)" }}>
+  A selected card with a compact vertical padding.
+</div>
+```
+
+## classContent
+
+Restores vertical rhythm for running text. The base styles remove the margins of headings, paragraphs and lists; `classContent` adds `margin-top` between them again, so markdown-like content reads well.
+
+```jsx live
+<div className={classContent}>
+  <h2>A heading</h2>
+  <p>
+    And this is a paragraph that contains text. Nothing special here, just a few words to fill
+    this paragraph.
+  </p>
+  <h3>A smaller heading with a list below</h3>
+  <ul>
+    <li>First item</li>
+    <li>Second item</li>
+    <li>Third item</li>
+  </ul>
+  <p>Another paragraph with some other text.</p>
+</div>
+```
+
+## classInlineIcon
+
+Displays an icon inline with text. The class centers the icon in the line height and caps its height at the line height, so it never exceeds the text.
+
+```jsx live
+<p>
+  <svg className={classInlineIcon} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2 15 9h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" />
+  </svg>
+  &nbsp;An icon next to text, and in a <Button>button</Button> too.
+</p>
+```
+
+Known issue: the icon is not centered exactly if the font's `ascender − cap-height` does not match its `descender`.

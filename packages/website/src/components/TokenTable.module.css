@@ -1,0 +1,29 @@
+.tokenTable {
+  display: table;
+  width: 100%;
+  font-size: var(--ifm-code-font-size);
+}
+
+.tokenTable td,
+.tokenTable th {
+  vertical-align: middle;
+}
+
+.tokenTable code {
+  white-space: nowrap;
+}
+
+.swatch {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--s42-radius-field);
+  border: 1px solid var(--s42-color-outline-subtle);
+  /* a checkerboard shows through semi-transparent colors (color-mix tokens) */
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd 75%);
+  background-size: 0.5rem 0.5rem;
+  background-position: 0 0, 0 0.25rem, 0.25rem -0.25rem, -0.25rem 0;
+}

@@ -1,0 +1,81 @@
+---
+sidebar_position: 13
+---
+
+# SplitButton
+
+A button with a main action and a toggle that opens a menu of alternative actions. The main button and the toggle look like one [Button](./button.mdx), separated by a divider. The menu follows the [WAI-ARIA menu button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/) like [OverflowMenu](./overflow-menu.mdx).
+
+```jsx
+import { SplitButton, SplitButtonItem } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const [lastAction, setLastAction] = useState("none");
+  const items = (
+    <>
+      <SplitButtonItem onClick={() => setLastAction("Save as draft")}>Save as draft</SplitButtonItem>
+      <SplitButtonItem onClick={() => setLastAction("Save and publish")}>Save and publish</SplitButtonItem>
+      <SplitButtonItem disabled>Schedule (disabled)</SplitButtonItem>
+    </>
+  );
+  return (
+    <Stack>
+      <div className={classButtonGroup}>
+        <SplitButton label="Save" onClick={() => setLastAction("Save")}>
+          {items}
+        </SplitButton>
+        <SplitButton variant="accent" label="Save" onClick={() => setLastAction("Save (accent)")}>
+          {items}
+        </SplitButton>
+        <SplitButton variant="highlight" label="Save" onClick={() => setLastAction("Save (highlight)")}>
+          {items}
+        </SplitButton>
+      </div>
+      <div className={classButtonGroup}>
+        <SplitButton variant="danger" size="lg" label="Move to trash" onClick={() => setLastAction("Move to trash")}>
+          <SplitButtonItem onClick={() => setLastAction("Delete forever")}>Delete forever</SplitButtonItem>
+        </SplitButton>
+        <SplitButton label="Disabled" disabled>
+          {items}
+        </SplitButton>
+      </div>
+      <p>Last action: {lastAction}</p>
+    </Stack>
+  );
+}
+```
+
+## Props
+
+### SplitButton
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` | – | The label of the main button. |
+| `onClick` | `(event) => void` | – | The handler of the main button. |
+| `children` | `ReactNode` | – | The alternative actions, usually `SplitButtonItem` elements. |
+| `variant` | `"accent" \| "highlight" \| "danger"` | – | The color variant, like Button. |
+| `size` | `"lg"` | – | The large size. |
+| `disabled` | `boolean` | `false` | Disables both buttons. |
+| `toggleLabel` | `string` | `"More actions"` | The accessible name of the toggle (it shows only an icon). |
+| `toggleIcon` | `ReactNode` | chevron | Decorative content of the toggle. |
+| `onOpen` | `() => void` | – | Called when the menu opens. |
+| `onClose` | `() => void` | – | Called when the menu closes. |
+
+Other props go to the root element.
+
+### SplitButtonItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onClick` | `(event) => void` | – | Called after the menu closed. |
+| `disabled` | `boolean` | `false` | Disables the item. |
+| `textValue` | `string` | text content | Used for typeahead if the content is not plain text. |
+
+## Hooks and tokens
+
+Hooks: `useSplitButton`, `useBaseSplitButton`, `renderSplitButton`, `useSplitButtonItem`, `useBaseSplitButtonItem`.
+
+SplitButton is a member of the [Button family](../tokens/families.md#button) and recreates the Button look from the `--button-*` tokens, plus `--button-divider` for the divider. The items are the [Menu item family](../tokens/families.md#menu-item).

@@ -1,0 +1,134 @@
+---
+sidebar_position: 5
+---
+
+# Listbox
+
+A custom single select, built on [downshift](https://www.downshift-js.com/)'s `useSelect`. It renders a button that opens a list of `ListboxItem`s, supports keyboard navigation and typeahead, and can take part in a form through a hidden input. Use it when you need rich option content or full styling; otherwise [Select](./select.mdx) is the simpler choice.
+
+Listbox accepts only `ListboxItem` children (fragments are unwrapped, anything else throws). It reads the items' props up front to build the list of values and then renders the children as they are, so you can map over data or group items in fragments.
+
+```jsx
+import { Listbox, ListboxItem } from "@sys42/ui";
+```
+
+```jsx live
+function Demo() {
+  const fruits = [
+    { value: "apple", label: "Apple", icon: "🍎" },
+    { value: "banana", label: "Banana", icon: "🍌" },
+    { value: "blueberry", label: "Blueberry", icon: "🫐" },
+    { value: "cherry", label: "Cherry", icon: "🍒" },
+    { value: "kiwi", label: "Kiwi", icon: "🥝" },
+  ];
+  const [value, setValue] = useState("banana");
+  return (
+    <Stack>
+      <FormField label="Favorite fruit">
+        {({ htmlFor }) => (
+          <Listbox id={htmlFor} value={value} onValueChange={setValue} placeholder="Choose a fruit">
+            {fruits.map((fruit) => (
+              <ListboxItem key={fruit.value} value={fruit.value} textValue={fruit.label}>
+                {fruit.icon} {fruit.label}
+              </ListboxItem>
+            ))}
+          </Listbox>
+        )}
+      </FormField>
+      <p>Value: {String(value)}</p>
+    </Stack>
+  );
+}
+```
+
+`textValue` is what typeahead and the accessible name use when the item content is not plain text.
+
+## Uncontrolled in a form
+
+With `name`, the Listbox renders a hidden input and takes part in the form. `defaultValue` sets the initial selection.
+
+```jsx live
+function Demo() {
+  const [submitted, setSubmitted] = useState("");
+  function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    setSubmitted(JSON.stringify(Object.fromEntries(data)));
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <Stack>
+        <FormField label="Fruit">
+          {({ htmlFor }) => (
+            <Listbox id={htmlFor} name="fruit" placeholder="Choose a fruit">
+              <ListboxItem value="apple">Apple</ListboxItem>
+              <ListboxItem value="banana">Banana</ListboxItem>
+              <ListboxItem value="durian" disabled>Durian (disabled)</ListboxItem>
+              <>
+                <ListboxItem value="kiwi">Kiwi (in a fragment)</ListboxItem>
+                <ListboxItem value="mango">Mango (in a fragment)</ListboxItem>
+              </>
+            </Listbox>
+          )}
+        </FormField>
+        <div>
+          <Button type="submit">Submit</Button>
+        </div>
+        <p>Submitted: {submitted}</p>
+      </Stack>
+    </form>
+  );
+}
+```
+
+## Standalone and disabled
+
+Without a FormField, give the Listbox an accessible name with `aria-label`.
+
+```jsx live
+<Stack>
+  <div>
+    <Listbox aria-label="Fruit" defaultValue="kiwi">
+      <ListboxItem value="apple">Apple</ListboxItem>
+      <ListboxItem value="kiwi">Kiwi</ListboxItem>
+    </Listbox>
+  </div>
+  <div>
+    <Listbox aria-label="Disabled" placeholder="Disabled" disabled>
+      <ListboxItem value="apple">Apple</ListboxItem>
+    </Listbox>
+  </div>
+</Stack>
+```
+
+## Props
+
+### Listbox
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ListboxItem` elements | – | The options. Fragments are unwrapped, other children throw. |
+| `value` | `string \| null` | – | The selected value (controlled). |
+| `defaultValue` | `string \| null` | – | The initial value (uncontrolled). |
+| `onValueChange` | `(value: string \| null) => void` | – | Called with the new value. There is no native event. |
+| `placeholder` | `ReactNode` | – | Shown while nothing is selected. |
+| `name` | `string` | – | Renders a hidden input with this name for forms. |
+| `disabled` | `boolean` | `false` | Disables the toggle. |
+| `id` | `string` | – | The id of the toggle button, for labels. |
+
+Other props go to the root element.
+
+### ListboxItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | – | The value of the option. Must be unique. |
+| `children` | `ReactNode` | – | The content. |
+| `disabled` | `boolean` | `false` | Cannot be selected. |
+| `textValue` | `string` | text content | Used for typeahead and the selected label when the content is not plain text. |
+
+## Hooks and tokens
+
+Hooks: `useListbox`, `useBaseListbox`, `renderListbox`, `useListboxItem`, `useBaseListboxItem`. Types: `ListboxProps`, `BaseListboxProps`, `ListboxItemProps`, `BaseListboxItemProps`. Items connect to the list through `ListboxContext`.
+
+The toggle is a member of the [Input family](../tokens/families.md#input) (`--input-*`, including `--input-placeholder-color` and `--input-minWidth`), the items of the [Menu item family](../tokens/families.md#menu-item) (`--menuItem-*`, with `--menuItem-selected-fontWeight`).

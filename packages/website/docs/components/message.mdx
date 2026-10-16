@@ -1,0 +1,44 @@
+---
+sidebar_position: 6
+---
+
+# Message
+
+A container for a short message, with an optional icon and the three status variants.
+
+```jsx
+import { Message } from "@sys42/ui";
+```
+
+```jsx live
+<Stack>
+  <Message>This is a message.</Message>
+  <Message variant="success">Saved successfully.</Message>
+  <Message variant="warning">Your session expires in 5 minutes.</Message>
+  <Message variant="danger">Something went wrong.</Message>
+</Stack>
+```
+
+## With an icon
+
+```jsx live
+<Stack>
+  <Message icon="🚀">Deployed to production.</Message>
+  <Message variant="danger" icon="⚠️">The deployment failed.</Message>
+</Stack>
+```
+
+## Props
+
+`Message` accepts all props of `<div>`, plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `"success" \| "warning" \| "danger"` | – | The status variant. Without it, the default container colors. |
+| `icon` | `ReactNode` | – | Rendered before the content. |
+
+## Hooks and tokens
+
+Hooks: `useMessage`, `useBaseMessage`, `renderMessage`. Types: `MessageProps`, `BaseMessageProps`.
+
+Message is the [Message family](../tokens/families.md#message) and reads the `--message-*` tokens, which fall back to the `container*` color roles.

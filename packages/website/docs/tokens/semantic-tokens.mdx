@@ -1,0 +1,68 @@
+---
+sidebar_position: 5
+---
+
+import TokenTable from "@site/src/components/TokenTable";
+
+# Semantic tokens
+
+Every valid integration defines all of these. The native default is the mapping in `semantic-tokens.css`. The machine-readable inventory is `@sys42/ui/semantic-tokens.json`, and the tables on this page are generated from it, so they always match the installed version of the library.
+
+Semantic tokens follow the [naming scheme](./overview.md#naming): `--s42-{category}-{name}-{modifier}`. Color names follow these rules:
+
+- **Pairs:** `on<Role>` is the text and icon color for the background `<role>`: `--s42-color-controlAccent` / `--s42-color-onControlAccent`. An `on<Role>` token always has a matching background token. The build fails otherwise.
+- **Modifiers:** a modifier after a hyphen means the same usage in another variant: `onSurface-muted`, `onSurface-subtle` and `onSurface-danger` are all text colors for surfaces. A modifier never names a new background, so `onSurface-danger` is danger text on `surface`, not the foreground of a danger surface. New backgrounds get their own camelCase role (`containerDanger` / `onContainerDanger`).
+- **Containers:** `<role>Container` holds a control of that role, such as a toggle track or a slider bar: `controlAccentContainer`. Control containers work on `surface` and `surfaceBright`.
+- **Surfaces:** every `onSurface*` color works on both `surface` and `surfaceBright`.
+
+See the [color system](../colors/color-system.mdx) for the roles and the palettes behind them.
+
+## Color
+
+**Surfaces.** Page and raised backgrounds (fields, cards, menus). All `onSurface*` colors work on `surface` and `surfaceBright`.
+
+<TokenTable match={["--s42-color-surface", "--s42-color-onSurface"]} />
+
+**Outlines.** Field borders and decorative borders (cards).
+
+<TokenTable match={["--s42-color-outline"]} />
+
+**Controls.** `control*` is the control itself (a button, a toggle handle), `control*Container` holds a control (a toggle track, a slider bar) and works on `surface` and `surfaceBright`. `control` is the default, `controlAccent` has more contrast, `controlHighlight` is more vibrant, `controlDanger` is for errors and destructive actions, `controlDisabled` for disabled controls.
+
+<TokenTable match={["--s42-color-control", "--s42-color-onControl"]} />
+
+**Containers.** Containers such as messages: `container` is the default, plus `containerSuccess`, `containerWarning` and `containerDanger`. The same three tones are used everywhere: `danger` (errors and destructive actions), `warning` and `success`, from the primitive palettes of the same names.
+
+<TokenTable match={["--s42-color-container", "--s42-color-onContainer"]} />
+
+**Focus ring and links.**
+
+<TokenTable match={["--s42-color-focus", "--s42-color-link"]} />
+
+## Space
+
+<TokenTable category="space" />
+
+## Size
+
+<TokenTable category="size" />
+
+## Radius
+
+<TokenTable category="radius" />
+
+## Border width
+
+<TokenTable category="borderWidth" />
+
+## Typography
+
+<TokenTable match={["--s42-fontFamily", "--s42-fontSize", "--s42-fontWeight", "--s42-lineHeight"]} />
+
+## Elevation
+
+<TokenTable category="shadow" />
+
+## Motion
+
+<TokenTable match={["--s42-duration", "--s42-easing"]} />

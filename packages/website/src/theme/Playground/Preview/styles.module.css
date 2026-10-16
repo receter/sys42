@@ -1,0 +1,15 @@
+/* Ejected from @docusaurus/theme-live-codeblock 3.10.2 and adapted. */
+
+.playgroundPreview {
+  background-color: var(--s42-color-surfaceBright);
+}
+
+.playgroundError {
+  margin: 0;
+  padding: var(--s42-space-containerY) var(--s42-space-containerX);
+  white-space: pre-wrap;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: var(--ifm-code-font-size);
+  color: var(--s42-color-onContainerDanger);
+  background: var(--s42-color-containerDanger);
+}
