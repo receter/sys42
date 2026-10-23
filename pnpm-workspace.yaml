@@ -2,5 +2,5 @@ packages:
   - packages/*
 allowBuilds:
   "@swc/core": true
-  core-js: false
+  core-js: true
   esbuild: true

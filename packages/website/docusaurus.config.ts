@@ -16,7 +16,8 @@ const codeTheme = {
 
 const config: Config = {
   title: "System 42",
-  tagline: "A minimal React design system built on HTML, CSS Modules and design tokens",
+  tagline:
+    "A minimal React design system built on HTML, CSS Modules and design tokens",
   favicon: "img/favicon.svg",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -51,7 +52,8 @@ const config: Config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/receter/sys42/tree/main/packages/website/",
+          editUrl:
+            "https://github.com/receter/sys42/tree/main/packages/website/",
         },
         blog: false,
         theme: {
@@ -76,13 +78,22 @@ const config: Config = {
     navbar: {
       title: "System 42",
       items: [
-        { type: "docSidebar", sidebarId: "docs", position: "left", label: "Docs" },
-        { to: "/components/button", position: "left", label: "Components" },
-        { to: "/tokens/overview", position: "left", label: "Tokens" },
-        { to: "/colors/color-system", position: "left", label: "Colors" },
+        {
+          to: "/",
+          position: "left",
+          label: "Documentation",
+        },
+        {
+          href: "https://github.com/receter/sys42",
+          position: "right",
+          label: "GitHub",
+        },
+        {
+          href: "https://www.npmjs.com/package/@sys42/ui",
+          position: "right",
+          label: "npm",
+        },
         { href: "pathname:///cosmos/", position: "right", label: "Cosmos" },
-        { href: "https://github.com/receter/sys42", position: "right", label: "GitHub" },
-        { href: "https://www.npmjs.com/package/@sys42/ui", position: "right", label: "npm" },
       ],
     },
     footer: {
@@ -101,7 +112,10 @@ const config: Config = {
           items: [
             { label: "Cosmos showcase", href: "pathname:///cosmos/" },
             { label: "GitHub", href: "https://github.com/receter/sys42" },
-            { label: "@sys42/ui on npm", href: "https://www.npmjs.com/package/@sys42/ui" },
+            {
+              label: "@sys42/ui on npm",
+              href: "https://www.npmjs.com/package/@sys42/ui",
+            },
           ],
         },
       ],

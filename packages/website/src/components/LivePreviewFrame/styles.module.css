@@ -1,0 +1,7 @@
+.livePreviewFrame {
+  display: block;
+  width: 100%;
+  /* Until the frame reports its height: about one row of controls */
+  height: 4.5rem;
+  border: 0;
+}

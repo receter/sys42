@@ -76,4 +76,4 @@ The consumer documentation is in [Design tokens](../tokens/overview.md). The rul
 
 ## This website
 
-The site lives in `packages/website` and is a Docusaurus site. The docs are in `docs/`, the live examples use `@docusaurus/theme-live-codeblock` with every export of `@sys42/ui` in scope (`src/theme/ReactLiveScope`), and the site colors are mapped from the semantic tokens in `src/css/custom.css`. It is deployed to GitHub Pages on every push to `main` together with the Cosmos export under `/cosmos/`.
+The site lives in `packages/website` and is a Docusaurus site. The docs are in `docs/`, the live examples use `@docusaurus/theme-live-codeblock` with every export of `@sys42/ui` in scope (`preview/scope.ts`) and render in an iframe with only the sys42 styles (the preview frame in `preview/`, a small Vite app), and the site colors are mapped from the semantic tokens in `src/css/custom.css`. It is deployed to GitHub Pages on every push to `main` together with the Cosmos export under `/cosmos/`.

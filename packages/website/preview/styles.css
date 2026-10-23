@@ -1,0 +1,15 @@
+/*
+  The frame is a plain sys42 app: the library's base and token styles and
+  nothing from the docs site. These rules only lay out the frame itself.
+*/
+:root {
+  /* Code blocks and the live editor sit on surfaceBright */
+  background-color: var(--s42-color-surfaceBright);
+  /* The frame grows to its content, see measureHeight in main.tsx */
+  overflow-y: hidden;
+}
+
+#root {
+  display: flow-root;
+  padding: var(--s42-space-containerY) var(--s42-space-containerX);
+}

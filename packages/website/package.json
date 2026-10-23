@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "pnpm build:preview && docusaurus start",
+    "build": "pnpm build:preview && docusaurus build",
+    "build:preview": "vite build preview",
+    "watch:preview": "vite build preview --watch",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -33,7 +35,9 @@
     "@docusaurus/types": "3.10.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "typescript": "~6.0.2"
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "~6.0.2",
+    "vite": "^5.3.1"
   },
   "browserslist": {
     "production": [

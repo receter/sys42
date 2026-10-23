@@ -1,16 +1,16 @@
 /*
-  Ejected from @docusaurus/theme-live-codeblock 3.10.2.
+  Ejected from @docusaurus/theme-live-codeblock 3.10.2 and adapted.
 
-  The only change is the `s42Preview` wrapper around the live preview, which
-  scopes the sys42 base styles to the example (see src/css/custom.css).
+  The example is rendered in an iframe (LivePreviewFrame), so it has its own
+  document and the docs styles don't reach it. Errors are reported by the
+  frame and shown here.
 */
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import ErrorBoundary from "@docusaurus/ErrorBoundary";
-import { ErrorBoundaryErrorMessageFallback } from "@docusaurus/theme-common";
 import Translate from "@docusaurus/Translate";
+import { useLiveCode } from "@site/src/components/LivePreviewFrame/context";
+import { LivePreviewFrame } from "@site/src/components/LivePreviewFrame";
 import PlaygroundHeader from "@theme/Playground/Header";
-import { type ReactNode } from "react";
-import { LiveError, LivePreview } from "react-live";
+import { type ReactNode, useState } from "react";
 
 import styles from "./styles.module.css";
 
@@ -20,22 +20,21 @@ function Loader() {
 }
 
 function PlaygroundLivePreview(): ReactNode {
+  const { code, noInline } = useLiveCode();
+  const [error, setError] = useState<string | null>(null);
+
   // No SSR for the live preview
   // See https://github.com/facebook/docusaurus/issues/5747
   return (
     <BrowserOnly fallback={<Loader />}>
       {() => (
         <>
-          <ErrorBoundary
-            fallback={(params) => (
-              <ErrorBoundaryErrorMessageFallback {...params} />
-            )}
-          >
-            <div className="s42Preview">
-              <LivePreview />
-            </div>
-          </ErrorBoundary>
-          <LiveError className={styles.playgroundError} />
+          <LivePreviewFrame
+            code={code}
+            noInline={noInline}
+            onError={setError}
+          />
+          {error && <pre className={styles.playgroundError}>{error}</pre>}
         </>
       )}
     </BrowserOnly>

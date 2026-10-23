@@ -84,16 +84,25 @@
   --ifm-global-shadow-md: var(--s42-shadow-raised);
 
   /* Chrome: navbar, sidebar, footer, table of contents */
-  --ifm-navbar-background-color: var(--s42-color-surfaceBright);
+  --ifm-navbar-background-color: var(--s42-color-controlAccent);
   --ifm-navbar-shadow: var(--s42-shadow-container);
-  --ifm-navbar-link-color: var(--s42-color-onSurface);
-  --ifm-menu-color: var(--s42-color-onSurface-muted);
-  --ifm-menu-color-active: var(--ifm-color-primary);
+  --ifm-navbar-link-color: var(--s42-color-onControlAccent);
+  --ifm-navbar-link-hover-color: var(--color-primary-80);
+  --ifm-menu-color: var(--s42-color-onContainer);
+  --ifm-menu-color-active: var(--s42-color-onContainer);
   /* Hover and selected are overlays of the item's own text color, like the
      derived state colors of the sys42 components. currentColor resolves on
      the menu link, so the selected item is tinted with its accent color. */
-  --ifm-menu-color-background-hover: color-mix(in srgb, currentColor 8%, transparent);
-  --ifm-menu-color-background-active: color-mix(in srgb, currentColor 12%, transparent);
+  --ifm-menu-color-background-hover: color-mix(
+    in srgb,
+    currentColor 8%,
+    transparent
+  );
+  --ifm-menu-color-background-active: color-mix(
+    in srgb,
+    currentColor 12%,
+    transparent
+  );
   --ifm-toc-border-color: var(--s42-color-outline-subtle);
   --ifm-toc-link-color: var(--s42-color-onSurface-muted);
   --ifm-hr-background-color: var(--s42-color-outline-subtle);
@@ -104,59 +113,12 @@
   --ifm-footer-link-hover-color: var(--s42-color-link);
   --ifm-footer-title-color: var(--s42-color-onSurface);
   --ifm-pre-background: var(--s42-color-surfaceBright);
-  --ifm-dropdown-hover-background-color: color-mix(in srgb, currentColor 8%, transparent);
-  --docusaurus-highlighted-code-line-bg: var(--s42-color-controlHighlightContainer);
-}
-
-/*
-  Live example previews.
-
-  react-live renders previews inline in the page, inside the `.markdown`
-  container. Infima's element styles are not in a cascade layer, so they win
-  over the `sys42` layer. The rules below re-apply the sys42 base look
-  (lib/base.css of @sys42/ui, scoped) with unlayered selectors, so a preview
-  looks like a sys42 app and not like the docs page around it.
-*/
-.s42Preview {
-  background: var(--s42-color-surfaceBright);
-  color: var(--s42-color-onSurface);
-  font-family: var(--s42-fontFamily-body);
-  font-size: 1rem;
-  line-height: var(--s42-lineHeight-body);
-  font-synthesis: none;
-  padding: var(--s42-space-containerY) var(--s42-space-containerX);
-}
-
-.s42Preview :is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, pre, table, figure, hr) {
-  margin: 0;
-}
-
-.s42Preview :is(h1, h2, h3, h4, h5, h6) {
-  font-family: inherit;
-  font-weight: var(--s42-fontWeight-emphasis);
-  line-height: inherit;
-}
-
-.s42Preview :is(ul, ol) {
-  padding-left: 0;
-  list-style: none;
-}
-
-.s42Preview a {
-  color: var(--s42-color-link);
-  text-decoration: none;
-}
-
-.s42Preview a:visited {
-  color: var(--s42-color-link-visited);
-}
-
-.s42Preview a:active,
-.s42Preview a:visited:active {
-  color: var(--s42-color-link-active);
-}
-
-/* Infima sets `font: inherit` on form controls; keep the sys42 controls intact. */
-.s42Preview :is(button, input, select, textarea) {
-  font-family: inherit;
+  --ifm-dropdown-hover-background-color: color-mix(
+    in srgb,
+    currentColor 8%,
+    transparent
+  );
+  --docusaurus-highlighted-code-line-bg: var(
+    --s42-color-controlHighlightContainer
+  );
 }
